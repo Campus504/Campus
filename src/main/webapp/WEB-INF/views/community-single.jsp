@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog Single - BizPage Bootstrap Template</title>
+  <title>community Single - BizPage Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -35,7 +35,50 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
+    <!-- sidebar css,js -->
+   <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!--  Bootstrap 3-->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/bootstrap.min.css">
+
+    <!-- OWL Carousel -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/owl.carousel.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/owl.theme.css">
+
+    <!--  Slider -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/jquery.kenburnsy.css">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/animate.css">
+
+    <!-- Web Icons Font -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/iconmoon.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/et-line.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/ionicons.css">
+
+    <!-- Magnific PopUp -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css">
+
+    <!-- Tabs -->
+    <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabstyles.css" />
+
+    <!-- Loader Style -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/loader-1.css">
+
+    <!-- Costum Styles -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" href="favicon.ico">
+
+    <!-- Modernizer & Respond js -->
+    <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <!-- sidebar css,js -->
     <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
@@ -58,15 +101,15 @@
 
         <ol>
           <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="community.html">community</a></li>
         </ol>
-        <h2>Blog Single</h2>
+        <h2>community Single</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Single Section ======= -->
-    <section id="blog" class="blog">
+    <!-- ======= community Single Section ======= -->
+    <section id="community" class="community">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -76,18 +119,18 @@
             <article class="entry entry-single">
 
               <div class="entry-img">
-                <img src="/campus/resources/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <img src="/campus/resources/assets/img/community/community-1.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href="community-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="community-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="community-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="community-single.html">12 Comments</a></li>
                 </ul>
               </div>
 
@@ -119,7 +162,7 @@
                   Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
                   Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
                 </p>
-                <img src="/campus/resources/assets/img/blog/blog-inside-post.jpg" class="img-fluid" alt="">
+                <img src="/campus/resources/assets/img/community/community-inside-post.jpg" class="img-fluid" alt="">
 
                 <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
                 <p>
@@ -146,10 +189,10 @@
                 </ul>
               </div>
 
-            </article><!-- End blog entry -->
+            </article><!-- End community entry -->
 
-            <div class="blog-author d-flex align-items-center">
-              <img src="/campus/resources/assets/img/blog/blog-author.jpg" class="rounded-circle float-left" alt="">
+            <div class="community-author d-flex align-items-center">
+              <img src="/campus/resources/assets/img/community/community-author.jpg" class="rounded-circle float-left" alt="">
               <div>
                 <h4>Jane Smith</h4>
                 <div class="social-links">
@@ -161,15 +204,15 @@
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
                 </p>
               </div>
-            </div><!-- End blog author bio -->
+            </div><!-- End community author bio -->
 
-            <div class="blog-comments">
+            <div class="community-comments">
 
               <h4 class="comments-count">8 Comments</h4>
 
               <div id="comment-1" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-1.jpg" alt=""></div>
+                  <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-1.jpg" alt=""></div>
                   <div>
                     <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -183,7 +226,7 @@
 
               <div id="comment-2" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-2.jpg" alt=""></div>
+                  <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-2.jpg" alt=""></div>
                   <div>
                     <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -195,7 +238,7 @@
 
                 <div id="comment-reply-1" class="comment comment-reply">
                   <div class="d-flex">
-                    <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-3.jpg" alt=""></div>
+                    <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-3.jpg" alt=""></div>
                     <div>
                       <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                       <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -211,7 +254,7 @@
 
                   <div id="comment-reply-2" class="comment comment-reply">
                     <div class="d-flex">
-                      <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-4.jpg" alt=""></div>
+                      <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-4.jpg" alt=""></div>
                       <div>
                         <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                         <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -229,7 +272,7 @@
 
               <div id="comment-3" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-5.jpg" alt=""></div>
+                  <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-5.jpg" alt=""></div>
                   <div>
                     <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -244,7 +287,7 @@
 
               <div id="comment-4" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="/campus/resources/assets/img/blog/comments-6.jpg" alt=""></div>
+                  <div class="comment-img"><img src="/campus/resources/assets/img/community/comments-6.jpg" alt=""></div>
                   <div>
                     <h5><a href="">Kay Duggan</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
@@ -284,9 +327,9 @@
 
               </div>
 
-            </div><!-- End blog comments -->
+            </div><!-- End community comments -->
 
-          </div><!-- End blog entries list -->
+          </div><!-- End community entries list -->
 
           <div class="col-lg-4">
 
@@ -315,32 +358,32 @@
               <h3 class="sidebar-title">Recent Posts</h3>
               <div class="sidebar-item recent-posts">
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-1.jpg" alt="">
-                  <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-1.jpg" alt="">
+                  <h4><a href="community-single.html">Nihil blanditiis at in nihil autem</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-2.jpg" alt="">
-                  <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-2.jpg" alt="">
+                  <h4><a href="community-single.html">Quidem autem et impedit</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-3.jpg" alt="">
-                  <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-3.jpg" alt="">
+                  <h4><a href="community-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-4.jpg" alt="">
-                  <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-4.jpg" alt="">
+                  <h4><a href="community-single.html">Laborum corporis quo dara net para</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-5.jpg" alt="">
-                  <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-5.jpg" alt="">
+                  <h4><a href="community-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
@@ -365,12 +408,12 @@
 
             </div><!-- End sidebar -->
 
-          </div><!-- End blog sidebar -->
+          </div><!-- End community sidebar -->
 
         </div>
 
       </div>
-    </section><!-- End Blog Single Section -->
+    </section><!-- End community Single Section -->
 
   </main><!-- End #main -->
 
@@ -460,6 +503,26 @@
 
   <!-- Template Main JS File -->
   <script src="/campus/resources/assets/js/main.js"></script>
+  
+    <!-- sidebar -->
+     <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
+    <script data-pace-options='{ "ajax": false }' src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/classie.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.velocity.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.kenburnsy.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/textslide.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/tabs.js"></script>
+    <script src="/campus/resources/sidebar/js/ef-slider.js"></script>    
+    <script src="/campus/resources/sidebar/js/vendor/owl.carousel.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.social-buttons.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/wow.min.js"></script>
+    <script src="/campus/resources/sidebar/js/main.js"></script>
+    <script src="/campus/resources/sidebar/js/ajax.js"></script>
+  <!-- /.sidebar -->
 
 </body>
 

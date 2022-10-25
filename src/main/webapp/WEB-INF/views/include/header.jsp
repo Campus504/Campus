@@ -17,7 +17,7 @@
               <li><a class="nav-link scrollto" href="#about">Best Products</a></li>
               <li><a class="nav-link scrollto" href="#services">Best Reviews</a></li>
               <li><a class="nav-link scrollto " href="#portfolio">Location</a></li>
-              <li><a class="nav-link  " href="/campus/blog.action">Community</a></li>
+              <li><a class="nav-link  " href="/campus/freeboard.action">Community</a></li>
             </ul>
             
             <!-- sidebar -->
@@ -49,8 +49,8 @@
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">Product</a>
                                     <ul class="sub-menu">
-                                        <li><a href="blog.html">Tent</a></li>
-                                        <li><a href="blog-timeline.html">Table/Chair</a></li>
+                                        <li><a href="goods-list.action">Tent</a></li>
+                                        <li><a href="goods-list.action">Table/Chair</a></li>
                                         <li><a href="single-blog.html">ETC...</a></li>
                                     </ul>
                                 </li>

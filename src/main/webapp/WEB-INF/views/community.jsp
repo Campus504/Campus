@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog - BizPage Bootstrap Template</title>
+  <title>community - BizPage Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -35,7 +35,50 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
+    <!-- sidebar css,js -->
+   <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!--  Bootstrap 3-->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/bootstrap.min.css">
+
+    <!-- OWL Carousel -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/owl.carousel.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/owl.theme.css">
+
+    <!--  Slider -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/jquery.kenburnsy.css">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/animate.css">
+
+    <!-- Web Icons Font -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/iconmoon.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/et-line.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/ionicons.css">
+
+    <!-- Magnific PopUp -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css">
+
+    <!-- Tabs -->
+    <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabstyles.css" />
+
+    <!-- Loader Style -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/loader-1.css">
+
+    <!-- Costum Styles -->
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
+    <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" href="favicon.ico">
+
+    <!-- Modernizer & Respond js -->
+    <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <!-- sidebar css,js -->
   <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
@@ -59,13 +102,13 @@
         <ol>
           <li><a href="index.html">Home</a></li>
         </ol>
-        <h2>Blog</h2>
+        <h2>community</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <!-- ======= community Section ======= -->
+    <section id="community" class="community">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -75,18 +118,18 @@
             <article class="entry">
 
               <div class="entry-img">
-                <img src="/campus/resources/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <img src="/campus/resources/assets/img/community/community-1.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="/campus/blog-single.action">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href="/campus/community-single.action">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/blog-single.action">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/blog-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/blog-single.action">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/community-single.action">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/community-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/community-single.action">12 Comments</a></li>
                 </ul>
               </div>
 
@@ -96,27 +139,27 @@
                   Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
                 </p>
                 <div class="read-more">
-                  <a href="/campus/blog-single.action">Read More</a>
+                  <a href="/campus/community-single.action">Read More</a>
                 </div>
               </div>
 
-            </article><!-- End blog entry -->
+            </article><!-- End community entry -->
 
             <article class="entry">
 
               <div class="entry-img">
-                <img src="/campus/resources/assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+                <img src="/campus/resources/assets/img/community/community-2.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="/campus/blog-single.action">Nisi magni odit consequatur autem nulla dolorem</a>
+                <a href="/campus/community-single.action">Nisi magni odit consequatur autem nulla dolorem</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/blog-single.action">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/blog-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/blog-single.action">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/community-single.action">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/community-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/community-single.action">12 Comments</a></li>
                 </ul>
               </div>
 
@@ -126,27 +169,27 @@
                   Ad impedit qui officiis est in non aliquid veniam laborum. Id ipsum qui aut. Sit aliquam et quia molestias laboriosam. Tempora nam odit omnis eum corrupti qui aliquid excepturi molestiae. Facilis et sint quos sed voluptas. Maxime sed tempore enim omnis non alias odio quos distinctio.
                 </p>
                 <div class="read-more">
-                  <a href="/campus/blog-single.action">Read More</a>
+                  <a href="/campus/community-single.action">Read More</a>
                 </div>
               </div>
 
-            </article><!-- End blog entry -->
+            </article><!-- End community entry -->
 
             <article class="entry">
 
               <div class="entry-img">
-                <img src="/campus/resources/assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
+                <img src="/campus/resources/assets/img/community/community-3.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="/campus/blog-single.action">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
+                <a href="/campus/community-single.action">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/blog-single.action">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/blog-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/blog-single.action">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/community-single.action">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/community-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/community-single.action">12 Comments</a></li>
                 </ul>
               </div>
 
@@ -156,27 +199,27 @@
                   Doloremque est saepe laborum aut. Ipsa cupiditate ex harum at recusandae nesciunt. Ut dolores velit.
                 </p>
                 <div class="read-more">
-                  <a href="/campus/blog-single.action">Read More</a>
+                  <a href="/campus/community-single.action">Read More</a>
                 </div>
               </div>
 
-            </article><!-- End blog entry -->
+            </article><!-- End community entry -->
 
             <article class="entry">
 
               <div class="entry-img">
-                <img src="/campus/resources/assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
+                <img src="/campus/resources/assets/img/community/community-4.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="/campus/blog-single.action">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
+                <a href="/campus/community-single.action">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/blog-single.action">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/blog-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/blog-single.action">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/campus/community-single.action">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/campus/community-single.action"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/campus/community-single.action">12 Comments</a></li>
                 </ul>
               </div>
 
@@ -186,13 +229,13 @@
                   Quia sed sunt. Ea asperiores expedita et et delectus voluptates rerum. Id saepe ut itaque quod qui voluptas nobis porro rerum. Quam quia nesciunt qui aut est non omnis. Inventore occaecati et quaerat magni itaque nam voluptas. Voluptatem ducimus sint id earum ut nesciunt sed corrupti nemo.
                 </p>
                 <div class="read-more">
-                  <a href="/campus/blog-single.action">Read More</a>
+                  <a href="/campus/community-single.action">Read More</a>
                 </div>
               </div>
 
-            </article><!-- End blog entry -->
+            </article><!-- End community entry -->
 
-            <div class="blog-pagination">
+            <div class="community-pagination">
               <ul class="justify-content-center">
                 <li><a href="#">1</a></li>
                 <li class="active"><a href="#">2</a></li>
@@ -200,7 +243,7 @@
               </ul>
             </div>
 
-          </div><!-- End blog entries list -->
+          </div><!-- End community entries list -->
 
           <div class="col-lg-4">
 
@@ -229,32 +272,32 @@
               <h3 class="sidebar-title">Recent Posts</h3>
               <div class="sidebar-item recent-posts">
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-1.jpg" alt="">
-                  <h4><a href="/campus/blog-single.action">Nihil blanditiis at in nihil autem</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-1.jpg" alt="">
+                  <h4><a href="/campus/community-single.action">Nihil blanditiis at in nihil autem</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-2.jpg" alt="">
-                  <h4><a href="/campus/blog-single.action">Quidem autem et impedit</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-2.jpg" alt="">
+                  <h4><a href="/campus/community-single.action">Quidem autem et impedit</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-3.jpg" alt="">
-                  <h4><a href="/campus/blog-single.action">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-3.jpg" alt="">
+                  <h4><a href="/campus/community-single.action">Id quia et et ut maxime similique occaecati ut</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-4.jpg" alt="">
-                  <h4><a href="/campus/blog-single.action">Laborum corporis quo dara net para</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-4.jpg" alt="">
+                  <h4><a href="/campus/community-single.action">Laborum corporis quo dara net para</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
                 <div class="post-item clearfix">
-                  <img src="/campus/resources/assets/img/blog/blog-recent-5.jpg" alt="">
-                  <h4><a href="/campus/blog-single.action">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <img src="/campus/resources/assets/img/community/community-recent-5.jpg" alt="">
+                  <h4><a href="/campus/community-single.action">Et dolores corrupti quae illo quod dolor</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
@@ -279,12 +322,12 @@
 
             </div><!-- End sidebar -->
 
-          </div><!-- End blog sidebar -->
+          </div><!-- End community sidebar -->
 
         </div>
 
       </div>
-    </section><!-- End Blog Section -->
+    </section><!-- End community Section -->
 
   </main><!-- End #main -->
 
@@ -374,6 +417,26 @@
 
   <!-- Template Main JS File -->
   <script src="/campus/resources/assets/js/main.js"></script>
+  
+    <!-- sidebar -->
+     <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
+    <script data-pace-options='{ "ajax": false }' src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/classie.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.velocity.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.kenburnsy.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/textslide.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/tabs.js"></script>
+    <script src="/campus/resources/sidebar/js/ef-slider.js"></script>    
+    <script src="/campus/resources/sidebar/js/vendor/owl.carousel.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/jquery.social-buttons.min.js"></script>
+    <script src="/campus/resources/sidebar/js/vendor/wow.min.js"></script>
+    <script src="/campus/resources/sidebar/js/main.js"></script>
+    <script src="/campus/resources/sidebar/js/ajax.js"></script>
+  <!-- /.sidebar -->
 
 </body>
 

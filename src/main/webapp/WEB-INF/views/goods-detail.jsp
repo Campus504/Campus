@@ -3,14 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
-<!-- 상세페이지 만들때 사용 ㄱㄱ -->
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - BizPage Bootstrap Template</title>
+  <title>Portfolio Details - BizPage Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,7 +36,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   
-      <!-- sidebar css,js -->
+    <!-- sidebar css,js -->
    <!-- Google Web Font -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -89,14 +86,14 @@
 	  background: rgba(26, 26, 26, 0.9);
 	}
 	</style>
+  
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
- 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
+    <!-- ======= Header ======= -->
+  	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
-
 
   <main id="main">
 
@@ -105,23 +102,67 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>Free Board</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
+            <li><a href="main">Home</a></li>
+            <li><a href="freeboard.action">Freeboard List</a></li>
+            <li>Freeboard</li>
           </ol>
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs Section -->
+    </section><!-- Breadcrumbs Section -->
 
-    <section class="inner-page mt-4">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <p>
-          Example inner page template
-        </p>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="/campus/resources/assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="/campus/resources/assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="/campus/resources/assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Title</h3>
+              <ul>
+                <li><strong>Writer</strong>: Hong GilDong</li>
+                <li><strong>Reg Date</strong>: 2022-10-25 13:12</li>
+                <li><strong>Read Count</strong>: 1</li>
+                <li><strong>tag</strong>: tag1 tag2 tag3</li>
+              </ul>
+            </div>
+            <div class="portfolio-info">
+              <textarea readonly>
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              </textarea>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </section>
+    </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
 
@@ -145,8 +186,8 @@
 
   <!-- Template Main JS File -->
   <script src="/campus/resources/assets/js/main.js"></script>
-  
-    <!-- sidebar -->
+
+  <!-- sidebar -->
      <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
     <script data-pace-options='{ "ajax": false }' src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
@@ -165,6 +206,7 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+
 
 </body>
 
