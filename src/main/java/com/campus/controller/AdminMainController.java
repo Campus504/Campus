@@ -12,5 +12,19 @@ public class AdminMainController {
 		
 		return "admin-main";
 	}
-
+	
+	@GetMapping(path= {"adminHeader.action"})
+	public String adminHeader() {
+		
+		
+		return "adminHeader";
+	}
+	
+	@GetMapping(path= {"adminSidebar.action"})
+	public String adminSidebar() {
+		
+		
+		return "adminSidebar";
+	}
+	
 }

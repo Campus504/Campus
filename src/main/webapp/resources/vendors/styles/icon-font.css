@@ -7,18 +7,16 @@
   font-display: block; }
 
 .dw {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'dropways' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
+    font-family: dropways!important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 .dw-analytics1:before {
   content: "\ee39"; }
 
@@ -128,7 +126,9 @@
   content: "\ee5c"; }
 
 .dw-user-2:before {
-  content: "\ee5d"; }
+  content: "\ee5d";
+
+   }
 
 .dw-browser2:before {
   content: "\ee5e"; }
@@ -1721,7 +1721,8 @@
   content: "\eb0b"; }
 
 .dw-edit2:before {
-  content: "\eb0c"; }
+  content: "\eb0c";
+   }
 
 .dw-email1:before {
   content: "\eb0d"; }
