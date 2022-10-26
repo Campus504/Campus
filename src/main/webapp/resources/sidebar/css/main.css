@@ -834,7 +834,7 @@ svg {
     font-family: 'azedobold';
     text-transform: uppercase;
     font-weight: 800;
-    dispay: block;
+    display: block;
     width: 100%;
     padding: 2px;
     position: relative;
@@ -1158,7 +1158,7 @@ span.border-text {
 .menu-wrap {
     position: fixed;
     z-index: 9999;
-    width: 35%;
+    width: 22%;
     height: 100%;
     right: 0;
     top: 0;
@@ -1305,6 +1305,7 @@ ul.sub-menu li a {
     float: right;
     position: relative;
     margin: 17px 0 17px 0;
+    margin-left:50px;
 }
 .main-menu-indicator:hover {
     border: 0;

@@ -12,7 +12,7 @@
 
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li>
+           <!--    <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li> -->
               <li><a class="nav-link scrollto active" href="main">Home</a></li>
               <li><a class="nav-link scrollto" href="#about">Best Products</a></li>
               <li><a class="nav-link scrollto" href="#services">Best Reviews</a></li>
@@ -21,7 +21,7 @@
             </ul>
             
             <!-- sidebar -->
-            <button class="main-menu-indicator" id="open-button">
+            <button class="main-menu-indicator" id="open-button"  style="margin-left:50px;">
                 <span class="line"></span>
             </button>
             
@@ -79,31 +79,18 @@
 
                     <div class="hidden-xs">
                         <div class="menu-social-media">
-                            <ul>
-                               <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-information">
-                            <ul>
-                                <li><span>T:</span> 02 1234 5678</li>
-                                <li><span>E:</span> info@mail.com</li>
+                            <ul> 
+                               <li><a href="#" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
+                               <li><a href="#" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
+                        	   <li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- sidebar -->          
-            
-            
-            
-            
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav><!-- .navbar -->
+            </div>  
+            <!-- End of sidebar -->     
+        </nav>
+          <!-- .navbar -->
         </div>
       </div>
 
