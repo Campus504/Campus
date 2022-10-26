@@ -6,9 +6,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="communityService" class="com.campus.service.CommunityServiceImpl">
+<!-- 	<bean id="communityService" class="com.campus.service.CommunityServiceImpl">
 		<property name="communityMapper" ref="communityMapper" />
-	</bean>
+	</bean> -->
 	
 	
 </beans>

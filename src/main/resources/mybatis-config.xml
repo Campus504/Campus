@@ -6,7 +6,6 @@
 <configuration>
  
 	<typeAliases>
- 		<typeAlias type="com.campus.dto.FreeboardDto" alias="FreeboardDto"/>
 	</typeAliases>
  
 	<mappers>
