@@ -10,7 +10,7 @@ public class CommunityController {
 	public String freeboardList() {
 		
 		
-		return "freeboard-list";
+		return "freeboard";
 	}
 	
 	@GetMapping(path= {"/freeboard-detail.action"})

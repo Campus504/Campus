@@ -24,7 +24,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="member-info.action">회원 정보</a></li>
-							<li><a href="advanced-components.html">회원 상세 정보</a></li>
+							<li><a href="admin-member-detail-info.action">회원 상세 정보</a></li>
 							<li><a href="form-wizard.html">관리자 권한</a></li>
 						</ul>
 					</li>
