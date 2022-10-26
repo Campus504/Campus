@@ -78,11 +78,18 @@
 
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<<<<<<< HEAD
     <!-- end of sidebar css,js -->
     
         <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
+=======
+    <!-- sidebar css,js -->
+    	<!-- 사이드바 아이콘 링크  -->
+  	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  	
+>>>>>>> ff5f1c03f59c31fa0363b86b2703b66252cbfc4d
   <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);

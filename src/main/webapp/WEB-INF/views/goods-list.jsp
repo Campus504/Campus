@@ -83,8 +83,10 @@
 
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <!-- sidebar css,js -->
     
+    <!-- sidebar css,js -->
+    <!-- 사이드바 아이콘 링크  -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
      <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);

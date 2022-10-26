@@ -82,9 +82,11 @@
 
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    
     <!-- sidebar css,js -->
-  
+  	<!-- 사이드바 아이콘 링크  -->
+  	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  	
 </head>
 
 <body>
@@ -174,7 +176,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>About Us</h3>
+          <h3>나중에 1</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </header>
 
@@ -229,7 +231,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header wow fadeInUp">
-          <h3>Services</h3>
+          <h3>나중에 2</h3>
           <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
         </header>
 
@@ -277,7 +279,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3 class="section-title">Our Portfolio</h3>
+          <h3 class="section-title">베스트 상품</h3>
         </header>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -438,7 +440,7 @@
       <div class="container" data-aos="zoom-in">
 
         <header class="section-header">
-          <h3>Our Clients</h3>
+          <h3>고객 후기</h3>
         </header>
 
         <div class="clients-slider swiper">
@@ -464,7 +466,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h3>Contact Us</h3>
+          <h3>오시는 길</h3>
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
 

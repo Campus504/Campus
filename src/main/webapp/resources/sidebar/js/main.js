@@ -193,10 +193,10 @@ jQuery(document).ready(function($) {
     
     //Navigation Sub Menu Triggering
     jQuery('.menu-item-has-children, .page_item_has_children').hover(function() {
-        jQuery(this).children('.sub-menu').stop().slideDown(200);
+        jQuery(this).children('.sub-menu').stop().slideDown(800);
     }, 
     function() {
-        jQuery(this).children('.sub-menu').stop().slideUp(200);
+        jQuery(this).children('.sub-menu').stop().slideUp(600);
     });
 
     //Mobile Menu Open/Close 
