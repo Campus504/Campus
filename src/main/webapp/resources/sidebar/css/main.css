@@ -1061,6 +1061,7 @@ span.border-text {
 .menu-wrap a:focus {
     color: #7beec7;
 }
+
 .content-wrap {
     -webkit-overflow-scrolling: touch;
 }
@@ -1169,8 +1170,8 @@ span.border-text {
     display: table;
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
-    transition: -webkit-transform 0.4s;
-    transition: transform 0.4s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
 .menu,
@@ -1180,6 +1181,8 @@ span.border-text {
     vertical-align: middle;
     padding-left: 35px
 }
+/* .menu-list > ol > li > a{ transition:2s;}
+.menu-list > ol > li > a:hover{color:red;} */
 .menu-contact-information {
     clear: both;
 }
@@ -1206,8 +1209,8 @@ span.border-text {
 }
 .menu-list,
 .menu-list ul li {
-    transition: -webkit-transform 0s 0.4s;
-    transition: transform 0s 0.4s;
+    transition: -webkit-transform 1s;
+    transition: transform 1s;
     transition-timing-function: cubic-bezier(0.8, 0, 0.3, 1);
 }
 .menu-list ul li:nth-child(1) {
@@ -1268,16 +1271,16 @@ ul.sub-menu li a {
 .show-menu .menu-wrap {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    transition: -webkit-transform 0.8s;
-    transition: transform 0.8s;
+    transition: -webkit-transform 0.4s;
+    transition: transform 0.4s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
 .show-menu .menu-list,
 .show-menu .menu-list ul li {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    transition: -webkit-transform 0.8s;
-    transition: transform 0.8s;
+    transition: -webkit-transform 1s;
+    transition: transform 1s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
 .show-menu .menu-list ul li {
@@ -1317,11 +1320,11 @@ ul.sub-menu li a {
     position: absolute;
     width: 25px;
     height: 2px;
-    top: 32px;
+    top: 35px;
     left: 0;
     right: 0;
     margin: auto;
-    background: #545454;
+    background: #ffffff;
 }
 .main-menu-indicator>span:before,
 .main-menu-indicator>span:after {
@@ -1330,7 +1333,7 @@ ul.sub-menu li a {
     content: '';
     width: 25px;
     height: 2px;
-    background: #545454;
+    background: #ffffff;
     left: 0;
 }
 .main-menu-indicator>span:after {
