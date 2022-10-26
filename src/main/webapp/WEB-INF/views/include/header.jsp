@@ -12,16 +12,17 @@
 
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li>
-              <li><a class="nav-link scrollto active" href="main">Home</a></li>
-              <li><a class="nav-link scrollto" href="#about">Best Products</a></li>
-              <li><a class="nav-link scrollto" href="#services">Best Reviews</a></li>
-              <li><a class="nav-link scrollto " href="#portfolio">Location</a></li>
-              <li><a class="nav-link  " href="/campus/freeboard.action">Community</a></li>
+           <!--    <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li> -->
+              <li><a class="nav-link scrollto active" href="main">홈</a></li>
+              <li><a class="nav-link scrollto" href="#about">나중에 1</a></li>
+              <li><a class="nav-link scrollto" href="#services">나중에 2</a></li>
+              <li><a class="nav-link scrollto " href="#portfolio">베스트상품</a></li>
+              <li><a class="nav-link scrollto " href="#clients">고객후기</a></li>
+              <li><a class="nav-link scrollto " href="#contact">오시는길</a></li>
             </ul>
             
             <!-- sidebar -->
-            <button class="main-menu-indicator" id="open-button">
+            <button class="main-menu-indicator" id="open-button"  style="margin-left:50px;">
                 <span class="line"></span>
             </button>
             
@@ -37,73 +38,70 @@
                     <nav class="menu">
                         <div class="menu-list">
                             <ol>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Join</a></li>
-                                <li class="menu-item-has-children"><a href="#">My Page</a>
+                                <li class="menu-item-has-children"><a href="#" title="텐트/타프">텐트/타프</a>
                                     <ul class="sub-menu">
-                                        <li><a href="portfolio-2column.html">My Info</a></li>
-                                        <li><a href="portfolio-3column.html">Cart</a></li>
-                                        <li><a href="portfolio-masonry.html">Order List</a></li>
-                                        <li><a href="portfolio-dribbble.html">My Board</a></li>
+                                        <li><a href="goods-list.action" title="텐트">텐트</a></li>
+                                        <li><a href="goods-list.action" title="타프">타프</a></li>
+                                        <li><a href="goods-list.action" title="소품">소품</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">Product</a>
+                                
+                                  <li class="menu-item-has-children"><a href="#" title="테이블/체어">테이블/체어</a>
                                     <ul class="sub-menu">
-                                        <li><a href="goods-list.action">Tent</a></li>
-                                        <li><a href="goods-list.action">Table/Chair</a></li>
-                                        <li><a href="single-blog.html">ETC...</a></li>
+                                        <li><a href="goods-list.action" title="테이블">테이블</a></li>
+                                        <li><a href="goods-list.action" title="체어">체어</a></li>
                                     </ul>
                                 </li>
-                                 <li class="menu-item-has-children"><a href="#">Community</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Free Board</a></li>
-                                        <li><a href="blog-timeline.html">Camping Tips</a></li>
+                                
+                                <li class="menu-item-has-children"><a href="goods-list.action">침낭/매트</a></li>
+                                
+                                <li class="menu-item-has-children"><a href="#">식기</a>
+                                   <ul class="sub-menu">
+                                        <li><a href="goods-list.action" title="코펠">코펠</a></li>
+                                        <li><a href="goods-list.action" title="프라이팬">프라이팬</a></li>
+                                        <li><a href="goods-list.action" title="컵/머그컵">컵/머그컵</a></li>
+                                        <li><a href="goods-list.action" title="취사도구">취사도구</a></li>
+                                    </ul>
+								</li>
+								
+                                <li class="menu-item-has-children"><a href="#">화로/버너</a>
+                                   <ul class="sub-menu">
+                                        <li><a href="goods-list.action" title="버너/스토브">버너/스토브</a></li>
+                                        <li><a href="goods-list.action" title="화로대">화로대</a></li>
+                                        <li><a href="goods-list.action" title="난로">난로</a></li>
+                                        <li><a href="goods-list.action" title="소품">소품</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">Contact</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Notifications</a></li>
-                                        <li><a href="blog-timeline.html">FAQ</a></li>
-                                        <li><a href="blog-timeline.html">Contact us</a></li>
+                                
+                                <li class="menu-item-has-children"><a href="#">캠핑소품</a>
+                                   <ul class="sub-menu">
+                                        <li><a href="goods-list.action" title="가전기기">가전기기</a></li>
+                                        <li><a href="goods-list.action" title="랜턴/손전등">랜턴/손전등</a></li>
+                                        <li><a href="goods-list.action" title="아이스박스/쿨러">아이스박스/쿨러</a></li>
+                                        <li><a href="goods-list.action" title="수납박스/케이스">수납박스/케이스</a></li>
+                                        <li><a href="goods-list.action" title="소품">소품</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">About</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">CampUs</a></li>
-                                        <li><a href="blog-timeline.html">Location</a></li>
-                                    </ul>
-                                </li>
+                                
+                                 <li class="menu-item-has-children"><a href="/campus/freeboard.action">커뮤니티</a>
                             </ol>
                         </div>
                     </nav>
 
                     <div class="hidden-xs">
                         <div class="menu-social-media">
-                            <ul>
-                               <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-information">
-                            <ul>
-                                <li><span>T:</span> 02 1234 5678</li>
-                                <li><span>E:</span> info@mail.com</li>
+                            <ul> 
+                               <li><a href="#" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
+                               <li><a href="#" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
+                        	   <li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- sidebar -->          
-            
-            
-            
-            
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav><!-- .navbar -->
+            </div>  
+            <!-- End of sidebar -->     
+        </nav>
+          <!-- .navbar -->
         </div>
       </div>
 

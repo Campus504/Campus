@@ -10,7 +10,10 @@
 		<property name="communityMapper" ref="communityMapper" />
 	</bean> -->
 	
-	
+	<bean id="communityService" class="com.campus.service.CommunityServiceImpl">
+		<property name="communityMapper" ref="communityMapper" />
+		
+	</bean>
 </beans>
 
 

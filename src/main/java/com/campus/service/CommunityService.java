@@ -1,5 +1,9 @@
 package com.campus.service;
 
-public class CommunityService {
+import com.campus.dto.BoardDto;
+
+public interface CommunityService {
+	
+	void writeFreeboard(BoardDto board);
 
 }

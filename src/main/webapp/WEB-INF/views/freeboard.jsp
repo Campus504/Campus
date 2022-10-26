@@ -78,7 +78,18 @@
 
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<<<<<<< HEAD
+    <!-- end of sidebar css,js -->
+    
+        <!--  사이드바 관리자 아이콘 -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    
+=======
     <!-- sidebar css,js -->
+    	<!-- 사이드바 아이콘 링크  -->
+  	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  	
+>>>>>>> ff5f1c03f59c31fa0363b86b2703b66252cbfc4d
   <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
@@ -231,8 +242,7 @@
 
           <div class="col-lg-4">
 
-            <div class="sidebar">
-
+			<div class="sidebar">
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="">
@@ -267,6 +277,20 @@
               </div><!-- End sidebar tags-->
 
             </div><!-- End sidebar -->
+
+           
+           <article class="entry">
+              <div class="entry-img">
+                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+              </div>
+
+              <div class="entry-content">
+                <div class="read-more">
+                  <a href="freeboard-write.action">Go To Write</a>
+                </div>
+              </div>
+            </article><!-- End write entry -->
+
 
           </div><!-- End blog sidebar -->
 
