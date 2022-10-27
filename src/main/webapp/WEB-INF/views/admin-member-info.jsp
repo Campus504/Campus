@@ -5,7 +5,7 @@
 <head>
 <!-- Basic Page Info -->
 <meta charset="UTF-8">
-<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+<title>Campus - 회원 정보</title>
 
 <!-- Site favicon -->
 <link rel="apple-touch-icon" sizes="180x180"
@@ -654,5 +654,8 @@
 			</div>
 		</div>
 	</div>
+		  <!-- js -->
+         	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />	
+          <!-- end of js -->
 </body>
 </html>

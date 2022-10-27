@@ -7,7 +7,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="UTF-8">
-	<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+	<title>Campus - 관리자 메인 페이지</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/campus/resources/vendors/images/apple-touch-icon.png">
