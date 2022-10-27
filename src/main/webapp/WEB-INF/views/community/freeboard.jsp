@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>community - BizPage Bootstrap Template</title>
+  <title>CAMPUS - 커뮤니티</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -118,110 +121,29 @@
         <div class="row">
 
           <div class="col-lg-8 entries">
-
+			<c:forEach var="board" items="${boards}">
             <article class="entry">
 
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
-
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href="freeboard-detail.action">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
-
+              
               <div class="entry-content">
                 <div class="read-more">
                   <a href="freeboard-detail.action">글 읽기</a>
                 </div>
               </div>
-
-            </article><!-- End blog entry -->
-
-            <article class="entry">
-
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="freeboard-detail.action">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
-
-            <article class="entry">
-
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="freeboard-detail.action">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
-
-            <article class="entry">
-
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="blog-single.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
+              
+              </article>
+              </c:forEach>
 
             <div class="blog-pagination">
               <ul class="justify-content-center">
@@ -255,17 +177,12 @@
               <h3 class="sidebar-title">태그</h3>
               <div class="sidebar-item tags">
                 <ul>
-                  <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Studio</a></li>
-                  <li><a href="#">Smart</a></li>
-                  <li><a href="#">Tips</a></li>
-                  <li><a href="#">Marketing</a></li>
+                  <li><a href="#">질문</a></li>
+                  <li><a href="#">후기</a></li>
+                  <li><a href="#">자랑</a></li>
+                  <li><a href="#">일상</a></li>
+                  <li><a href="#">기타</a></li>
+                 
                 </ul>
               </div><!-- End sidebar tags-->
 
@@ -283,7 +200,6 @@
                 </div>
               </div>
             </article><!-- End write entry -->
-
 
           </div><!-- End blog sidebar -->
 

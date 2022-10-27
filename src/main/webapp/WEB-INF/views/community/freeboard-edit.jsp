@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>community Single - BizPage Bootstrap Template</title>
+<title>CAMPUS - 자유게시판</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -154,8 +154,8 @@
 							<form action="freeboard-write.action" method="post">
 								<input type="hidden" name = "writer" value="${ loginuser.memberId }">
 								<h2 class="entry-title">
-									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+									<span class="d-flex align-items-center">
+									<i class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
 								</h2>
 
 								<div class="entry-meta">
@@ -174,7 +174,11 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" />
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />질문
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />후기
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />자랑
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />일상
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
 								</div>
 
 								<input type="submit" value="글쓰기" style="height: 25px" /> 
