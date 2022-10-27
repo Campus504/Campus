@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminMemberInfoController {
 	
-	@GetMapping(path= {"/member-info.action"})
-	public String memberInfo() {
+	@GetMapping(path= {"/admin-member-info.action"})
+	public String adminMemberInfo() {
 		
 		
-		return "member-info";
+		return "admin-member-info";
 	}
 	
 

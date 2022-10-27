@@ -132,10 +132,10 @@
 			<div class="container">
 
 				<ol>
-					<li><a href="main">Home</a></li>
-					<li><a href="freeboard.action">community</a></li>
+					<li><a href="main">홈</a></li>
+					<li><a href="freeboard.action">커뮤니티</a></li>
 				</ol>
-				<h2>Free Board Detail</h2>
+				<h2>게시글 수정하기</h2>
 
 			</div>
 		</section>
@@ -155,7 +155,7 @@
 								<input type="hidden" name = "writer" value="${ loginuser.memberId }">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>title</span> <input type="text" name="title">
+										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
 								</h2>
 
 								<div class="entry-meta">
@@ -167,13 +167,13 @@
 
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>content</span>
+									<i class="bi bi-caret-down-fill"></i>내용</span>
 									<textarea name="content" ></textarea>
 								</div>
 								
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>tags</span>
+									<i class="bi bi-caret-down-fill"></i>태그</span>
 									<input name="tag" />
 								</div>
 

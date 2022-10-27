@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>community - BizPage Bootstrap Template</title>
+  <title>community Single - BizPage Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -78,31 +78,24 @@
 
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<<<<<<< HEAD
     <!-- end of sidebar css,js -->
     
-        <!--  사이드바 관리자 아이콘 -->
+    <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-=======
-    <!-- sidebar css,js -->
-    	<!-- 사이드바 아이콘 링크  -->
-  	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
-  	
->>>>>>> ff5f1c03f59c31fa0363b86b2703b66252cbfc4d
-  <style type="text/css">
+    <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
-	}
+	  }
 	</style>
   
 </head>
+
 <body>
 
   <!-- ======= Header ======= -->
- 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
+  <jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
-  
 
   <main id="main">
 
@@ -111,14 +104,15 @@
       <div class="container">
 
         <ol>
-          <li><a href="main">Home</a></li>
+          <li><a href="main">홈</a></li>
+          <li><a href="freeboard.action">커뮤니티</a></li>
         </ol>
-        <h2>community</h2>
+        <h2>자유게시판</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Section ======= -->
+    <!-- ======= Blog Single Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -126,124 +120,159 @@
 
           <div class="col-lg-8 entries">
 
-            <article class="entry">
+            <article class="entry entry-single">
 
               <div class="entry-img">
                 <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+               제목
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>작성자</li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
                   <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
                 </ul>
               </div>
 
               <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
-                </div>
-              </div>
+                <p>
+                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                </p>
 
+              </div>
+              
             </article><!-- End blog entry -->
 
-            <article class="entry">
+            <div class="blog-comments">
 
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="freeboard-detail.action">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
+              <div id="comment-1" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"></div>
+                  <div>
+                    <h5>Georgia Reader<a href="#" class="reply"><i class="bi bi-reply-fill"></i>대댓글쓰기</a></h5>
+                    <time datetime="2020-01-01">01 Jan, 2020</time>
+                    <p>
+                      Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
+                      Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </div><!-- End comment #1 -->
 
-            </article><!-- End blog entry -->
-
-            <article class="entry">
-
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="freeboard-detail.action">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
+              <div id="comment-2" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"></div>
+                  <div>
+                    <h5>Aron Alvarado<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+                    <time datetime="2020-01-01">01 Jan, 2020</time>
+                    <p>
+                      Ipsam tempora sequi voluptatem quis sapiente non. Autem itaque eveniet saepe. Officiis illo ut beatae.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-            </article><!-- End blog entry -->
+                <div id="comment-reply-1" class="comment comment-reply">
+                  <div class="d-flex">
+                    <div class="comment-img"></div>
+                    <div>
+                      <h5>Lynda Small<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+                      <time datetime="2020-01-01">01 Jan, 2020</time>
+                      <p>
+                        Enim ipsa eum fugiat fuga repellat. Commodi quo quo dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui ad quas nostrum rerum sed necessitatibus aut est. Eum officiis sed repellat maxime vero nisi natus. Amet nesciunt nesciunt qui illum omnis est et dolor recusandae.
 
-            <article class="entry">
+                        Recusandae sit ad aut impedit et. Ipsa labore dolor impedit et natus in porro aut. Magnam qui cum. Illo similique occaecati nihil modi eligendi. Pariatur distinctio labore omnis incidunt et illum. Expedita et dignissimos distinctio laborum minima fugiat.
 
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-              </div>
+                        Libero corporis qui. Nam illo odio beatae enim ducimus. Harum reiciendis error dolorum non autem quisquam vero rerum neque.
+                      </p>
+                    </div>
+                  </div>
 
-              <h2 class="entry-title">
-                <a href="blog-single.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
-              </h2>
+                  <div id="comment-reply-2" class="comment comment-reply">
+                    <div class="d-flex">
+                      <div class="comment-img"></div>
+                      <div>
+                        <h5>Sianna Ramsay <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+                        <time datetime="2020-01-01">01 Jan, 2020</time>
+                        <p>
+                          Et dignissimos impedit nulla et quo distinctio ex nemo. Omnis quia dolores cupiditate et. Ut unde qui eligendi sapiente omnis ullam. Placeat porro est commodi est officiis voluptas repellat quisquam possimus. Perferendis id consectetur necessitatibus.
+                        </p>
+                      </div>
+                    </div>
 
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>Writer</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
-                </ul>
-              </div>
+                  </div><!-- End comment reply #2-->
 
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href="freeboard-detail.action">Read More</a>
+                </div><!-- End comment reply #1-->
+
+              </div><!-- End comment #2-->
+
+              <div id="comment-3" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"></div>
+                  <div>
+                    <h5>Nolan Davidson <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+                    <time datetime="2020-01-01">01 Jan, 2020</time>
+                    <p>
+                      Distinctio nesciunt rerum reprehenderit sed. Iste omnis eius repellendus quia nihil ut accusantium tempore. Nesciunt expedita id dolor exercitationem aspernatur aut quam ut. Voluptatem est accusamus iste at.
+                      Non aut et et esse qui sit modi neque. Exercitationem et eos aspernatur. Ea est consequuntur officia beatae ea aut eos soluta. Non qui dolorum voluptatibus et optio veniam. Quam officia sit nostrum dolorem.
+                    </p>
+                  </div>
                 </div>
+
+              </div><!-- End comment #3 -->
+
+              <div id="comment-4" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"></div>
+                  <div>
+                    <h5>Kay Duggan <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+                    <time datetime="2020-01-01">01 Jan, 2020</time>
+                    <p>
+                      Dolorem atque aut. Omnis doloremque blanditiis quia eum porro quis ut velit tempore. Cumque sed quia ut maxime. Est ad aut cum. Ut exercitationem non in fugiat.
+                    </p>
+                  </div>
+                </div>
+
+              </div><!-- End comment #4 -->
+
+              <div class="reply-form">
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                    <input value="Comment Writer" readonly>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <input value="Reg Date" readonly>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">쓰기</button>
+
+                </form>
+
               </div>
 
-            </article><!-- End blog entry -->
-
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-              </ul>
-            </div>
+            </div><!-- End blog comments -->
 
           </div><!-- End blog entries list -->
 
           <div class="col-lg-4">
 
-			<div class="sidebar">
-              <h3 class="sidebar-title">Search</h3>
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
                 <form action="">
                   <input type="text" class="form-control">
@@ -251,15 +280,17 @@
                 </form>
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Categories</h3>
+              <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="freeboard.action">Free Board</a></li>
-                  <li><a href="freeboard.action">Camping Tips</a></li>
+                  <li><a href="freeboard.action">자유 게시판</a></li>
+                  <li><a href="freeboard.action">캠핑 팁</a></li>
                 </ul>
-              </div><!-- End sidebar categories-->
+              </div>
+              <!-- End sidebar categories-->
 
-              <h3 class="sidebar-title">Tags</h3>
+             
+              <h3 class="sidebar-title">태그</h3>
               <div class="sidebar-item tags">
                 <ul>
                   <li><a href="#">App</a></li>
@@ -277,28 +308,27 @@
               </div><!-- End sidebar tags-->
 
             </div><!-- End sidebar -->
-
-           
-           <article class="entry">
+            
+             <article class="entry">
               <div class="entry-img">
                 <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
               </div>
 
               <div class="entry-content">
                 <div class="read-more">
-                  <a href="freeboard-write.action">Go To Write</a>
+                  <a href="freeboard-edit.action">수정</a>
+                  <a href="freeboard-delete.action">삭제</a>
+                  <a href="freeboard.action">목록보기</a>
                 </div>
               </div>
             </article><!-- End write entry -->
-
 
           </div><!-- End blog sidebar -->
 
         </div>
 
       </div>
-    </section><!-- End Blog Section -->
-
+    </section><!-- End Blog Single Section -->
   </main><!-- End #main -->
 
   	<!-- ======= Footer ======= -->
