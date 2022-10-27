@@ -83,7 +83,7 @@
                                     </ul>
                                 </li>
                                 
-                                 <li class="menu-item-has-children"><a href="/campus/freeboard.action">커뮤니티</a>
+                                 <li class="menu-item-has-children"><a href="freeboard.action">커뮤니티</a>
                             </ol>
                         </div>
                     </nav>

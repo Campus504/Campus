@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>community Single - BizPage Bootstrap Template</title>
+  <title>CAMPUS - 자유게시판</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -147,6 +147,12 @@
                 </p>
 
               </div>
+              
+	            <input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />질문
+				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />후기
+				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />자랑
+				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />일상
+				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
               
             </article><!-- End blog entry -->
 

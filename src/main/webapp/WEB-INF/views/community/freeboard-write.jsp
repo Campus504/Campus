@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>community Single - BizPage Bootstrap Template</title>
+<title>CAMPUS - 자유게시판</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -98,7 +98,7 @@
 <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
 <link rel="stylesheet"
 	href="/campus/resources/sidebar/css/responsive.css">
-
+	
 <!-- Favicon -->
 <link rel="icon" type="image/ico" href="favicon.ico">
 
@@ -175,7 +175,13 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" />
+									<input name="tags" value="질문" type="checkbox" />질문
+									<input name="tags" value="후기" type="checkbox" />후기
+									<input name="tags" value="자랑" type="checkbox" />자랑
+									<input name="tags" value="일상" type="checkbox" />일상
+									<input name="tags" value="기타" type="checkbox" />기타
+									
+									
 								</div>
 
 								<input type="submit" value="글쓰기" style="height: 25px" /> 
@@ -260,7 +266,12 @@
 		
 		$(".cancel").on('click',function(event){
 			location.href="/campus/freeboard.action";
-		})
+		});
+		
+		
+		
+		
+		
 		
 	});
 	</script>	
