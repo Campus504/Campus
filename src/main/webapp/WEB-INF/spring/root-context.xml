@@ -11,9 +11,9 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/demoweb" />
-		<property name="username" value="testuser" />
-		<property name="password" value="mysql" />
+		<property name="url" value="jdbc:mysql://43.201.107.251:3306/campus" />
+		<property name="username" value="campus" />
+		<property name="password" value="campus2" />
 		<property name="maxTotal" value="100" />
 		<property name="maxIdle" value="10" />
 		<property name="maxWaitMillis" value="-1" />

@@ -152,7 +152,8 @@
 						<article class="entry entry-single">
 
 							<form action="freeboard-write.action" method="post">
-								<input type="hidden" name = "writer" value="${ loginuser.memberId }">
+								<input type="hidden" name = "memberId" value="aaa">
+								<input type="hidden" name = "category" value="freeboard">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
 										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">

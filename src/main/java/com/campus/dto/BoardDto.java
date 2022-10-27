@@ -13,7 +13,7 @@ public class BoardDto {
 	private String content;
 	private Date writeDate;
 	private int readCount;
-	private String categry;
+	private String category;
 	private String memberId;
 	
 	private List<CommunityDto> tags;

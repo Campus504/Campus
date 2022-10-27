@@ -12,7 +12,7 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public void writeFreeboard(BoardDto board) {
-		// TODO Auto-generated method stub
+		communityMapper.insertBoard(board); 
 		
 	}
 	
