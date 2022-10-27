@@ -91,7 +91,7 @@
                     <div class="hidden-xs">
                         <div class="menu-social-media">
                             <ul> 
-                               <li><a href="/Campus/account/login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
+                               <li><a href="/campus/account/login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
                                <li><a href="#" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
                         	   <li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
                             </ul>

@@ -32,47 +32,35 @@ public class AccountController {
 	@GetMapping(path = { "/register.action" })
 	public String showRegisterForm() {
 		
-		return "account/register";	//	/WEB-INF/views/ + account/register + .jsp
+		return "account/register";	
 	}
 	
 	@PostMapping(path = { "/register.action" })
 	public String register(MemberDto member) {
-		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-		System.out.println(member);
 		
-		// 2. 요청 처리
 		accountService.registerMember(member);
 		
-		// 3. View에서 사용할 수 있도록 데이터 전달
-		
-		// 4. View 또는 다른 Controller로 이동
 		return "redirect:/account/login.action";
 	}
 	
 	@GetMapping(path = { "/login.action" })
 	public String showLoginForm() {
 		
-		return "account/login";		//  /WEB-INF/views/ + account/login + .jsp
+		return "account/login";
 	}
 	
 	@PostMapping(path = { "/login.action" })
 	public String login(String memberId, String passwd, HttpSession session, Model model) {
-		// 1. 요청 데이터 읽기 ( 전달인자 사용해서 대체 )
 		
-		// 2. 요청 처리
 		MemberDto member = accountService.findMemberByIdAndPasswd(memberId, passwd);
 		
 		if (member != null) {
 			session.setAttribute("loginuser", member);
 		} else {
 			model.addAttribute("loginfail", memberId);
-			return "account/login"; // /WEB-INF/views/ + account/login + .jsp
+			return "account/login";
 		}
-		
-		// 3. View에서 사용하도록 데이터 전달
-		
-		// 4. View 또는 다른 Controller로 이동 
-		return "redirect:/home.action"; // return "redirect:/home.action";
+		return "redirect:/main.action"; 
 	}
 	
 	@GetMapping(path = { "/logout.action" })

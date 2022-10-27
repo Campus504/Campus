@@ -12,7 +12,6 @@ public class MemberDto {
 	private String email;
 	private String memberName;
 	private String address;
-	private String gender;
 	private Date birth;
 	private String phone;
 	private boolean active;
