@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.springexample</groupId>
+	<groupId>com.campus</groupId>
 	<artifactId>campus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -44,7 +44,7 @@
 
 	<!-- end of servlet and jsp -->
 	
-			<!-- beginning of database library -->
+	<!-- beginning of database library -->
 		
 		<dependency>
 		    <groupId>mysql</groupId>
