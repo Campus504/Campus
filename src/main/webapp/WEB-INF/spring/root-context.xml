@@ -27,6 +27,7 @@
 	<mybatis:scan base-package="com.campus.mapper"/>
 	
 	<import resource="community-context.xml" />
+	<import resource="member-context.xml" />
 
 
 </beans>
