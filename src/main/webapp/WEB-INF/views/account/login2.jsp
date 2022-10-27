@@ -88,58 +88,54 @@
   	
 </head>
 <body>
-	<div id='pageContainer'>
+	<body>
 
+	<div id='pageContainer'>
+		
 		<!-- ======= Header ======= -->
 		<jsp:include page="/WEB-INF/views/include/header.jsp" />
 		<!-- End Header -->
-
+		
 		<div id="inputcontent">
 			<br /><br />
 		    <div id="inputmain">
-		        <div class="inputsubtitle">회원기본정보</div>
-		  <!--  <form id="registerform" action="/demoweb/account/register.action" method="post"> --> <!--절대경로표시 -->
-		        <form id="registerform" action="register.action" method="post"><!-- 상대경로표시 -->
+		        <div class="inputsubtitle">로그인정보</div>
+		        
+		        <form action="login.action" method="post">
+		       
 		        <table>
 		            <tr>
 		                <th>아이디(ID)</th>
 		                <td>
-		                    <input type="text" id="memberId" name="memberId" style="width:280px" />
+		                    <input type="text" name="memberId" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>비밀번호</th>
 		                <td>
-		                	<input type="password" id="passwd" name="passwd" style="width:280px" />
+		                	<input type="password" name="passwd" style="width:280px" />
 		                </td>
 		            </tr>
-		            <tr>
-		                <th>비밀번호 확인</th>
-		                <td>
-		                    <input type="password" id="confirm" name="confirm" style="width:280px" />
-		                </td>
-		            </tr>
-		            <tr>
-		                <th>이메일</th>
-		                <td>
-		                	<input type="text" id="email" name="email" style="width:280px" />
-		                </td>
-		            </tr>
-		                       		            
 		        </table>
+		        
 		        <div class="buttons">
-		        	<input id="register" type="submit" value="등록" />
-		        	<input id="cancel" type="button" value="취소" />
+		        	<input type="submit" value="로그인" style="height:25px" />
+		        	<input type="button" value="취소" style="height:25px" />
 		        </div>
 		        </form>
+		        
 		    </div>
-		</div>   	
+		</div>  	
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		<c:if test="${ not empty loginfail }">
+		alert('로그인 실패 : 아이디와 패스워드를 확인하세요');
+		</c:if>
+	});
+	</script>
+
+</body>
 </body>
 </html>
-
-
-
-
-
-

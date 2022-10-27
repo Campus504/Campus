@@ -70,6 +70,7 @@ body {
     position: relative;
     width: 100%;
     margin: 1rem 0;
+    margin-left: 25px;
 }
 
 .input-group i {
@@ -95,9 +96,33 @@ body {
     border: 0.125rem solid var(--primary-color);
 }
 
-.form button {
+.form buttons {
     cursor: pointer;
     width: 100%;
+    padding: .6rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.2rem;
+    outline: none;
+}
+
+#register {
+    cursor: pointer;
+    width: 20%;
+    padding: .6rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.2rem;
+    outline: none;
+}
+
+#cancel {
+    cursor: pointer;
+    width: 20%;
     padding: .6rem 0;
     border-radius: .5rem;
     border: none;
@@ -112,7 +137,7 @@ body {
     font-size: .7rem;
 }
 
-.flex-col {
+.flex-log-col {
     flex-direction: column;
 }
 
