@@ -37,27 +37,28 @@
 			dataLayer.push(arguments);
 		}
 		gtag('js', new Date());
-	
 		gtag('config', 'UA-119386393-1');
 	</script>
 	
 </head>
 <body>
 
+	<!-- pre loader(페이지 진입 시 로딩바 보이기) -->
+	<jsp:include page="/WEB-INF/views/modules/preLoader.jsp" />
+	
 	<!--  header -->
 	<jsp:include page="/WEB-INF/views/modules/adminHeader.jsp" />
-	<!-- end of header -->
+
 	<!--  sidebar -->
 	<jsp:include page="/WEB-INF/views/modules/adminSidebar.jsp" />
-	<!-- end of sidebar -->
 
 	<!-- 페이지 시작합니다 -->
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
 
-	<div class="pd-ltr-20 xs-pd-20-10">
-	<div class="min-height-200px">
+		<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
 
 		<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 		<div class="page-header">
