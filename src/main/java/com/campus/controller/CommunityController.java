@@ -41,12 +41,9 @@ public class CommunityController {
 		return "community/freeboard-write";
 	}
 	
-<<<<<<< HEAD
-	@PostMapping(path= {"/freeboard-write.action"})
 
-=======
 	@PostMapping(path= {"freeboard-write.action"})
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
+
 	public String writeFreeboard(BoardDto board) {
 		
 		communityService.writeFreeboard(board); //board 데이터 저장

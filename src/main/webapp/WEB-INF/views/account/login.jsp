@@ -10,19 +10,10 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<<<<<<< HEAD
+
   <title>Login</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-=======
-<title>Campus</title>
-<meta content="" name="description">
-<meta content="" name="keywords">
-<meta name="description" content="">
-<meta name="msapplication-tap-highlight" content="yes" />
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
 
 <!-- Favicons -->
 <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -37,29 +28,19 @@
 <!-- Vendor CSS Files -->
 <link href="/campus/resources/assets/vendor/animate.css/animate.min.css"
 	rel="stylesheet">
-<link href="/campus/resources/assets/vendor/aos/aos.css"
-	rel="stylesheet">
-<link
-	href="/campus/resources/assets/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="/campus/resources/assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="/campus/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="/campus/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-<link
-	href="/campus/resources/assets/vendor/glightbox/css/glightbox.min.css"
-	rel="stylesheet">
-<link
-	href="/campus/resources/assets/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
+<link href="/campus/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/campus/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-<<<<<<< HEAD
-  <!-- Template Main CSS File -->
+
+<!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
   <link href="/campus/resources/assets/css/login.css" rel="stylesheet">
-=======
-<!-- Template Main CSS File -->
-<link href="/campus/resources/assets/css/style.css" rel="stylesheet">
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
+
 
 <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -67,13 +48,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<<<<<<< HEAD
+
   
       <!-- sidebar css,js -->
   
     <!--  Bootstrap 3-->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/bootstrap.min.css">
-=======
+
 
 <!-- sidebar css,js -->
 <!-- Google Web Font -->
@@ -83,7 +64,6 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic'
 	rel='stylesheet' type='text/css'>
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
 
 <!--  Bootstrap 3-->
 <link rel="stylesheet"
@@ -96,15 +76,13 @@
 	href="/campus/resources/sidebar/css/owl.theme.css">
 
 <!--  Slider -->
-<link rel="stylesheet"
-	href="/campus/resources/sidebar/css/jquery.kenburnsy.css">
+<link rel="stylesheet" href="/campus/resources/sidebar/css/jquery.kenburnsy.css">
 
 <!-- Animate -->
 <link rel="stylesheet" href="/campus/resources/sidebar/css/animate.css">
 
 <!-- Web Icons Font -->
-<link rel="stylesheet"
-	href="/campus/resources/sidebar/css/pe-icon-7-stroke.css">
+<link rel="stylesheet" href="/campus/resources/sidebar/css/pe-icon-7-stroke.css">
 <link rel="stylesheet" href="/campus/resources/sidebar/css/iconmoon.css">
 <link rel="stylesheet" href="/campus/resources/sidebar/css/et-line.css">
 <link rel="stylesheet" href="/campus/resources/sidebar/css/ionicons.css">
@@ -136,10 +114,8 @@
 
 <!-- sidebar css,js -->
 <!-- 사이드바 아이콘 링크  -->
-<script
-	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 
-<<<<<<< HEAD
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
@@ -175,50 +151,49 @@
            <table>
             <tr class="input-group">
               <td>
-              <input type="text" id="memberId" name="memberId" placeholder="ID">
+              <input type="text" id="memberId" name="memberId" placeholder="아이디">
               </td>
             </tr>
             
             <tr class="input-group">
               <td>
-              <input type="password" id="passwd" name="passwd" placeholder="Password">
+              <input type="password" id="passwd" name="passwd" placeholder="비밀번호">
               </td>
             </tr>
             
-            <tr class="input-group">
-              <i class='bx bxs-lock-alt'></i>
+            <tr class="input-group">           
               <td>
-              <input type="password" id="confirm" name="confirm" placeholder="Confirm password">
-              </td>
-            </tr>
-            
-            <tr class="input-group">
-              <td>
-              <input type="text" id="email" name="email" placeholder="E-mail">
+              <input type="password" id="confirm" name="confirm" placeholder="비밀번호 확인">
               </td>
             </tr>
             
             <tr class="input-group">
               <td>
-              <input type="text" id="memberName" name="memberName" placeholder="UserName">
+              <input type="text" id="email" name="email" placeholder="이메일">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="text" id="memberName" name="memberName" placeholder="이름">
               </td>
             </tr>
             
             <tr class="input-group">
              <td>
-              <input type="text" id="address" name="address" placeholder="address">
+              <input type="text" id="address" name="address" placeholder="주소">
               </td>
             </tr>
             
             <tr class="input-group">
               <td>
-              <input type="date" id="birth" name="birth" placeholder="birth">
+              <input type="date" id="birth" name="birth" placeholder="생년월일">
               </td>
             </tr>
             
             <tr class="input-group">
               <td>
-              <input type="tel" id="phone" name="phone" placeholder="Phone-Number">
+              <input type="tel" id="phone" name="phone" placeholder="전화번호">
               </td>
             </tr>
              </table>
@@ -229,10 +204,10 @@
             </div>
              <p>
               <span>
-                Already have an account?
+                회원이십니까?
               </span>
               <b onclick="toggle()" class="pointer">
-                Sign in here
+                로그인
               </b>
             </p>
            
@@ -254,13 +229,13 @@
           <table>
             <tr class="input-group">
             <td>
-              <input type="text" name="memberId" placeholder="Username">
+              <input type="text" name="memberId" placeholder="아이디">
               </td>
             </tr>
             
             <tr class="input-group">
             <td>
-              <input type="password" name="passwd" placeholder="Password">
+              <input type="password" name="passwd" placeholder="비밀번호">
               </td>
             </tr>
             </table>
@@ -270,13 +245,13 @@
               </div>
             <p>
               <span>
-                Don't have an account?
+                회원이 아니십니까?
               </span>
               <b onclick="toggle()" class="pointer">
-                Sign up here
+                회원가입
               </b>
             </p>
-            </form>
+            
           </div>
         </div>
         <div class="form-wrapper">
@@ -364,7 +339,6 @@
   <!-- /.sidebar -->
   
   <!-- 로그인 실패시 js -->
-=======
 </head>
 <body>
 
@@ -405,7 +379,6 @@
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
 	<script type="text/javascript">
 		$(function() {
 			<c:if test="${ not empty loginfail }">
@@ -416,8 +389,4 @@
 	
 </body>
 
-<<<<<<< HEAD
-=======
-</body>
->>>>>>> ced4e7d2106f8d3e2162dd18b94970dc0ad9b285
 </html>
