@@ -25,6 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -33,6 +34,7 @@
 
 		gtag('config', 'UA-119386393-1');
 	</script>
+	
 </head>
 <body>
 	<!--  header -->
@@ -41,35 +43,46 @@
 	<!--  sidebar -->
 	<jsp:include page="/WEB-INF/views/modules/adminSidebar.jsp" />
 	<!-- end of sidebar -->
-	<div class="pd-ltr-20 xs-pd-20-10">
+	
+	<!-- 페이지 시작합니다 -->
+	<div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+
+		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
+
+				<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>주문 상세 목록</h4>
+								<h4> 주문상세</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">주문 상세 목록</li>
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">주문상세</li>
 								</ol>
 							</nav>
 						</div>
+						
 						<div class="col-md-6 col-sm-12 text-right">
 							<div class="dropdown">
-								<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-									January 2018
-								</a>
+								<a class="btn btn-primary dropdown-toggle" href="#"
+									role="button" data-toggle="dropdown"> Oct 2022 </a>
+								
 								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">Export List</a>
-									<a class="dropdown-item" href="#">Policies</a>
-									<a class="dropdown-item" href="#">View Assets</a>
+									<a class="dropdown-item" href="#">기능1)Export List </a> 
+									<a class="dropdown-item" href="#">기능2)Policies </a> 
+									<a class="dropdown-item" href="#">기능3)View Assets </a>
+									<a class="dropdown-item" href="#">기능4)View Assets </a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="invoice-wrap">
 					<div class="invoice-box">
 						<div class="invoice-header">
@@ -77,7 +90,7 @@
 								<img src="vendors/images/deskapp-logo.png" alt="">
 							</div>
 						</div>
-						<h4 class="text-center mb-30 weight-600">주문 상세</h4>
+						<h4 class="text-center mb-30 weight-600">INVOICE</h4>
 						<div class="row pb-30">
 							<div class="col-md-6">
 								<h5 class="mb-15">Client Name</h5>
@@ -86,7 +99,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="text-right">
-									<p class="font-14 mb-5">Your Name </strong></p>
+									<p class="font-14 mb-5">Your Name </p>
 									<p class="font-14 mb-5">Your Address</p>
 									<p class="font-14 mb-5">City</p>
 									<p class="font-14 mb-5">Postcode</p>
@@ -152,9 +165,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+			</div>
 		</div>
+	</div>
+
+		
 		<!-- js -->
         	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />	
         <!-- end of js -->
+        
 </body>
 </html>
