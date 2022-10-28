@@ -25,6 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -41,7 +42,48 @@
 	<!--  sidebar -->
 	<jsp:include page="/WEB-INF/views/modules/adminSidebar.jsp" />
 	<!-- end of sidebar -->
-	<div class="mb-9">
+	
+	
+	<!-- 페이지 시작합니다 -->
+	<div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+
+				<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4> 주문목록</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">주문목록</li>
+								</ol>
+							</nav>
+						</div>
+						
+						<div class="col-md-6 col-sm-12 text-right">
+							<div class="dropdown">
+								<a class="btn btn-primary dropdown-toggle" href="#"
+									role="button" data-toggle="dropdown"> Oct 2022 </a>
+								
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="#">기능1)Export List </a> 
+									<a class="dropdown-item" href="#">기능2)Policies </a> 
+									<a class="dropdown-item" href="#">기능3)View Assets </a>
+									<a class="dropdown-item" href="#">기능4)View Assets </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+		<div class="mb-9">
             <div class="row g-3 mb-4">
               <div class="col-auto">
                 <h2 class="mb-0">Orders</h2>

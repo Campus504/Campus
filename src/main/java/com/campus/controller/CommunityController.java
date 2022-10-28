@@ -41,7 +41,10 @@ public class CommunityController {
 		return "community/freeboard-write";
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4306b4f75992bd67a3fe9eb35cb0e1f47b54c3d8
 	@PostMapping(path= {"freeboard-write.action"})
 
 	public String writeFreeboard(BoardDto board) {

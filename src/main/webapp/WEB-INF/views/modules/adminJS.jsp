@@ -11,3 +11,5 @@
 	<script src="/campus/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="/campus/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 	<script src="/campus/resources/vendors/scripts/dashboard.js"></script>
+	
+	

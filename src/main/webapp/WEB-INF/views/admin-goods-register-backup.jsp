@@ -1,6 +1,7 @@
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +37,7 @@
 	
 </head>
 <body>
+
 	<!--  header -->
 	<jsp:include page="/WEB-INF/views/modules/adminHeader.jsp" />
 	<!-- end of header -->
@@ -44,8 +46,7 @@
 	<!-- end of sidebar -->
 	
 	<div class="mobile-menu-overlay"></div>
-		<div class="main-container">
-	
+		<div class="main-container">	
 		<div class="pd-ltr-20 xs-pd-20-10">
 		<div class="min-height-200px">
 	
@@ -62,7 +63,8 @@
             <div class="row g-5">
               <div class="col-12 col-xl-8"><input class="form-control mb-5" type="text" placeholder="Write title here..." />
                 <div class="mb-6">
-                  <h4 class="mb-3"> Product Description</h4><textarea class="tinymce" name="content" data-tinymce='{"height":"15rem","placeholder":"Write a description here..."}'></textarea>
+                  <h4 class="mb-3"> Product Description</h4>
+                  <textarea class="tinymce" name="content" data-tinymce='{"height":"15rem","placeholder":"Write a description here..."}'></textarea>
                 </div>
                 <h4 class="mb-3">Display images</h4>
                 <div class="dropzone dropzone-multiple p-0 mb-5" id="my-awesome-dropzone" data-dropzone="data-dropzone">
