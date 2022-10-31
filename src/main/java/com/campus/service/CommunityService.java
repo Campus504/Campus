@@ -15,5 +15,13 @@ public interface CommunityService {
 
 	void writeFreeboardTags(int boardTagNo, List<CommunityDto> tags);
 
+	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
+
+	int findBoardCount();
+
+	void increaseBoardReadCount(int boardNo);
+
+	BoardDto findBoardByBoardNo(int boardNo);
+
 
 }

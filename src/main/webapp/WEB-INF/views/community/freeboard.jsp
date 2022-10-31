@@ -122,10 +122,11 @@
 
           <div class="col-lg-8 entries">
 			<c:forEach var="board" items="${boards}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
             <article class="entry">
 
               <h2 class="entry-title">
-                <a href="freeboard-detail.action">${board.title}</a>
+                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=&${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
@@ -138,7 +139,7 @@
               
               <div class="entry-content">
                 <div class="read-more">
-                  <a href="freeboard-detail.action">글 읽기</a>
+                  <a href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=&{pageNo}'>글 읽기</a>
                 </div>
               </div>
               
@@ -147,12 +148,26 @@
 
             <div class="blog-pagination">
               <ul class="justify-content-center">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
+              <c:choose>
+             <c:when test="${pageNo='1'}" >
+                <li class="active"><a href="#">${ pageNo }</a></li>
+                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                 <li><a href="freeboard.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
+             </c:when >
+             <c:when test="${pageNo=pageCount}">
+             <li><a href="freeboard.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
+             	 <li><a href="freeboard.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+                <li class="active"><a href="#">${ pageNo }</a></li>
+             </c:when>
+             <c:otherwise>
+              <li><a href="freeboard.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
+                <li class="active"><a href="#">${ pageNo }</a></li>
+                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+             </c:otherwise>
+             </c:choose>
               </ul>
             </div>
-
+ 				 ${ pager }
           </div><!-- End blog entries list -->
 
           <div class="col-lg-4">
@@ -214,7 +229,10 @@
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
 	<!-- End Footer --> 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
