@@ -39,6 +39,36 @@ public class CommunityServiceImpl implements CommunityService {
 	public void writeFreeboardTags(int boardTagNo, List<CommunityDto> tags) {
 		communityMapper.insertFreeboardTags(boardTagNo, tags);
 		
+	}//나중에 구현하기
+
+	@Override
+	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
+		
+		int from = (pageNo-1)*pageSize;
+		int count = pageSize;
+		List<BoardDto> boards = communityMapper.selectBoardByPage(from, count);
+		return boards;
+	}
+
+	@Override
+	public int findBoardCount() {
+
+		int boardCount = communityMapper.selectBoardCount();
+		
+		return boardCount;
+	}
+
+	@Override
+	public void increaseBoardReadCount(int boardNo) {
+		communityMapper.updateBoardReadCount(boardNo);
+	}
+
+	@Override
+	public BoardDto findBoardByBoardNo(int boardNo) {
+
+		BoardDto board = communityMapper.selectBoardByBoardNo(boardNo);
+		
+		return board;
 	}
 
 		
