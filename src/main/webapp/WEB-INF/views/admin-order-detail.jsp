@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Basic Page Info -->
+	
+	<!-- Basic Page Info -->
 	<meta charset="UTF-8">
 	<title>Campus - 주문 상세 목록</title>
 
@@ -31,18 +33,20 @@
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
-
 		gtag('config', 'UA-119386393-1');
 	</script>
 	
 </head>
 <body>
+	
+	<!-- pre loader(페이지 진입 시 로딩바 보이기) -->
+	<jsp:include page="/WEB-INF/views/modules/preLoader.jsp" />
+	
 	<!--  header -->
 	<jsp:include page="/WEB-INF/views/modules/adminHeader.jsp" />
-	<!-- end of header -->
+	
 	<!--  sidebar -->
 	<jsp:include page="/WEB-INF/views/modules/adminSidebar.jsp" />
-	<!-- end of sidebar -->
 	
 	<!-- 페이지 시작합니다 -->
 	<div class="mobile-menu-overlay"></div>
@@ -166,7 +170,7 @@
 				</div>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+				현재 페이지는 수정 및 작성중입니다요~~ <a href="https://github.com/dropways" target="_blank">페이지는 작성</a>
 			</div>
 		</div>
 	</div>
