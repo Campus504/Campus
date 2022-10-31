@@ -22,13 +22,13 @@ public class AccountController {
 	@Qualifier("accountService")
 	private AccountService accountService;
 	
-	@GetMapping(path = { "/register.action" })
+	@GetMapping(path = { "register.action" })
 	public String showRegisterForm() {
 		
 		return "account/register";	
 	}
 	
-	@PostMapping(path = { "/register.action" })
+	@PostMapping(path = { "register.action" })
 	public String register(MemberDto member) {
 		
 		accountService.registerMember(member);
@@ -36,13 +36,13 @@ public class AccountController {
 		return "redirect:/account/login.action";
 	}
 	
-	@GetMapping(path = { "/login.action" })
+	@GetMapping(path = { "login.action" })
 	public String showLoginForm() {
 		
 		return "account/login";
 	}
 	
-	@PostMapping(path = { "/login.action" })
+	@PostMapping(path = { "login.action" })
 	public String login(String memberId, String passwd, HttpSession session, Model model) {
 		
 		MemberDto member = accountService.findMemberByIdAndPasswd(memberId, passwd);
@@ -53,10 +53,11 @@ public class AccountController {
 			model.addAttribute("loginfail", memberId);
 			return "account/login";
 		}
+		System.out.println("dd");
 		return "redirect:/main.action"; 
 	}
 	
-	@GetMapping(path = { "/logout.action" })
+	@GetMapping(path = { "logout.action" })
 	public View logout(HttpSession session) {
 		
 		session.removeAttribute("loginuser");
