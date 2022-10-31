@@ -2,6 +2,7 @@ package com.campus.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -41,6 +42,12 @@ public interface CommunityMapper {
 
 	@Select("SELECT * FROM board WHERE boardno=#{boardNo}")
 	BoardDto selectBoardByBoardNo(int boardNo);
+
+	@Update("UPDATE board set title = #{title}, content=#{content} WHERE boardno = #{boardNo} ")
+	void updateFreeboard(BoardDto board);
+
+	@Delete("DELETE FROM board WHERE boardno = #{boardNo}")
+	void deleteFreeboard(int boardNo);
 
 	
 	

@@ -23,5 +23,9 @@ public interface CommunityService {
 
 	BoardDto findBoardByBoardNo(int boardNo);
 
+	void updateFreeboard(BoardDto board);
+
+	void deleteFreeboard(int boardNo);
+
 
 }

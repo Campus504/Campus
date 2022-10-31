@@ -126,7 +126,7 @@
             <article class="entry">
 
               <h2 class="entry-title">
-                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=&${pageNo}">${board.title}</a>
+                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
@@ -139,7 +139,7 @@
               
               <div class="entry-content">
                 <div class="read-more">
-                  <a href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=&{pageNo}'>글 읽기</a>
+                  <a href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
                 </div>
               </div>
               
@@ -205,9 +205,6 @@
 
            
            <article class="entry">
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
 
               <div class="entry-content">
                 <div class="read-more">

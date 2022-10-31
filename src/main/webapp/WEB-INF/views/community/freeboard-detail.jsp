@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,37 +125,32 @@
 
             <article class="entry entry-single">
 
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
-
               <h2 class="entry-title">
-               제목
+               ${ board.title }
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>작성자</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>2022-10-25 09:24 pm</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>0</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
 
               <div class="entry-content">
                 <p>
-                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                  내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+<c:set var="enter" value="
+" />
+						${ fn:replace(board.content, enter, "<br>") }
                 </p>
 
               </div>
               
-	            <input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />질문
-				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />후기
-				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />자랑
-				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />일상
-				<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
+	            <span class="tag" >질문</span>
+				<span class="tag" >후기</span>
+				<span class="tag" >자랑</span>
+				<span class="tag" >일상</span>
+				<span class="tag" >기타</span>
               
             </article><!-- End blog entry -->
 
@@ -162,7 +160,7 @@
                 <div class="d-flex">
                   <div class="comment-img"></div>
                   <div>
-                    <h5>Georgia Reader<a href="#" class="reply"><i class="bi bi-reply-fill"></i>대댓글쓰기</a></h5>
+                    <h5>Georgia Reader<a href="#" class="reply"><i class="bi bi-reply-fill"></i>댓글쓰기</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
                     <p>
                       Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
@@ -218,34 +216,7 @@
 
               </div><!-- End comment #2-->
 
-              <div id="comment-3" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Nolan Davidson <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Distinctio nesciunt rerum reprehenderit sed. Iste omnis eius repellendus quia nihil ut accusantium tempore. Nesciunt expedita id dolor exercitationem aspernatur aut quam ut. Voluptatem est accusamus iste at.
-                      Non aut et et esse qui sit modi neque. Exercitationem et eos aspernatur. Ea est consequuntur officia beatae ea aut eos soluta. Non qui dolorum voluptatibus et optio veniam. Quam officia sit nostrum dolorem.
-                    </p>
-                  </div>
-                </div>
-
-              </div><!-- End comment #3 -->
-
-              <div id="comment-4" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Kay Duggan <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Dolorem atque aut. Omnis doloremque blanditiis quia eum porro quis ut velit tempore. Cumque sed quia ut maxime. Est ad aut cum. Ut exercitationem non in fugiat.
-                    </p>
-                  </div>
-                </div>
-
-              </div><!-- End comment #4 -->
+         
 
               <div class="reply-form">
                 <form action="">
@@ -316,15 +287,12 @@
             </div><!-- End sidebar -->
             
              <article class="entry">
-              <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
 
               <div class="entry-content">
                 <div class="read-more">
-                  <a href="freeboard-edit.action">수정</a>
-                  <a href="freeboard-delete.action">삭제</a>
-                  <a href="freeboard.action">목록보기</a>
+                  <a href="freeboard-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
+                  <a href="freeboard-delete.action?boardNo=${board.boardNo}&pageNo=${pageNo}">삭제</a>
+                  <a href="freeboard.action?pageNo=${pageNo}">목록보기</a>
                 </div>
               </div>
             </article><!-- End write entry -->

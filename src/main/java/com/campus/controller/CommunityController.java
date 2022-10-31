@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.campus.dto.BoardDto;
 import com.campus.service.CommunityService;
+import com.campus.ui.CommunityPager;
 import com.campus.ui.ThePager;
 
 @Controller 
@@ -31,7 +32,8 @@ public class CommunityController {
 	public String showFreeboardList(@RequestParam(defaultValue = "1") int pageNo , Model model) {
 		List<BoardDto> boards = communityService.findBoardByPage(pageNo, PAGE_SIZE);
 		int boardCount = communityService.findBoardCount();
-		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
+		//ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
+		CommunityPager pager = new CommunityPager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
 		
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager",pager);
@@ -42,7 +44,6 @@ public class CommunityController {
 	
 	@GetMapping(path= {"freeboard-detail.action"})
 	public String showFreeboardDetail(@RequestParam(defaultValue = "-1") int boardNo, @RequestParam(defaultValue = "-1") int pageNo, Model model, HttpSession session) {
-		System.out.println(pageNo);
 		
 		if(boardNo==-1||pageNo==-1) {
 			return "redirect:freeboard.action";
@@ -73,6 +74,7 @@ public class CommunityController {
 		
 		return "community/freeboard-write";
 	}
+	
 	@PostMapping(path= {"freeboard-write.action"})
 
 	public String writeFreeboard(BoardDto board) {
@@ -88,15 +90,34 @@ public class CommunityController {
 	}
 	
 	@GetMapping(path= {"freeboard-edit.action"})
-	public String editFreeboard() {
+	public String showEditFreeboard(BoardDto board,@RequestParam(defaultValue = "1") int pageNo, Model model) {
+		
+		board = communityService.findBoardByBoardNo(board.getBoardNo());
+				
+		model.addAttribute("board", board);
+		model.addAttribute("pageNo", pageNo);
 		
 		return "community/freeboard-edit";
 	}
 	
-	@GetMapping(path= {"freeboard-delete.action"})
-	public String deleteFreeboard() {
+	@PostMapping(path= {"freeboard-edit.action"})
+	public String editFreeboard(BoardDto board, @RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
-		return "community/freeboard";
+		communityService.updateFreeboard(board);
+		
+		model.addAttribute("boardNo", board.getBoardNo());
+		model.addAttribute("pageNo", pageNo);
+		
+		return "redirect:freeboard-detail.action";
+	}
+	
+	
+	@GetMapping(path= {"freeboard-delete.action"})
+	public String deleteFreeboard(int boardNo) {
+		
+		communityService.deleteFreeboard(boardNo);
+		
+		return "redirect:freeboard.action";
 	}
 	
 

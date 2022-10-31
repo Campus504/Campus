@@ -71,6 +71,20 @@ public class CommunityServiceImpl implements CommunityService {
 		return board;
 	}
 
+	@Override
+	public void updateFreeboard(BoardDto board) {
+
+		communityMapper.updateFreeboard(board);
+		
+	}
+
+	@Override
+	public void deleteFreeboard(int boardNo) {
+		
+		communityMapper.deleteFreeboard(boardNo);
+		
+	}
+
 		
 
 

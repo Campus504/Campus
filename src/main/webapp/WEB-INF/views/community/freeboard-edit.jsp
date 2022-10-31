@@ -151,24 +151,25 @@
 
 						<article class="entry entry-single">
 
-							<form action="freeboard-write.action" method="post">
-								<input type="hidden" name = "writer" value="${ loginuser.memberId }">
+							<form action="freeboard-edit.action" method="post">
+								<input type="hidden" name = "writer" value="${ board.memberId }">
+								<input type="hidden" name = "boardNo" value="${ board.boardNo }">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+									<i class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title" value=${board.title}>
 								</h2>
 
 								<div class="entry-meta">
 									<ul>
 										<li class="d-flex align-items-center">
-										<i class="bi bi-person"></i>loginuser.memberId</li>
+										<i class="bi bi-person"></i>${ board.memberId }</li>
 									</ul>
 								</div>
 
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" ></textarea>
+									<textarea name="content" >${ board.content }</textarea>
 								</div>
 								
 								<div class="entry-content">
@@ -181,7 +182,7 @@
 									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
 								</div>
 
-								<input type="submit" value="글쓰기" style="height: 25px" /> 
+								<input type="submit" value="수정하기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
