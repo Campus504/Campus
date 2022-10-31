@@ -39,8 +39,12 @@ body {
     height: 100vh;
 }
 
-.log-col {
-    width: 50%;
+
+.log-col .sign-in {
+    width: 14%;
+    position:absolute;
+    top:40%;
+    right:15%;
 }
 
 .log-align-items-center {
@@ -228,7 +232,10 @@ body {
 
 .text {
     margin: 4rem;
-    color: var(--white);
+
+    position:absolute;
+    left:-50%;
+    z-index:9;
 }
 
 .text h2 {
@@ -236,6 +243,8 @@ body {
     font-weight: 800;
     margin: 2rem 0;
     transition: 1s ease-in-out;
+    z-index:9;
+    color: #ffffff;
 }
 
 .text p {
@@ -318,8 +327,8 @@ body {
         transform: translateY(100%);
     } */
 
-    .login.sign-in .log-col.sign-in,
-    .login.sign-up .log-col.sign-up {
+    .login.sign-in .log-col1.sign-in,
+    .login.sign-up .log-col2.sign-up {
         transform: translateY(0);
     }
 
