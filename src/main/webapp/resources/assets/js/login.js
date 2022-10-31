@@ -1,10 +1,22 @@
-let login = document.getElementById('login')
+const inputs = document.querySelectorAll(".input");
 
-toggle = () => {
-  login.classList.toggle('sign-in')
-  login.classList.toggle('sign-up')
+
+function addcl(){
+  let parent = this.parentNode.parentNode;
+  parent.classList.add("focus");
 }
 
-setTimeout(() => {
-  login.classList.add('sign-in')
-}, 200)
+function remcl(){
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove("focus");
+  }
+}
+
+
+inputs.forEach(input => {
+  input.addEventListener("focus", addcl);
+  input.addEventListener("blur", remcl);
+});
+
+//Source :- https://github.com/sefyudem/Responsive-Login-Form/blob/master/img/avatar.svg
