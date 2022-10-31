@@ -142,13 +142,90 @@
    <div id="login" class="login">
     <!-- FORM SECTION -->
     <div class="log">
-
+      <!-- SIGN UP -->
+      <div class="log-col log-align-items-center flex-log-col sign-up">
+        <div class="form-wrapper log-align-items-center">
+          <div class="form sign-up">
+          
+          <form id="registerform" action="register.action" method="post">
+           <table>
+            <tr class="input-group">
+              <td>
+              <input type="text" id="memberId" name="memberId" placeholder="아이디">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="password" id="passwd" name="passwd" placeholder="비밀번호">
+              </td>
+            </tr>
+            
+            <tr class="input-group">           
+              <td>
+              <input type="password" id="confirm" name="confirm" placeholder="비밀번호 확인">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="text" id="email" name="email" placeholder="이메일">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="text" id="memberName" name="memberName" placeholder="이름">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+             <td>
+              <input type="text" id="address" name="address" placeholder="주소">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="date" id="birth" name="birth" placeholder="생년월일">
+              </td>
+            </tr>
+            
+            <tr class="input-group">
+              <td>
+              <input type="tel" id="phone" name="phone" placeholder="전화번호">
+              </td>
+            </tr>
+             </table>
+            
+            <div class="buttons">
+              <input id="register" type="submit" value="가입" />
+		  	  <input id="cancel" type="button" value="취소" />
+            </div>
+             <p>
+              <span>
+                회원이십니까?
+              </span>
+              <b onclick="toggle()" class="pointer">
+                로그인
+              </b>
+            </p>
+           </form>
+          </div>
+        </div>
+      <div class="form-wrapper">
+      
+      </div>
+      </div>
+      <!-- END SIGN UP -->
+      
       <!-- SIGN IN -->
       <div class="log-col log-align-items-center flex-log-col sign-in">
         <div class="form-wrapper log-align-items-center">
           <div class="form sign-in">
           
           <form action="login.action" method="post">
+          
           <table>
             <tr class="input-group">
             <td>
@@ -170,13 +247,13 @@
               <span>
                 회원이 아니십니까?
               </span>
-              <a href="register.action" onclick="toggle()" class="pointer">
+              <b onclick="toggle()" class="pointer">
                 회원가입
-              </a>
+              </b>
             </p>
-            </form>
+            
           </div>
-          
+          </form>
         </div>
         <div class="form-wrapper">
     
@@ -186,8 +263,8 @@
     </div>
     <!-- END FORM SECTION -->
     <!-- CONTENT SECTION -->
-<!--     <div class="log content-log">
-      SIGN IN CONTENT
+    <div class="log content-log">
+      <!-- SIGN IN CONTENT -->
       <div class="log-col log-align-items-center flex-log-col">
         <div class="text sign-in">
           <h2>
@@ -198,10 +275,10 @@
         <div class="img sign-in">
     
         </div>
-      </div> -->
+      </div>
       <!-- END SIGN IN CONTENT -->
       <!-- SIGN UP CONTENT -->
-<!--       <div class="log-col log-align-items-center flex-log-col">
+      <div class="log-col log-align-items-center flex-log-col">
         <div class="img sign-up">
         
         </div>
@@ -212,7 +289,7 @@
   
         </div>
       </div>
-      END SIGN UP CONTENT -->
+      <!-- END SIGN UP CONTENT -->
     </div>
     <!-- END CONTENT SECTION -->
   </div>
