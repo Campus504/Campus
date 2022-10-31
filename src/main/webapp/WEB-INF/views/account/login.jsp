@@ -121,7 +121,6 @@
        <form action="login.action" method="post">
         <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
         <h2 class="title">Welcome</h2>
-        <table>
         
               <div class="input-div one">
                  <div class="div">
@@ -134,10 +133,9 @@
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="비밀번호">
                  </div>
               </div>
-              
-              <a href="register.action">회원이 아니십니까?</a>
-              <input id="login" type="submit" value="로그인" />
-              </table>
+               
+              <a href="register.action" title="회원가입">회원이 아니십니까?</a>
+              <input type="submit" id="login" value="로그인" />
             </form>
         </div>
     </div>
@@ -184,6 +182,9 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+
+
+
 
 </body>
 

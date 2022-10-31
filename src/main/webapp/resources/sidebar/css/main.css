@@ -52,7 +52,8 @@ body {
     overflow-x: hidden !important;
     -webkit-font-smoothing: antialiased;
     font-family: 'Ubuntu', sans-serif;
-	margin: 170px 600px;
+	/* margin: 170px 600px; */ /* 10월31일 이거 주석검 */
+	width:100%;
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -2875,7 +2876,13 @@ input[type="text"] {
     padding-right: 5px;
 }
 
-
+/*-------------------Map---------------------------- */
+.map-text{
+	display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+/*-------------------Map---------------------------- */
 
 /* =Footer
 -------------------------------------------------------------- */

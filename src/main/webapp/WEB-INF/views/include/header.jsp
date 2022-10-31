@@ -14,11 +14,11 @@
             <ul>
            <!--    <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li> -->
               <li><a class="nav-link scrollto active" href="main">홈</a></li>
-              <li><a class="nav-link scrollto" href="#about">나중에 1</a></li>
-              <li><a class="nav-link scrollto" href="#services">나중에 2</a></li>
-              <li><a class="nav-link scrollto " href="#portfolio">베스트상품</a></li>
-              <li><a class="nav-link scrollto " href="#clients">고객후기</a></li>
-              <li><a class="nav-link scrollto " href="#contact">오시는길</a></li>
+              <li><a class="nav-link scrollto" href="/campus/#about">나중에 1</a></li>
+              <li><a class="nav-link scrollto" href="/campus/#services">나중에 2</a></li>
+              <li><a class="nav-link scrollto " href="/campus/#portfolio">베스트상품</a></li>
+              <li><a class="nav-link scrollto " href="/campus/#clients">고객후기</a></li>
+              <li><a class="nav-link scrollto " href="/campus/#contact">오시는길</a></li>
             </ul>
             
             <!-- sidebar -->
@@ -98,7 +98,7 @@
                     <div class="hidden-xs">
                         <div class="menu-social-media">
                             <ul> 
-                               <li><a href="/campus/account/login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
+                               <li><a href="login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
                                <li><a href="#" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
                         	   <li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
                             </ul>

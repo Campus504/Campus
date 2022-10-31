@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public MemberDto findMemberByIdAndPasswd(String memberId, String passwd) {
 		
-		passwd = Util.getHashedString(passwd, "SHA-256");
+		/* passwd = Util.getHashedString(passwd, "SHA-256"); */
 		MemberDto memberDto = memberMapper.selectMemberByIdAndPasswd(memberId, passwd);
 		return memberDto;
 		

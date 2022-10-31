@@ -116,20 +116,20 @@
       <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
     </div>
     <div class="login-content login-content2">
-       <form action="login.action" method="post">
+       <form action="register.action" method="post">
   
         <h2 class="title">회원가입</h2>
         <table>
         
               <div class="input-div one">
                  <div class="div">
-                    <input type="text" class="input" name="memberId" placeholder="아이디">
+                    <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디">
                	</div>
               </div>
                  
               <div class="input-div pass">
 				 <div class="div">
-                    <input type="password" class="input" name="passwd" placeholder="비밀번호">
+                    <input type="password" id="passwd" class="input" name="passwd" placeholder="비밀번호">
                  </div>
               </div>
               
@@ -224,5 +224,6 @@
   <!-- /.sidebar -->
 
 </body>
+
 
 </html>
