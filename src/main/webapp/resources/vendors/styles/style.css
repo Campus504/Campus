@@ -2311,6 +2311,7 @@ body.IE .login-wrap .container, body.IE .register-page-wrap .container {
 	-webkit-box-shadow: 0 0 28px rgba(0, 0, 0, .08);
 	box-shadow: 0 0 28px rgba(0, 0, 0, .08);
 	margin-bottom: 30px;
+	margin: 100px 470px;
 	padding: 20px
 }
 

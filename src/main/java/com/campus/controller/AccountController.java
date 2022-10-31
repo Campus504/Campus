@@ -59,10 +59,11 @@ public class AccountController {
 			return "account/login";
 			
 		}
+		System.out.println("dd");
 		return "redirect:/main.action"; 
 	}
 	
-	@GetMapping(path = { "/logout.action" })
+	@GetMapping(path = { "logout.action" })
 	public View logout(HttpSession session) {
 		
 		session.removeAttribute("loginuser");
