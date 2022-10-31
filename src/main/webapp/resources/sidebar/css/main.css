@@ -52,6 +52,7 @@ body {
     overflow-x: hidden !important;
     -webkit-font-smoothing: antialiased;
     font-family: 'Ubuntu', sans-serif;
+	margin: 170px 600px;
 }
 ::-webkit-scrollbar {
     width: 10px;
