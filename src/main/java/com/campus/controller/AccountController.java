@@ -53,7 +53,7 @@ public class AccountController {
 		
 		if (member != null) {
 			session.setAttribute("loginuser", member);
-			System.out.println("dd");
+			
 		} else {
 			model.addAttribute("loginfail", memberId);
 			return "account/login";
