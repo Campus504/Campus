@@ -10,7 +10,7 @@ import com.campus.dto.MemberDto;
 public interface MemberMapper {
 	
 	@Insert("INSERT INTO member (memberid, passwd, email, membername, address, birth, phone) " +
-			"VALUES (#{ memberId }, #{ passwd }, #{ email }, #{ memberName }, #{ address }, #{ birth }, #{ phone }")
+			"VALUES (#{ memberId }, #{ passwd }, #{ email }, #{ memberName }, #{ address }, #{ birth }, #{ phone })")
 	void insertMember(MemberDto member);
 	
 	@Select("SELECT memberid, email, membername, address, birth, phone, active, joindate, admin " +

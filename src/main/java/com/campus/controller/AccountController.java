@@ -37,7 +37,7 @@ public class AccountController {
 		
 		accountService.registerMember(member);
 		
-		return "redirect:/account/login.action";
+		return "redirect:/login.action";
 	}
 	
 	@GetMapping(path = { "login.action" })
