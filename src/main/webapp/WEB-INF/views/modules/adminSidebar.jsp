@@ -34,9 +34,10 @@
 						<ul class="submenu">
 							<li><a href="admin-goods-register.action">상품 등록</a></li>
 							<li><a href="admin-goods-list.action">상품 목록</a></li>
+							<li><a href="admin-goods-in.action">입고 목록</a></li>
 							<li><a href="admin-order.action">주문 목록</a></li>
-							<li><a href="admin-order-detail.action">주문 상세 목록</a></li>
-							<li><a href="admin-goods-in.action">입고 내역</a></li>
+							<li><a href="admin-order-detail.action">주문 상세</a></li>
+							<li><a href="admin-goods-register-test.action">test내용</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

@@ -7,7 +7,7 @@
 	
 	<!-- Basic Page Info -->
 	<meta charset="UTF-8">
-	<title>Campus - 주문 상세 목록</title>
+	<title>Campus - 주문 상세</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/campus/resources/vendors/images/apple-touch-icon.png">

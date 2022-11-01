@@ -477,7 +477,7 @@ p {
 }
 
 .min-height-200px {
-	min-height: 200px
+	/* min-height: 200px */ 
 }
 
 .bg-cover {
@@ -2310,9 +2310,9 @@ body.IE .login-wrap .container, body.IE .register-page-wrap .container {
 	border-radius: 10px;
 	-webkit-box-shadow: 0 0 28px rgba(0, 0, 0, .08);
 	box-shadow: 0 0 28px rgba(0, 0, 0, .08);
-	margin-bottom: 30px;
-	margin: 100px 470px;
-	padding: 20px
+	margin: 0px auto;
+	padding: 20px;
+	margin-bottom: 20px;
 }
 
 .page-header .row {
