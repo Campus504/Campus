@@ -53,14 +53,15 @@ public class AccountController {
 		
 		if (member != null) {
 			session.setAttribute("loginuser", member);
-			
+			System.out.println("dd");
 		} else {
 			model.addAttribute("loginfail", memberId);
 			return "account/login";
 			
 		}
-		System.out.println("dd");
-		return "redirect:/main.action"; 
+		
+		return "redirect:/main"; 
+		
 	}
 	
 	@GetMapping(path = { "logout.action" })

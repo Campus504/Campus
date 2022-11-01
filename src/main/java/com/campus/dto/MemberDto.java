@@ -12,11 +12,11 @@ public class MemberDto {
 	private String email;
 	private String memberName;
 	private String address;
-	private Date birth;
+	private String birth;
 	private String phone;
 	private boolean active;
 	private Date joinDate;
-	private boolean admin;
+	private String admin;
 
 }
 

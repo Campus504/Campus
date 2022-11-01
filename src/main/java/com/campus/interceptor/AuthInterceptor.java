@@ -7,7 +7,7 @@
 //import org.springframework.web.servlet.HandlerInterceptor;
 //import org.springframework.web.servlet.ModelAndView;
 //
-//import com.demoweb.dto.MemberDto;
+//import com.campus.dto.MemberDto;
 //
 //public class AuthInterceptor implements HandlerInterceptor {
 //	
