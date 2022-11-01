@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html lang="en">
+
+
 
 <!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
 <!-- 상세페이지 만들때 사용 ㄱㄱ -->
@@ -183,7 +187,13 @@
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
 
-
+	<script type="text/javascript">
+	$(function() {
+		<c:if test="${ not empty loginfail }">
+		alert('로그인 실패 : 아이디와 패스워드를 확인하세요');
+		</c:if>
+	});
+	</script>
 
 
 </body>

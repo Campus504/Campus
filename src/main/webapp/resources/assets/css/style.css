@@ -170,6 +170,49 @@ h6 {
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+
+/* h_inner */
+
+.h_inner{
+    width:1200px;
+    margin:0px auto;
+    position:relative;
+	z-index:9999;
+}
+.h_inner h1{
+    transform: translateY(30px);
+}
+.h_lnb{
+    width:100%;
+    position: absolute;
+    right:0px;
+    top:3px;
+   
+    }
+.h_lnb > ul{
+    display: flex;
+    justify-content: flex-end;
+    position:absolute;
+    top:0px;
+    right:20px;
+}
+.h_lnb > ul > li>a{
+  text-decoration: none;
+  color:#fff;
+  font-size:14px;
+  padding:0px 5px;
+  border-left: 1px solid #000;
+  font-weight: bold;
+  transition:0.3s;
+}
+
+/* 로그아웃 a태그 */
+
+.h_lnb a:hover{color:#7beec7;}
+/* ----------------------------------------------------------- */
+
+
+
 /**
 * Desktop Navigation 
 */
@@ -195,7 +238,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 0 10px 30px;
+  padding: 40px 0 10px 30px;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 600;
