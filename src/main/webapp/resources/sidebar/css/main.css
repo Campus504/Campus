@@ -115,6 +115,11 @@ body {
 }
 /* =Typography
 -------------------------------------------------------------- */
+/* 로그아웃 a태그 */
+.h_lnb ul li a{transition:0.3s;}
+.h_lnbul li a:hover{color:#7beec7;}
+/* ----------------------------------------------------------- */
+
 
 a {
     color: #383838;
@@ -1310,7 +1315,7 @@ ul.sub-menu li a {
     outline: 0;
     float: right;
     position: relative;
-    margin: 17px 0 17px 0;
+    margin: 35px 0 17px 0;
     margin-left:50px;
 }
 .main-menu-indicator:hover {
