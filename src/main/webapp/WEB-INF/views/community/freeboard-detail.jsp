@@ -146,13 +146,13 @@
 
               </div>
               
-	            <span class="tag" >질문</span>
-				<span class="tag" >후기</span>
-				<span class="tag" >자랑</span>
-				<span class="tag" >일상</span>
-				<span class="tag" >기타</span>
-              
+	           
             </article><!-- End blog entry -->
+            
+            <article  class="entry entry-single">
+                
+				 <span class="tag" >태그 : ${community.tag}</span>
+             	</article>
 
             <div class="blog-comments">
 
@@ -251,8 +251,8 @@
 
               <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text" class="form-control">
+                <form action="freeboard-search.action" method="post">
+                  <input type="text" class="form-control" name="search">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->
@@ -270,17 +270,11 @@
               <h3 class="sidebar-title">태그</h3>
               <div class="sidebar-item tags">
                 <ul>
-                  <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Studio</a></li>
-                  <li><a href="#">Smart</a></li>
-                  <li><a href="#">Tips</a></li>
-                  <li><a href="#">Marketing</a></li>
+                	<li><a href="freeboardTag.action?tag=질문">질문</a></li>
+                    <li><a href="freeboardTag.action?tag=후기">후기</a></li>
+                    <li><a href="freeboardTag.action?tag=자랑">자랑</a></li>
+                    <li><a href="freeboardTag.action?tag=일상">일상</a></li>
+                    <li><a href="freeboardTag.action?tag=기타">기타</a></li>
                 </ul>
               </div><!-- End sidebar tags-->
 

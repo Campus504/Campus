@@ -13,7 +13,7 @@ public interface CommunityService {
 
 	int findLastBoardNo();
 
-	void writeFreeboardTags(int boardTagNo, List<CommunityDto> tags);
+	void writeFreeboardTags(int boardTagNo, String tag);
 
 	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
 
@@ -26,6 +26,12 @@ public interface CommunityService {
 	void updateFreeboard(BoardDto board);
 
 	void deleteFreeboard(int boardNo);
+
+	CommunityDto findTagByBoardNo(int boardNo);
+
+	List<BoardDto> findBoardByTag(String tag);
+
+	List<BoardDto> searchFreeboard(String search);
 
 
 }

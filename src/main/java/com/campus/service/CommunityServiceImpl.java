@@ -36,8 +36,8 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 	
 	@Override
-	public void writeFreeboardTags(int boardTagNo, List<CommunityDto> tags) {
-		communityMapper.insertFreeboardTags(boardTagNo, tags);
+	public void writeFreeboardTags(int boardTagNo, String tag) {
+		communityMapper.insertFreeboardTags(boardTagNo, tag);
 		
 	}//나중에 구현하기
 
@@ -83,6 +83,28 @@ public class CommunityServiceImpl implements CommunityService {
 		
 		communityMapper.deleteFreeboard(boardNo);
 		
+	}
+
+	@Override
+	public CommunityDto findTagByBoardNo(int boardNo) {
+
+		CommunityDto community = communityMapper.selectTagByBoardNo(boardNo);
+		
+		return community;
+	}
+
+	@Override
+	public List<BoardDto> findBoardByTag(String tag) {
+		List<BoardDto> boards = communityMapper.selectFreeboardByTag(tag);
+		return boards;
+	}
+
+	@Override
+	public List<BoardDto> searchFreeboard(String search) {
+
+		List<BoardDto> boards = communityMapper.selectFreeboardBySearch(search);
+		
+		return boards;
 	}
 
 		

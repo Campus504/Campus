@@ -28,8 +28,8 @@ public interface CommunityMapper {
 	@Select("SELECT MAX(boardNo) FROM board")
 	int selectLastBoardNo();
 
-	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo},#{tags}) ")
-	void insertFreeboardTags(int boardTagNo, List<CommunityDto> tags);// tag 넣을 수 있게 나중에 수정, boardTagNo 필요한가?
+	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
+	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);// tag 넣을 수 있게 나중에 수정, boardTagNo 필요한가?
 
 	@Select("SELECT count(*) FROM board")
 	int selectBoardCount();
@@ -48,6 +48,15 @@ public interface CommunityMapper {
 
 	@Delete("DELETE FROM board WHERE boardno = #{boardNo}")
 	void deleteFreeboard(int boardNo);
+
+	@Select("SELECT tag FROM community WHERE boardNo = #{boardNo}")
+	CommunityDto selectTagByBoardNo(int boardNo);
+
+	@Select("SELECT * FROM board WHERE category = 'freeboard' AND boardNo IN ( SELECT boardNo From community WHERE tag like '%${tag}%' )  ORDER BY boardNo DESC ")
+	List<BoardDto> selectFreeboardByTag(String tag);
+
+	@Select("select * from board where category = 'freeboard' and title like '%${search}%' OR content like '%${search}%' order By boardNo DESC")
+	List<BoardDto> selectFreeboardBySearch(String search);
 
 	
 	

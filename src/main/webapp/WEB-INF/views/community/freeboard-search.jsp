@@ -109,7 +109,7 @@
         <ol>
           <li><a href="main">홈</a></li>
         </ol>
-        <h2>커뮤니티</h2>
+        <h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -174,7 +174,7 @@
 			<div class="sidebar">
               <h3 class="sidebar-title">검색</h3>
               <div class="sidebar-item search-form">
-                 <form action="freeboard-search.action" method="post">
+               <form action="freeboard-search.action" method="post">
                   <input type="text" class="form-control" name="search">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
