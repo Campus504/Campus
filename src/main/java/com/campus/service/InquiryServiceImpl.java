@@ -29,6 +29,18 @@ public class InquiryServiceImpl implements InquiryService {
 		inquiryMapper.insertBoard(board); 
 		
 	}
+	
+	@Override
+	public int findLastBoardNo() {
+		int tagNo = inquiryMapper.selectLastBoardNo();
+		return tagNo;
+	}
+	
+	@Override
+	public void writeInquiryTags(int boardTagNo, String tag) {
+		inquiryMapper.insertInquiryTags(boardTagNo, tag);
+		
+	}
 
 	@Override
 	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
@@ -72,6 +84,28 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		inquiryMapper.deleteInquiry(boardNo);
 		
+	}
+	
+	@Override
+	public CommunityDto findTagByBoardNo(int boardNo) {
+
+		CommunityDto community = inquiryMapper.selectTagByBoardNo(boardNo);
+		
+		return community;
+	}
+
+	@Override
+	public List<BoardDto> findBoardByTag(String tag) {
+		List<BoardDto> boards = inquiryMapper.selectInquiryByTag(tag);
+		return boards;
+	}
+
+	@Override
+	public List<BoardDto> searchInquiry(String search) {
+
+		List<BoardDto> boards = inquiryMapper.selectInquiryBySearch(search);
+		
+		return boards;
 	}
 
 }

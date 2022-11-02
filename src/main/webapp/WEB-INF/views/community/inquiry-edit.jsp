@@ -133,9 +133,9 @@
 
 				<ol>
 					<li><a href="main">홈</a></li>
-					<li><a href="freeboard.action">커뮤니티</a></li>
+					<li><a href="inquiry.action">1:1 문의</a></li>
 				</ol>
-				<h2>게시글 수정하기</h2>
+				<h2>문의글 수정하기</h2>
 
 			</div>
 		</section>
@@ -151,7 +151,7 @@
 
 						<article class="entry entry-single">
 
-							<form action="freeboard-edit.action" method="post">
+							<form action="inquiry-edit.action" method="post">
 								<input type="hidden" name = "writer" value="${ board.memberId }">
 								<input type="hidden" name = "boardNo" value="${ board.boardNo }">
 								<h2 class="entry-title">
@@ -175,10 +175,9 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />질문
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />후기
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />자랑
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />일상
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />대여
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />반납
+									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />상품
 									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
 								</div>
 
@@ -263,7 +262,7 @@
 		
 		
 		$(".cancel").on('click',function(event){
-			location.href="/campus/freeboard.action";
+			location.href="/campus/inquiry.action";
 		})
 		
 	});

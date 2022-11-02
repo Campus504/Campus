@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.campus.dto.BoardDto;
+import com.campus.dto.CommunityDto;
 
 @Mapper
 public interface InquiryMapper {
@@ -20,6 +21,12 @@ public interface InquiryMapper {
 	
 	@Select("SELECT * FROM board WHERE category = 'inquiry' ORDER BY boardNo DESC")
 	List<BoardDto> selectAllInquiry();
+	
+	@Select("SELECT MAX(boardNo) FROM board")
+	int selectLastBoardNo();
+	
+	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
+	void insertInquiryTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);
 
 	@Select("SELECT count(*) FROM board")
 	int selectBoardCount();
@@ -38,6 +45,15 @@ public interface InquiryMapper {
 
 	@Delete("DELETE FROM board WHERE boardno = #{boardNo}")
 	void deleteInquiry(int boardNo);
+	
+	@Select("SELECT tag FROM community WHERE boardNo = #{boardNo}")
+	CommunityDto selectTagByBoardNo(int boardNo);
+
+	@Select("SELECT * FROM board WHERE category = 'inquiry' AND boardNo IN ( SELECT boardNo From community WHERE tag like '%${tag}%' )  ORDER BY boardNo DESC ")
+	List<BoardDto> selectInquiryByTag(String tag);
+
+	@Select("select * from board WHERE category = 'inquiry' and title like '%${search}%' OR content like '%${search}%' order By boardNo DESC")
+	List<BoardDto> selectInquiryBySearch(String search);
 
 	
 	

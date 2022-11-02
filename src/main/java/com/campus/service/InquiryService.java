@@ -3,6 +3,7 @@ package com.campus.service;
 import java.util.List;
 
 import com.campus.dto.BoardDto;
+import com.campus.dto.CommunityDto;
 
 public interface InquiryService {
 
@@ -21,5 +22,15 @@ public interface InquiryService {
 	void updateInquiry(BoardDto board);
 
 	void deleteInquiry(int boardNo);
+
+	CommunityDto findTagByBoardNo(int boardNo);
+
+	List<BoardDto> findBoardByTag(String tag);
+
+	List<BoardDto> searchInquiry(String search);
+
+	int findLastBoardNo();
+
+	void writeInquiryTags(int boardTagNo, String tag);
 
 }

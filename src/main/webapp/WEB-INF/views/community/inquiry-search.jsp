@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <meta charset="utf-8">
@@ -98,7 +101,7 @@
 <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
 <link rel="stylesheet"
 	href="/campus/resources/sidebar/css/responsive.css">
-	
+
 <!-- Favicon -->
 <link rel="icon" type="image/ico" href="favicon.ico">
 
@@ -118,12 +121,12 @@
 </style>
 
 </head>
-
 <body>
 
 	<!-- ======= Header ======= -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- End Header -->
+
 
 	<main id="main">
 
@@ -133,73 +136,133 @@
 
 				<ol>
 					<li><a href="main">홈</a></li>
-					<li><a href="inquiry.action">1:1 문의</a></li>
 				</ol>
-				<h2>문의 글 쓰기</h2>
+				<h2>1:1 문의 - ${ search } 검색 결과 입니다</h2>
 
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
 
-		<!-- ======= Blog Single Section ======= -->
+		<!-- ======= Blog Section ======= -->
 		<section id="blog" class="blog">
 			<div class="container" data-aos="fade-up">
 
 				<div class="row">
 
 					<div class="col-lg-8 entries">
+						<c:forEach var="board" items="${boards}">
+							<input type="hidden" name="boardNo" value="board.boardNo">
+							<article class="entry">
 
-						<article class="entry entry-single">
-
-							<form action="inquiry-write.action" method="post">
-								<input type="hidden" name = "memberId" value="${loginuser.memberId}">
-								<input type="hidden" name = "category" value="inquiry">
 								<h2 class="entry-title">
-									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+									<a
+										href="inquiry-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
 								</h2>
 
 								<div class="entry-meta">
 									<ul>
-										<li class="d-flex align-items-center">
-										<i class="bi bi-person"></i>${loginuser.memberId}</li>
+										<li class="d-flex align-items-center"><i
+											class="bi bi-person"></i>${board.memberId}</li>
+										<li class="d-flex align-items-center"><i
+											class="bi bi-clock"></i>${board.writeDate}</li>
+										<li class="d-flex align-items-center"><i
+											class="bi bi-eye"></i>${board.readCount}</li>
 									</ul>
 								</div>
 
 								<div class="entry-content">
-									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" ></textarea>
-								</div>
-								
-								<div class="entry-content">
-									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" value="대여" type="checkbox" />대여
-									<input name="tag" value="반납" type="checkbox" />반납
-									<input name="tag" value="상품" type="checkbox" />상품
-									<input name="tag" value="기타" type="checkbox" />기타
-									
-									
+									<div class="read-more">
+										<a
+											href='inquiry-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글
+											읽기</a>
+									</div>
 								</div>
 
-								<input type="submit" value="글쓰기" style="height: 25px" /> 
-								<input type="button" value="취소" class="cancel" style="height: 25px" />
-							</form>
+							</article>
+						</c:forEach>
 
-						</article>
-						<!-- End blog entry -->
-
-
+						<div class="blog-pagination">
+							<ul class="justify-content-center">
+								<c:choose>
+									<c:when test="${pageNo==1}">
+										<li class="active"><a href="#">${ pageNo }</a></li>
+										<li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+										<li><a href="inquiry.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
+									</c:when>
+									<c:when test="${pageNo==pageCount}">
+										<li><a href="inquiry.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
+										<li><a href="inquiry.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+										<li class="active"><a href="#">${ pageNo }</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="inquiry.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
+										<li class="active"><a href="#">${ pageNo }</a></li>
+										<li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</div>
 					</div>
 					<!-- End blog entries list -->
 
+					<div class="col-lg-4">
+
+						<div class="sidebar">
+							<h3 class="sidebar-title">검색</h3>
+							<div class="sidebar-item search-form">
+								<form action="inquiry-search.action" method="post">
+									<input type="text" class="form-control" name="search">
+									<button type="submit">
+										<i class="bi bi-search"></i>
+									</button>
+								</form>
+							</div>
+							<!-- End sidebar search formn-->
+
+							<h3 class="sidebar-title">고객센터</h3>
+							<div class="sidebar-item categories">
+								<ul>
+									<li><a href="faq.action">자주 묻는 질문</a></li>
+									<li><a href="inquiry.action">1:1 문의</a></li>
+								</ul>
+							</div>
+							<!-- End sidebar categories-->
+
+							<h3 class="sidebar-title">태그</h3>
+							<div class="sidebar-item tags">
+								<ul>
+									<li><a href="inquiryTag.action?tag=대여">대여</a></li>
+									<li><a href="inquiryTag.action?tag=반납">반납</a></li>
+									<li><a href="inquiryTag.action?tag=상품">상품</a></li>
+									<li><a href="inquiryTag.action?tag=기타">기타</a></li>
+
+								</ul>
+							</div>
+							<!-- End sidebar tags-->
+
+						</div>
+						<!-- End sidebar -->
+
+
+						<article class="entry">
+
+							<div class="entry-content">
+								<div class="read-more">
+									<a href="inquiry-write.action">새 글 쓰기</a>
+								</div>
+							</div>
+						</article>
+						<!-- End write entry -->
+
+					</div>
+					<!-- End blog sidebar -->
 
 				</div>
 
 			</div>
 		</section>
-		<!-- End Blog Single Section -->
+		<!-- End Blog Section -->
+
 	</main>
 	<!-- End #main -->
 
@@ -208,8 +271,11 @@
 	<!-- End Footer -->
 
 	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
+		class="back-to-top d-flex align-items-center justify-content-center">
+
+
+		<i class="bi bi-arrow-up-short"></i>
+	</a>
 	<!-- Uncomment below i you want to use a preloader -->
 	<!-- <div id="preloader"></div> -->
 
@@ -258,22 +324,6 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
-	
-	<script type="text/javascript">
-	$(function(){
-		
-		
-		$(".cancel").on('click',function(event){
-			location.href="/campus/freeboard.action";
-		});
-		
-		
-		
-		
-		
-		
-	});
-	</script>	
 
 </body>
 

@@ -58,9 +58,11 @@ public class InquiryController {
 		}
 		
 		BoardDto board = inquiryService.findBoardByBoardNo(boardNo);
+		CommunityDto community = inquiryService.findTagByBoardNo(boardNo);
 		
 		model.addAttribute("board", board);
 		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("community", community);
 		
 		return "community/inquiry-detail";
 	}
@@ -76,6 +78,12 @@ public class InquiryController {
 	public String writeInquiry(BoardDto board, CommunityDto community ) {
 		
 		inquiryService.writeInquiry(board); //board 데이터 저장
+		
+		if (community.getTag()!=null) {
+			int boardTagNo = inquiryService.findLastBoardNo(); //tag 저장용 최근 값 저장한 boardNo 찾기
+			String tag = community.getTag();
+			inquiryService.writeInquiryTags(boardTagNo, tag); //가져온 boardNo로 DB에 태그 저장하기
+			}
 		
 		return "redirect:inquiry.action";
 	}
@@ -111,5 +119,23 @@ public class InquiryController {
 		return "redirect:inquiry.action";
 	}
 	
+	@GetMapping(path= {"inquiryTag.action"})
+	public String showTagInquiryList(String tag, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		
+		List<BoardDto> boards = inquiryService.findBoardByTag(tag);
+		model.addAttribute("boards", boards);
+		model.addAttribute("pageNo", pageNo);
+		return "community/inquiry";
+	}
+	
+	@PostMapping(path= {"inquiry-search.action"})
+	public String showInquirySearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		List<BoardDto> boards = inquiryService.searchInquiry(search); 
+		model.addAttribute("boards", boards);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("search", search);
+		
+		return "community/inquiry-search";
+	}
 
 }
