@@ -30,7 +30,7 @@ public interface CommunityMapper {
 	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
 	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);
 
-	@Select("SELECT count(*) FROM board")
+	@Select("SELECT count(*) FROM board WHERE category = 'freeboard'")
 	int selectBoardCount();
 
 	@Select("SELECT boardno, title, memberId, writeDate, readcount, category FROM board WHERE category = 'freeboard' ORDER BY boardno DESC LIMIT #{from}, #{count}")
@@ -54,8 +54,11 @@ public interface CommunityMapper {
 	@Select("SELECT * FROM board WHERE category = 'freeboard' AND boardNo IN ( SELECT boardNo From community WHERE tag like '%${tag}%' )  ORDER BY boardNo DESC ")
 	List<BoardDto> selectFreeboardByTag(String tag);
 
-	@Select("select * from board where category = 'freeboard' and title like '%${search}%' OR content like '%${search}%' order By boardNo DESC")
-	List<BoardDto> selectFreeboardBySearch(String search);
+	@Select("select * from board where category = 'freeboard' and ${searchOption} like '%${search}%' order By boardNo DESC")
+	List<BoardDto> selectFreeboardBySearch(@Param("searchOption") String searchOption, @Param("search") String search);
+
+	@Update("UPDATE community SET tag = #{tag} WHERE boardNo=#{boardNo}")
+	void updateTagByBoardNo(@Param("boardNo") int boardNo,@Param("tag") String tag);
 
 	
 	

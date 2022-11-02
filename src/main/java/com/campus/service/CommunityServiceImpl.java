@@ -100,11 +100,16 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
-	public List<BoardDto> searchFreeboard(String search) {
-
-		List<BoardDto> boards = communityMapper.selectFreeboardBySearch(search);
+	public List<BoardDto> searchFreeboard(String searchOption, String search) {
+		List<BoardDto> boards = communityMapper.selectFreeboardBySearch(searchOption, search);
 		
 		return boards;
+	}
+
+	@Override
+	public void updateFreeboardTags(int boardNo, String tag) {
+
+		communityMapper.updateTagByBoardNo(boardNo, tag);
 	}
 
 		

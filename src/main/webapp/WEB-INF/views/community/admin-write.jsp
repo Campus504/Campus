@@ -177,7 +177,6 @@
 									<textarea name="content" ></textarea>
 								</div>
 								
-
 								<input type="submit" value="글쓰기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
@@ -185,10 +184,8 @@
 						</article>
 						<!-- End blog entry -->
 
-
 					</div>
 					<!-- End blog entries list -->
-
 
 				</div>
 

@@ -100,9 +100,14 @@ public class CommunityController {
 	}
 	
 	@PostMapping(path= {"freeboard-edit.action"})
-	public String editFreeboard(BoardDto board, @RequestParam(defaultValue = "1") int pageNo, Model model) {
+	public String editFreeboard(BoardDto board, @RequestParam(defaultValue = "1") int pageNo, Model model, CommunityDto community) {
 		
 		communityService.updateFreeboard(board);
+		
+		if (community.getTag()!=null) {
+			String tag = community.getTag();
+			communityService.updateFreeboardTags(board.getBoardNo(), tag); //가져온 boardNo로 DB에 태그 저장하기
+			}
 		
 		model.addAttribute("boardNo", board.getBoardNo());
 		model.addAttribute("pageNo", pageNo);
@@ -129,8 +134,12 @@ public class CommunityController {
 	}
 	
 	@PostMapping(path= {"freeboard-search.action"})
-	public String showFreeboardSearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
-		List<BoardDto> boards = communityService.searchFreeboard(search); 
+	public String showFreeboardSearchList(String searchOption,@RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		if(search.equals("")) {
+			return "community/freeboard";
+		}
+		
+		List<BoardDto> boards = communityService.searchFreeboard(searchOption, search); 
 		model.addAttribute("boards", boards);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("search", search);

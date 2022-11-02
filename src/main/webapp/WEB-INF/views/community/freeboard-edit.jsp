@@ -175,11 +175,11 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />질문
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />후기
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />자랑
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />일상
-									<input name="tag" type="checkbox" onclick="getCheckboxValue(event)" />기타
+									<input name="tag" value="질문" type="checkbox" />질문
+									<input name="tag" value="후기" type="checkbox" />후기
+									<input name="tag" value="자랑" type="checkbox" />자랑
+									<input name="tag" value="일상" type="checkbox" />일상
+									<input name="tag" value="기타" type="checkbox" />기타
 								</div>
 
 								<input type="submit" value="수정하기" style="height: 25px" /> 

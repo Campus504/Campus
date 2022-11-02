@@ -249,17 +249,23 @@
 
             <div class="sidebar">
 
-              <h3 class="sidebar-title">검색하기</h3>
+             <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
                 <form action="freeboard-search.action" method="post">
+                 <select name="searchOption">
+                 <option value="title">제목</option>
+                 <option value="content">내용</option>
+                 <option value="memberId">작성자</option>
+                 </select>
                   <input type="text" class="form-control" name="search">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
-              </div><!-- End sidebar search formn-->
+              </div><!-- End sidebar search form-->
 
               <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
+                <li><a href="notice-list.action">공지사항</a></li>
                   <li><a href="freeboard.action">자유 게시판</a></li>
                   <li><a href="freeboard.action">캠핑 팁</a></li>
                 </ul>

@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CAMPUS - 커뮤니티</title>
+  <title>CAMPUS - 공지사항</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -109,7 +109,7 @@
         <ol>
           <li><a href="main">홈</a></li>
         </ol>
-        <h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+        <h2>공지사항</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -126,7 +126,7 @@
             <article class="entry">
 
               <h2 class="entry-title">
-                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
+                <a href="notice-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
@@ -139,7 +139,7 @@
               
               <div class="entry-content">
                 <div class="read-more">
-                  <a href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
+                  <a href='notice-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
                 </div>
               </div>
               
@@ -151,18 +151,18 @@
               <c:choose>
              <c:when test="${pageNo==1}" >
                 <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
-                 <li><a href="freeboard.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
+                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                 <li><a href="notice-list.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
              </c:when >
              <c:when test="${pageNo==pageCount}">
-             <li><a href="freeboard.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
-             	 <li><a href="freeboard.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+             <li><a href="notice-list.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
+             	 <li><a href="notice-list.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
                 <li class="active"><a href="#">${ pageNo }</a></li>
              </c:when>
              <c:otherwise>
-              <li><a href="freeboard.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
+              <li><a href="notice-list.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
                 <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
              </c:otherwise>
              </c:choose>
               </ul>
@@ -172,8 +172,8 @@
           <div class="col-lg-4">
 
 			<div class="sidebar">
-              
-              <h3 class="sidebar-title">검색하기</h3>
+             
+             <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
                 <form action="freeboard-search.action" method="post">
                  <select name="searchOption">
@@ -189,36 +189,26 @@
               <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
-                <li><a href="notice-list.action">공지사항</a></li>
-                  <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="freeboard.action">캠핑 팁</a></li>
+                  <li><a href="notice-list.action">공지사항</a></li>
+                  <li><a href="freeboard.action">자유게시판</a></li>
+                   <li><a href="freeboard.action">캠핑 팁</a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 
-              <h3 class="sidebar-title">태그</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                  <li><a href="freeboardTag.action?tag=질문">질문</a></li>
-                  <li><a href="freeboardTag.action?tag=후기">후기</a></li>
-                  <li><a href="freeboardTag.action?tag=자랑">자랑</a></li>
-                  <li><a href="freeboardTag.action?tag=일상">일상</a></li>
-                  <li><a href="freeboardTag.action?tag=기타">기타</a></li>
-                 
-                </ul>
-              </div><!-- End sidebar tags-->
+              
 
             </div><!-- End sidebar -->
 
-           
+           <c:if test="${not empty loginuser and loginuser.memberId eq board.memberId}">
            <article class="entry">
-
               <div class="entry-content">
                 <div class="read-more">
-                  <a href="freeboard-write.action">새 글 쓰기</a>
+                  <a href="admin-write.action">새 글 쓰기</a>
                 </div>
               </div>
             </article><!-- End write entry -->
-
+            </c:if>
+            
           </div><!-- End blog sidebar -->
 
         </div>

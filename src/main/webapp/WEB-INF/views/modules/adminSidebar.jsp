@@ -41,12 +41,14 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="admin-write.action" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-edit2"></span><span class="mtext" >관리자 글쓰기</span>
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-edit2"></span><span class="mtext" >관리자 게시판</span>
 						</a>
-						<!-- <ul class="submenu">
+						<ul class="submenu">
+							<li><a href="notice-list.action">공지사항</a></li>
+							<li><a href="faq.action">자주묻는 질문</a></li>
 							<li><a href="admin-write.action">관리자 글쓰기</a></li>
-						</ul> -->
+						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">

@@ -31,7 +31,9 @@ public interface CommunityService {
 
 	List<BoardDto> findBoardByTag(String tag);
 
-	List<BoardDto> searchFreeboard(String search);
+	List<BoardDto> searchFreeboard(String searchOption, String search);
+
+	void updateFreeboardTags(int boardNo, String tag);
 
 
 }
