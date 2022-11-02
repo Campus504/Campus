@@ -28,6 +28,8 @@
 	
 	<import resource="community-context.xml" />
 	<import resource="member-context.xml" />
+	<import resource="inquiry-context.xml" />
+	<import resource="faq-context.xml" />
 
 
 </beans>
