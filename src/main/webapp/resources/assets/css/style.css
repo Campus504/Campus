@@ -18,6 +18,7 @@ a {
   color: #18d26e;
   transition: 0.5s;
   text-decoration: none;
+  cursor:pointer;
 }
 
 a:hover,
@@ -1250,7 +1251,7 @@ section {
 }
 
 .blog .entry {
-  padding: 30px;
+  padding: 24px;
   margin-bottom: 60px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
