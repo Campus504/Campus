@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CAMPUS - 자유게시판</title>
+  <title>CAMPUS - 1:1 문의</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,22 +83,22 @@
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
     
-    <!--  사이드바 관리자 아이콘 -->
+        <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-    <style type="text/css">
+  <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
-	  }
+	}
 	</style>
   
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+ 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
+  
 
   <main id="main">
 
@@ -108,25 +108,25 @@
 
         <ol>
           <li><a href="main">홈</a></li>
-          <li><a href="freeboard.action">커뮤니티</a></li>
         </ol>
-        <h2>자유게시판</h2>
+        <h2>1:1 문의</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Single Section ======= -->
+    <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
 
           <div class="col-lg-8 entries">
-
-            <article class="entry entry-single">
+			<c:forEach var="board" items="${boards}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
+            <article class="entry">
 
               <h2 class="entry-title">
-               ${ board.title }
+                <a href="inquiry-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
@@ -136,122 +136,45 @@
                   <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
-
+              
               <div class="entry-content">
-                <p>
-<c:set var="enter" value="
-" />
-						${ fn:replace(board.content, enter, "<br>") }
-                </p>
-
+                <div class="read-more">
+                  <a href='inquiry-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
+                </div>
               </div>
               
-	           
-            </article><!-- End blog entry -->
-            
-            <article  class="entry entry-single">
-                
-				 <span class="tag" >태그 : ${community.tag}</span>
-             	</article>
+              </article>
+              </c:forEach>
 
-            <div class="blog-comments">
-
-              <div id="comment-1" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Georgia Reader<a href="#" class="reply"><i class="bi bi-reply-fill"></i>댓글쓰기</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                      Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-                    </p>
-                  </div>
-                </div>
-              </div><!-- End comment #1 -->
-
-              <div id="comment-2" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Aron Alvarado<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Ipsam tempora sequi voluptatem quis sapiente non. Autem itaque eveniet saepe. Officiis illo ut beatae.
-                    </p>
-                  </div>
-                </div>
-
-                <div id="comment-reply-1" class="comment comment-reply">
-                  <div class="d-flex">
-                    <div class="comment-img"></div>
-                    <div>
-                      <h5>Lynda Small<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                      <time datetime="2020-01-01">01 Jan, 2020</time>
-                      <p>
-                        Enim ipsa eum fugiat fuga repellat. Commodi quo quo dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui ad quas nostrum rerum sed necessitatibus aut est. Eum officiis sed repellat maxime vero nisi natus. Amet nesciunt nesciunt qui illum omnis est et dolor recusandae.
-
-                        Recusandae sit ad aut impedit et. Ipsa labore dolor impedit et natus in porro aut. Magnam qui cum. Illo similique occaecati nihil modi eligendi. Pariatur distinctio labore omnis incidunt et illum. Expedita et dignissimos distinctio laborum minima fugiat.
-
-                        Libero corporis qui. Nam illo odio beatae enim ducimus. Harum reiciendis error dolorum non autem quisquam vero rerum neque.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div id="comment-reply-2" class="comment comment-reply">
-                    <div class="d-flex">
-                      <div class="comment-img"></div>
-                      <div>
-                        <h5>Sianna Ramsay <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                        <time datetime="2020-01-01">01 Jan, 2020</time>
-                        <p>
-                          Et dignissimos impedit nulla et quo distinctio ex nemo. Omnis quia dolores cupiditate et. Ut unde qui eligendi sapiente omnis ullam. Placeat porro est commodi est officiis voluptas repellat quisquam possimus. Perferendis id consectetur necessitatibus.
-                        </p>
-                      </div>
-                    </div>
-
-                  </div><!-- End comment reply #2-->
-
-                </div><!-- End comment reply #1-->
-
-              </div><!-- End comment #2-->
-
-         
-
-              <div class="reply-form">
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                    <input value="Comment Writer" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input value="Reg Date" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">쓰기</button>
-
-                </form>
-
-              </div>
-
-            </div><!-- End blog comments -->
-
+            <div class="blog-pagination">
+              <ul class="justify-content-center">
+              <c:choose>
+             <c:when test="${pageNo==1}" >
+                <li class="active"><a href="#">${ pageNo }</a></li>
+                <li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                 <li><a href="inquiry.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
+             </c:when >
+             <c:when test="${pageNo==pageCount}">
+             <li><a href="inquiry.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
+             	 <li><a href="inquiry.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+                <li class="active"><a href="#">${ pageNo }</a></li>
+             </c:when>
+             <c:otherwise>
+              <li><a href="inquiry.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
+                <li class="active"><a href="#">${ pageNo }</a></li>
+                <li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+             </c:otherwise>
+             </c:choose>
+              </ul>
+            </div>
           </div><!-- End blog entries list -->
-
+          
           <div class="col-lg-4">
 
-            <div class="sidebar">
-
-              <h3 class="sidebar-title">검색하기</h3>
+			<div class="sidebar">
+              <h3 class="sidebar-title">검색</h3>
               <div class="sidebar-item search-form">
-                <form action="freeboard-search.action" method="post">
+                 <form action="freeboard-search.action" method="post">
                   <input type="text" class="form-control" name="search">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
@@ -260,35 +183,20 @@
               <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="freeboard.action">캠핑 팁</a></li>
+                  <li><a href="inquiry.action">자유 게시판</a></li>
+                  <li><a href="inquiry.action">캠핑 팁</a></li>
                 </ul>
-              </div>
-              <!-- End sidebar categories-->
+              </div><!-- End sidebar categories-->
 
-             
-              <h3 class="sidebar-title">태그</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                	<li><a href="freeboardTag.action?tag=질문">질문</a></li>
-                    <li><a href="freeboardTag.action?tag=후기">후기</a></li>
-                    <li><a href="freeboardTag.action?tag=자랑">자랑</a></li>
-                    <li><a href="freeboardTag.action?tag=일상">일상</a></li>
-                    <li><a href="freeboardTag.action?tag=기타">기타</a></li>
-                </ul>
-              </div><!-- End sidebar tags-->
 
             </div><!-- End sidebar -->
-            
-             <article class="entry">
+
+           
+           <article class="entry">
 
               <div class="entry-content">
                 <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
-                  <a href="freeboard-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
-                  <a class="delete_button">삭제</a>
-                  </c:if>
-                  <a href="freeboard.action?pageNo=${pageNo}">목록보기</a>
+                  <a href="inquiry-write.action">새 글 쓰기</a>
                 </div>
               </div>
             </article><!-- End write entry -->
@@ -298,14 +206,18 @@
         </div>
 
       </div>
-    </section><!-- End Blog Single Section -->
+    </section><!-- End Blog Section -->
+
   </main><!-- End #main -->
 
   	<!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
 	<!-- End Footer --> 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
@@ -341,20 +253,6 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
-  
-  <script type="text/javascript">
-  $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'freeboard-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
-	  });
-	  
-	  
-  });
-  
-  </script>
 
 </body>
 

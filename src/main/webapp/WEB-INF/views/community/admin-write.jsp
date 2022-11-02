@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>CAMPUS - 자유게시판</title>
+<title>CAMPUS - 관리자 글쓰기</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -133,9 +133,9 @@
 
 				<ol>
 					<li><a href="main">홈</a></li>
-					<li><a href="freeboard.action">커뮤니티</a></li>
+					<li><a href="admin-main">관리자페이지</a></li>
 				</ol>
-				<h2>게시글 쓰기</h2>
+				<h2>관리자 글쓰기</h2>
 
 			</div>
 		</section>
@@ -151,20 +151,26 @@
 
 						<article class="entry entry-single">
 
-							<form action="freeboard-write.action" method="post">
+							<form action="admin-write.action" method="post">
 								<input type="hidden" name = "memberId" value="${ loginuser.memberId }">
 								<input type="hidden" name = "category" value="freeboard">
+								
+								<div class="entry-meta">
+									<ul>
+										<li class="d-flex align-items-center">
+										<select name="category" >
+										    <option value="notice">공지사항</option>
+										    <option value="faq">자주묻는질문</option>
+										</select>	
+
+										</li>
+									</ul>
+								</div>
+								
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
 										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
 								</h2>
-
-								<div class="entry-meta">
-									<ul>
-										<li class="d-flex align-items-center">
-										<i class="bi bi-person"></i>${ loginuser.memberId }</li>
-									</ul>
-								</div>
 
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
@@ -172,17 +178,6 @@
 									<textarea name="content" ></textarea>
 								</div>
 								
-								<div class="entry-content">
-									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" value="질문" type="checkbox" />질문
-									<input name="tag" value="후기" type="checkbox" />후기
-									<input name="tag" value="자랑" type="checkbox" />자랑
-									<input name="tag" value="일상" type="checkbox" />일상
-									<input name="tag" value="기타" type="checkbox" />기타
-									
-									
-								</div>
 
 								<input type="submit" value="글쓰기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
@@ -265,7 +260,7 @@
 		
 		
 		$(".cancel").on('click',function(event){
-			location.href="/campus/freeboard.action";
+			location.href="admin-main";
 		});
 		
 		

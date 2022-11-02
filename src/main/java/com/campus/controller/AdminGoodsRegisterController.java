@@ -9,6 +9,7 @@ public class AdminGoodsRegisterController {
 	@GetMapping(path = {"/admin-goods-register.action"})
 	public String adminGoodsRegister() {
 		
-		return "admin-goods-register";
+		return "admin-goods-register";	// 상품등록 페이지
 	}
+	
 }

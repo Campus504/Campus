@@ -11,4 +11,5 @@ public class AdminGoodsInController {
 		
 		return "admin-goods-in";
 	}
+	
 }

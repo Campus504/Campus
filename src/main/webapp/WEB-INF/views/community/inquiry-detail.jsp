@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CAMPUS - 자유게시판</title>
+  <title>CAMPUS - 1:1 문의</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -284,10 +284,8 @@
 
               <div class="entry-content">
                 <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
                   <a href="freeboard-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
-                  <a class="delete_button">삭제</a>
-                  </c:if>
+                  <a href="freeboard-delete.action?boardNo=${board.boardNo}&pageNo=${pageNo}">삭제</a>
                   <a href="freeboard.action?pageNo=${pageNo}">목록보기</a>
                 </div>
               </div>
@@ -341,20 +339,6 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
-  
-  <script type="text/javascript">
-  $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'freeboard-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
-	  });
-	  
-	  
-  });
-  
-  </script>
 
 </body>
 

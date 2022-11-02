@@ -17,7 +17,6 @@ import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 import com.campus.service.CommunityService;
 import com.campus.ui.CommunityPager;
-import com.campus.ui.ThePager;
 
 @Controller 
 public class CommunityController {

@@ -29,7 +29,7 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-edit2"></span><span class="mtext">상품</span>
+							<span class="micon dw dw-library"></span><span class="mtext">상품</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="admin-goods-register.action">상품 등록</a></li>
@@ -41,13 +41,12 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-library"></span><span class="mtext">게시판</span>
+						<a href="admin-write.action" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-edit2"></span><span class="mtext" >관리자 글쓰기</span>
 						</a>
-						<ul class="submenu">
-							<li><a href="basic-table.html">공지사항</a></li>
-							<li><a href="datatable.html">게시판 관리</a></li>
-						</ul>
+						<!-- <ul class="submenu">
+							<li><a href="admin-write.action">관리자 글쓰기</a></li>
+						</ul> -->
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">

@@ -22,6 +22,13 @@
 	</beans:bean>
 	
 
+		<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean class="com.campus.interceptor.AuthInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 	
 	
 	<context:component-scan base-package="com.campus.controller" />
