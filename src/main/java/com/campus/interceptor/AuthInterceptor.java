@@ -16,15 +16,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler)
 			throws Exception {
 		
-		
 		String uri = req.getRequestURI(); 
 		
 		HttpSession session =  req.getSession();
 		MemberDto member =  (MemberDto)session.getAttribute("loginuser");
 		
 		if(member == null) { //로그인 하지 않은 사용자 게시판 이용 ㄴㄴ
-		if( uri.contains("/board/write") || uri.contains("/board/delete") || uri.contains("/board/edit") || uri.contains("/board/update")){//로그인한 사용자만 볼 수 있는 요청
-			resp.sendRedirect("/Campus/account/login.action");
+		if( uri.contains("freeboard-write") || uri.contains("freeboard-delete") || uri.contains("freeboard-edit") ){//로그인한 사용자만 볼 수 있는 요청
+			resp.sendRedirect("login.action");
 			return false; 
 			}
 		}

@@ -20,7 +20,6 @@ public interface CommunityMapper {
 	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title},#{memberId}, #{content}, #{category})")
 	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
 	void insertBoard(BoardDto board);
-
 	
 	@Select("SELECT * FROM board WHERE category = 'freeboard' ORDER BY boardNo DESC")
 	List<BoardDto> selectAllFreeboard();
@@ -29,7 +28,7 @@ public interface CommunityMapper {
 	int selectLastBoardNo();
 
 	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
-	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);// tag 넣을 수 있게 나중에 수정, boardTagNo 필요한가?
+	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);
 
 	@Select("SELECT count(*) FROM board")
 	int selectBoardCount();
