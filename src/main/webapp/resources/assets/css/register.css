@@ -74,9 +74,78 @@ form{
   font-size: 2.9rem;
 }
 
+/* ------------------------------------------------------------------- */
+#inputcontent
+{
+    width: 550px;
+    margin: 0 auto;
+    position: relative;
+}
+#inputmain
+{
+    padding-top: 25px;
+    padding-left: 29px;
+    padding-right: 29px;
+    padding-bottom: 25px;
+    line-height: 1.4em;
+    background-color: white;
+}
+#inputmain table
+{
+    width: 600px;
+    margin-top: 5px;
+    border-top: #b0cde9 2px solid;
+    border-collapse: collapse;
+    position: absolute;
+    left: -30%;
+}
+#inputmain tr{
+	height:60px;
+}
 
+#inputmain th
+{
+    width: 110px;
+    padding: 5px 15px;
+    border-bottom: #d2dbe7 1px solid;
+    background-color: #edf3fa;
+    font-weight: normal;
+    color: #1f6cba;
+    text-align: left;
+}
+#inputmain td
+{
+    width: 318px;
+    padding: 7px 15px;
+    border-bottom: #dcdcdc 1px solid;
+    line-height: 18px;
+    background-color: #fcfcfc;
+    text-align:left;
+}
+#inputmain input
+{
+    height: 30px;
+    background-color: #ffffff;
+}
+#inputmain .inputsubtitle
+{
+	width: 486px;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #1f6cba;
+    text-align:left;
+}
+/* #inputmain .buttons
+{
+    width: 486px;
+    height: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+} */
+/* ------------------------------------------------------------------- */
 
-.login-content .input-div{
+/* .login-content .input-div{
   position: relative;
     margin: 25px 0;
     padding: 5px 0;
@@ -161,7 +230,7 @@ form{
 
 .input-div.pass{
   margin-bottom: 4px;
-}
+} */
 
 a{
   display: block;

@@ -41,8 +41,23 @@
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
+	
 
 	<!-- end of servlet and jsp -->
+	
+	<!-- validator library -->			
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.2.5.Final</version>
+		</dependency>
+
+		<dependency>
+	    <groupId>javax.validation</groupId>
+	    <artifactId>validation-api</artifactId>
+	    <version>2.0.1.Final</version>
+		</dependency>
+		<!-- end of validator library -->
 	
 	<!-- beginning of database library -->
 		

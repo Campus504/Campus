@@ -71,7 +71,7 @@
 											<ul class="sub-menu">
 												<li><a href="goods-list.action" title="텐트">텐트</a></li>
 												<li><a href="goods-list.action" title="타프">타프</a></li>
-												<li><a href="goods-list.action" title="소품">소품</a></li>
+												<li><a href="goods-list.action" title="텐트/타프(소품)">텐트/타프(소품)</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a href="#"
@@ -97,7 +97,7 @@
 												<li><a href="goods-list.action" title="버너/스토브">버너/스토브</a></li>
 												<li><a href="goods-list.action" title="화로대">화로대</a></li>
 												<li><a href="goods-list.action" title="난로">난로</a></li>
-												<li><a href="goods-list.action" title="소품">소품</a></li>
+												<li><a href="goods-list.action" title="화로/버너(소품)">화로/버너(소품)</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a href="#">캠핑소품</a>
@@ -106,7 +106,7 @@
 												<li><a href="goods-list.action" title="랜턴/손전등">랜턴/손전등</a></li>
 												<li><a href="goods-list.action" title="아이스박스/쿨러">아이스박스/쿨러</a></li>
 												<li><a href="goods-list.action" title="수납박스/케이스">수납박스/케이스</a></li>
-												<li><a href="goods-list.action" title="소품">소품</a></li>
+												<li><a href="goods-list.action" title="캠핑소품">캠핑소품</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a

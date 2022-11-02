@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,6 +101,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+	.error{color:red;font-weight:bold; font-size:8pt;position: absolute; top: 38px; left: 7px;}
 	</style>
 </head>
 
@@ -116,7 +120,7 @@
       <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
     </div>
     <div class="login-content login-content2">
-       <form action="register.action" method="post">
+       <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
   
         <h2 class="title">회원가입</h2>
         <table>
@@ -124,25 +128,33 @@
               <div class="input-div one">
                  <div class="div">
                     <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디">
+                    <br>
                	</div>
+               	<form:errors path="memberId" class="error" />
               </div>
                  
               <div class="input-div pass">
 				 <div class="div">
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="비밀번호">
+                    <br>
                  </div>
+                 <form:errors path="passwd" class="error" />
               </div>
               
                <div class="input-div pass">
 				 <div class="div">
                     <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인">
+                    <br>
                  </div>
+                 <form:errors path="passwd" class="error" />
               </div>
                  
               <div class="input-div pass">
 				 <div class="div">
                     <input type="text" id="email" name="email" placeholder="이메일">
+                    <br>
                  </div>
+                 <form:errors path="email" class="error" />
               </div>
               
                <div class="input-div pass">
@@ -159,14 +171,18 @@
               
                <div class="input-div pass">
 				 <div class="div">
-                    <input input type="date" id="birth" name="birth" placeholder="생년월일">
+                    <input type="date" id="birth" name="birth" placeholder="생년월일">
+                    <br>
                  </div>
+			       <form:errors path="birth" class="error" />
               </div>
               
                <div class="input-div pass">
 				 <div class="div">
                     <input type="tel" id="phone" name="phone" placeholder="전화번호">
-                 </div>
+                    <br>
+                  </div>
+                  <form:errors path="phone" class="error" />
               </div>
               
               
@@ -176,7 +192,7 @@
               <input id="cancel" type="button" value="취소" />
               </div>
               </table>
-            </form>
+            </form:form>
         </div>
     </div>
   </main>

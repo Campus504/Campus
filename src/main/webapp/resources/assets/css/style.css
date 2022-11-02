@@ -1326,6 +1326,7 @@ section {
   font-size: 14px;
   border-radius: 50px;
   border: 2px solid #18d26e;
+  cursor:pointer;
 }
 
 .blog .entry .entry-content .read-more a:hover {

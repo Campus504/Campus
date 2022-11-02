@@ -1,13 +1,16 @@
 package com.campus.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
@@ -27,14 +30,21 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@GetMapping(path = { "register.action" })
-	public String showRegisterForm() {
+	public String showRegisterForm(@ModelAttribute("member") MemberDto member) {
 		
 		return "account/register";	
 	}
 	
 	@PostMapping(path = { "register.action" })
-	public String register(MemberDto member) {
+	public String register(@Valid MemberDto member,
+			BindingResult br) {
 		
+		if (br.hasErrors()) {
+			System.out.println("유효성 검사 오류 발생");
+			return "account/register";
+		}
+		
+			System.out.println(member);
 		accountService.registerMember(member);
 		
 		return "redirect:/login.action";
@@ -56,8 +66,7 @@ public class AccountController {
 			
 		} else {
 			model.addAttribute("loginfail", memberId);
-			return "account/login";
-			
+			return "account/login";	
 		}
 		
 		return "redirect:/main"; 
