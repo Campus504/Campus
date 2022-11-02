@@ -17,5 +17,7 @@ public class GoodsController {
 		
 		return "goods-detail";
 	}
-
+	
+	
+	
 }

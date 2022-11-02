@@ -101,8 +101,8 @@
 	
 					<div class="wizard-content">
 			
-						<form id="admin-goods-registerFrom" action="admin-goods-register.action" method="post">
-							
+						<form action="admin-goods-register.action" method="post" enctype="multipart/form-data">
+						
 							<div class="content clearfix">								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
 							 
@@ -110,28 +110,52 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>상품분류 :</label>
+												
 												<!-- <input type="text" class="form-control" id="category" name="category" placeholder="상품분류"> -->
-												<select class="custom-select form-control" >
-													<option value="#">옵션1</option>
-													<option value="#">옵션2</option>
-													<option value="#">옵션3</option>
-													<option value="#">옵션4</option>
-													<option value="#">옵션5</option>
-												</select>				
+												
+												<select name=category class="custom-select form-control">
+													<option value="">--옵션을선택하세요--</option>
+													<option value="텐트">텐트</option>
+													<option value="타프">타프</option>
+													<option value="텐트/타프(소품)">텐트/타프(소품)</option>
+													<option value="테이블">테이블</option>
+													<option value="체어">체어</option>
+													<option value="침낭">침낭</option>
+													<option value="매트">매트</option>
+													<option value="식기">식기</option>
+													<option value="코펠">코펠</option>
+													<option value="프라이팬">프라이팬</option>
+													<option value="프라이팬">컵/머그컵</option>
+													<option value="프라이팬">취사도구</option>
+													<option value="프라이팬">화로/버너</option>
+													<option value="프라이팬">버너/스토브</option>
+													<option value="프라이팬">화로대</option>
+													<option value="프라이팬">난로</option>
+													<option value="프라이팬">화로/버너(소품)</option>
+													<option value="프라이팬">캠핑소품</option>
+													<option value="프라이팬">가전기기</option>
+													<option value="프라이팬">랜턴/손전등</option>
+													<option value="프라이팬">아이스박스/쿨러</option>
+													<option value="프라이팬">수납박스/케이스</option>
+													<option value="프라이팬">캠핑소품</option>
+												</select>	
+												
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>브랜드 :</label>
+												
 												<!-- <input type="text" class="form-control" id="brand" name="brand" placeholder="브랜드"> -->
-												<select class="custom-select form-control" >
-													<option value="#">옵션1</option>
-													<option value="#">옵션2</option>
-													<option value="#">옵션3</option>
-													<option value="#">옵션4</option>
-													<option value="#">옵션5</option>
-												</select>				
+												
+												<select name="brand" class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
+													<option value="스노우">스노우</option>
+													<option value="노스페이스">노스페이스</option>
+													<option value="블랙야크">블랙야크</option>
+												</select>
+																
 											</div>
 										</div>
 										
@@ -145,81 +169,91 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>속성자료형 :</label>
+												
 												<!-- <input type="text" class="form-control" id="optionDataType" name="optionDataType" placeholder="속성자료형"> -->
-												<select class="custom-select form-control" >
-													<option value="#">옵션1</option>
-													<option value="#">옵션2</option>
-													<option value="#">옵션3</option>
-													<option value="#">옵션4</option>
-													<option value="#">옵션5</option>
+												
+												<select name="optionDataType" class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
+													<option value="#">속성자료형 1</option>
+													<option value="#">속성자료형 2</option>
 												</select>
+												
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>속성값 :</label>
+												
 												<input type="text" class="form-control" id="optionValue" name="optionValue" placeholder="속성값">
-												<select class="custom-select form-control" >
+												
+												<!-- <select class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
 													<option value="#">옵션1</option>
 													<option value="#">옵션2</option>
-													<option value="#">옵션3</option>
-													<option value="#">옵션4</option>
-													<option value="#">옵션5</option>
-												</select>				
+												</select> -->				
+											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>옵션값 :</label>
-												<input type="text" class="custom-select form-control" id="optionSeletionValue" name="optionSeletionValue" placeholder="옵션값">
-												<select class="custom-select form-control" >
+											
+												<input type="text" class="form-control" id="optionSeletionValue" name="optionSeletionValue" placeholder="옵션값">
+											
+												<!-- <select class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
 													<option value="#">옵션1</option>
 													<option value="#">옵션2</option>
-													<option value="#">옵션3</option>
-													<option value="#">옵션4</option>
-													<option value="#">옵션5</option>
-												</select>												
+												</select>			 -->									
+											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>상세설명 :</label>
+											
 												<input type="text" class="form-control" id="detail" name="detail" placeholder="상세설명">
+											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>대여가격 :</label> 
+											
 												<input type="text" class="form-control" id="rentPrice" name="rentPrice" placeholder="대여가격">
+											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>입고 :</label>
+											
 												<input type="text" class="form-control" id="goodsIn" name="goodsIn" placeholder="입고">
+											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>입고일자 :</label>
+											
 												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
+											
 											</div>
 										</div>
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						<div class="btn-list">
 							<button type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button> <!-- disable 추후 추가 예정 -->
-							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-lg btn-primary" >초기화</button> <!-- disable 추후 추가 예정 -->
+							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button> <!-- disable 추후 추가 예정 -->
 							<button type="button" class="btn btn-secondary btn-lg" >취소</button> <!-- disable 추후 추가 예정 -->
 						</div>		
-								
-						<!-- <input type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" /> -->
+				
 									</div>
 								</section>
 							</div>
@@ -228,7 +262,6 @@
 				</div>
 				<!-- 상품 등록 페이지 끝 -->	
 	
-				
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 
