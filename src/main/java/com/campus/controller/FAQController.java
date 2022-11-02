@@ -30,7 +30,6 @@ public class FAQController {
 	
 	@PostMapping(path= {"admin-write.action"})
 	public String adminWrite(BoardDto board) {
-		
 		faqService.writeAdminBoard(board);
 		
 		

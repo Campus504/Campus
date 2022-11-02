@@ -153,7 +153,6 @@
 
 							<form action="admin-write.action" method="post">
 								<input type="hidden" name = "memberId" value="${ loginuser.memberId }">
-								<input type="hidden" name = "category" value="freeboard">
 								
 								<div class="entry-meta">
 									<ul>
@@ -161,7 +160,7 @@
 										<select name="category" >
 										    <option value="notice">공지사항</option>
 										    <option value="faq">자주묻는질문</option>
-										</select>	
+										</select>
 
 										</li>
 									</ul>
