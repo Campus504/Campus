@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CAMPUS - 공지사항</title>
+  <title>CAMPUS - 캠핑 팁</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,22 +83,22 @@
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
     
-    <!--  사이드바 관리자 아이콘 -->
+        <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-    <style type="text/css">
+  <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
-	  }
+	}
 	</style>
   
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+ 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
+  
 
   <main id="main">
 
@@ -108,57 +108,56 @@
 
         <ol>
           <li><a href="main">홈</a></li>
-          <li><a href="notice-list.action">공지사항</a></li>
         </ol>
-        <h2>공지사항</h2>
+        <h2>캠핑 팁</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Single Section ======= -->
+    <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
 
           <div class="col-lg-8 entries">
-
-            <article class="entry entry-single">
+			<c:forEach var="board" items="${boards}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
+            <article class="entry">
 
               <h2 class="entry-title">
-               ${ board.title }
+                <a href="tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
                   <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
-
+              
               <div class="entry-content">
-                <p>
-<c:set var="enter" value="
-" />
-						${ fn:replace(board.content, enter, "<br>") }
-                </p>
-
+                <div class="read-more">
+                  <a href='tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
+                </div>
               </div>
               
-	           
-            </article><!-- End blog entry -->
-            
+              </article>
+              </c:forEach>
 
+            	<!-- paging -->
+					<jsp:include page="/WEB-INF/views/include/community-paging.jsp" /> 
+				<!-- end of paging -->
           </div><!-- End blog entries list -->
 
           <div class="col-lg-4">
 
-            <div class="sidebar">
-
+			<div class="sidebar">
+             
              <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="notice-search.action" method="post">
+                <form action="tip-search.action" method="post">
                  <select name="searchOption">
                  <option value="title">제목</option>
                  <option value="content">내용</option>
@@ -172,42 +171,43 @@
               <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
-                	<li><a href="notice-list.action">공지사항</a></li>
-                  <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="tip-list.action">캠핑 팁</a></li>
+                  <li><a href="notice-list.action">공지사항</a></li>
+                  <li><a href="freeboard.action">자유게시판</a></li>
+                   <li><a href="tip-list.action">캠핑 팁</a></li>
                 </ul>
-              </div>
-              <!-- End sidebar categories-->
+              </div><!-- End sidebar categories-->
 
-            </div>
-            <!-- End sidebar -->
-            
-             <article class="entry">
+              
 
+            </div><!-- End sidebar -->
+
+           <c:if test="${not empty loginuser and loginuser.memberId eq board.memberId}">
+           <article class="entry">
               <div class="entry-content">
                 <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
-                  <a href="notice-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
-                  <a class="delete_button">삭제</a>
-                  </c:if>
-                  <a href="notice-list.action?pageNo=${pageNo}">목록보기</a>
+                  <a href="admin-write.action">새 글 쓰기</a>
                 </div>
               </div>
             </article><!-- End write entry -->
-
+            </c:if>
+            
           </div><!-- End blog sidebar -->
 
         </div>
 
       </div>
-    </section><!-- End Blog Single Section -->
+    </section><!-- End Blog Section -->
+
   </main><!-- End #main -->
 
   	<!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
 	<!-- End Footer --> 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
@@ -243,20 +243,6 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
-  
-  <script type="text/javascript">
-  $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'notice-delete.action?boardNo=${board.boardNo}';
-	  });
-	  
-	  
-  });
-  
-  </script>
 
 </body>
 

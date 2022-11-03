@@ -9,8 +9,6 @@ public interface CommunityService {
 	
 	void writeFreeboard(BoardDto board);
 
-	List<BoardDto> selectAllFreeboard();
-
 	int findLastBoardNo();
 
 	void writeFreeboardTags(int boardTagNo, String tag);
@@ -29,11 +27,21 @@ public interface CommunityService {
 
 	CommunityDto findTagByBoardNo(int boardNo);
 
-	List<BoardDto> findBoardByTag(String tag);
+	List<BoardDto> findBoardByTag(String tag,int pageNo,int PAGE_SIZE);
 
-	List<BoardDto> searchFreeboard(String searchOption, String search);
+	List<BoardDto> searchFreeboard(String searchOption, String search, int pageNo, int pageSize );
 
-	void updateFreeboardTags(int boardNo, String tag);
+	void InsertFreeboardTags(int boardNo, String tag);
+
+	int findSearchBoardCount(String searchOption, String search);
+
+	int findTagBoardCount(String tag);
+
+	void deleteUpdateBoardTag(int boardNo);
+
+	List<BoardDto> findTipByPage(int pageNo, int pAGE_SIZE);
+
+	int findTipCount();
 
 
 }

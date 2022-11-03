@@ -42,4 +42,51 @@ public class FAQServiceImpl implements FAQService{
 		return board;
 	}
 
+	@Override
+	public void deleteNoticeBoard(int boardNo) {
+		faqMapper.deleteNoticeBoard(boardNo);
+	}
+
+	@Override
+	public void increaseNoticeReadCount(int boardNo) {
+		faqMapper.updateNoticeReadCount(boardNo);
+	}
+
+	@Override
+	public BoardDto findNoticeByBoardNo(int boardNo) {
+		
+		BoardDto board = faqMapper.selectNoticeByBoardNo(boardNo);
+		
+		return board;
+	}
+
+	@Override
+	public void updateNoticeBoard(BoardDto board) {
+
+		faqMapper.updateNoticeBaord(board);
+		
+	}
+
+	@Override
+	public List<BoardDto> searchNotice(String searchOption, String search, int pageNo, int PAGE_SIZE) {
+		int from = (pageNo-1)*PAGE_SIZE;
+		int count = PAGE_SIZE;
+		
+		List<BoardDto> boards = faqMapper.selectSearchNoticeByPage(searchOption, search, from, count);
+		
+		return boards;
+	}
+
+	@Override
+	public int findSearchNoticeCount(String searchOption, String search) {
+		int boardCount = faqMapper.selectSearchNoticeCount(searchOption,search);
+		return boardCount;
+	}
+
+	@Override
+	public List<BoardDto> findAllFaq() {
+		List<BoardDto> boards = faqMapper.selectAllFaq();
+		return boards;
+	}
+
 }

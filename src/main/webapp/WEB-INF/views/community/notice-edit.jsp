@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>CAMPUS - 커뮤니티</title>
+<title>CAMPUS - 공지사항</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -121,12 +118,12 @@
 </style>
 
 </head>
+
 <body>
 
 	<!-- ======= Header ======= -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- End Header -->
-
 
 	<main id="main">
 
@@ -136,184 +133,62 @@
 
 				<ol>
 					<li><a href="main">홈</a></li>
+					<li><a href="notice-list.action">공지사항</a></li>
 				</ol>
-				<h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+				<h2>공지사항 수정하기</h2>
 
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
 
-		<!-- ======= Blog Section ======= -->
+		<!-- ======= Blog Single Section ======= -->
 		<section id="blog" class="blog">
 			<div class="container" data-aos="fade-up">
 
 				<div class="row">
 
 					<div class="col-lg-8 entries">
-						<c:forEach var="board" items="${boards}">
-							<input type="hidden" name="boardNo" value="board.boardNo">
-							<article class="entry">
 
+						<article class="entry entry-single">
+
+							<form action="notice-edit.action" method="post">
+								<input type="hidden" name = "writer" value="${ board.memberId }">
+								<input type="hidden" name = "boardNo" value="${ board.boardNo }">
 								<h2 class="entry-title">
-									<a
-										href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
+									<span class="d-flex align-items-center">
+									<i class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title" value=${board.title} >
 								</h2>
 
 								<div class="entry-meta">
 									<ul>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-person"></i>${board.memberId}</li>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-clock"></i>${board.writeDate}</li>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-eye"></i>${board.readCount}</li>
+										<li class="d-flex align-items-center">
+										<i class="bi bi-person"></i>${ board.memberId }</li>
 									</ul>
 								</div>
 
 								<div class="entry-content">
-									<div class="read-more">
-										<a
-											href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글
-											읽기</a>
-									</div>
+									<span class="d-flex align-items-center">
+									<i class="bi bi-caret-down-fill"></i>내용</span>
+									<textarea name="content" >${ board.content }</textarea>
 								</div>
+								
+								<input type="submit" value="수정하기" style="height: 25px" /> 
+								<input type="button" value="취소" class="cancel" style="height: 25px" />
+							</form>
 
-							</article>
-						</c:forEach>
-
-						<!-- paging -->
-
-						<div class="blog-pagination">
-							<ul class="justify-content-center">
-
-								<c:choose>
-									<c:when test="${pageCount==0}">
-										<li class="active"><a href="#">검색 결과가 없습니다.</a></li>
-									</c:when>
-
-									<c:when test="${pageCount==1}">
-										<li class="active"><a href="#">${ pageNo }</a></li>
-									</c:when>
-
-									<c:when test="${pageCount==2}">
-
-										<c:choose>
-											<c:when test="${pageNo==1}">
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-											</c:when>
-											<c:when test="${pageNo==2}">
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-											</c:when>
-										</c:choose>
-
-									</c:when>
-
-									<c:otherwise>
-
-										<c:choose>
-											<c:when test="${pageNo==1}">
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
-											</c:when>
-											<c:when test="${pageNo==pageCount}">
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-											</c:when>
-											<c:when test="${pageNo!=pageCount}">
-												<li><a
-													href="freeboard-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-											</c:when>
-										</c:choose>
-
-									</c:otherwise>
-								</c:choose>
-
-							</ul>
-						</div>
-						<!-- end of paging -->
+						</article>
+						<!-- End blog entry -->
 
 
 					</div>
 					<!-- End blog entries list -->
 
-					<div class="col-lg-4">
-
-						<div class="sidebar">
-
-							<h3 class="sidebar-title">검색하기</h3>
-							<div class="sidebar-item search-form">
-								<form action="freeboard-search.action" method="post">
-									<select name="searchOption">
-										<option value="title">제목</option>
-										<option value="content">내용</option>
-										<option value="memberId">작성자</option>
-									</select> <input type="text" class="form-control" name="search">
-									<button type="submit">
-										<i class="bi bi-search"></i>
-									</button>
-								</form>
-							</div>
-							<!-- End sidebar search form-->
-
-							<h3 class="sidebar-title">카테고리</h3>
-							<div class="sidebar-item categories">
-								<ul>
-									<li><a href="notice-list.action">공지사항</a></li>
-									<li><a href="freeboard.action">자유 게시판</a></li>
-									<li><a href="tip-list.action">캠핑 팁</a></li>
-								</ul>
-							</div>
-							<!-- End sidebar categories-->
-
-							<h3 class="sidebar-title">태그</h3>
-							<div class="sidebar-item tags">
-								<ul>
-									<li><a href="freeboard-tag.action?tag=질문">질문</a></li>
-									<li><a href="freeboard-tag.action?tag=후기">후기</a></li>
-									<li><a href="freeboard-tag.action?tag=자랑">자랑</a></li>
-									<li><a href="freeboard-tag.action?tag=일상">일상</a></li>
-									<li><a href="freeboard-tag.action?tag=기타">기타</a></li>
-
-								</ul>
-							</div>
-							<!-- End sidebar tags-->
-
-						</div>
-						<!-- End sidebar -->
-
-
-						<article class="entry">
-
-							<div class="entry-content">
-								<div class="read-more">
-									<a href="freeboard-write.action">새 글 쓰기</a>
-								</div>
-							</div>
-						</article>
-						<!-- End write entry -->
-
-					</div>
-					<!-- End blog sidebar -->
 
 				</div>
 
 			</div>
 		</section>
-		<!-- End Blog Section -->
-
+		<!-- End Blog Single Section -->
 	</main>
 	<!-- End #main -->
 
@@ -322,11 +197,8 @@
 	<!-- End Footer -->
 
 	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center">
-
-
-		<i class="bi bi-arrow-up-short"></i>
-	</a>
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
 	<!-- Uncomment below i you want to use a preloader -->
 	<!-- <div id="preloader"></div> -->
 
@@ -375,6 +247,17 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
+	
+	<script type="text/javascript">
+	$(function(){
+		
+		
+		$(".cancel").on('click',function(event){
+			location.href="notice-list.action";
+		})
+		
+	});
+	</script>	
 
 </body>
 

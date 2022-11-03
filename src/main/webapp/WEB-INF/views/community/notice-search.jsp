@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>CAMPUS - 커뮤니티</title>
+<title>CAMPUS - 공지사항</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -137,7 +137,7 @@
 				<ol>
 					<li><a href="main">홈</a></li>
 				</ol>
-				<h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+				<h2>공지사항 - ${ search } 검색 결과 입니다</h2>
 
 			</div>
 		</section>
@@ -201,11 +201,11 @@
 											<c:when test="${pageNo==1}">
 												<li class="active"><a href="#">${ pageNo }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
 											</c:when>
 											<c:when test="${pageNo==2}">
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
 												<li class="active"><a href="#">${ pageNo }</a></li>
 											</c:when>
 										</c:choose>
@@ -218,23 +218,23 @@
 											<c:when test="${pageNo==1}">
 												<li class="active"><a href="#">${ pageNo }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
 											</c:when>
 											<c:when test="${pageNo==pageCount}">
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
 												<li class="active"><a href="#">${ pageNo }</a></li>
 											</c:when>
 											<c:when test="${pageNo!=pageCount}">
 												<li><a
-													href="freeboard-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+													href="notice-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
 												<li class="active"><a href="#">${ pageNo }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+													href="notice-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
 											</c:when>
 										</c:choose>
 
@@ -255,7 +255,7 @@
 
 							<h3 class="sidebar-title">검색하기</h3>
 							<div class="sidebar-item search-form">
-								<form action="freeboard-search.action" method="post">
+								<form action="notice-search.action" method="post">
 									<select name="searchOption">
 										<option value="title">제목</option>
 										<option value="content">내용</option>
@@ -278,23 +278,10 @@
 							</div>
 							<!-- End sidebar categories-->
 
-							<h3 class="sidebar-title">태그</h3>
-							<div class="sidebar-item tags">
-								<ul>
-									<li><a href="freeboard-tag.action?tag=질문">질문</a></li>
-									<li><a href="freeboard-tag.action?tag=후기">후기</a></li>
-									<li><a href="freeboard-tag.action?tag=자랑">자랑</a></li>
-									<li><a href="freeboard-tag.action?tag=일상">일상</a></li>
-									<li><a href="freeboard-tag.action?tag=기타">기타</a></li>
-
-								</ul>
 							</div>
-							<!-- End sidebar tags-->
-
-						</div>
 						<!-- End sidebar -->
 
-
+<!-- 
 						<article class="entry">
 
 							<div class="entry-content">
@@ -303,7 +290,7 @@
 								</div>
 							</div>
 						</article>
-						<!-- End write entry -->
+						End write entry -->
 
 					</div>
 					<!-- End blog sidebar -->

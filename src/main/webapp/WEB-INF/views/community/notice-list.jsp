@@ -146,27 +146,9 @@
               </article>
               </c:forEach>
 
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-              <c:choose>
-             <c:when test="${pageNo==1}" >
-                <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
-                 <li><a href="notice-list.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
-             </c:when >
-             <c:when test="${pageNo==pageCount}">
-             <li><a href="notice-list.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
-             	 <li><a href="notice-list.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
-                <li class="active"><a href="#">${ pageNo }</a></li>
-             </c:when>
-             <c:otherwise>
-              <li><a href="notice-list.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
-                <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
-             </c:otherwise>
-             </c:choose>
-              </ul>
-            </div>
+            	<!-- paging -->
+					<jsp:include page="/WEB-INF/views/include/community-paging.jsp" /> 
+				<!-- end of paging -->
           </div><!-- End blog entries list -->
 
           <div class="col-lg-4">
@@ -175,7 +157,7 @@
              
              <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="freeboard-search.action" method="post">
+                <form action="notice-search.action" method="post">
                  <select name="searchOption">
                  <option value="title">제목</option>
                  <option value="content">내용</option>
@@ -191,7 +173,7 @@
                 <ul>
                   <li><a href="notice-list.action">공지사항</a></li>
                   <li><a href="freeboard.action">자유게시판</a></li>
-                   <li><a href="freeboard.action">캠핑 팁</a></li>
+                   <li><a href="tip-list.action">캠핑 팁</a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 

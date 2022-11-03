@@ -8,11 +8,17 @@
 
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="width=device-width, initial-scale=1" name="viewport">
 
-<title>CAMPUS - 커뮤니티</title>
+<title>CAMPUS - 자주묻는 질문</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
+<!-- 아코디언용 부트스트랩 css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
 
 <!-- Favicons -->
 <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -118,6 +124,10 @@
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
+
+.collapse {
+	visibility: visible;
+}
 </style>
 
 </head>
@@ -137,7 +147,7 @@
 				<ol>
 					<li><a href="main">홈</a></li>
 				</ol>
-				<h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+				<h2>자주묻는 질문</h2>
 
 			</div>
 		</section>
@@ -150,102 +160,25 @@
 				<div class="row">
 
 					<div class="col-lg-8 entries">
-						<c:forEach var="board" items="${boards}">
-							<input type="hidden" name="boardNo" value="board.boardNo">
-							<article class="entry">
 
-								<h2 class="entry-title">
-									<a
-										href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
-								</h2>
-
-								<div class="entry-meta">
-									<ul>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-person"></i>${board.memberId}</li>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-clock"></i>${board.writeDate}</li>
-										<li class="d-flex align-items-center"><i
-											class="bi bi-eye"></i>${board.readCount}</li>
-									</ul>
-								</div>
-
-								<div class="entry-content">
-									<div class="read-more">
-										<a
-											href='freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글
-											읽기</a>
+						<div class="accordion" id="accordionExample">
+							<c:forEach var="board" items="${boards}">
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<button class="accordion-button" type="button"
+											data-bs-toggle="collapse" data-bs-target="#collapseOne"
+											aria-expanded="true" aria-controls="collapseOne">
+											${board.title}</button>
+									</h2>
+									<div id="collapseOne" class="accordion-collapse collapse show"
+										aria-labelledby="headingOne"
+										data-bs-parent="#accordionExample">
+										<div class="accordion-body">${board.content}</div>
 									</div>
 								</div>
 
-							</article>
-						</c:forEach>
-
-						<!-- paging -->
-
-						<div class="blog-pagination">
-							<ul class="justify-content-center">
-
-								<c:choose>
-									<c:when test="${pageCount==0}">
-										<li class="active"><a href="#">검색 결과가 없습니다.</a></li>
-									</c:when>
-
-									<c:when test="${pageCount==1}">
-										<li class="active"><a href="#">${ pageNo }</a></li>
-									</c:when>
-
-									<c:when test="${pageCount==2}">
-
-										<c:choose>
-											<c:when test="${pageNo==1}">
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-											</c:when>
-											<c:when test="${pageNo==2}">
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-											</c:when>
-										</c:choose>
-
-									</c:when>
-
-									<c:otherwise>
-
-										<c:choose>
-											<c:when test="${pageNo==1}">
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
-											</c:when>
-											<c:when test="${pageNo==pageCount}">
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-											</c:when>
-											<c:when test="${pageNo!=pageCount}">
-												<li><a
-													href="freeboard-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-											</c:when>
-										</c:choose>
-
-									</c:otherwise>
-								</c:choose>
-
-							</ul>
+							</c:forEach>
 						</div>
-						<!-- end of paging -->
-
-
 					</div>
 					<!-- End blog entries list -->
 
@@ -253,57 +186,31 @@
 
 						<div class="sidebar">
 
-							<h3 class="sidebar-title">검색하기</h3>
-							<div class="sidebar-item search-form">
-								<form action="freeboard-search.action" method="post">
-									<select name="searchOption">
-										<option value="title">제목</option>
-										<option value="content">내용</option>
-										<option value="memberId">작성자</option>
-									</select> <input type="text" class="form-control" name="search">
-									<button type="submit">
-										<i class="bi bi-search"></i>
-									</button>
-								</form>
-							</div>
-							<!-- End sidebar search form-->
-
 							<h3 class="sidebar-title">카테고리</h3>
 							<div class="sidebar-item categories">
 								<ul>
-									<li><a href="notice-list.action">공지사항</a></li>
-									<li><a href="freeboard.action">자유 게시판</a></li>
-									<li><a href="tip-list.action">캠핑 팁</a></li>
+									<li><a href="inquiry.action">1:1 문의</a></li>
+									<li><a href="faq-list.action">자주묻는 질문</a></li>
 								</ul>
 							</div>
 							<!-- End sidebar categories-->
 
-							<h3 class="sidebar-title">태그</h3>
-							<div class="sidebar-item tags">
-								<ul>
-									<li><a href="freeboard-tag.action?tag=질문">질문</a></li>
-									<li><a href="freeboard-tag.action?tag=후기">후기</a></li>
-									<li><a href="freeboard-tag.action?tag=자랑">자랑</a></li>
-									<li><a href="freeboard-tag.action?tag=일상">일상</a></li>
-									<li><a href="freeboard-tag.action?tag=기타">기타</a></li>
 
-								</ul>
-							</div>
-							<!-- End sidebar tags-->
 
 						</div>
 						<!-- End sidebar -->
 
-
-						<article class="entry">
-
-							<div class="entry-content">
-								<div class="read-more">
-									<a href="freeboard-write.action">새 글 쓰기</a>
+						<c:if
+							test="${not empty loginuser and loginuser.memberId eq board.memberId}">
+							<article class="entry">
+								<div class="entry-content">
+									<div class="read-more">
+										<a href="admin-write.action">새 글 쓰기</a>
+									</div>
 								</div>
-							</div>
-						</article>
-						<!-- End write entry -->
+							</article>
+							<!-- End write entry -->
+						</c:if>
 
 					</div>
 					<!-- End blog sidebar -->
@@ -329,6 +236,20 @@
 	</a>
 	<!-- Uncomment below i you want to use a preloader -->
 	<!-- <div id="preloader"></div> -->
+
+	<!-- 아코디언용 부트스르랩 js -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+		integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+		crossorigin="anonymous"></script>
 
 	<!-- Vendor JS Files -->
 	<script

@@ -14,15 +14,6 @@ public class CommunityServiceImpl implements CommunityService {
 	private CommunityMapper communityMapper;
 
 
-
-	@Override
-	public List<BoardDto> selectAllFreeboard() {
-
-		List<BoardDto> boards = communityMapper.selectAllFreeboard();
-		
-		return boards;
-	}
-
 	@Override
 	public void writeFreeboard(BoardDto board) {
 		communityMapper.insertBoard(board); 
@@ -39,7 +30,7 @@ public class CommunityServiceImpl implements CommunityService {
 	public void writeFreeboardTags(int boardTagNo, String tag) {
 		communityMapper.insertFreeboardTags(boardTagNo, tag);
 		
-	}//나중에 구현하기
+	}
 
 	@Override
 	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
@@ -87,6 +78,7 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public CommunityDto findTagByBoardNo(int boardNo) {
+		
 
 		CommunityDto community = communityMapper.selectTagByBoardNo(boardNo);
 		
@@ -94,22 +86,62 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
-	public List<BoardDto> findBoardByTag(String tag) {
-		List<BoardDto> boards = communityMapper.selectFreeboardByTag(tag);
+	public List<BoardDto> findBoardByTag(String tag,int pageNo,int PAGE_SIZE) {
+		int from = (pageNo-1)*PAGE_SIZE;
+		int count = PAGE_SIZE;
+		List<BoardDto> boards = communityMapper.selectFreeboardByTag(tag, from, count);
 		return boards;
 	}
 
 	@Override
-	public List<BoardDto> searchFreeboard(String searchOption, String search) {
-		List<BoardDto> boards = communityMapper.selectFreeboardBySearch(searchOption, search);
+	public List<BoardDto> searchFreeboard(String searchOption, String search, int pageNo, int pageSize) {
+		int from = (pageNo-1)*pageSize;
+		int count = pageSize;
+		List<BoardDto> boards = communityMapper.selectFreeboardBySearch(searchOption, search, from, count);
 		
 		return boards;
 	}
 
 	@Override
-	public void updateFreeboardTags(int boardNo, String tag) {
+	public void InsertFreeboardTags(int boardNo, String tag) {
 
-		communityMapper.updateTagByBoardNo(boardNo, tag);
+		communityMapper.insertTagByBoardNo(boardNo, tag);
+	}
+
+	@Override
+	public int findSearchBoardCount(String searchOption, String search) {
+
+		int boardCount = communityMapper.selectSerchBoardCount(searchOption,search);
+		
+		return boardCount;
+	}
+
+	@Override
+	public int findTagBoardCount(String tag) {
+		int boardCount = communityMapper.selectTagCount(tag);
+		return boardCount;
+	}
+
+	
+	@Override
+	public void deleteUpdateBoardTag(int boardNo) {
+		
+		communityMapper.deleteUpdateBoardTag(boardNo);
+		
+	}
+
+	@Override
+	public List<BoardDto> findTipByPage(int pageNo, int PAGE_SIZE) {
+		int from = (pageNo-1)*PAGE_SIZE;
+		int count = PAGE_SIZE;
+		List<BoardDto> boards = communityMapper.selectTipByPage(from, count);
+		return boards;
+	}
+
+	@Override
+	public int findTipCount() {
+		int boardCount = communityMapper.selectTipCount();
+		return boardCount;
 	}
 
 		

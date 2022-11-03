@@ -137,7 +137,7 @@
 				<ol>
 					<li><a href="main">홈</a></li>
 				</ol>
-				<h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+				<h2>커뮤니티 - 태그 : ${ tag }</h2>
 
 			</div>
 		</section>
@@ -194,47 +194,47 @@
 									<c:when test="${pageCount==1}">
 										<li class="active"><a href="#">${ pageNo }</a></li>
 									</c:when>
-
+									
 									<c:when test="${pageCount==2}">
-
-										<c:choose>
-											<c:when test="${pageNo==1}">
-												<li class="active"><a href="#">${ pageNo }</a></li>
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
-											</c:when>
-											<c:when test="${pageNo==2}">
-												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
-												<li class="active"><a href="#">${ pageNo }</a></li>
-											</c:when>
-										</c:choose>
-
+									
+									<c:choose>
+									<c:when test="${pageNo==1}">
+										<li class="active"><a href="#">${ pageNo }</a></li>
+										<li><a
+											href="freeboard-tag.action?pageNo=${ pageNo+1 }&tag=${tag}">${ pageNo+1 }</a></li>
 									</c:when>
-
+									<c:when test="${pageNo==2}">
+										<li><a
+											href="freeboard-tag.action?pageNo=${ pageNo-1 }&tag=${tag}">${ pageNo-1 }</a></li>
+										<li class="active"><a href="#">${ pageNo }</a></li>
+									</c:when>
+									</c:choose>
+									
+									</c:when>
+									
 									<c:otherwise>
 
 										<c:choose>
-											<c:when test="${pageNo==1}">
+											<c:when test="${pageCount>2}&${pageNo==1}">
 												<li class="active"><a href="#">${ pageNo }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+													href="freeboard-tag.action?pageNo=${ pageNo+1 }&tag=${tag}">${ pageNo+1 }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
+													href="freeboard-tag.action?pageNo=${ pageNo+2 }&tag=${tag}">${ pageNo+2 }</a></li>
 											</c:when>
-											<c:when test="${pageNo==pageCount}">
+											<c:when test="${pageCount>2}&${pageNo==pageCount}">
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
+													href="freeboard-tag.action?pageNo=${ pageNo-2 }&tag=${tag}">${ pageNo-2 }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+													href="freeboard-tag.action?pageNo=${ pageNo-1 }&tag=${tag}">${ pageNo-1 }</a></li>
 												<li class="active"><a href="#">${ pageNo }</a></li>
 											</c:when>
-											<c:when test="${pageNo!=pageCount}">
+											<c:when test="${pageCount>2}&${pageNo!=pageCount}">
 												<li><a
-													href="freeboard-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+													href="freeboard-tag.action?pageNo=${pageNo-1 }&tag=${tag}">${ pageNo-1 }</a></li>
 												<li class="active"><a href="#">${ pageNo }</a></li>
 												<li><a
-													href="freeboard-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+													href="freeboard-tag.action?pageNo=${ pageNo+1 }&tag=${tag}">${ pageNo+1 }</a></li>
 											</c:when>
 										</c:choose>
 
@@ -244,7 +244,6 @@
 							</ul>
 						</div>
 						<!-- end of paging -->
-
 
 					</div>
 					<!-- End blog entries list -->

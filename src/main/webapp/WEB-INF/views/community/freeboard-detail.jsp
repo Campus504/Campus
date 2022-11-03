@@ -267,7 +267,7 @@
                 <ul>
                 <li><a href="notice-list.action">공지사항</a></li>
                   <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="freeboard.action">캠핑 팁</a></li>
+                  <li><a href="tip-list.action">캠핑 팁</a></li>
                 </ul>
               </div>
               <!-- End sidebar categories-->
@@ -276,11 +276,11 @@
               <h3 class="sidebar-title">태그</h3>
               <div class="sidebar-item tags">
                 <ul>
-                	<li><a href="freeboardTag.action?tag=질문">질문</a></li>
-                    <li><a href="freeboardTag.action?tag=후기">후기</a></li>
-                    <li><a href="freeboardTag.action?tag=자랑">자랑</a></li>
-                    <li><a href="freeboardTag.action?tag=일상">일상</a></li>
-                    <li><a href="freeboardTag.action?tag=기타">기타</a></li>
+                	<li><a href="freeboard-tag.action?tag=질문">질문</a></li>
+                    <li><a href="freeboard-tag.action?tag=후기">후기</a></li>
+                    <li><a href="freeboard-tag.action?tag=자랑">자랑</a></li>
+                    <li><a href="freeboard-tag.action?tag=일상">일상</a></li>
+                    <li><a href="freeboard-tag.action?tag=기타">기타</a></li>
                 </ul>
               </div><!-- End sidebar tags-->
 

@@ -21,9 +21,6 @@ public interface CommunityMapper {
 	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
 	void insertBoard(BoardDto board);
 	
-	@Select("SELECT * FROM board WHERE category = 'freeboard' ORDER BY boardNo DESC")
-	List<BoardDto> selectAllFreeboard();
-
 	@Select("SELECT MAX(boardNo) FROM board")
 	int selectLastBoardNo();
 
@@ -51,16 +48,30 @@ public interface CommunityMapper {
 	@Select("SELECT tag FROM community WHERE boardNo = #{boardNo}")
 	CommunityDto selectTagByBoardNo(int boardNo);
 
-	@Select("SELECT * FROM board WHERE category = 'freeboard' AND boardNo IN ( SELECT boardNo From community WHERE tag like '%${tag}%' )  ORDER BY boardNo DESC ")
-	List<BoardDto> selectFreeboardByTag(String tag);
+	@Select("SELECT * FROM board WHERE category = 'freeboard' AND boardNo IN ( SELECT boardNo From community WHERE tag like '%${tag}%' )  ORDER BY boardNo DESC  LIMIT #{from}, #{count} ")
+	List<BoardDto> selectFreeboardByTag(@Param("tag") String tag, @Param("from") int from, @Param("count") int count);
 
-	@Select("select * from board where category = 'freeboard' and ${searchOption} like '%${search}%' order By boardNo DESC")
-	List<BoardDto> selectFreeboardBySearch(@Param("searchOption") String searchOption, @Param("search") String search);
+	@Select("select * from board where category = 'freeboard' and ${searchOption} like '%${search}%' order By boardNo DESC LIMIT #{from}, #{count}")
+	List<BoardDto> selectFreeboardBySearch(@Param("searchOption") String searchOption, @Param("search") String search,@Param("from") int from, @Param("count") int count);
 
-	@Update("UPDATE community SET tag = #{tag} WHERE boardNo=#{boardNo}")
-	void updateTagByBoardNo(@Param("boardNo") int boardNo,@Param("tag") String tag);
+	@Select("SELECT COUNT(*) FROM board WHERE category = 'freeboard' and ${searchOption} like '%${search}%'")
+	int selectSerchBoardCount(@Param("searchOption") String searchOption, @Param("search") String search);
 
+	@Select("SELECT COUNT(*) FROM community WHERE tag LIKE '%${tag}%'")
+	int selectTagCount(@Param("tag") String tag);
+
+	@Delete("DELETE FROM community WHERE boardNo = ${boardNo}")
+	void deleteUpdateBoardTag(int boardNo);
 	
-	
+	@Insert("INSERT INTO community ( boardNo, tag ) VALUES ( #{boardNo}, #{tag} )")
+	void insertTagByBoardNo(@Param("boardNo") int boardNo,@Param("tag") String tag);
+
+	@Select("SELECT * FROM board WHERE category = 'tip' ORDER BY boardno DESC LIMIT #{from}, #{count}")
+	List<BoardDto> selectTipByPage(@Param("from") int from, @Param("count") int count);
+
+	@Select("SELECT count(*) FROM board WHERE category = 'tip'")
+	int selectTipCount();
+
+
 
 }

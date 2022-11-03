@@ -14,4 +14,18 @@ public interface FAQService {
 
 	BoardDto findBoardByBoardNo(int boardNo);
 
+	void deleteNoticeBoard(int boardNo);
+
+	void increaseNoticeReadCount(int boardNo);
+
+	BoardDto findNoticeByBoardNo(int boardNo);
+
+	void updateNoticeBoard(BoardDto board);
+
+	List<BoardDto> searchNotice(String searchOption, String search, int pageNo, int pAGE_SIZE);
+
+	int findSearchNoticeCount(String searchOption, String search);
+
+	List<BoardDto> findAllFaq();
+
 }
