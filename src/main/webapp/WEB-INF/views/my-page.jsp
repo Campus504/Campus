@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
 <!-- 상세페이지 만들때 사용 ㄱㄱ -->
@@ -13,13 +10,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>회원가입</title>
+  <title>My Page</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> -->
-  <!-- <script src="https://kit.fontawesome.com/a81368914c.js"></script> -->
-  
 
   <!-- Favicons -->
   <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -38,6 +31,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
+  <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -83,7 +77,7 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
-    <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
+<!--     <link rel="stylesheet" href="/campus/resources/assets/css/register.css"> -->
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -95,13 +89,13 @@
     <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-    <script src="/campus/resources/assets/js/login.js"></script>
-    
       <style type="text/css">
+	#main{width:1200px;height:700px;margin:100px auto;}
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
-	.error{color:red;font-weight:bold; font-size:8pt;position: absolute; top: 37px; left: 7px;}
+	.mypage-btn{text-align:center;}
+	button{width:100px; height:50px;background:cornflowerblue; border:none; border-radius: 25px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:#fff;}
 	</style>
 </head>
 
@@ -111,101 +105,79 @@
  	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
 
+<!-- ======= mypage-side-menu ======= -->
+ 	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
+  <!-- End mypage-side-menu -->
+
 
   <main id="main">
-  
-  <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
-  <div class="container">
-    <div class="img">
-      <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
-    </div>
-    <div class="login-content login-content2">
-       <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
-  
-        <h2 class="title">회원가입</h2>
-        <table>
-        
-              <div class="input-div one">
-                 <div class="div">
-                    <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디">
-                    <br>
-               	</div>
-               	<form:errors path="memberId" class="error" />
-              </div>
-                 
-              <div class="input-div pass">
-				 <div class="div">
-                    <input type="password" id="passwd" class="input" name="passwd" placeholder="비밀번호">
-                    <br>
-                 </div>
-                 <form:errors path="passwd" class="error" />
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인">
-                    <br>
-                 </div>
-                 <form:errors path="passwd" class="error" />
-              </div>
-                 
-              <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="email" name="email" placeholder="이메일">
-                    <br>
-                 </div>
-                 <form:errors path="email" class="error" />
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="memberName" name="memberName" placeholder="이름">
-                    <br>
-                    <form:errors path="memberName" class="error" />
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="address" name="address" placeholder="주소">
-                     <br>
-                    <form:errors path="address" class="error" />
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="date" id="birth" name="birth" placeholder="생년월일">
-                    <br>
-                 </div>
-			       <form:errors path="birth" class="error" />
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="tel" id="phone" name="phone" placeholder="전화번호">
-                    <br>
-                  </div>
-                  <form:errors path="phone" class="error" />
-              </div>
-              
-              
-              <a href="login.action" title="로그인">로그인 바로가기</a>
-              <div class="log-btn">
-              <input id="register" type="submit" value="가입" />
-              <input id="cancel" type="button" value="취소" />
-              </div>
-              </table>
-            </form:form>
-        </div>
-    </div>
-  </main>
-  <!-- End #main -->
 
-<%--   <!-- ======= Footer ======= -->
+
+  <section class="my-page-form">
+        <div class="mypage py-4">
+            <div class="row align-items-center justify-content-between">
+                
+                    <h2 style="text-align:center;">회원 정보수정</h2>                 
+                
+            </div>
+            <c:if test="${signIn!=null}">
+          <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
+                <div class="form-group" style="display:none;">
+               		<label for="mb_id" class="form-label mt-4">아이디</label>
+                    <input type="text" id="memberId" name="memberId" value="${signIn.mb_id}">
+					<div><font id="id_feedback" size="2"></font></div>
+                </div>            	
+                <div class="form-group">
+               		<label for="mb_nick" class="form-label mt-4">아이디</label>
+                    <input type="text" id="memberId" name="memberId" value="${signIn.mb_nick}">
+                </div>
+				<div class="form-group has-success">
+					<label class="form-label mt-4" for="inputValid">비밀번호</label>
+					<input type="password" id="passwd" name="passwd">
+					<div class="valid-feedback"></div>
+				</div>
+
+				<div class="form-group has-danger">
+					<label class="form-label mt-4" for="inputInvalid">비밀번호 확인</label> 
+					<input type="password" id="confirm" name="confirm">
+					<div><font id="pwd_feedback" size="2"></font></div>
+				</div>
+                <div class="form-group">
+               		<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
+                    <input type="text" id="memberName" name="memberName" value="${signIn.mb_name}">
+                </div>
+                 <div class="form-group">
+               		<label for="mb_email" class="form-label mt-4">본인 확인 이메일</label>
+                    <input type="email" class="form-control" placeholder="선택입력" name="mb_email" value="${signIn.mb_email}">
+                </div>      
+                <div class="form-group">
+               		<label for="mb_email" class="form-label mt-4">생년월일</label>
+                    <input type="date" id="birth" name="birth" placeholder="생년월일">
+                </div>
+				<div class="mypage-btn">
+                    <button id="register" type="submit">수정 하기</button>
+                    <button id="cancel" type="button">취소</button>
+                </div>
+            </form:form>
+            </c:if>
+            <%-- <c:if test="${signIn==null}">
+	            <div>
+	            	<h1 class ="text-dark text-center">회원 정보 수정 <br>페이지입니다.</h1>
+	            	<p class="text-center"> 
+	            		<span>로그인 후 사용하여 주시면 감사하겠습니다.</span>
+	            	</p>
+	            </div>
+            </c:if> --%>
+            
+        </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />  
 <!-- End Footer -->
- --%>
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
@@ -244,6 +216,5 @@
   <!-- /.sidebar -->
 
 </body>
-
 
 </html>

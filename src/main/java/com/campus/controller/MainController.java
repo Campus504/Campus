@@ -25,5 +25,10 @@ public class MainController {
 	public String portfolio_details() {
 		return "portfolio_details";
 	}
+	
+	@GetMapping(path = {"/my-page.action"})
+	public String myPage() {
+		return "my-page";
+	}
 
 }

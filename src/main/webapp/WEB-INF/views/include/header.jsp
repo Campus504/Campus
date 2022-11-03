@@ -13,6 +13,13 @@
             <c:when test="${ empty loginuser }">
 				<li><a href="login.action" title="로그인">로그인</a></li>
 				<li><a href="register.action" title="회원가입">회원가입</a></li>
+				<!-- <li>
+				<ul class="user-center">
+					<a href="#" title="고객센터">고객센터</a>
+					<li><a href="faq.action" title="자주묻는질문">자주묻는질문</a></li>
+					<li><a href="inquiry.action" title="1:1문의">1:1문의</a></li>
+					</ul>
+				</li> -->
 			    </c:when>
 			     <c:otherwise>
             	<p style="color:#fff;"><b>${ loginuser.memberId }</b>님 환영합니다.</p>
@@ -125,7 +132,7 @@
 								<div class="menu-social-media">
 									<ul>
 										<li><a href="login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
-										<li><a href="#" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
+										<li><a href="my-page.action" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
 										<li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
 									</ul>
 								</div>

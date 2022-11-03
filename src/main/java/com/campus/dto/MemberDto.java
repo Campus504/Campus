@@ -19,7 +19,9 @@ public class MemberDto {
 	@Email
 	private String email;
 	
+	@NotBlank(message="이름을 입력하세요.")
 	private String memberName;
+	@NotBlank(message="주소를 입력하세요.")
 	private String address;
 	@NotBlank(message="생년월일을 입력하세요.")
 	private String birth;

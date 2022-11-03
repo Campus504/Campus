@@ -116,13 +116,29 @@ body {
 /* =Typography
 -------------------------------------------------------------- */
 /* 로그아웃 a태그 */
+.h_lnb ul li{list-style:none;}
 .h_lnb ul li a{transition:0.3s;}
-.h_lnbul li a:hover{color:#7beec7;}
+.h_lnb ul li a:hover{color:#7beec7;}
+/* .h_lnb>ul>li:nth-child(3){overflow:hidden;} */
+/* .user-center {
+	width:120px;
+	height:50px;
+	list-style:none;
+	background-color:#fff;
+	position: absolute;
+    transition:0.5s;
+    transform:translateY(-40px);
+    z-index: 200;
+    left:0px;
+}
+.h_lnb ul li:last-child ul{
+	overflow:hidden;
+	} */
 /* ----------------------------------------------------------- */
 
 
 a {
-    color: #383838;
+    color: red;
     transition: all 0.5s;
 }
 a:focus {
