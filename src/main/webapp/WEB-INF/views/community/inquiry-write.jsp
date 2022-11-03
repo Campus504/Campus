@@ -98,7 +98,7 @@
 <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
 <link rel="stylesheet"
 	href="/campus/resources/sidebar/css/responsive.css">
-	
+
 <!-- Favicon -->
 <link rel="icon" type="image/ico" href="favicon.ico">
 
@@ -152,39 +152,46 @@
 						<article class="entry entry-single">
 
 							<form action="inquiry-write.action" method="post">
-								<input type="hidden" name = "memberId" value="${loginuser.memberId}">
-								<input type="hidden" name = "category" value="inquiry">
+								<input type="hidden" name="memberId"
+									value="${loginuser.memberId}"> <input type="hidden"
+									name="category" value="inquiry">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+										class="bi bi-caret-down-fill"></i>제목</span> <input type="text"
+										name="title">
 								</h2>
-
+								<div class="form-check form-check-inline mt-3">
+									<input class="form-check-input" type="checkbox" name="secret"
+										id="secret"> <label class="form-check-label">비밀글
+										설정</label>
+								</div>
 								<div class="entry-meta">
 									<ul>
-										<li class="d-flex align-items-center">
-										<i class="bi bi-person"></i>${loginuser.memberId}</li>
+										<li class="d-flex align-items-center"><i
+											class="bi bi-person"></i>${loginuser.memberId}</li>
 									</ul>
 								</div>
 
 								<div class="entry-content">
-									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" ></textarea>
-								</div>
-								
-								<div class="entry-content">
-									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>태그</span>
-									<input name="tag" value="대여" type="checkbox" />대여
-									<input name="tag" value="반납" type="checkbox" />반납
-									<input name="tag" value="상품" type="checkbox" />상품
-									<input name="tag" value="기타" type="checkbox" />기타
-									
-									
+									<span class="d-flex align-items-center"> <i
+										class="bi bi-caret-down-fill"></i>내용
+									</span>
+									<textarea name="content"></textarea>
 								</div>
 
-								<input type="submit" value="글쓰기" style="height: 25px" /> 
-								<input type="button" value="취소" class="cancel" style="height: 25px" />
+								<div class="entry-content">
+									<span class="d-flex align-items-center"> <i
+										class="bi bi-caret-down-fill"></i>태그
+									</span> <input name="tag" value="대여" type="checkbox" />대여 <input
+										name="tag" value="반납" type="checkbox" />반납 <input name="tag"
+										value="상품" type="checkbox" />상품 <input name="tag" value="기타"
+										type="checkbox" />기타
+
+
+								</div>
+
+								<input type="submit" value="글쓰기" style="height: 25px" /> <input
+									type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
 						</article>
@@ -258,22 +265,16 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
-	
+
 	<script type="text/javascript">
-	$(function(){
-		
-		
-		$(".cancel").on('click',function(event){
-			location.href="/campus/freeboard.action";
+		$(function() {
+
+			$(".cancel").on('click', function(event) {
+				location.href = "/campus/freeboard.action";
+			});
+
 		});
-		
-		
-		
-		
-		
-		
-	});
-	</script>	
+	</script>
 
 </body>
 

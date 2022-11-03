@@ -15,6 +15,7 @@ public class BoardDto {
 	private int readCount;
 	private String category;
 	private String memberId;
+	private boolean secret;
 	
 	private List<CommunityDto> tags;
 

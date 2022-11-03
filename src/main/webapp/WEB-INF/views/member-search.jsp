@@ -106,7 +106,7 @@
 
 					<div class="clearfix">
 						<h4 class="text-blue h4">관리자페이지를 통해 회원 정보를 확인 할 수 있는 리스트입니다.</h4>
-						<p class="mb-30">회원 리스트를 확인해 주세요</p>
+						<p class="mb-30">회원 리스트를 확인해 주세요 - ${ search } 검색 결과 입니다</p>
 					</div>
 
 					<div class="card-box mb-30">

@@ -1,5 +1,7 @@
 package com.campus.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
 import com.campus.service.AccountService;
 
@@ -81,6 +85,17 @@ public class AccountController {
 		return new RedirectView("login.action");
 	}
 	
-	
+	@PostMapping(path = {"member-search.action"})
+	public String showMemberSearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		System.out.println("c:"+search);
+		List<MemberDto> members = accountService.searchMember(search); 
+		System.out.println(members);
+		model.addAttribute("members", members);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("search", search);
+		
+		return "member-search";
+		
+	}
 
 }

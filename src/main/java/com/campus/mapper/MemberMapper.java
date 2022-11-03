@@ -1,10 +1,13 @@
 package com.campus.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
 
 public interface MemberMapper {
@@ -18,6 +21,7 @@ public interface MemberMapper {
 			"WHERE memberid = #{ memberId } AND passwd = #{ passwd } AND active = TRUE ")
 	MemberDto selectMemberByIdAndPasswd(@Param("memberId")String memberId, @Param("passwd") String passwd);
 	
-	
+	@Select("select * from member WHERE memberid like '%${search}%'")
+	List<MemberDto> selectMemberBySearch(String search);
 
 }

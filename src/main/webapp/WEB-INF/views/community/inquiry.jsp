@@ -177,7 +177,6 @@
 											읽기</a>
 									</div>
 								</div>
-
 							</article>
 						</c:forEach>
 

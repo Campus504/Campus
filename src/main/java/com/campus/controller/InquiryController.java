@@ -130,6 +130,7 @@ public class InquiryController {
 	
 	@PostMapping(path= {"inquiry-search.action"})
 	public String showInquirySearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		
 		List<BoardDto> boards = inquiryService.searchInquiry(search); 
 		model.addAttribute("boards", boards);
 		model.addAttribute("pageNo", pageNo);

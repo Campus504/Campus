@@ -1,5 +1,7 @@
 package com.campus.service;
 
+import java.util.List;
+
 import com.campus.common.Util;
 import com.campus.dto.MemberDto;
 import com.campus.mapper.MemberMapper;
@@ -30,5 +32,13 @@ public class AccountServiceImpl implements AccountService {
 		return memberDto;
 
 	}
-
+	
+	@Override
+	public List<MemberDto> searchMember(String search) {
+		System.out.println("s:"+search);
+		List<MemberDto> members = memberMapper.selectMemberBySearch(search);
+		
+		return members;
+	}
+	
 }
