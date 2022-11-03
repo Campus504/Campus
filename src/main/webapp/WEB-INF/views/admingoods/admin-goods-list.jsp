@@ -77,12 +77,10 @@
 						<a class="btn btn-primary dropdown-toggle" href="#"
 							role="button" data-toggle="dropdown"> Oct 2022 </a>
 						
-						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="#">기능1)Export List </a> 
-							<a class="dropdown-item" href="#">기능2)Policies </a> 
-							<a class="dropdown-item" href="#">기능3)View Assets </a>
-							<a class="dropdown-item" href="#">기능4)View Assets </a>
-						</div>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="#">기능1</a> 
+								<a class="dropdown-item" href="#">기능2</a> 
+							</div>
 					</div>
 				</div>
 			</div>

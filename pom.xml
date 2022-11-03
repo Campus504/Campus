@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-<dependencies>
+	<dependencies>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
@@ -46,18 +46,18 @@
 	<!-- end of servlet and jsp -->
 	
 	<!-- validator library -->			
-		<dependency>
-		    <groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.2.5.Final</version>
-		</dependency>
+	<dependency>
+	    <groupId>org.hibernate.validator</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>6.2.5.Final</version>
+	</dependency>
 
-		<dependency>
-	    <groupId>javax.validation</groupId>
-	    <artifactId>validation-api</artifactId>
-	    <version>2.0.1.Final</version>
-		</dependency>
-		<!-- end of validator library -->
+	<dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.1.Final</version>
+	</dependency>
+	<!-- end of validator library -->
 	
 	<!-- beginning of database library -->
 		
@@ -94,13 +94,12 @@
 		
 		<!-- end of database library -->
 	
-	
 	<dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 		<version>1.18.24</version>
 		<scope>provided</scope>
-</dependency>
+	</dependency>
 	</dependencies>
 
 	<build>

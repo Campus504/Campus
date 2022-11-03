@@ -82,10 +82,8 @@
 									role="button" data-toggle="dropdown"> Oct 2022 </a>
 								
 								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">기능1)Export List </a> 
-									<a class="dropdown-item" href="#">기능2)Policies </a> 
-									<a class="dropdown-item" href="#">기능3)View Assets </a>
-									<a class="dropdown-item" href="#">기능4)View Assets </a>
+									<a class="dropdown-item" href="#">기능1</a> 
+									<a class="dropdown-item" href="#">기능2</a> 
 								</div>
 							</div>
 						</div>
@@ -100,19 +98,16 @@
 					</div>
 	
 					<div class="wizard-content">
-			
-						<form action="admin-goods-register.action" method="post" enctype="multipart/form-data">
-						
 							<div class="content clearfix">								
+								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
-							 
+							 		<form action="admin-goods-register.action" method="post" enctype="multipart/form-data">
+									
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>상품분류 :</label>
-												
 												<!-- <input type="text" class="form-control" id="category" name="category" placeholder="상품분류"> -->
-												
 												<select name=category class="custom-select form-control">
 													<option value="">--옵션을선택하세요--</option>
 													<option value="텐트">텐트</option>
@@ -146,9 +141,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>브랜드 :</label>
-												
 												<!-- <input type="text" class="form-control" id="brand" name="brand" placeholder="브랜드"> -->
-												
 												<select name="brand" class="custom-select form-control" >
 													<option value="">--옵션을선택하세요--</option>
 													<option value="스노우">스노우</option>
@@ -161,37 +154,35 @@
 										
 										<div class="col-md-6">
 											<div class="form-group">
+												<label>상품명 :</label>
+												<input type="text" class="form-control" id="goodsName" name="goodsName" placeholder="상품명">
+												<!-- <select name="optionDataType" class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
+													<option value="#">test 1</option>
+													<option value="#">test 2</option>
+												</select> -->
+												
+											</div>
+										</div>
+										
+										<!-- <div class="col-md-6">
+											<div class="form-group">
 												<label>속성이름 :</label>
 												<input type="text" class="form-control" id="optionName" name="optionName" placeholder="속성이름">
 											</div>
-										</div>
+										</div> -->
 										
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>속성자료형 :</label>
-												
-												<!-- <input type="text" class="form-control" id="optionDataType" name="optionDataType" placeholder="속성자료형"> -->
-												
-												<select name="optionDataType" class="custom-select form-control" >
-													<option value="">--옵션을선택하세요--</option>
-													<option value="#">속성자료형 1</option>
-													<option value="#">속성자료형 2</option>
-												</select>
-												
-											</div>
-										</div>
 										
-										<div class="col-md-6">
+										
+								<!-- 		<div class="col-md-6">
 											<div class="form-group">
 												<label>속성값 :</label>
-												
 												<input type="text" class="form-control" id="optionValue" name="optionValue" placeholder="속성값">
-												
-												<!-- <select class="custom-select form-control" >
+												<select class="custom-select form-control" >
 													<option value="">--옵션을선택하세요--</option>
 													<option value="#">옵션1</option>
 													<option value="#">옵션2</option>
-												</select> -->				
+												</select>				
 											
 											</div>
 										</div>
@@ -199,14 +190,12 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>옵션값 :</label>
-											
 												<input type="text" class="form-control" id="optionSeletionValue" name="optionSeletionValue" placeholder="옵션값">
-											
-												<!-- <select class="custom-select form-control" >
+												<select class="custom-select form-control" >
 													<option value="">--옵션을선택하세요--</option>
 													<option value="#">옵션1</option>
 													<option value="#">옵션2</option>
-												</select>			 -->									
+												</select>												
 											
 											</div>
 										</div>
@@ -214,50 +203,44 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>상세설명 :</label>
-											
 												<input type="text" class="form-control" id="detail" name="detail" placeholder="상세설명">
-											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>대여가격 :</label> 
-											
 												<input type="text" class="form-control" id="rentPrice" name="rentPrice" placeholder="대여가격">
-											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>입고 :</label>
-											
 												<input type="text" class="form-control" id="goodsIn" name="goodsIn" placeholder="입고">
-											
 											</div>
 										</div>
 										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>입고일자 :</label>
-											
 												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
-											
 											</div>
-										</div>
+										</div> -->
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						<div class="btn-list">
-							<button type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button> <!-- disable 추후 추가 예정 -->
-							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button> <!-- disable 추후 추가 예정 -->
-							<button type="button" class="btn btn-secondary btn-lg" >취소</button> <!-- disable 추후 추가 예정 -->
+							<button type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button>
+							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button>
+							<button type="button" class="btn btn-secondary btn-lg">취소</button>
 						</div>		
 				
-									</div>
+								</div>
+								</form>
+								
 								</section>
-							</div>
-						</form>
+							
+						</div>
 					</div> 
 				</div>
 				<!-- 상품 등록 페이지 끝 -->	

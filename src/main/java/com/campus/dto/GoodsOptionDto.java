@@ -14,5 +14,5 @@ public class GoodsOptionDto {
 	private int goodsCode;					// 상품코드
 	private String optionDataType;			// 속성자료형
 	private int optionValue;				// 속성값
-
+	
 }
