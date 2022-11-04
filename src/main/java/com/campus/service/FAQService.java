@@ -28,4 +28,6 @@ public interface FAQService {
 
 	List<BoardDto> findAllFaq();
 
+	void deleteFaq(int boardNo);
+
 }

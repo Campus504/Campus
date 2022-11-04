@@ -137,7 +137,7 @@
 				<ol>
 					<li><a href="main">홈</a></li>
 				</ol>
-				<h2>커뮤니티 - ${ search } 검색 결과 입니다</h2>
+				<h2>자유게시판 - ${ search } 검색 결과 입니다</h2>
 
 			</div>
 		</section>
