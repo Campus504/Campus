@@ -2,34 +2,23 @@ package com.campus.service;
 
 import java.util.List;
 
-import com.campus.common.Util;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
 import com.campus.dto.GoodsDto;
-import com.campus.dto.MemberDto;
 import com.campus.mapper.AdminGoodsRegisterMapper;
-import com.campus.mapper.MemberMapper;
+
 
 import lombok.Setter;
 
-public class AdminGoodsRegisterServiceImpl implements AdminGoodsRegisterService {
+@Service
+@Repository
+public abstract class AdminGoodsRegisterServiceImpl implements AdminGoodsRegisterService {
+
 
 	@Setter
-	private AdminGoodsRegisterMapper goodsregiterMapper;
+	private AdminGoodsRegisterMapper admingoodsregisterMapper;
 
 	
-	@Override
-	public void insertgoodsregister(GoodsDto goods) {
-	
-		goodsregiterMapper.insertGoods(goods);
-		
-	}
-	
-	@Override
-	public List<GoodsDto> findGoodsAll(int goodsCode, String category, String brand, String goodsName) {
-		
-//		List<GoodsDto> goods = AdminGoodsRegisterMapper.selectGoods(goods);
-
-		return null;
-		
-	}
 	
 }

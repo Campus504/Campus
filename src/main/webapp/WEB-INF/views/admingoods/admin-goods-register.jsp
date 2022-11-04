@@ -227,22 +227,21 @@
 												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
 											</div>
 										</div> -->
+								</div>
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						<div class="btn-list">
 							<button type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button>
 							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button>
 							<button type="button" class="btn btn-secondary btn-lg">취소</button>
-						</div>		
+						</div>	
 				
-								</div>
-								</form>
-								
-								</section>
+							</form>
+							</section>
 							
-						</div>
-					</div> 
-				</div>
+					</div>
+				</div> 
+			</div>
 				<!-- 상품 등록 페이지 끝 -->	
 	
 		<!-- js -->

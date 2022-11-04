@@ -21,6 +21,6 @@ public interface AdminGoodsRegisterMapper {
 	
 	@Select("SELECT * " +
 			"FROM goods" )
-	List<GoodsDto> selectGoods(List<GoodsDto> good);
+	List<GoodsDto> findGoodsList();
 	
 }
