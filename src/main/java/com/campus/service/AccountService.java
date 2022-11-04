@@ -12,4 +12,8 @@ public interface AccountService {
 	
 	List<MemberDto> searchMember(String search);
 
+	List<MemberDto> findMemberByPage(int pageNo, int pageSize);
+
+	int findMemberCount();
+
 }

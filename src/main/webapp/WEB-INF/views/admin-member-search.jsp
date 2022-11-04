@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">회원정보</li>
 								</ol>
 							</nav>
@@ -106,7 +106,7 @@
 
 					<div class="clearfix">
 						<h4 class="text-blue h4">관리자페이지를 통해 회원 정보를 확인 할 수 있는 리스트입니다.</h4>
-						<p class="mb-30">회원 리스트를 확인해 주세요 - ${ search } 검색 결과 입니다</p>
+						<p class="mb-30">"${ search }" 검색 결과 입니다</p>
 					</div>
 
 					<div class="card-box mb-30">
@@ -133,7 +133,7 @@
 									</div>
 									<div class="col-sm-12 col-md-6">
 										<div class="dataTables_filter">
-											<form action="member-search.action" method="post">
+											<form action="admin-member-search.action" method="post">
 												<label>Search: <input type="search" name="search"
 													class="form-control form-control-sm" placeholder="Enter"
 													aria-controls="DataTables_Table_3">
@@ -172,37 +172,39 @@
 													</tr>
 												</thead>
 												<tbody>
+													<c:forEach var="member" items="${ members }">
+														<tr role="row" class="odd">
+															<td class=" dt-body-center" tabindex="0">
+																<div class="dt-checkbox">
+																	<input type="checkbox" name="member"
+																		value="member.memberId"> <span
+																		class="dt-checkbox-label"></span>
+																</div>
+															</td>
 
-													<tr role="row" class="odd">
-														<td class=" dt-body-center" tabindex="0">
-															<div class="dt-checkbox">
-																<input type="checkbox" name="id[]" value=""> <span
-																	class="dt-checkbox-label"></span>
-															</div>
-														</td>
+															<td>${ member.memberId }</td>
+															<td>${ member.admin }</td>
+															<td><div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault1">
+																	<label class="form-check-label" for="flexRadioDefault1">
+																		Super Admin </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault2" checked>
+																	<label class="form-check-label" for="flexRadioDefault2">
+																		Admin </label>
+																</div>
 
-														<td>${ member.memberId }</td>
-														<td>${ member.admin }</td>
-														<td><div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault1">
-																<label class="form-check-label" for="flexRadioDefault1">
-																	Super Admin </label>
-															</div>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault2" checked>
-																<label class="form-check-label" for="flexRadioDefault2">
-																	Admin </label>
-															</div>
-
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault2" checked>
-																<label class="form-check-label" for="flexRadioDefault2">
-																	User </label>
-															</div></td>
-													</tr>
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault2" checked>
+																	<label class="form-check-label" for="flexRadioDefault2">
+																		Member </label>
+																</div></td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 										</form>

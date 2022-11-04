@@ -23,5 +23,10 @@ public interface MemberMapper {
 	
 	@Select("select * from member WHERE memberid like '%${search}%'")
 	List<MemberDto> selectMemberBySearch(String search);
-
+	
+	@Select("SELECT count(*) FROM member")
+	int selectMemberCount();
+	
+	@Select("SELECT memberid, email, membername, address, birth, phone, active, joindate, admin FROM member ORDER BY joindate DESC LIMIT ${from}, ${count}")
+	List<MemberDto> selectMemberByPage(@Param("from") int from, @Param("count") int count);
 }
