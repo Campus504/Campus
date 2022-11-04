@@ -45,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	@Override
-<<<<<<< HEAD
+
 	public void updateMember(MemberDto member) {
 		memberMapper.updateMember(member);
 	}
@@ -57,7 +57,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	
-=======
+
 	public int findMemberCount() {
 
 		int memberCount = memberMapper.selectMemberCount();
@@ -73,5 +73,5 @@ public class AccountServiceImpl implements AccountService {
 		List<MemberDto> boards = memberMapper.selectMemberByPage(from, count);
 		return boards;
 	}
->>>>>>> c0fb9f071bff89261d33373c968ced1bca1e4e17
+
 }

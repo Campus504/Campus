@@ -25,7 +25,7 @@ public interface MemberMapper {
 	
 	@Select("select * from member WHERE memberid like '%${search}%'")
 	List<MemberDto> selectMemberBySearch(String search);
-<<<<<<< HEAD
+
 
 	@Update("UPDATE member" + 
 			"SET passwd = #{ passwd } , email = #{ email } , membername = #{ memberName } , address = #{address} , birth = #{birth} , phone = #{ phone } " +
@@ -33,12 +33,12 @@ public interface MemberMapper {
 	void updateMember(MemberDto member);
 				
 	
-=======
+
 	
 	@Select("SELECT count(*) FROM member")
 	int selectMemberCount();
 	
 	@Select("SELECT memberid, email, membername, address, birth, phone, active, joindate, admin FROM member ORDER BY joindate DESC LIMIT ${from}, ${count}")
 	List<MemberDto> selectMemberByPage(@Param("from") int from, @Param("count") int count);
->>>>>>> c0fb9f071bff89261d33373c968ced1bca1e4e17
+
 }
