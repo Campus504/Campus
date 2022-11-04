@@ -14,13 +14,14 @@ import com.campus.dto.GoodsDto;
 import com.campus.service.AdminGoodsRegisterService;
 
 @Controller
-public class AdminGoodsController {
+public class AdminGoodsInController {
 	
-	// 상품등록 페이지로 이동
-	@GetMapping(path = {"admin-goods-register.action"})
-	public String adminGoodsRegister() {
+	// 상품입고 페이지로 이동
+	@GetMapping(path = {"admin-goods-in.action"})
+	public String adminGoodsIn() {
 		
-		return "admingoods/admin-goods-register";
+		return "admingoods/admin-goods-in";
 	}
+
 	
 }
