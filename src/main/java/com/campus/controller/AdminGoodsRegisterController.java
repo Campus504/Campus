@@ -14,7 +14,7 @@ import com.campus.dto.GoodsDto;
 import com.campus.service.AdminGoodsRegisterService;
 
 @Controller
-public class AdminGoodsController {
+public class AdminGoodsRegisterController {
 	
 	// 상품등록 페이지로 이동
 	@GetMapping(path = {"admin-goods-register.action"})
