@@ -46,7 +46,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="notice-list.action">공지사항</a></li>
-							<li><a href="faq.action">자주묻는 질문</a></li>
+							<li><a href="faq-list.action">자주묻는 질문</a></li>
 							<li><a href="admin-write.action">관리자 글쓰기</a></li>
 						</ul>
 					</li>
