@@ -207,7 +207,7 @@
 					<div class="col-lg-4">
 
 						<div class="sidebar">
-							<h3 class="sidebar-title">검색</h3>
+							<h3 class="sidebar-title">검섹</h3>
 							<div class="sidebar-item search-form">
 								<form action="inquiry-search.action" method="post">
 									<input type="text" class="form-control" name="search">
