@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -77,7 +79,7 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
-<!--     <link rel="stylesheet" href="/campus/resources/assets/css/register.css"> -->
+	<link rel="stylesheet" href="/campus/resources/assets/css/register.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -91,6 +93,7 @@
     
       <style type="text/css">
 	#main{width:1200px;height:700px;margin:100px auto;}
+	
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
@@ -112,65 +115,90 @@
 
   <main id="main">
 
-
-  <section class="my-page-form">
-        <div class="mypage py-4">
-            <div class="row align-items-center justify-content-between">
+<div class="container">
+  <div class="login-content3">
+       <form action="my-page.action" method="post" modelAttribute="memberDto">
+  		<div id="inputmain2">
+        <h2 class="title">회원 정보수정</h2>
+        <table>
+        
+              <tr>
+              <th>아이디</th>
+                 <td>
+                    ${ member.memberId }
+               	</td> 	
+              </tr>
+                 
+              <tr>
+              <th>비밀번호</th>
+				 <td>
+                    <input type="password" id="passwd" class="input" name="passwd" value="${ passwd }">
+                    
+                 </td>
                 
-                    <h2 style="text-align:center;">회원 정보수정</h2>                 
-                
-            </div>
-            <c:if test="${signIn!=null}">
-          <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
-                <div class="form-group" style="display:none;">
-               		<label for="mb_id" class="form-label mt-4">아이디</label>
-                    <input type="text" id="memberId" name="memberId" value="${signIn.mb_id}">
-					<div><font id="id_feedback" size="2"></font></div>
-                </div>            	
-                <div class="form-group">
-               		<label for="mb_nick" class="form-label mt-4">아이디</label>
-                    <input type="text" id="memberId" name="memberId" value="${signIn.mb_nick}">
-                </div>
-				<div class="form-group has-success">
-					<label class="form-label mt-4" for="inputValid">비밀번호</label>
-					<input type="password" id="passwd" name="passwd">
-					<div class="valid-feedback"></div>
-				</div>
+              </tr>
+              
+               <tr>
+               <th>비밀번호 확인</th>
+				 <td>
+                    <input type="password" class="input" id="confirm" name="confirm" value="${ passwd }">
 
-				<div class="form-group has-danger">
-					<label class="form-label mt-4" for="inputInvalid">비밀번호 확인</label> 
-					<input type="password" id="confirm" name="confirm">
-					<div><font id="pwd_feedback" size="2"></font></div>
-				</div>
-                <div class="form-group">
-               		<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
-                    <input type="text" id="memberName" name="memberName" value="${signIn.mb_name}">
-                </div>
-                 <div class="form-group">
-               		<label for="mb_email" class="form-label mt-4">본인 확인 이메일</label>
-                    <input type="email" class="form-control" placeholder="선택입력" name="mb_email" value="${signIn.mb_email}">
-                </div>      
-                <div class="form-group">
-               		<label for="mb_email" class="form-label mt-4">생년월일</label>
-                    <input type="date" id="birth" name="birth" placeholder="생년월일">
-                </div>
-				<div class="mypage-btn">
-                    <button id="register" type="submit">수정 하기</button>
-                    <button id="cancel" type="button">취소</button>
-                </div>
-            </form:form>
-            </c:if>
-            <%-- <c:if test="${signIn==null}">
-	            <div>
-	            	<h1 class ="text-dark text-center">회원 정보 수정 <br>페이지입니다.</h1>
-	            	<p class="text-center"> 
-	            		<span>로그인 후 사용하여 주시면 감사하겠습니다.</span>
-	            	</p>
-	            </div>
-            </c:if> --%>
+                 </td>
+                 
+              </tr>
+                 
+              <tr>
+              <th>이메일</th>
+				 <td>
+                    <input type="text" id="email" name="email" value="${ email }">
+                    <br>
+
+                 </td>
+                
+              </tr>
+              
+               <tr>
+               <th>이름</th>
+				 <td>
+                    <input type="text" id="memberName" name="memberName" value="${ memberName }">
+                 </td>
+              </tr>
+              
+               <tr>
+               <th>주소</th>
+				 <td>
+                    <input type="text" id="address" name="address" value="${ address }">
+                 </td>
+              </tr>
+              
+               <tr>
+               <th>생년월일</th>
+				 <td>
+                    <input type="date" id="birth" name="birth" value="${ birth }">
+
+                 </td>
+			       
+              </tr>
+              
+               <tr>
+               <th>전화번호</th>
+				 <td>
+                    <input type="tel" id="phone" name="phone" value="${ phone }">
+
+                  </td>
+                  
+              </tr>
+              </table>
+              <div class="log-btn">
+              <input id="register" type="submit" value="수정" />
+              <input id="cancel" type="button" value="취소" />
+              </div>
+              
+              </div>
+            </form>
             
         </div>
-    </section>
+        </div>
 
   </main><!-- End #main -->
 

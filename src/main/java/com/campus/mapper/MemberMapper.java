@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
 
+@Mapper
 public interface MemberMapper {
 	
 	@Insert("INSERT INTO member (memberid, passwd, email, membername, address, birth, phone) " +
@@ -24,4 +26,10 @@ public interface MemberMapper {
 	@Select("select * from member WHERE memberid like '%${search}%'")
 	List<MemberDto> selectMemberBySearch(String search);
 
+	@Update("UPDATE member" + 
+			"SET passwd = #{ passwd } , email = #{ email } , membername = #{ memberName } , address = #{address} , birth = #{birth} , phone = #{ phone } " +
+			"WHERE memberid = #{ memberId } " )
+	void updateMember(MemberDto member);
+				
+	
 }

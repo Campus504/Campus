@@ -12,4 +12,8 @@ public interface AccountService {
 	
 	List<MemberDto> searchMember(String search);
 
+	void updateMember(MemberDto member);
+
+	MemberDto selectMemberInfo(String memberId);
+
 }

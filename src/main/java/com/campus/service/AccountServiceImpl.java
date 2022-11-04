@@ -2,6 +2,8 @@ package com.campus.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.campus.common.Util;
 import com.campus.dto.MemberDto;
 import com.campus.mapper.MemberMapper;
@@ -40,5 +42,17 @@ public class AccountServiceImpl implements AccountService {
 		
 		return members;
 	}
+	
+	@Override
+	public void updateMember(MemberDto member) {
+		memberMapper.updateMember(member);
+	}
+
+	@Override
+	public MemberDto selectMemberInfo(String memberId) {
+		
+		return null;
+	}
+	
 	
 }

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
+import com.campus.mapper.MemberMapper;
 import com.campus.service.AccountService;
 
 @Controller
@@ -96,6 +97,18 @@ public class AccountController {
 		
 		return "member-search";
 		
+	}
+	
+	@GetMapping(path = {"/my-page.action"})
+	public String myPage(String memberId) {
+		MemberDto member = accountService.selectMemberInfo(memberId);
+		return "my-page";
+	}
+	@RequestMapping("my-page.action")
+	public String memberUpdate(@ModelAttribute MemberDto member) {
+		
+		accountService.updateMember(member);
+		return "/redirect:/main";
 	}
 
 }
