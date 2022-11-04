@@ -137,7 +137,7 @@
 				<ol>
 					<li><a href="main">홈</a></li>
 				</ol>
-				<h2>커뮤니티 - 태그 : ${ tag }</h2>
+				<h2>자유게시판 - 태그 : ${ tag }</h2>
 
 			</div>
 		</section>

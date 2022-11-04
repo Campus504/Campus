@@ -160,18 +160,24 @@ public class FAQController {
 		return "community/notice-search";
 	}
 	
-	
 	// 겟 : 자주묻는 질문 리스트 보기
 	@GetMapping(path= {"faq-list.action"})
-	public String showFaqList() {
+	public String showFaqList(Model model) {
 		
 		List<BoardDto> boards = faqService.findAllFaq();
+		model.addAttribute("boards", boards);
 		
 		return "community/faq-list";
 	}
 	
-	
-	
+	// 겟 : 자주묻는 질문 글 삭제
+	@GetMapping(path= {"faq-delete.action"})
+	public String deleteFaq(int boardNo) {
+		System.out.println(boardNo);
+		faqService.deleteFaq(boardNo);
+		
+		return "redirect:faq-list.action";
+	}
 	
 	
 	
