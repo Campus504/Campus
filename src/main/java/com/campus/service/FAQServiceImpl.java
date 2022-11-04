@@ -89,4 +89,9 @@ public class FAQServiceImpl implements FAQService{
 		return boards;
 	}
 
+	@Override
+	public void deleteFaq(int boardNo) {
+		faqMapper.deleteFaq(boardNo);
+	}
+
 }

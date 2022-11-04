@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.campus.common.Util;
+import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
 import com.campus.mapper.MemberMapper;
 
@@ -37,13 +38,14 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public List<MemberDto> searchMember(String search) {
-		System.out.println("s:"+search);
+		
 		List<MemberDto> members = memberMapper.selectMemberBySearch(search);
 		
 		return members;
 	}
 	
 	@Override
+<<<<<<< HEAD
 	public void updateMember(MemberDto member) {
 		memberMapper.updateMember(member);
 	}
@@ -55,4 +57,21 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	
+=======
+	public int findMemberCount() {
+
+		int memberCount = memberMapper.selectMemberCount();
+		
+		return memberCount;
+	}
+	
+	@Override
+	public List<MemberDto> findMemberByPage(int pageNo, int pageSize) {
+		
+		int from = (pageNo-1)*pageSize;
+		int count = pageSize;
+		List<MemberDto> boards = memberMapper.selectMemberByPage(from, count);
+		return boards;
+	}
+>>>>>>> c0fb9f071bff89261d33373c968ced1bca1e4e17
 }

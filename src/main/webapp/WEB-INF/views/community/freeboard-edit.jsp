@@ -133,7 +133,7 @@
 
 				<ol>
 					<li><a href="main">홈</a></li>
-					<li><a href="freeboard.action">커뮤니티</a></li>
+					<li><a href="freeboard.action">자유게시판</a></li>
 				</ol>
 				<h2>게시글 수정하기</h2>
 

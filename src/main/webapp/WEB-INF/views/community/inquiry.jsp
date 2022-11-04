@@ -207,7 +207,7 @@
 					<div class="col-lg-4">
 
 						<div class="sidebar">
-							<h3 class="sidebar-title">검색</h3>
+							<h3 class="sidebar-title">검섹</h3>
 							<div class="sidebar-item search-form">
 								<form action="inquiry-search.action" method="post">
 									<input type="text" class="form-control" name="search">
@@ -221,7 +221,7 @@
 							<h3 class="sidebar-title">고객센터</h3>
 							<div class="sidebar-item categories">
 								<ul>
-									<li><a href="faq.action">자주 묻는 질문</a></li>
+									<li><a href="faq-list.action">자주 묻는 질문</a></li>
 									<li><a href="inquiry.action">1:1 문의</a></li>
 								</ul>
 							</div>

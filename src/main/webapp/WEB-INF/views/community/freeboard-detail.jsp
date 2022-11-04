@@ -108,7 +108,7 @@
 
         <ol>
           <li><a href="main">홈</a></li>
-          <li><a href="freeboard.action">커뮤니티</a></li>
+          <li><a href="freeboard.action">자유게시판</a></li>
         </ol>
         <h2>자유게시판</h2>
 

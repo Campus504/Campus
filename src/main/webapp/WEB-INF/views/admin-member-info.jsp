@@ -78,7 +78,7 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">회원정보</li>
 								</ol>
 							</nav>
@@ -133,7 +133,7 @@
 									</div>
 									<div class="col-sm-12 col-md-6">
 										<div class="dataTables_filter">
-											<form action="member-search.action" method="post">
+											<form action="admin-member-search.action" method="post">
 												<label>Search: <input type="search" name="search"
 													class="form-control form-control-sm" placeholder="Enter"
 													aria-controls="DataTables_Table_3">
@@ -172,37 +172,40 @@
 													</tr>
 												</thead>
 												<tbody>
+													<c:forEach var="member" items="${ members }" >
+														<tr role="row" class="odd">
 
-													<tr role="row" class="odd">
-														<td class=" dt-body-center" tabindex="0">
-															<div class="dt-checkbox">
-																<input type="checkbox" name="id[]" value=""> <span
-																	class="dt-checkbox-label"></span>
-															</div>
-														</td>
+															<td class=" dt-body-center" tabindex="0">
+																<div class="dt-checkbox">
+																	<input type="checkbox" name="member" value="members">
+																	<span class="dt-checkbox-label"></span>
+																</div>
+															</td>
 
-														<td>${ member.memberId }</td>
-														<td>${ member.admin }</td>
-														<td><div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault1">
-																<label class="form-check-label" for="flexRadioDefault1">
-																	Super Admin </label>
-															</div>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault2" checked>
-																<label class="form-check-label" for="flexRadioDefault2">
-																	Admin </label>
-															</div>
+															<td>${ member.memberId }</td>
+															<td>${ member.admin }</td>
+															<td><div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault1">
+																	<label class="form-check-label" for="flexRadioDefault1">
+																		Super Admin </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault2" checked>
+																	<label class="form-check-label" for="flexRadioDefault2">
+																		Admin </label>
+																</div>
 
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="flexRadioDefault" id="flexRadioDefault2" checked>
-																<label class="form-check-label" for="flexRadioDefault2">
-																	User </label>
-															</div></td>
-													</tr>
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="flexRadioDefault" id="flexRadioDefault2" checked>
+																	<label class="form-check-label" for="flexRadioDefault2">
+																		Member </label>
+																</div>
+															</td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 										</form>

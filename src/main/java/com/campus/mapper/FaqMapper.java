@@ -47,4 +47,7 @@ public interface FaqMapper {
 	@Select("SELECT * FROM board WHERE category = 'faq'")
 	List<BoardDto> selectAllFaq();
 
+	@Delete("DELETE FROM board WHERE boardNo = ${boardNo}")
+	void deleteFaq(int boardNo);
+
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -16,9 +17,7 @@
 <!-- 아코디언용 부트스트랩 css -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
+	rel="stylesheet">
 
 <!-- Favicons -->
 <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -128,6 +127,46 @@
 .collapse {
 	visibility: visible;
 }
+
+.accordion-header {
+	margin-top: 0;
+}
+
+.accordion #accordionExample { -
+	-bs-accordion-color: #212529; -
+	-bs-accordion-bg: #fff; -
+	-bs-accordion-transition: color 0.15s ease-in-out, background-color
+		0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s
+		ease-in-out, border-radius 0.15s ease; -
+	-bs-accordion-border-color: var(- -bs-border-color); -
+	-bs-accordion-border-width: 1px; -
+	-bs-accordion-border-radius: 0.375rem; -
+	-bs-accordion-inner-border-radius: calc(0.375rem - 1px); -
+	-bs-accordion-btn-padding-x: 1.25rem; -
+	-bs-accordion-btn-padding-y: 1rem; -
+	-bs-accordion-btn-color: #212529; -
+	-bs-accordion-btn-bg: var(- -bs-accordion-bg); -
+	-bs-accordion-btn-icon: url(data : image/ svg + xml, % 3csvg xmlns =
+		'http://www.w3.org/2000/svg' viewBox = '0 0 16 16' fill = '%23212529'
+		% 3e % 3cpath fill-rule = 'evenodd' d =
+		'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+		/ % 3e % 3c/ svg % 3e); -
+	-bs-accordion-btn-icon-width: 1.25rem; -
+	-bs-accordion-btn-icon-transform: rotate(-180deg); -
+	-bs-accordion-btn-icon-transition: transform 0.2s ease-in-out; -
+	-bs-accordion-btn-active-icon: url(data : image/ svg + xml, % 3csvg xmlns =
+		'http://www.w3.org/2000/svg' viewBox = '0 0 16 16' fill = '%230c63e4'
+		% 3e % 3cpath fill-rule = 'evenodd' d =
+		'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+		/ % 3e % 3c/ svg % 3e); -
+	-bs-accordion-btn-focus-border-color: #86b7fe; -
+	-bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem
+		rgba(13, 110, 253, 0.25); -
+	-bs-accordion-body-padding-x: 1.25rem; -
+	-bs-accordion-body-padding-y: 1rem; -
+	-bs-accordion-active-color: #0c63e4; -
+	-bs-accordion-active-bg: #e7f1ff;
+}
 </style>
 
 </head>
@@ -155,16 +194,15 @@
 
 		<!-- ======= Blog Section ======= -->
 		<section id="blog" class="blog">
-			<div class="container" data-aos="fade-up">
 
+			<div class="container" data-aos="fade-up">
 				<div class="row">
 
 					<div class="col-lg-8 entries">
-
-						<div class="accordion" id="accordionExample">
-							<c:forEach var="board" items="${boards}">
+						<c:forEach var="board" items="${boards}">
+							<div class="accordion" id="accordionExample">
 								<div class="accordion-item">
-									<h2 class="accordion-header">
+									<h2 class="accordion-header" id="headingOne">
 										<button class="accordion-button" type="button"
 											data-bs-toggle="collapse" data-bs-target="#collapseOne"
 											aria-expanded="true" aria-controls="collapseOne">
@@ -173,13 +211,25 @@
 									<div id="collapseOne" class="accordion-collapse collapse show"
 										aria-labelledby="headingOne"
 										data-bs-parent="#accordionExample">
-										<div class="accordion-body">${board.content}</div>
+										<div class="accordion-body">
+											<c:set var="enter" value="
+" />
+											${ fn:replace(board.content, enter, "<br>") }
+
+											<c:if
+												test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
+												<a id="faq-delete" style="float:right">[삭제]</a>
+												<a href="faq-edit.action?boardNo=${board.boardNo}" style="float:right">[수정]</a>
+											</c:if>
+
+
+										</div>
 									</div>
 								</div>
-
-							</c:forEach>
-						</div>
+							</div>
+						</c:forEach>
 					</div>
+
 					<!-- End blog entries list -->
 
 					<div class="col-lg-4">
@@ -189,13 +239,11 @@
 							<h3 class="sidebar-title">카테고리</h3>
 							<div class="sidebar-item categories">
 								<ul>
-									<li><a href="inquiry.action">1:1 문의</a></li>
 									<li><a href="faq-list.action">자주묻는 질문</a></li>
+									<li><a href="inquiry.action">1:1 문의</a></li>
 								</ul>
 							</div>
 							<!-- End sidebar categories-->
-
-
 
 						</div>
 						<!-- End sidebar -->
@@ -239,17 +287,11 @@
 
 	<!-- 아코디언용 부트스르랩 js -->
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-		crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-		crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-		integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-		crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
 
 	<!-- Vendor JS Files -->
 	<script
@@ -275,7 +317,7 @@
 	<script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
 	<script data-pace-options='{ "ajax": false }'
 		src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
-	<script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
+	<!-- 	<script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script> -->
 	<script src="/campus/resources/sidebar/js/vendor/classie.js"></script>
 	<script src="/campus/resources/sidebar/js/vendor/isotope.pkgd.min.js"></script>
 	<script
@@ -296,6 +338,22 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
+
+	<script type="text/javascript">
+$(function(){
+	
+	$('#faq-delete').on('click',function(event){
+		
+		const ok = confirm("글을 삭제할까요?");
+		if(!ok) return;
+		location.href = 'faq-delete.action?boardNo=${board.boardNo}';
+		
+	});
+	
+	
+	
+});
+</script>
 
 </body>
 

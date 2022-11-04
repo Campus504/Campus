@@ -28,6 +28,7 @@ import com.campus.service.AccountService;
 /* @RequestMapping(path = { "/account" }) */
 public class AccountController {
 	
+	private final int PAGE_SIZE = 10; //한 페이지에 표시되는 데이터 개수
 	
 	@Autowired
 	@Qualifier("accountService")
@@ -86,16 +87,30 @@ public class AccountController {
 		return new RedirectView("login.action");
 	}
 	
-	@PostMapping(path = {"member-search.action"})
+	@GetMapping(path= {"admin-member-info.action"})
+	public String showMemberList(@RequestParam(defaultValue = "1") int pageNo , Model model) {
+		List<MemberDto> members = accountService.findMemberByPage(pageNo, PAGE_SIZE);
+		int memberCount = accountService.findMemberCount();
+		int pageCount = 
+				(memberCount / PAGE_SIZE) + ((memberCount % PAGE_SIZE) > 0 ? 1 : 0);
+		model.addAttribute("members", members);
+		model.addAttribute("pageNo",pageNo);
+		model.addAttribute("pageCount",pageCount);
+		System.out.println(memberCount);
+		
+		return "admin-member-info";
+	}
+	
+	@PostMapping(path = {"admin-member-search.action"})
 	public String showMemberSearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
-		System.out.println("c:"+search);
+		
 		List<MemberDto> members = accountService.searchMember(search); 
-		System.out.println(members);
+		
 		model.addAttribute("members", members);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("search", search);
 		
-		return "member-search";
+		return "admin-member-search";
 		
 	}
 	
