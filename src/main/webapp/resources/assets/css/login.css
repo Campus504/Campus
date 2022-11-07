@@ -54,6 +54,16 @@ body{
   right:20%;
   top:12%;
 }
+.login-content3{
+	width:1200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  position:absolute;
+  left:40%;
+  top:12%;
+}
 
 .img img{
   width: 650px;

@@ -25,20 +25,32 @@ public interface MemberMapper {
 	
 	@Select("select * from member WHERE memberid like '%${search}%'")
 	List<MemberDto> selectMemberBySearch(String search);
-
-
-	@Update("UPDATE member" + 
-			"SET passwd = #{ passwd } , email = #{ email } , membername = #{ memberName } , address = #{address} , birth = #{birth} , phone = #{ phone } " +
-			"WHERE memberid = #{ memberId } " )
-	void updateMember(MemberDto member);
-				
-	
-
 	
 	@Select("SELECT count(*) FROM member")
 	int selectMemberCount();
 	
 	@Select("SELECT memberid, email, membername, address, birth, phone, active, joindate, admin FROM member ORDER BY joindate DESC LIMIT ${from}, ${count}")
 	List<MemberDto> selectMemberByPage(@Param("from") int from, @Param("count") int count);
+	
+	// 아이디 중복확인
+	@Select("SELECT memberId " +
+			"FROM member " +
+			"WHERE memberId = #{ memberId } ")
+	MemberDto memberIdOverlap(MemberDto member, String memberId);
+
+	// 회원정보수정
+	@Select("SELECT memberid, passwd, email, membername, address, birth, phone, active, joindate, admin " +
+			"FROM member " +
+			"WHERE memberid = #{ memberId } AND active = TRUE ")
+	MemberDto selectMemberById(String memberId);
+	
+	@Update("UPDATE member" + 
+			"SET passwd = #{ passwd } , email = #{ email } , membername = #{ memberName } , address = #{address} , birth = #{birth} , phone = #{ phone } " +
+			"WHERE memberid = #{ memberId } ")
+	void updateMember(MemberDto member);
+
+	MemberDto memberIdOverlap(String memberId);
+
+				
 
 }

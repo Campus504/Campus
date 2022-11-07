@@ -22,7 +22,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 		MemberDto member =  (MemberDto)session.getAttribute("loginuser");
 		
 		if(member == null) { //로그인 하지 않은 사용자 게시판 이용 ㄴㄴ
-		if( uri.contains("freeboard-write") || uri.contains("freeboard-delete") || uri.contains("freeboard-edit")|| uri.contains("tip-write")|| uri.contains("tip-delete")|| uri.contains("tip-edit") ){//로그인한 사용자만 볼 수 있는 요청
+		if( uri.contains("freeboard-write") || uri.contains("freeboard-delete") || uri.contains("freeboard-edit")|| uri.contains("tip-write")|| uri.contains("tip-delete")|| uri.contains("tip-edit") || uri.contains("my-page")  ){//로그인한 사용자만 볼 수 있는 요청
 			resp.sendRedirect("login.action");
 			return false; 
 			}

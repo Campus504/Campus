@@ -120,16 +120,18 @@
       <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
     </div>
     <div class="login-content login-content2">
-       <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
+       <form:form id="registerform" action="register.action" method="post" name="register-form" modelAttribute="memberDto">
   
         <h2 class="title">회원가입</h2>
         <table>
         
               <div class="input-div one">
                  <div class="div">
-                    <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디">
+                    <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디" style="width:270px;"><br>
+               
                     <br>
                	</div>
+               	<input type="button" class="id-btn" onclick="memberIdOverlap()" value="중복확인" style="position: absolute; right: 0; top: 5px;">
                	<form:errors path="memberId" class="error" />
               </div>
                  
@@ -143,7 +145,8 @@
               
                <div class="input-div pass">
 				 <div class="div">
-                    <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인">
+                    <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인" onkeyup="passConfirm()">
+                    <span id ="confirmMsg"></span>
                     <br>
                  </div>
                  <form:errors path="passwd" class="error" />
@@ -243,6 +246,110 @@
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
 
+<script type="text/javascript">
+/* 입력없이 가입버튼 클릭시 */
+  	$(document).ready(function(){
+		// 취소
+		$("#cancel").on("click", function(){
+			
+			location.href = "login.action";
+					    
+		})
+	
+		$("#register").on("click", function(){
+			if($("#memberId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#memberId").focus();
+				return false;
+			}
+			if($("#passwd").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#passwd").focus();
+				return false;
+			}
+			if($("#email").val()==""){
+				alert("이메일을 입력해주세요.");
+				$("#email").focus();
+				return false;
+			}
+			if($("#memberName").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#memberName").focus();
+				return false;
+			}
+			if($("#address").val()==""){
+				alert("주소를 입력해주세요.");
+				$("#address").focus();
+				return false;
+			}
+			if($("#birth").val()==""){
+				alert("생년월일을 입력해주세요.");
+				$("#birth").focus();
+				return false;
+			}
+			if($("#phone").val()==""){
+				alert("연락처를 입력해주세요.");
+				$("#phone").focus();
+				return false;
+			}
+		});
+		
+			
+		
+	});
+
+/* 아이디 중복확인 */
+function memberIdOverlap(){
+	console.log("memberIdOverlap 호출");
+	console.log("아이디 입력 값 : " + registerform.memberId.value);
+	const formData = $('#registerform').serialize();
+$.ajax({
+	method :"post",/* 전송 방식 */
+	url :"memberIdOverlap", /* 컨트롤러 사용할 때. 내가 보낼 데이터의 주소. */
+	data : formData,/* {"memberId" : registerform.memberId.value}, */
+	/* JSON형식 안에 JSON 형식으로 표현한 데이터. 
+    "파라미터 이름" : 폼태그에 적은 NAME 값.ID입력창의 NAME값.value 여러 개도 가능
+	data :{	"id" : joinForm.id.value, 
+	"id1" : joinForm.password.value}, 이렇게도 사용 가능.					
+	*/
+	//dataType : "text",	/* text, xml, html, script, json, jsonp 가능*/
+    //정상적인 통신을 했다면 function은 백엔드 단에서 데이터를 처리.
+	success : function(data,status,xhr){	
+		if(data == "1"){
+			alert("이 아이디는 사용 가능합니다.");
+		}else{	//ajax가 제대로 안됐을 때 .
+			alert("이 아이디는 사용 불가능합니다.");
+		}
+	},
+	error : function(data,status,xhr){
+		alert("아이디 중복 확인 실행 실패");
+	}
+});
+
+}
+	/* 자바 스크립트 함수 선언(비밀번호 확인) */
+
+	function passConfirm() {
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+		var password = document.getElementById('passwd');					//비밀번호 
+		var passwordConfirm = document.getElementById('confirm');	//비밀번호 확인 값
+		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호 불일치";
+		}
+	}
+	
+</script>
+	
 </body>
 
 
