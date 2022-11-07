@@ -21,6 +21,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+			<!-- apache commons fileupload component와 spring framework를 연결해 주는 클래스 -->
+	<beans:bean id="multipartResolver"
+				class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
+	
 
 		<interceptors>
 		<interceptor>

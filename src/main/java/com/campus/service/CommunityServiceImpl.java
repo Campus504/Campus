@@ -145,6 +145,10 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 		
+	@Override
+	public void writeTip(BoardDto board) {
+		communityMapper.insertTip(board);
+	}
 
 
 	

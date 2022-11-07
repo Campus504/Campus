@@ -14,10 +14,10 @@
 <title>CAMPUS - 자주묻는 질문</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
-
 <!-- 아코디언용 부트스트랩 css -->
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Favicons -->
 <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -124,42 +124,49 @@
 	background: rgba(26, 26, 26, 0.9);
 }
 
-.accordion table {
-  border-collapse: collapse;
-  text-align: left;
-  line-height: 1.5;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  margin: 20px 10px;
-  width: 100%;
-}
-.accordion table thead th {
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  color: #18d26e;
-  background: #fff;
-  margin: 20px 10px;
+.collapse {
+	visibility: visible;
 }
 
-.accordion table tbody th {
-  width: 100%;
-  padding: 10px;
-}
-.accordion table td {
-  width: 100%;
-  padding: 10px;
-  vertical-align: top;
-}
-.accordion table i {
-  cursor: pointer;
-}
-a{
-color:#18d26e;
+.accordion-header {
+	margin-top: 0;
 }
 
-
-
+.accordion #accordionExample { -
+	-bs-accordion-color: #212529; -
+	-bs-accordion-bg: #fff; -
+	-bs-accordion-transition: color 0.15s ease-in-out, background-color
+		0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s
+		ease-in-out, border-radius 0.15s ease; -
+	-bs-accordion-border-color: var(- -bs-border-color); -
+	-bs-accordion-border-width: 1px; -
+	-bs-accordion-border-radius: 0.375rem; -
+	-bs-accordion-inner-border-radius: calc(0.375rem - 1px); -
+	-bs-accordion-btn-padding-x: 1.25rem; -
+	-bs-accordion-btn-padding-y: 1rem; -
+	-bs-accordion-btn-color: #212529; -
+	-bs-accordion-btn-bg: var(- -bs-accordion-bg); -
+	-bs-accordion-btn-icon: url(data : image/ svg + xml, % 3csvg xmlns =
+		'http://www.w3.org/2000/svg' viewBox = '0 0 16 16' fill = '%23212529'
+		% 3e % 3cpath fill-rule = 'evenodd' d =
+		'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+		/ % 3e % 3c/ svg % 3e); -
+	-bs-accordion-btn-icon-width: 1.25rem; -
+	-bs-accordion-btn-icon-transform: rotate(-180deg); -
+	-bs-accordion-btn-icon-transition: transform 0.2s ease-in-out; -
+	-bs-accordion-btn-active-icon: url(data : image/ svg + xml, % 3csvg xmlns =
+		'http://www.w3.org/2000/svg' viewBox = '0 0 16 16' fill = '%230c63e4'
+		% 3e % 3cpath fill-rule = 'evenodd' d =
+		'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+		/ % 3e % 3c/ svg % 3e); -
+	-bs-accordion-btn-focus-border-color: #86b7fe; -
+	-bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem
+		rgba(13, 110, 253, 0.25); -
+	-bs-accordion-body-padding-x: 1.25rem; -
+	-bs-accordion-body-padding-y: 1rem; -
+	-bs-accordion-active-color: #0c63e4; -
+	-bs-accordion-active-bg: #e7f1ff;
+}
 </style>
 
 </head>
@@ -177,7 +184,7 @@ color:#18d26e;
 			<div class="container">
 
 				<ol>
-					<li><a href="main" >홈</a></li>
+					<li><a href="main">홈</a></li>
 				</ol>
 				<h2>자주묻는 질문</h2>
 
@@ -192,34 +199,35 @@ color:#18d26e;
 				<div class="row">
 
 					<div class="col-lg-8 entries">
-					<c:forEach var="board" items="${boards}">
-					<c:set var="i" value="${ i+1 }" />
-					
-							<div class="accordion">
-								<table>
-									<thead>
-										<tr>
-											<th style="width:90%">${ board.title }</th>
-											<th style="width:10%">
-											<i id="toggle-btn${i}" style="float:right;" class="bi bi-caret-down-fill"></i>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										<c:set var="enter" value="
+						<c:forEach var="board" items="${boards}">
+							<div class="accordion" id="accordionExample">
+								<div class="accordion-item">
+									<h2 class="accordion-header" id="headingOne">
+										<button class="accordion-button" type="button"
+											data-bs-toggle="collapse" data-bs-target="#collapseOne"
+											aria-expanded="true" aria-controls="collapseOne">
+											${board.title}</button>
+									</h2>
+									<div id="collapseOne" class="accordion-collapse collapse show"
+										aria-labelledby="headingOne"
+										data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+											<c:set var="enter" value="
 " />
-											<td id="toggle-content${i}" style="display:none">${ fn:replace(board.content, enter, "<br>") }
-											<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
-												<a id="faq-delete" class="bi bi-trash" style="float:right"></a>
-												<a href="faq-edit.action?boardNo=${board.boardNo}" class="bi bi-pencil-square"  style="float:right"></a>
+											${ fn:replace(board.content, enter, "<br>") }
+
+											<c:if
+												test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
+												<a id="faq-delete" style="float:right">[삭제]</a>
+												<a href="faq-edit.action?boardNo=${board.boardNo}" style="float:right">[수정]</a>
 											</c:if>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+
+
+										</div>
+									</div>
+								</div>
 							</div>
 						</c:forEach>
-					
 					</div>
 
 					<!-- End blog entries list -->
@@ -278,8 +286,12 @@ color:#18d26e;
 	<!-- <div id="preloader"></div> -->
 
 	<!-- 아코디언용 부트스르랩 js -->
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
 
 	<!-- Vendor JS Files -->
 	<script
@@ -328,53 +340,20 @@ color:#18d26e;
 	<!-- /.sidebar -->
 
 	<script type="text/javascript">
-		$(function() {
-
-			$('#faq-delete').on('click', function(event) {
-
-				const ok = confirm("글을 삭제할까요?");
-				if (!ok)
-					return;
-				location.href = 'faq-delete.action?boardNo=${board.boardNo}';
-
-			});
-			
-			
-/* 			$('[id*=toggle-btn]').on('click',function(event){
-				
-				for(var i=1;i<=${boards.size()};i++){
-					
-					if($('#toggle-btn'+i).hasClass('bi bi-caret-down-fill')) {
-						$('#toggle-btn'+i).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
-						$('#toggle-content'+i).removeAttr("style").show();
-					} else if($('#toggle-btn'+i).hasClass('bi bi-caret-up-fill')){
-						$('#toggle-btn'+i).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
-						$('#toggle-content'+i).removeAttr("style").hide();
-					}
-				}
-				
-			});
-			 */
-			
-			
-			$('[id*=toggle-btn]').on('click',function(event){
-				
-						if($(this).hasClass('bi bi-caret-down-fill')) {
-						$(this).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
-						let last_char = this.id.slice(-1);;
-						$('#toggle-content'+last_char).removeAttr("style").show();
-					} else if($(this).hasClass('bi bi-caret-up-fill')){
-						$($(this)).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
-						let last_char = this.id.slice(-1);;
-						$('#toggle-content'+last_char).removeAttr("style").hide();
-					}
-				
-				
-			});
-			
-			
-		});
-	</script>
+$(function(){
+	
+	$('#faq-delete').on('click',function(event){
+		
+		const ok = confirm("글을 삭제할까요?");
+		if(!ok) return;
+		location.href = 'faq-delete.action?boardNo=${board.boardNo}';
+		
+	});
+	
+	
+	
+});
+</script>
 
 </body>
 

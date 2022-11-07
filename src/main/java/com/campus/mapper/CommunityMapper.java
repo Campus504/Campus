@@ -72,6 +72,8 @@ public interface CommunityMapper {
 	@Select("SELECT count(*) FROM board WHERE category = 'tip'")
 	int selectTipCount();
 
+	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title},#{memberId}, #{content}, #{category})")
+	void insertTip(BoardDto board);
 
 
 }

@@ -1,7 +1,9 @@
 package com.campus.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
@@ -202,6 +207,73 @@ public class CommunityController {
 		model.addAttribute("pageCount",pageCount);
 		return "community/tip-list";
 	}
+	
+	//포스트 : summer note 이미지 파일 저장하기
+	@PostMapping(path= {"upload-image-file"}) @ResponseBody
+	public String uploadImage(MultipartHttpServletRequest req) {
+		
+		MultipartFile file = req.getFile("file");
+		String fileName = file.getOriginalFilename();
+		String unique_file_name = UUID.randomUUID().toString();
+		unique_file_name += fileName.substring(fileName.lastIndexOf("."));
+		String path = 
+				req.getServletContext().getRealPath("/resources/image-files/" + unique_file_name);
+		try {
+			file.transferTo(new File(path)); // 저장
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}		 
+		
+		return "/resources/image-files/" + unique_file_name; // 서버에 저장된 파일 경로
+	}
+	
+	// 겟 : 캠핑 팁 글 쓰기 창 열기
+	@GetMapping(path= {"tip-write.action"})
+	public String showTipWriteForm() {
+		
+		return "community/tip-write";
+	}
+
+	// 포스트 : 캠핑 팁 글 쓰고 DB에 저장하기 + 사진 저장
+	@PostMapping(path= {"tip-write.action"})
+	public String WriteTip(BoardDto board, Model model) {
+		
+		communityService.writeTip(board);
+		
+		model.addAttribute("board", board);
+		
+		return "community/tip-list";//나중에 글 상세보기로 매핑 변경
+	}
+	
+	//겟 : 캠핑팁 상세페이지 보기 (+조회수 증가)
+	@GetMapping(path= {"tip-detail.action"})
+	public String showTipDetail(@RequestParam(defaultValue = "-1") int boardNo, @RequestParam(defaultValue = "-1") int pageNo, Model model, HttpSession session) {
+		
+		if(boardNo==-1||pageNo==-1) {
+			return "redirect:tip-list.action";
+		}
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
+		if( readList == null ) {
+			readList = new ArrayList<>();
+			session.setAttribute("read-list", readList);
+		}
+		
+		if ( !readList.contains(boardNo) ) {
+		communityService.increaseBoardReadCount(boardNo);
+		readList.add(boardNo);
+		}
+		
+		BoardDto board = communityService.findBoardByBoardNo(boardNo);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("pageNo", pageNo);
+		
+		return "community/tip-detail";
+	}
+	
+	
 	
 
 }

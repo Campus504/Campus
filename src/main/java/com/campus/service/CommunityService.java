@@ -42,6 +42,8 @@ public interface CommunityService {
 	List<BoardDto> findTipByPage(int pageNo, int pAGE_SIZE);
 
 	int findTipCount();
+	
+	void writeTip(BoardDto board);
 
 
 }
