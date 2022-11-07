@@ -35,15 +35,15 @@ public class AccountServiceImpl implements AccountService {
 		return memberDto;
 
 	}
-	
+
 	@Override
 	public List<MemberDto> searchMember(String search) {
-		
+
 		List<MemberDto> members = memberMapper.selectMemberBySearch(search);
-		
+
 		return members;
 	}
-	
+
 	@Override
 
 	public void updateMember(MemberDto member) {
@@ -52,26 +52,33 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public MemberDto selectMemberInfo(String memberId) {
-		
+
 		return null;
 	}
-	
-	
 
 	public int findMemberCount() {
 
 		int memberCount = memberMapper.selectMemberCount();
-		
+
 		return memberCount;
 	}
-	
+
 	@Override
 	public List<MemberDto> findMemberByPage(int pageNo, int pageSize) {
-		
-		int from = (pageNo-1)*pageSize;
+
+		int from = (pageNo - 1) * pageSize;
 		int count = pageSize;
 		List<MemberDto> boards = memberMapper.selectMemberByPage(from, count);
 		return boards;
 	}
+
+//	@Override
+//	public List<MemberDto> findMemberByPage(String searchOption, String search, int pageNo, int pageSize) {
+//		int from = (pageNo - 1) * pageSize;
+//		int count = pageSize;
+//		List<MemberDto> members = memberMapper.selectMemberByPage(searchOption, search, from, count);
+//
+//		return members;
+//	}
 
 }
