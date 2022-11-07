@@ -122,6 +122,7 @@
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
+
 </style>
 
 </head>
@@ -142,7 +143,7 @@
 					<li><a href="main">홈</a></li>
 					<li><a href="tip-list.action">캠핑 팁</a></li>
 				</ol>
-				<h2>캠핑 팁 쓰기</h2>
+				<h2>캠핑 팁 글 쓰기</h2>
 
 			</div>
 		</section>
@@ -279,37 +280,7 @@
 				location.href = "/campus/tip-list.action";
 			});
 
-			/* 			  $('#summernote').summernote({
-			 dialogsInBody: true,
-			 placeholder: ' ',
-			 tabsize: 2,
-			 height: 400,
-			 callbacks: {
-			 onImageUpload: function(files) {
-			 // 서버로 이미지 전송
-			 upload_image_file(files[0], this);
-			 }
-			 }  
 			
-			 });
-			
-			 function upload_image_file(file, editor) {
-			 formData = new FormData();
-			 formData.append("file", file);
-			 $.ajax({
-			 data : formData,
-			 type : "POST",
-			 url : "/campus/upload-image-file",
-			 processData : false,
-			 contentType : false,
-			 success : function(data, status, xhr) {
-			 $(editor).summernote('insertImage', data); // data : 서버에 저장된 파일의 웹경로
-			 },
-			 error: function (xhr, status, err) {
-			 alert(err);
-			 }
-			 });
-			 } */
 
 			$('#summernote').summernote({
 				dialogsInBody: true,

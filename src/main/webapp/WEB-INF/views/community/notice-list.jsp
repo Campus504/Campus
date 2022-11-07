@@ -90,6 +90,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+
 	</style>
   
 </head>
@@ -147,7 +148,7 @@
               </c:forEach>
 
             	<!-- paging -->
-					<jsp:include page="/WEB-INF/views/include/community-paging.jsp" /> 
+					<jsp:include page="/WEB-INF/views/include/notice-paging.jsp" /> 
 				<!-- end of paging -->
           </div><!-- End blog entries list -->
 

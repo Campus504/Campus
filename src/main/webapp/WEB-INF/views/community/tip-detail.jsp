@@ -90,6 +90,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	  }
+
 	</style>
   
 </head>
@@ -247,7 +248,7 @@
 
              <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="freeboard-search.action" method="post">
+                <form action="tip-search.action" method="post">
                  <select name="searchOption">
                  <option value="title">제목</option>
                  <option value="content">내용</option>
@@ -269,16 +270,7 @@
               <!-- End sidebar categories-->
 
              
-              <h3 class="sidebar-title">태그</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                	<li><a href="freeboard-tag.action?tag=질문">질문</a></li>
-                    <li><a href="freeboard-tag.action?tag=후기">후기</a></li>
-                    <li><a href="freeboard-tag.action?tag=자랑">자랑</a></li>
-                    <li><a href="freeboard-tag.action?tag=일상">일상</a></li>
-                    <li><a href="freeboard-tag.action?tag=기타">기타</a></li>
-                </ul>
-              </div><!-- End sidebar tags-->
+        
 
             </div><!-- End sidebar -->
             

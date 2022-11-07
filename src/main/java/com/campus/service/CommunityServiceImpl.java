@@ -132,8 +132,8 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public List<BoardDto> findTipByPage(int pageNo, int PAGE_SIZE) {
-		int from = (pageNo-1)*PAGE_SIZE;
-		int count = PAGE_SIZE;
+		int from = 0;
+		int count = PAGE_SIZE*pageNo;
 		List<BoardDto> boards = communityMapper.selectTipByPage(from, count);
 		return boards;
 	}

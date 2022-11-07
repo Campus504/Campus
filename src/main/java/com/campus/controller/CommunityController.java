@@ -208,6 +208,18 @@ public class CommunityController {
 		return "community/tip-list";
 	}
 	
+	@GetMapping(path= {"tip-content-list.action"})
+	public String showTipContentlist(@RequestParam(defaultValue = "1") int pageNo , Model model) {
+		List<BoardDto> boards = communityService.findTipByPage(pageNo, PAGE_SIZE);
+		int boardCount = communityService.findTipCount();
+		int pageCount = 
+				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
+		model.addAttribute("boards", boards);
+		model.addAttribute("pageNo",pageNo);
+		model.addAttribute("pageCount",pageCount);
+		return "community/tip-content-list";
+	}
+	
 	//포스트 : summer note 이미지 파일 저장하기
 	@PostMapping(path= {"upload-image-file"}) @ResponseBody
 	public String uploadImage(MultipartHttpServletRequest req) {
@@ -242,7 +254,7 @@ public class CommunityController {
 		
 		model.addAttribute("board", board);
 		
-		return "community/tip-list";//나중에 글 상세보기로 매핑 변경
+		return "redirect:tip-detail.action?boardNo="+board.getBoardNo();
 	}
 	
 	//겟 : 캠핑팁 상세페이지 보기 (+조회수 증가)
@@ -271,6 +283,48 @@ public class CommunityController {
 		model.addAttribute("pageNo", pageNo);
 		
 		return "community/tip-detail";
+	}
+	
+	// 겟 : 캠핑팁 글 삭제
+	@GetMapping(path= {"tip-delete.action"})
+	public String deleteTip(int boardNo) {
+		
+		communityService.deleteFreeboard(boardNo);
+		
+		return "redirect:tip-list.action";
+		
+	}
+	
+	// 겟 : 캠핑팁 수정 페이지 불러오기
+	@GetMapping(path= {"tip-edit.action"})
+	public String showTipEditForm(int boardNo, int pageNo, Model model) {
+		
+		BoardDto board = communityService.findBoardByBoardNo(boardNo);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("pageNo", pageNo);
+		
+		return "community/tip-edit";
+	}
+	
+	// 포스트 : 캠핑팁 글 수정하기
+	@PostMapping(path= {"tip-edit.action"})
+	public String editTip(BoardDto board,@RequestParam(defaultValue = "1")  int pageNo) {
+		
+		communityService.updateFreeboard(board);
+		
+		return "redirect:tip-detail.action?boardNo="+board.getBoardNo()+"&pageNo="+pageNo;
+	}
+	
+	
+	
+	
+	// 포스트 : 캠핑 팁 검색 구현
+	@PostMapping(path= {"tip-search.action"})
+	public String tipSerch() {
+		
+		
+		return "";
 	}
 	
 	

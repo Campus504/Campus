@@ -90,6 +90,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	  }
+
 	</style>
   
 </head>

@@ -90,6 +90,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+	
 	</style>
   
 </head>
@@ -118,40 +119,33 @@
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
-        <div class="row">
+        <div id ="tips-container" class="row">
+			<div id ="tips-container-inner" style="flex: 0 0 auto; width: 66.66666667%;" >
+			<!-- 캠핑팁 리스트 불러올 자리 -->
+			</div>
 
-          <div class="col-lg-8 entries">
-			<c:forEach var="board" items="${boards}">
-			<input type="hidden" name="boardNo" value="board.boardNo">
-            <article class="entry">
-
-              <h2 class="entry-title">
-                <a href="tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
-                </ul>
-              </div>
-              
-              <div class="entry-content">
-                <div class="read-more">
-                  <a href='tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}'>글 읽기</a>
-                </div>
-              </div>
-              
-              </article>
-              </c:forEach>
+		    <div class="col-lg-8 entries">
+			
 
             	<!-- paging -->
-					<jsp:include page="/WEB-INF/views/include/community-paging.jsp" /> 
+		 <div class="blog-pagination">
+              <ul class="justify-content-center">
+              <c:if test="${pageNo < pageCount}">
+              <div class="blog-pagination">
+              <ul class="justify-content-center">
+              <li class="active"><a id="moreTips" >게시글 더보기</a></li>
+              </ul>
+              </div>
+              </c:if>
+             </ul>
+       </div>
 				<!-- end of paging -->
+				
           </div><!-- End blog entries list -->
-
-          <div class="col-lg-4">
+          
+          
+          
+            <div class="col-lg-4" style="position: absolute; top: 8px; right: 1px;">
 
 			<div class="sidebar">
              
@@ -181,7 +175,6 @@
 
             </div><!-- End sidebar -->
 
-           <c:if test="${not empty loginuser}">
            <article class="entry">
               <div class="entry-content">
                 <div class="read-more">
@@ -189,9 +182,11 @@
                 </div>
               </div>
             </article><!-- End write entry -->
-            </c:if>
             
           </div><!-- End blog sidebar -->
+
+
+
 
         </div>
 
@@ -243,6 +238,37 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+  
+  <script type="text/javascript">
+  
+  $(function(){
+	  
+	  $('#tips-container-inner').load("tip-content-list.action?pageNo=${pageNo}");
+	  
+	  $('#moreTips').on('click',function(event){
+		  $.ajax({
+				url: "tip-content-list.action",
+				success: function(data) {
+					$('#tips-container-inner').load("tip-content-list.action?pageNo=${pageNo+1}");
+					
+					if(${pageNo+1}==${pageCount}){
+						$("#moreTips").hide();
+						
+						
+					}
+					
+				},
+				error: function() {
+					alert("ㅠㅠ");
+				}
+			});	
+		  		  
+	  });
+	  
+  });
+  
+  </script>
+  
 
 </body>
 

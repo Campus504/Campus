@@ -154,9 +154,7 @@
 .accordion table i {
   cursor: pointer;
 }
-a{
-color:#18d26e;
-}
+
 
 
 
@@ -339,39 +337,19 @@ color:#18d26e;
 
 			});
 			
-			
-/* 			$('[id*=toggle-btn]').on('click',function(event){
-				
-				for(var i=1;i<=${boards.size()};i++){
-					
-					if($('#toggle-btn'+i).hasClass('bi bi-caret-down-fill')) {
-						$('#toggle-btn'+i).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
-						$('#toggle-content'+i).removeAttr("style").show();
-					} else if($('#toggle-btn'+i).hasClass('bi bi-caret-up-fill')){
-						$('#toggle-btn'+i).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
-						$('#toggle-content'+i).removeAttr("style").hide();
-					}
-				}
-				
-			});
-			 */
-			
-			
 			$('[id*=toggle-btn]').on('click',function(event){
 				
 						if($(this).hasClass('bi bi-caret-down-fill')) {
 						$(this).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
-						let last_char = this.id.slice(-1);;
+						let last_char = this.id.substr(10);
 						$('#toggle-content'+last_char).removeAttr("style").show();
 					} else if($(this).hasClass('bi bi-caret-up-fill')){
 						$($(this)).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
-						let last_char = this.id.slice(-1);;
+						let last_char = this.id.substr(10);
 						$('#toggle-content'+last_char).removeAttr("style").hide();
 					}
 				
-				
 			});
-			
 			
 		});
 	</script>
