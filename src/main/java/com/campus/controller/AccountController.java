@@ -1,7 +1,9 @@
 package com.campus.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
@@ -50,7 +53,7 @@ public class AccountController {
 			return "account/register";
 		}
 		
-			System.out.println(member);
+		System.out.println(member);
 		accountService.registerMember(member);
 		
 		return "redirect:/login.action";
@@ -114,14 +117,25 @@ public class AccountController {
 		
 	}
 	
+	//아이디 중복확인 처리
+	@RequestMapping(value="/memberIdOverlap", method=RequestMethod.POST)
+	public void memberIdOverlap(HttpServletResponse response, @RequestParam("memberId") String memberId) throws IOException {
+		//@RequestParam는 요청의 특정 파라미터 값을 찾아낼 때 사용하는 어노테이션
+		accountService.memberIdOverlap(memberId,response);	//서비스에 있는 memberIdOverlap 호출.
+	}
+		
+	
+//	회원정보수정
+	
 	@GetMapping(path = {"/my-page.action"})
-	public String myPage(String memberId) {
+	public String myPage(String memberId, Model model) {
 		MemberDto member = accountService.selectMemberInfo(memberId);
+		model.addAttribute("member", member);
+		
 		return "my-page";
 	}
-	@RequestMapping("my-page.action")
+	@PostMapping("my-page.action")
 	public String memberUpdate(@ModelAttribute MemberDto member) {
-		
 		accountService.updateMember(member);
 		return "/redirect:/main";
 	}
