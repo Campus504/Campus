@@ -1,6 +1,9 @@
 package com.campus.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import com.campus.dto.MemberDto;
 
@@ -21,6 +24,12 @@ public interface AccountService {
 
 	int findMemberCount();
 
+<<<<<<< HEAD
 	
+=======
+	void memberIdOverlap(String memberId, HttpServletResponse response) throws IOException;
+	
+
+>>>>>>> 04c9fb5ef05350986c6172f54f1ae5b70997cb70
 
 }

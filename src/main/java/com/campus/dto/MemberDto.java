@@ -6,6 +6,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data 
@@ -24,6 +26,7 @@ public class MemberDto {
 	@NotBlank(message="주소를 입력하세요.")
 	private String address;
 	@NotBlank(message="생년월일을 입력하세요.")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String birth;
 	@NotBlank(message="전화번호를 입력하세요.")
 	private String phone;

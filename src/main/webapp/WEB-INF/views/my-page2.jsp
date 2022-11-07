@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
- <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
 <!-- 상세페이지 만들때 사용 ㄱㄱ -->
@@ -15,13 +12,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>회원 정보수정</title>
+  <title>My Page</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> -->
-  <!-- <script src="https://kit.fontawesome.com/a81368914c.js"></script> -->
-  
 
   <!-- Favicons -->
   <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -40,6 +33,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
+  <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -85,8 +79,7 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
-    <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
-    <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
+	<link rel="stylesheet" href="/campus/resources/assets/css/register.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -98,31 +91,15 @@
     <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-    <script src="/campus/resources/assets/js/login.js"></script>
-    
       <style type="text/css">
-.container-fluid {
-	background: rgba(26, 26, 26, 0.9);
-}
-
-.error {
-	color: red;
-	font-weight: bold;
-	font-size: 8pt;
-	position: absolute;
-	top: 37px;
-	left: 7px;
-}
-
-input[type='date']::before {
-	content: attr(data-placeholder);
-	width: 100%;
-}
-
-input[type='date']:focus::before, input[type='date']:valid::before {
-	display: none;
-}
-</style>
+	#main{width:1200px;height:700px;margin:100px auto;}
+	
+	.container-fluid{
+	  background: rgba(26, 26, 26, 0.9);
+	}
+	.mypage-btn{text-align:center;}
+	button{width:100px; height:50px;background:cornflowerblue; border:none; border-radius: 25px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:#fff;}
+	</style>
 </head>
 
 <body>
@@ -135,91 +112,98 @@ input[type='date']:focus::before, input[type='date']:valid::before {
  	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
   <!-- End mypage-side-menu -->
 
+
   <main id="main">
-  
-  <div class="container">
-    <div class="login-content login-content3">
-       <form action="my-page.action" method="post">
-  
-        <h2 class="title">회원정보수정</h2>
-        
+
+<div class="container">
+  <div class="login-content3">
+       <form action="my-page.action" method="post" modelAttribute="memberDto">
+  		<div id="inputmain2">
+        <h2 class="title">회원 정보수정</h2>
         <table>
         
-              <div class="input-div one">
-                 <div class="div">
-                    <input type="" id="memberId" class="input" name="memberId" value="${ member.memberId }" readonly>
-                    <%-- <p>${ member.memberId }</p> --%>
-                    <br>
-               	</div>
-              </div>
+              <tr>
+              <th>아이디</th>
+                 <td>
+                    ${ member.memberId }
+               	</td> 	
+              </tr>
                  
-              <div class="input-div pass">
-				 <div class="div">
-                    <input type="password" id="passwd" class="input" name="passwd" placeholder="새 비밀번호">
-                    <br>
-                 </div>
-              </div>
+              <tr>
+              <th>비밀번호</th>
+				 <td>
+                    <input type="password" id="passwd" class="input" name="passwd" value="${ passwd }">
+                    
+                 </td>
+                
+              </tr>
               
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인">
-                    <br>
-                 </div>
-              </div>
+               <tr>
+               <th>비밀번호 확인</th>
+				 <td>
+                    <input type="password" class="input" id="confirm" name="confirm" value="${ passwd }">
+
+                 </td>
                  
-              <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="email" name="email" placeholder="이메일" value="${ member.email }">
+              </tr>
+                 
+              <tr>
+              <th>이메일</th>
+				 <td>
+                    <input type="text" id="email" name="email" value="${ email }">
                     <br>
-                 </div>
-              </div>
+
+                 </td>
+                
+              </tr>
               
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="memberName" name="memberName" placeholder="이름" value="${ member.memberName }">
-                    <br>
-                 </div>
-              </div>
+               <tr>
+               <th>이름</th>
+				 <td>
+                    <input type="text" id="memberName" name="memberName" value="${ memberName }">
+                 </td>
+              </tr>
               
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="address" name="address" placeholder="주소" value="${ member.address }">
-                     <br>
-                 </div>
-              </div>
+               <tr>
+               <th>주소</th>
+				 <td>
+                    <input type="text" id="address" name="address" value="${ address }">
+                 </td>
+              </tr>
               
-               <div class="input-div pass">
-				 <div class="div">
-								<input type="date" data-placeholder="${ member.birth }" required aria-required="true" value={startDateValue} className={styles.selectDay} onChange={StartDateValueHandler}></input>
-								<%-- <input type="text" id="birth" name="birth" value="${ member.birth }"> --%>
-                    <br>
-                 </div>
-              </div>
+               <tr>
+               <th>생년월일</th>
+				 <td>
+                    <input type="date" id="birth" name="birth" value="${ birth }">
+
+                 </td>
+			       
+              </tr>
               
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="tel" id="phone" name="phone" placeholder="전화번호" value="${ member.phone }">
-                    <br>
-                  </div>
-              </div>
-              
-              
-              
+               <tr>
+               <th>전화번호</th>
+				 <td>
+                    <input type="tel" id="phone" name="phone" value="${ phone }">
+
+                  </td>
+                  
+              </tr>
+              </table>
               <div class="log-btn">
               <input id="register" type="submit" value="수정" />
               <input id="cancel" type="button" value="취소" />
               </div>
-              </table>
+              
+              </div>
             </form>
+            
         </div>
-    </div>
-  </main>
-  <!-- End #main -->
-	
+        </div>
+
+  </main><!-- End #main -->
+
   <!-- ======= Footer ======= -->
-  <footer>
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />  
-	</footer>
 <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -259,21 +243,6 @@ input[type='date']:focus::before, input[type='date']:valid::before {
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
 
-<script type="text/javascript">
-/* 	const dateControl = document.querySelector('input[type="date"]')
-	dateControl.value = '${ member.birth }'; */
-	
-	$(document).ready(function(){
-		// 취소
-		$("#cancel").on("click", function(){
-			
-			location.href = "login.action";
-					    
-		});
-	});
-	</script>
-
 </body>
-
 
 </html>
