@@ -144,43 +144,18 @@ public class CommunityController {
 		int boardCount = communityService.findTagBoardCount(tag);
 		int pageCount = 
 				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
-		System.out.println(pageNo);
-		System.out.println(pageCount);
 		model.addAttribute("boards", boards);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("pageCount",pageCount);
 		model.addAttribute("tag", tag);
 		return "community/freeboard-tag"; 
 	}
-	
-	// 포스트 : 검색 기능 구현
-	@PostMapping(path= {"freeboard-search.action"})
-	public String showFreeboardSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
-		if(search.equals("")) {
-			return "redirect:freeboard.action";
-		}
-		
-		List<BoardDto> boards = communityService.searchFreeboard(searchOption, search, pageNo, PAGE_SIZE); 
-		int boardCount = communityService.findSearchBoardCount(searchOption, search);
-		int pageCount = 
-				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
-		
-		model.addAttribute("boards", boards);
-		model.addAttribute("pageNo", pageNo);
-		model.addAttribute("pageCount",pageCount);
-		model.addAttribute("search", search);
-		model.addAttribute("searchOption", searchOption);
-		
-		return "community/freeboard-search";
-	}
-	
-	// 겟 : 검색 후 다음 페이지 불러오기 위한 메서드
+	// 겟 : 검색 기능 구현
 	@GetMapping(path= {"freeboard-search.action"})
 	public String showGetFreeboardSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
 		if(search.equals("")) {
 			return "redirect:freeboard.action";
 		}
-		
 		List<BoardDto> boards = communityService.searchFreeboard(searchOption, search, pageNo, PAGE_SIZE); 
 		int boardCount = communityService.findSearchBoardCount(searchOption, search);
 		int pageCount = 
@@ -208,6 +183,7 @@ public class CommunityController {
 		return "community/tip-list";
 	}
 	
+	// 겟 : 캠핑팁 리스트 안에 글 불러오기만 따로 떼어 놓음
 	@GetMapping(path= {"tip-content-list.action"})
 	public String showTipContentlist(@RequestParam(defaultValue = "1") int pageNo , Model model) {
 		List<BoardDto> boards = communityService.findTipByPage(pageNo, PAGE_SIZE);
@@ -316,17 +292,38 @@ public class CommunityController {
 		return "redirect:tip-detail.action?boardNo="+board.getBoardNo()+"&pageNo="+pageNo;
 	}
 	
-	
-	
-	
-	// 포스트 : 캠핑 팁 검색 구현
-	@PostMapping(path= {"tip-search.action"})
-	public String tipSerch() {
+	// 겟 : 캠핑 팁 검색 구현
+	@GetMapping(path= {"tip-search.action"})
+	public String tipSerch(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		if(search.equals("")) {
+			return "redirect:tip-list.action";
+		}
+		List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE); 
+		int boardCount = communityService.findSearchTipCount(searchOption, search);
+		int pageCount = 
+				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
+		model.addAttribute("boards", boards);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("pageCount",pageCount);
+		model.addAttribute("search", search);
+		model.addAttribute("searchOption", searchOption);
 		
-		
-		return "";
+		return "community/tip-search";
 	}
-	
+	// 겟 : 캠핑팁 리스트 안에 글 불러오기만 따로 떼어 놓음
+		@GetMapping(path= {"tip-search-content-list.action"})
+		public String showTipSearchContentlist(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+			List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE); 
+			int boardCount = communityService.findSearchTipCount(searchOption, search);
+			int pageCount = 
+					(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
+			model.addAttribute("boards", boards);
+			model.addAttribute("pageNo",pageNo);
+			model.addAttribute("pageCount",pageCount);
+			model.addAttribute("search", search);
+			model.addAttribute("searchOption", searchOption);
+			return "community/tip-search-content-list";
+		}
 	
 	
 

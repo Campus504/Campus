@@ -94,4 +94,17 @@ public class FAQServiceImpl implements FAQService{
 		faqMapper.deleteFaq(boardNo);
 	}
 
+	@Override
+	public BoardDto findFaqByBoardNo(int boardNo) {
+		BoardDto board = faqMapper.selectFaqByBoardNo(boardNo);
+		return board;
+	}
+
+	@Override
+	public void editFaq(BoardDto board) {
+		faqMapper.updateFaq(board);
+	}
+
+	
+
 }

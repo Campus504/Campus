@@ -157,17 +157,22 @@
 
             <div class="sidebar">
 
+            
              <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="notice-search.action" method="post">
-                 <select name="searchOption">
-                 <option value="title">제목</option>
-                 <option value="content">내용</option>
-                 <option value="memberId">작성자</option>
+              
+              <div class="mb-3">
+                 <select class="form-select form-select-lg" id="searchOption" name="searchOption">
+	                 <option value="title">제목</option>
+	                 <option value="content">내용</option>
+	                 <option value="memberId">작성자</option>
                  </select>
-                  <input type="text" class="form-control" name="search">
-                  <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
+                 </div>
+                 <form>
+               <input type="text" class="form-control" id="search" name="search">
+                  <button type="button" id="search-btn"><i class="bi bi-search"></i></button>
+                
+              </form>
               </div><!-- End sidebar search form-->
 
               <h3 class="sidebar-title">카테고리</h3>
@@ -253,6 +258,14 @@
 			if(!ok) return;
 			location.href = 'notice-delete.action?boardNo=${board.boardNo}';
 	  });
+	  
+	  $('#search-btn').on('click',function(event){
+			let search=$('#search').val();
+			let searchOption=$('#searchOption').val();
+			location.href = 'notice-search.action?search='+search+'&searchOption='+searchOption;
+			
+			
+		});
 	  
 	  
   });

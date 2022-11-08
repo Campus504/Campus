@@ -117,29 +117,7 @@ public class FAQController {
 		return "redirect:notice-detail.action";
 	}
 	
-	// 포스트 : 공지 검색
-	@PostMapping(path= {"notice-search.action"})
-	public String showNoticeSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
-		if(search.equals("")) {
-			
-			return "redirect:notice-list.action";
-		}
-		
-		List<BoardDto> boards = faqService.searchNotice(searchOption, search, pageNo, PAGE_SIZE); 
-		int boardCount = faqService.findSearchNoticeCount(searchOption, search);
-		int pageCount = 
-				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
-		
-		model.addAttribute("boards", boards);
-		model.addAttribute("pageNo", pageNo);
-		model.addAttribute("pageCount",pageCount);
-		model.addAttribute("search", search);
-		model.addAttribute("searchOption", searchOption);
-		
-		return "community/notice-search";
-	}
-	
-	// 겟 : 검색 후 다음 페이지 불러오기 위한 메서드
+	// 겟 : 공지 검색 
 	@GetMapping(path= {"notice-search.action"})
 	public String showGetNoticeSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
 		if(search.equals("")) {
@@ -173,14 +151,28 @@ public class FAQController {
 	// 겟 : 자주묻는 질문 글 삭제
 	@GetMapping(path= {"faq-delete.action"})
 	public String deleteFaq(int boardNo) {
-		System.out.println(boardNo);
 		faqService.deleteFaq(boardNo);
 		
 		return "redirect:faq-list.action";
 	}
 	
+	// 겟 : 자주 묻는질문 수정 창 열기
+	@GetMapping(path= {"faq-edit.action"})
+	public String showFaqEditForm(int boardNo , Model model) {
+		
+		BoardDto board = faqService.findFaqByBoardNo(boardNo);
+		
+		model.addAttribute("board", board);
+		
+		return "community/faq-edit";
+	}
 	
-	
+	// 포스트 : 자주 묻는질문 수정
+		@PostMapping(path= {"faq-edit.action"})
+		public String FaqEdit(BoardDto board) {
+			faqService.editFaq(board);
+			return "redirect:faq-list.action";
+		}
 	
 	
 	
