@@ -72,10 +72,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
+                    <a href="drop-out.action">
+                       <i class="fa fa-ban fa-2x"></i>
                         <span class="nav-text">
-                            Documentation
+                            회원탈퇴
                         </span>
                     </a>
                 </li>

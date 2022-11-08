@@ -1,7 +1,10 @@
 package com.campus.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.campus.dto.MemberDto;
 
 @Controller
 public class MainController {
@@ -26,5 +29,8 @@ public class MainController {
 		return "portfolio_details";
 	}
 	
-
+	@GetMapping(path= {"/drop-out.action"})
+	public String memberDropOut() {
+		return "/account/member-delete";
+	}
 }

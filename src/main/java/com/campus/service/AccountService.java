@@ -26,4 +26,10 @@ public interface AccountService {
 
 	void memberIdOverlap(String memberId, HttpServletResponse response) throws IOException;
 
+	public void memberDelete(MemberDto memberDto)throws Exception;
+
+	void deleteByMember(MemberDto member);
+
+	
+
 }

@@ -53,6 +53,8 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 
 	public void updateMember(MemberDto member) {
+		String passwd = Util.getHashedString(member.getPasswd(), "SHA-256");
+		member.setPasswd(passwd);
 		memberMapper.updateMember(member);
 	}
 
@@ -89,10 +91,12 @@ public class AccountServiceImpl implements AccountService {
 //		return members;
 //	}
 
+	
+	//회원 정보수정
 	@Override
 	public void memberIdOverlap(String memberId, HttpServletResponse response) throws IOException {
 		MemberDto member = new MemberDto();
-		member = (MemberDto) memberMapper.memberIdOverlap(memberId);
+		member = (MemberDto) memberMapper.memberByIdOverlap(memberId);
 		if(member == null) {
 			//dao에서 select이 되지 않아야 true
 			//id가 없어야 true(사용 가능)
@@ -102,13 +106,19 @@ public class AccountServiceImpl implements AccountService {
 			response.getWriter().print("0");
 		
 	}
-		
-
 }
-	public MemberDto memberIdOverlap(String memberId) {
+	public MemberDto findMemberIdOverlap(String memberId) {
 		
-		
-		return memberMapper.memberIdOverlap(memberId);
+		return memberMapper.memberByIdOverlap(memberId);
+	}
+
+	@Override
+	public void memberDelete(MemberDto memberDto) throws Exception {
+		memberMapper.memberDelete(memberDto);
+	}
+
+	public void deleteByMember(MemberDto member) {
+		memberMapper.memberDelete(member);
 	}
 
 }

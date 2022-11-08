@@ -2,9 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+ <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
+
 
 <!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
 <!-- 상세페이지 만들때 사용 ㄱㄱ -->
@@ -13,7 +17,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>회원가입</title>
+  <title>회원탈퇴</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,7 +87,7 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
-    <link rel="stylesheet" href="/campus/resources/assets/css/register.css">
+    <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -101,7 +105,6 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
-	.error{color:red;font-weight:bold; font-size:10pt; margin:-80px;}
 	</style>
 </head>
 
@@ -113,109 +116,34 @@
 
 
   <main id="main">
-  
-  <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
-  <div class="container">
-    <div class="img">
-      <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
-    </div>
-    <div class="login-content login-content2">
-       <form:form id="registerform" action="register.action" method="post" modelAttribute="memberDto">
-  		<div id="inputmain">
-        <h2 class="title">회원가입</h2>
-        <table>
+
+    <div class="login-content">
+       <form action="drop-out.action" method="post">
+        <h2 class="title">회원탈퇴</h2>
         
-              <tr>
-              <th>아이디</th>
-                 <td>
-                    <input type="text" id="memberId" class="input" name="memberId" placeholder="아이디">
-                    <br>
-                    <form:errors path="memberId" class="error" />
-               	</td> 	
-              </tr>
+              <div class="input-div one">
+                 <div class="div">
+                    <input type="text" id="memberId" class="input" name="memberId" value="${ member.memberId }" placeholder="${ member.memberId }">
+               	</div>
+              </div>
                  
-              <tr>
-              <th>비밀번호</th>
-				 <td>
+              <div class="input-div pass">
+				 <div class="div">
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="비밀번호">
-                    <br>
-                     <form:errors path="passwd" class="error" />
-                 </td>
-                
-              </tr>
+                 </div>
+              </div>
+               
               
-               <tr>
-               <th>비밀번호 확인</th>
-				 <td>
-                    <input type="password" class="input" id="confirm" name="confirm" placeholder="비밀번호 확인">
-                    <br>
-                    <form:errors path="passwd" class="error" />
-                 </td>
-                 
-              </tr>
-                 
-              <tr>
-              <th>이메일</th>
-				 <td>
-                    <input type="text" id="email" name="email" placeholder="이메일">
-                    <br>
-                     <form:errors path="email" class="error" />
-                 </td>
-                
-              </tr>
-              
-               <tr>
-               <th>이름</th>
-				 <td>
-                    <input type="text" id="memberName" name="memberName" placeholder="이름">
-                 </td>
-              </tr>
-              
-               <tr>
-               <th>주소</th>
-				 <td>
-                    <input type="text" id="address" name="address" placeholder="주소">
-                 </td>
-              </tr>
-              
-               <tr>
-               <th>생년월일</th>
-				 <td>
-                    <input type="date" id="birth" name="birth" placeholder="생년월일">
-                    <br>
-                    <form:errors path="birth" class="error" />
-                 </td>
-			       
-              </tr>
-              
-               <tr>
-               <th>전화번호</th>
-				 <td>
-                    <input type="tel" id="phone" name="phone" placeholder="전화번호">
-                    <br>
-                    <form:errors path="phone" class="error" />
-                  </td>
-                  
-              </tr>
-              </table>
-              <div class="log-btn">
-              <a href="login.action" title="로그인">로그인 바로가기</a>
-              <input id="register" type="submit" value="가입" />
+                   <div class="log-btn">
+              <input id="register" type="submit" value="회원탈퇴" />
               <input id="cancel" type="button" value="취소" />
               </div>
-              
-              </div>
-            </form:form>
-            
+            </form>
         </div>
     </div>
   </main>
   <!-- End #main -->
 
-<%--   <!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/include/footer.jsp" />  
-<!-- End Footer -->
- --%>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
@@ -253,7 +181,15 @@
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
 
-</body>
+	<script type="text/javascript">
+	$(function() {
+		<c:if test="${msg == false}">
+		비밀번호가 맞지 않습니다.
+		</c:if>
+	});
+	</script>
 
+
+</body>
 
 </html>
