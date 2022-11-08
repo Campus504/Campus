@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html lang="ko">
@@ -83,23 +83,23 @@
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
     
-    <!--  사이드바 관리자 아이콘 -->
+        <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
-    <style type="text/css">
+  <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
-	  }
-
+	}
+	
 	</style>
   
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+ 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
+  
 
   <main id="main">
 
@@ -109,144 +109,47 @@
 
         <ol>
           <li><a href="main">홈</a></li>
-          <li><a href="tip-list.action">캠핑 팁</a></li>
         </ol>
-        <h2>캠핑 팁</h2>
+        <h2>캠핑 팁 - ${ search } 검색 결과 입니다</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Single Section ======= -->
+    <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
-        <div class="row">
+        <div id ="tips-container" class="row">
+			<div id ="tips-container-inner" style="flex: 0 0 auto; width: 66.66666667%;" >
+			<!-- 캠핑팁 리스트 불러올 자리 -->
+			</div>
 
-          <div class="col-lg-8 entries">
+		    <div class="col-lg-8 entries">
+			
 
-            <article class="entry entry-single">
-
-              <h2 class="entry-title">
-               ${ board.title }
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
-                </ul>
+            	<!-- paging -->
+		 <div class="blog-pagination">
+              <ul class="justify-content-center">
+              <c:if test="${pageNo < pageCount}">
+              <div class="blog-pagination">
+              <ul class="justify-content-center">
+              <li class="active"><a id="moreTips" >게시글 더보기</a></li>
+              </ul>
               </div>
-
-              <div class="entry-content">
-                <p>
-<c:set var="enter" value="
-" />
-						${ fn:replace(board.content, enter, "<br>") }
-                </p>
-
-              </div>
-              
-	           
-            </article><!-- End blog entry -->
-            
-
-            <div class="blog-comments">
-
-              <div id="comment-1" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Georgia Reader<a href="#" class="reply"><i class="bi bi-reply-fill"></i>댓글쓰기</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                      Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-                    </p>
-                  </div>
-                </div>
-              </div><!-- End comment #1 -->
-
-              <div id="comment-2" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"></div>
-                  <div>
-                    <h5>Aron Alvarado<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Ipsam tempora sequi voluptatem quis sapiente non. Autem itaque eveniet saepe. Officiis illo ut beatae.
-                    </p>
-                  </div>
-                </div>
-
-                <div id="comment-reply-1" class="comment comment-reply">
-                  <div class="d-flex">
-                    <div class="comment-img"></div>
-                    <div>
-                      <h5>Lynda Small<a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                      <time datetime="2020-01-01">01 Jan, 2020</time>
-                      <p>
-                        Enim ipsa eum fugiat fuga repellat. Commodi quo quo dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui ad quas nostrum rerum sed necessitatibus aut est. Eum officiis sed repellat maxime vero nisi natus. Amet nesciunt nesciunt qui illum omnis est et dolor recusandae.
-
-                        Recusandae sit ad aut impedit et. Ipsa labore dolor impedit et natus in porro aut. Magnam qui cum. Illo similique occaecati nihil modi eligendi. Pariatur distinctio labore omnis incidunt et illum. Expedita et dignissimos distinctio laborum minima fugiat.
-
-                        Libero corporis qui. Nam illo odio beatae enim ducimus. Harum reiciendis error dolorum non autem quisquam vero rerum neque.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div id="comment-reply-2" class="comment comment-reply">
-                    <div class="d-flex">
-                      <div class="comment-img"></div>
-                      <div>
-                        <h5>Sianna Ramsay <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                        <time datetime="2020-01-01">01 Jan, 2020</time>
-                        <p>
-                          Et dignissimos impedit nulla et quo distinctio ex nemo. Omnis quia dolores cupiditate et. Ut unde qui eligendi sapiente omnis ullam. Placeat porro est commodi est officiis voluptas repellat quisquam possimus. Perferendis id consectetur necessitatibus.
-                        </p>
-                      </div>
-                    </div>
-
-                  </div><!-- End comment reply #2-->
-
-                </div><!-- End comment reply #1-->
-
-              </div><!-- End comment #2-->
-
-         
-
-              <div class="reply-form">
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                    <input value="Comment Writer" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input value="Reg Date" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">쓰기</button>
-
-                </form>
-
-              </div>
-
-            </div><!-- End blog comments -->
-
+              </c:if>
+             </ul>
+       </div>
+				<!-- end of paging -->
+				
           </div><!-- End blog entries list -->
+          
+          
+          
+            <div class="col-lg-4" style="position: absolute; top: 8px; right: 1px;">
 
-          <div class="col-lg-4">
-
-            <div class="sidebar">
-
-          <h3 class="sidebar-title">검색하기</h3>
+			<div class="sidebar">
+             
+            <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
               
               <div class="mb-3">
@@ -266,44 +169,44 @@
               <h3 class="sidebar-title">카테고리</h3>
               <div class="sidebar-item categories">
                 <ul>
-                <li><a href="notice-list.action">공지사항</a></li>
-                  <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="tip-list.action">캠핑 팁</a></li>
+                  <li><a href="notice-list.action">공지사항</a></li>
+                  <li><a href="freeboard.action">자유게시판</a></li>
+                   <li><a href="tip-list.action">캠핑 팁</a></li>
                 </ul>
-              </div>
-              <!-- End sidebar categories-->
+              </div><!-- End sidebar categories-->
 
-             
-        
+              
 
             </div><!-- End sidebar -->
-            
-             <article class="entry">
 
+           <article class="entry">
               <div class="entry-content">
                 <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
-                  <a href="tip-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
-                  <a class="delete_button">삭제</a>
-                  </c:if>
-                  <a href="tip-list.action?pageNo=${pageNo}">목록보기</a>
+                  <a href="tip-write.action">새 글 쓰기</a>
                 </div>
               </div>
             </article><!-- End write entry -->
-
+            
           </div><!-- End blog sidebar -->
+
+
+
 
         </div>
 
       </div>
-    </section><!-- End Blog Single Section -->
+    </section><!-- End Blog Section -->
+
   </main><!-- End #main -->
 
   	<!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
 	<!-- End Footer --> 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
@@ -339,24 +242,50 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
-  
+ <!--  <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
   <script type="text/javascript">
+  
   $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'tip-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
+	  
+	  var currentPageNo=${pageNo};
+	  
+	  $('#tips-container-inner').load("tip-search-content-list.action?pageNo=${pageNo}&search=${search}&searchOption=${searchOption}");
+	  
+	  $('.blog-pagination').on('click','#moreTips',function(event){
+		  event.preventDefault();
+		  let search = '${search}';
+		  let searchOption = '${searchOption}';
+		  $.ajax({
+				url: "tip-search-content-list.action",
+				data:{
+					search : '${search}',
+					searchOption : '${searchOption}'
+					
+				},
+				success: function(data) {
+					
+					$('#tips-container-inner').load("tip-search-content-list.action?pageNo="+(currentPageNo+1)+"&search="+search+"&searchOption="+searchOption);
+					 currentPageNo++; 
+					if((currentPageNo)==${pageCount}){
+						$("#moreTips").hide();
+					}
+					
+					
+				},
+				error: function() {
+					alert("ㅠㅠ");
+				}
+			});	
+		  		  
 	  });
 	  
-	  $('#search-btn').on('click',function(event){
+		$('#search-btn').on('click',function(event){
 			let search=$('#search').val();
 			let searchOption=$('#searchOption').val();
 			location.href = 'tip-search.action?search='+search+'&searchOption='+searchOption;
 			
 			
 		});
-	  
 	  
   });
   

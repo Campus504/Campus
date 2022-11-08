@@ -50,4 +50,12 @@ public interface FaqMapper {
 	@Delete("DELETE FROM board WHERE boardNo = ${boardNo}")
 	void deleteFaq(int boardNo);
 
+	@Select("SELECT * FROM board WHERE boardNo = ${boardNo} ")
+	BoardDto selectFaqByBoardNo(int boardNo);
+
+	@Update("UPDATE board SET title =#{title} , content = #{content} WHERE  boardno = #{boardNo} ")
+	void updateFaq(BoardDto board);
+	
+
+
 }

@@ -90,6 +90,22 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+	#search-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 30px;
+    margin: -1px;
+    background: #18d26e;
+    color: #fff;
+    transition: 0.3s;
+    line-height: 0;
+    border-radius: 50px;
+	}
 
 	</style>
   
@@ -159,6 +175,7 @@
 
               <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
+              
               <div class="mb-3">
                  <select class="form-select form-select-lg" id="searchOption" name="searchOption">
 	                 <option value="title">제목</option>
@@ -166,11 +183,12 @@
 	                 <option value="memberId">작성자</option>
                  </select>
                  </div>
-               <!--  <form action="freeboard-search.action" method="post"> -->
-                <input type="text" class="form-control" id="searchValue" name="search">
-                  <button type="button" id="serach-btn"><i class="bi bi-search"></i></button>
+                 <form>
+               <input type="text" class="form-control" id="search" name="search">
+                  <button type="button" id="search-btn"><i class="bi bi-search"></i></button>
                 
-              <!--   </form> -->
+              </form>
+               
               </div><!-- End sidebar search form-->
 
               <h3 class="sidebar-title">카테고리</h3>
@@ -263,9 +281,10 @@
 <script type="text/javascript">
 $(function(){
 	
-	$('#serach-btn').on('click',function(event){
-		
-		location.href = 'freeboard-search.action?search=$('#serachValue').val()&searchOption=$('#serachOption').val()';
+	$('#search-btn').on('click',function(event){
+		let search=$('#search').val();
+		let searchOption=$('#searchOption').val();
+		location.href = 'freeboard-search.action?search='+search+'&searchOption='+searchOption;
 		
 		
 	});

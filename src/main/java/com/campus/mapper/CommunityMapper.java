@@ -75,5 +75,11 @@ public interface CommunityMapper {
 	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title},#{memberId}, #{content}, #{category})")
 	void insertTip(BoardDto board);
 
+	@Select("select * from board where category = 'tip' and ${searchOption} like '%${search}%' order By boardNo DESC LIMIT ${from}, ${count}")
+	List<BoardDto> selectTipBySearch(@Param("searchOption") String searchOption, @Param("search") String search, @Param("from") int from, @Param("count") int count);
+
+	@Select("SELECT COUNT(*) FROM board WHERE category = 'tip' and ${searchOption} like '%${search}%'")
+	int selectTipBoardCount(@Param("searchOption") String searchOption, @Param("search") String search);
+
 
 }

@@ -150,6 +150,21 @@ public class CommunityServiceImpl implements CommunityService {
 		communityMapper.insertTip(board);
 	}
 
+	@Override
+	public List<BoardDto> searchTip(String searchOption, String search, int PAGE_SIZE) {
+		int from = 0;
+		int count = PAGE_SIZE;
+		List<BoardDto> boards = communityMapper.selectTipBySearch(searchOption, search, from, count);
+		return boards;
+	}
+
+	@Override
+	public int findSearchTipCount(String searchOption, String search) {
+		int boardCount = communityMapper.selectTipBoardCount(searchOption,search);
+		
+		return boardCount;
+	}
+
 
 	
 	

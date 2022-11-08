@@ -149,17 +149,21 @@
 
 			<div class="sidebar">
              
-             <h3 class="sidebar-title">검색하기</h3>
+            <h3 class="sidebar-title">검색하기</h3>
               <div class="sidebar-item search-form">
-                <form action="tip-search.action" method="post">
-                 <select name="searchOption">
-                 <option value="title">제목</option>
-                 <option value="content">내용</option>
-                 <option value="memberId">작성자</option>
+              
+              <div class="mb-3">
+                 <select class="form-select form-select-lg" id="searchOption" name="searchOption">
+	                 <option value="title">제목</option>
+	                 <option value="content">내용</option>
+	                 <option value="memberId">작성자</option>
                  </select>
-                  <input type="text" class="form-control" name="search">
-                  <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
+                 </div>
+                 <form>
+               <input type="text" class="form-control" id="search" name="search">
+                  <button type="button" id="search-btn"><i class="bi bi-search"></i></button>
+                
+              </form>
               </div><!-- End sidebar search form-->
 
               <h3 class="sidebar-title">카테고리</h3>
@@ -243,19 +247,23 @@
   
   $(function(){
 	  
+	  var currentPageNo=${pageNo};
+	  
 	  $('#tips-container-inner').load("tip-content-list.action?pageNo=${pageNo}");
 	  
-	  $('#moreTips').on('click',function(event){
+	  $('.blog-pagination').on('click','#moreTips',function(event){
+		  event.preventDefault();
 		  $.ajax({
 				url: "tip-content-list.action",
 				success: function(data) {
-					$('#tips-container-inner').load("tip-content-list.action?pageNo=${pageNo+1}");
 					
-					if(${pageNo+1}==${pageCount}){
+					if((currentPageNo+1)==${pageCount}){
 						$("#moreTips").hide();
-						
-						
-					}
+					}  
+					
+				  	$('#tips-container-inner').load("tip-content-list.action?pageNo="+(currentPageNo+1));
+				  	currentPageNo++;
+					
 					
 				},
 				error: function() {
@@ -264,6 +272,15 @@
 			});	
 		  		  
 	  });
+	  
+		$('#search-btn').on('click',function(event){
+			let search=$('#search').val();
+			let searchOption=$('#searchOption').val();
+			
+			location.href = 'tip-search.action?search='+search+'&searchOption='+searchOption;
+			
+			
+		});
 	  
   });
   

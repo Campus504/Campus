@@ -45,5 +45,9 @@ public interface CommunityService {
 	
 	void writeTip(BoardDto board);
 
+	List<BoardDto> searchTip(String searchOption, String search,  int pAGE_SIZE);
+
+	int findSearchTipCount(String searchOption, String search);
+
 
 }

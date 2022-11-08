@@ -12,16 +12,12 @@ import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
 
 @Mapper
-public interface AdminGoodsRegisterMapper {
-	
-	// 상품 등록
-	@Insert("INSERT INTO goods (goodsCode, category, brand, goodsName) " +
-			"VALUES (#{ goodsCode }, #{ category }, #{ brand }, #{ goodsName })")
-	void adminGoodsRegister(GoodsDto goods);
-	
-	@Select("SELECT * " +
-			"FROM goods" )
-	GoodsDto selectGoodsList(int goodsCode);	
+public interface AdminGoodsRegisterInMapper {
+
+	// 입고 등록
+	@Insert("INSERT INTO goodsRegister (inCode, detail, rentPrice, goodsIn, goodsInDate, goodsCode) " +
+			"VALUES (#{ inCode }, #{ detail }, #{ rentPrice }, #{ goodsIn }, #{ goodsInDate }, #{ goodsCode })" ) 
+	void adminGoodsRegisterIn(GoodsRegisterDto goodsregister);
 	
 
 }
