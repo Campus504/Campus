@@ -35,7 +35,6 @@ public class AccountController {
 	
 	@Autowired
 	@Qualifier("accountService")
-
 	private AccountService accountService;
 	
 	@GetMapping(path = { "register.action" })
