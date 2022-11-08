@@ -8,7 +8,7 @@ public class AdminMainController {
 	
 	@GetMapping(path= {"admin-main"})
 	public String adminMain() {
-		
+
 		
 		return "admin-main";
 	}

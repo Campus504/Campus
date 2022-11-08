@@ -12,5 +12,5 @@ public class GoodsDto {
 	private String category;		// 상품분류
 	private String brand;			// 브랜드
 	private String goodsName;		// 상품명	
-	
+
 }

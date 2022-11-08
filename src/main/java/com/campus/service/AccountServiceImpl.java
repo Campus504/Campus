@@ -58,13 +58,10 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public MemberDto selectMemberInfo(String memberId) {
-<<<<<<< HEAD
 
-		return null;
-=======
 		MemberDto member = memberMapper.selectMemberById(memberId);
 		return member;
->>>>>>> 04c9fb5ef05350986c6172f54f1ae5b70997cb70
+
 	}
 
 	public int findMemberCount() {
@@ -83,7 +80,6 @@ public class AccountServiceImpl implements AccountService {
 		return boards;
 	}
 
-<<<<<<< HEAD
 //	@Override
 //	public List<MemberDto> findMemberByPage(String searchOption, String search, int pageNo, int pageSize) {
 //		int from = (pageNo - 1) * pageSize;
@@ -93,7 +89,6 @@ public class AccountServiceImpl implements AccountService {
 //		return members;
 //	}
 
-=======
 	@Override
 	public void memberIdOverlap(String memberId, HttpServletResponse response) throws IOException {
 		MemberDto member = new MemberDto();
@@ -108,8 +103,7 @@ public class AccountServiceImpl implements AccountService {
 		
 	}
 		
-		
->>>>>>> 04c9fb5ef05350986c6172f54f1ae5b70997cb70
+
 }
 	public MemberDto memberIdOverlap(String memberId) {
 		
@@ -118,4 +112,3 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 }
-

@@ -1,21 +1,12 @@
 package com.campus.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import com.campus.dto.GoodsDto;
 
-@Component
-@Service
+
 public interface AdminGoodsRegisterService {
 
-	void insertgoodsregister(GoodsDto goods);
+	void addGoods();
 	
-	List<GoodsDto> findGoodsAll(GoodsDto goods);
+	GoodsDto findGoodsByAll(int GoodsCode);
 
-	List<GoodsDto> findGoodsAll();
-	
-	
 }
