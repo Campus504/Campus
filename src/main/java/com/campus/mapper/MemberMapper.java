@@ -36,21 +36,24 @@ public interface MemberMapper {
 	// 아이디 중복확인
 	@Select("SELECT memberId " +
 			"FROM member " +
-			"WHERE memberId = #{ memberId } ")
+			"WHERE memberid = #{ memberId } ")
 	MemberDto memberByIdOverlap(String memberId);
 
 	// 회원정보수정
-	@Select("SELECT memberid, passwd, email, membername, address, birth, phone, active, joindate, admin " +
-			"FROM member " +
-			"WHERE memberid = #{ memberId } AND active = TRUE " )
-	MemberDto selectMemberById(String memberId);
 	
-	@Update("UPDATE member SET passwd = #{ passwd }, email = #{ email }, membername = #{ memberName }, address = #{address}, birth = #{birth}, phone = #{ phone } WHERE memberid = #{ memberId } " )
-	void updateMember(MemberDto member);
+	  @Select("SELECT memberid, passwd, email, membername, address, birth, phone, active, joindate, admin "
+	  + "FROM member " + "WHERE memberid = #{ memberId } AND active = TRUE " )
+	  MemberDto selectMemberById(String memberId);
 	
+	  @Update("UPDATE member SET email = #{ email }, membername = #{ memberName }, address = #{address}, birth = #{birth}, phone = #{ phone } WHERE memberid = #{ memberId } ")
+	  void updateMember(MemberDto member);
+	 
+	//비밀번호 수정
+	  @Update("UPDATE member SET passwd = #{ passwd } WHERE memberid = #{ memberId } ")
+	  void updatePasswd(MemberDto member);
 	
 	// 회원탈퇴
-	@Update("UPDATE member SET active = FALSE WHERE memberid = #{memberId} " )
+	@Update("UPDATE member SET active = FALSE WHERE memberid = #{ memberId } " )
 	void memberDelete(MemberDto member);
 	/*@Delete("DELETE FROM member WHERE memberid = #{ memberId } AND passwd = #{ passwd } AND email = #{ email } AND membername = #{ memberName } AND address = #{address} AND birth = #{birth} AND phone = #{ phone } " )
 	void memberDelete(MemberDto member);*/

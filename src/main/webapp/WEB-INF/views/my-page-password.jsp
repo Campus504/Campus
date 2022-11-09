@@ -139,19 +139,26 @@ input[type='date']:focus::before, input[type='date']:valid::before {
   
   <div class="container">
     <div class="login-content login-content3">
-       <form action="my-page.action" method="post">
+       <form action="my-page-password.action" method="post">
   
-        <h2 class="title">회원정보수정</h2>
+        <h2 class="title">비밀번호 변경</h2>
         
         <table>
         
               <div class="input-div one">
                  <div class="div">
-                    <input type="text" id="memberId" class="input" name="memberId" value="${ member.memberId }" readonly>
+                    <input type="text" id="memberId" class="input" name="memberId" value="${ member.memberId }" placeholder="${ member.memberId }" readonly>
                     <br>
                	</div>
               </div>
                  
+              <div class="input-div pass">
+				 <div class="div">
+                    <input type="password" id="old_passwd" class="input" name="old_passwd" placeholder="현재 비밀번호">
+                    <br>
+                 </div>
+              </div>
+              
               <div class="input-div pass">
 				 <div class="div">
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="새 비밀번호">
@@ -165,45 +172,7 @@ input[type='date']:focus::before, input[type='date']:valid::before {
                     <span id ="confirmMsg"></span>
                     <br>
                  </div>
-              </div>
-                 
-              <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="email" name="email" placeholder="이메일" value="${ member.email }">
-                    <br>
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="memberName" name="memberName" placeholder="이름" value="${ member.memberName }">
-                    <br>
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="text" id="address" name="address" placeholder="주소" value="${ member.address }">
-                     <br>
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-								<input type=date data-placeholder="${ member.birth }" required aria-required="true" value="${ member.birth }" className={styles.selectDay} onChange={StartDateValueHandler}></input>
-								<%-- <input type="" id="birth" class="input" name="birth" placeholder="${ member.birth }" value="${ member.birth }" readonly> --%>
-                    <br>
-                 </div>
-              </div>
-              
-               <div class="input-div pass">
-				 <div class="div">
-                    <input type="tel" id="phone" name="phone" placeholder="전화번호" value="${ member.phone }">
-                    <br>
-                  </div>
-              </div>
-              
-              
+              </div>             
               
               <div class="log-btn">
               <input id="register" type="submit" value="수정" />

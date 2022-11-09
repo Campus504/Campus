@@ -132,7 +132,7 @@
 										<li><a href="login.action" title="로그인"><iconify-icon icon="carbon:login" style="font-size:40px;"></iconify-icon></a></li>
 										</c:otherwise>
 										</c:choose>
-										<li><a href="my-page.action?memberId=${ loginuser.memberId }" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
+										<li><a href="my-page-profile.action?memberId=${ loginuser.memberId }" title="마이페이지"><iconify-icon icon="carbon:user-avatar-filled-alt" style="font-size:40px;"></iconify-icon></a></li>
 										<li><a href="admin-main" title="관리자페이지"><iconify-icon icon="eos-icons:admin-outlined" style="font-size:40px;"></iconify-icon></a></li>
 									</ul>
 								</div>

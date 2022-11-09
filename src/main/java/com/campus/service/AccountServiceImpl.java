@@ -112,6 +112,12 @@ public class AccountServiceImpl implements AccountService {
 		return memberMapper.memberByIdOverlap(memberId);
 	}
 
+	//비밀번호 수정
+	@Override
+	public void updatePasswwd(MemberDto member) {
+		memberMapper.updatePasswd(member);
+	}
+	
 	@Override
 	public void memberDelete(MemberDto memberDto) throws Exception {
 		memberMapper.memberDelete(memberDto);

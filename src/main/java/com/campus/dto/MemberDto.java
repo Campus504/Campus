@@ -4,9 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -14,8 +13,9 @@ import lombok.Data;
 public class MemberDto {
 	
 	@NotBlank(message="아이디를 입력하세요.")
+	@Pattern(regexp="[A-Za-z0-9]{3,14}")
 	private String memberId;
-	@NotBlank(message="패스워드를 입력하세요.")
+	@Pattern(regexp="[A-Za-z0-9]{3,14}")
 	private String passwd;
 	@NotBlank(message="이메일을 입력하세요.")
 	@Email
@@ -32,6 +32,15 @@ public class MemberDto {
 	private boolean active;
 	private Date joinDate;
 	private String admin;
-
+	
+	//비밀번호 수정
+	private String old_passwd;
+	
+	public String getOld_passwd() {
+		return old_passwd;
+	}
+	public void setOld_passwd(String old_passwd) {
+		this.old_passwd = old_passwd;
+	}
 }
 

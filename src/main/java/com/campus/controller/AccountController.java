@@ -126,20 +126,50 @@ public class AccountController {
 
 //	회원정보수정
 
-	@GetMapping(path = { "/my-page.action" })
+	@GetMapping(path = { "/my-page-profile.action" })
 	public String myPage(String memberId, Model model) {
 		MemberDto member = accountService.selectMemberInfo(memberId);
 		model.addAttribute("member", member);
-
-		return "my-page";
+		return "my-page-profile";
 	}
 
-	@PostMapping("my-page.action")
+	@PostMapping("my-page-profile.action")
 	public String memberUpdate(@ModelAttribute MemberDto member) {
 		accountService.updateMember(member);
-		return "main";
+		return "redirect:main";
 	}
-
+	
+	
+	  // 비밀번호 수정
+	  
+		/*
+		 * @GetMapping(path = {"/my-page-password.action"}) public String
+		 * myPagePassword() { return "my-page-password"; }
+		 */
+	  
+	  @RequestMapping(value="/my-page-password.action",method = RequestMethod.GET)
+	  public String myPagePassword(HttpSession session, Model model, String memberId) {
+		  
+		  MemberDto member = accountService.selectMemberInfo(memberId);
+		  session.getAttribute(memberId);
+		  model.addAttribute("member",member);
+		  return "my-page-password";
+	  }
+	  
+	  @RequestMapping(value = "/my-page-password.action", method = RequestMethod.POST)
+	  public String changePassword(@Valid MemberDto memberDto, BindingResult result) {
+		
+		  MemberDto member = accountService.selectMemberInfo(memberDto.getMemberId());
+		  if(!member.getPasswd().equals(memberDto.getOld_passwd())) {
+			  result.rejectValue("old_passwd", "invalidPassword");
+			  return "/my-page-password";
+		  }
+		  
+		  accountService.updatePasswwd(memberDto);
+		  
+		  return "redirect:main";
+	  }
+	  
 	// 회원탈퇴
 
 	
@@ -155,22 +185,5 @@ public class AccountController {
 	  session.setAttribute("loginuser", null);
 	  	return "main";
 	  }
-	 
-	
-	/*
-	 * @RequestMapping(value = "/dropOut.action", method = RequestMethod.POST)
-	 * public String memberDelete(MemberDto memberDto, HttpSession session,
-	 * RedirectAttributes rttr) throws Exception {
-	 * 
-	 * // 세션에 있는 member를 가져와 member변수에 넣어줍니다. MemberDto member = (MemberDto)
-	 * session.getAttribute("member"); // 세션에있는 비밀번호 String sessionPass =
-	 * memberDto.getPasswd(); // Dto로 들어오는 비밀번호 String passwd =
-	 * memberDto.getPasswd();
-	 * 
-	 * if (!(sessionPass.equals(passwd))) { rttr.addFlashAttribute("msg", false);
-	 * return "redirect:main"; } Service.memberDelete(passwd); session.invalidate();
-	 * return "redirect:/"; }
-	 */
-	 
-
+	  
 }

@@ -13,13 +13,22 @@
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="my-page.action">
+                    <a href="my-page-profile.action?memberId=${ loginuser.memberId }">
                         <i class="fa fa-address-card fa-2x"></i>
                         <span class="nav-text">
-                            정보 수정
+                            프로필 수정
                         </span>
                     </a>
                     
+                      <li class="has-subnav">
+                    <a href="my-page-password.action?memberId=${ loginuser.memberId }">
+                       <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+                            비밀번호 수정
+                        </span>
+                    </a>
+                   
+                </li>
                 </li>
                 <li class="has-subnav">
                     <a href="#">
@@ -30,15 +39,7 @@
                     </a>
                     
                 </li>
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
-                            Pages
-                        </span>
-                    </a>
-                   
-                </li>
+              
                 <li>
                     <a href="#">
                         <i class="fa fa-bar-chart-o fa-2x"></i>

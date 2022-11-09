@@ -30,6 +30,8 @@ public interface AccountService {
 
 	void deleteByMember(MemberDto member);
 
+	void updatePasswwd(MemberDto member);
+
 	
 
 }
