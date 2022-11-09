@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 import com.campus.mapper.CommunityMapper;
@@ -163,6 +164,51 @@ public class CommunityServiceImpl implements CommunityService {
 		int boardCount = communityMapper.selectTipBoardCount(searchOption,search);
 		
 		return boardCount;
+	}
+
+	@Override
+	public List<BoardCommentDto> findBoardCommentByBoardNo(int boardNo) {
+		List<BoardCommentDto> comments = communityMapper.selectCommentByBoardNo(boardNo);
+		
+		return comments;
+	}
+
+	@Override
+	public void writeComment(BoardCommentDto commentDto) {
+		communityMapper.insertComment(commentDto);
+		
+	}
+
+	@Override
+	public void updateGroupNo(int commentNo, int commentGroup) {
+		communityMapper.updateGroupNo(commentNo, commentGroup);
+		
+	}
+
+	@Override
+	public void deleteComment(int commentNo) {
+		communityMapper.deleteComment(commentNo);
+	}
+
+	@Override
+	public void updateComment(BoardCommentDto comment) {
+		communityMapper.updateComment(comment);
+	}
+
+	@Override
+	public void writeReComment(BoardCommentDto comment) {
+		
+		// 1. 부모글 조회 -> 그룹번호(groupno), 그룹내 순서 번호(step), 들여쓰기(depth) 적용
+				BoardCommentDto parent = communityMapper.selectCommentByCommentNo(comment.getCommentNo());
+				comment.setBoardNo(parent.getBoardNo());
+				comment.setCommentGroup(parent.getCommentGroup());
+				comment.setStep(parent.getStep()+1);
+				comment.setDepth(parent.getDepth()+1);
+				// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
+				communityMapper.updateStepNo(parent.getCommentGroup(), parent.getStep());
+				
+				// 3. 대댓글 저장
+		communityMapper.insertReComment(comment);
 	}
 
 

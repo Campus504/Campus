@@ -408,7 +408,7 @@
 			
 			$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}&pageNo=${pageNo}");
 			
-			$('#writecomment').on('click',function(event){ // 댓글 작성
+			$('#writecomment').on('click',function(event){
 	 			const formData = $('#commentform').serialize(); //form 내부의 모든 입력요소의 값을 전송 가능한 형태로 반환
 	 			
 				$.ajax({
@@ -428,7 +428,7 @@
 			
 			var correntEditCommentNo = null;
 			
-			$('#comment-list').on('click','.edit-comment',function(event){ //댓글 편집
+			$('#comment-list').on('click','.edit-comment',function(event){ //댓글 편집 버튼
 				event.preventDefault();
 				if(correntEditCommentNo !=null){
 					$('#comment-view-area-'+correntEditCommentNo).show();
@@ -443,7 +443,7 @@
 				correntEditCommentNo = commentNo;
 			});
 			
-			$('#comment-list').on('click','.cancel-edit-comment',function(event){ //댓글 수정 취소
+			$('#comment-list').on('click','.cancel-edit-comment',function(event){ //댓글 수정 취소 버튼
 				event.preventDefault();
 				
 				var commentNo = $(this).data('comment-no');
@@ -477,7 +477,7 @@
 				});
 			
 			
-			$('#comment-list').on('click', '.delete-comment', function(event){ // 댓글 삭제
+			$('#comment-list').on('click', '.delete-comment', function(event){ 
 				event.preventDefault();
 				
 				var commentNo = $(this).data('comment-no');
@@ -502,11 +502,6 @@
 					}
 				});
 			});
-		
-		
-		/////////////////////////////////////////////////대댓글//////////////////////////////////////
-		
-		
 			$('#comment-list').on('click','.reply',function(event){ // modal 열기
 				event.preventDefault();
 			
@@ -538,9 +533,7 @@
 							$('#recomment-modal').modal('hide');
 						}
 					},
-					"error":function(){
-						alert("???");
-					}
+					"error":function(){}
 				});
 				
 			});

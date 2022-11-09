@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 
@@ -48,6 +49,18 @@ public interface CommunityService {
 	List<BoardDto> searchTip(String searchOption, String search,  int pAGE_SIZE);
 
 	int findSearchTipCount(String searchOption, String search);
+
+	List<BoardCommentDto> findBoardCommentByBoardNo(int boardNo);
+
+	void writeComment(BoardCommentDto commentDto);
+
+	void updateGroupNo(int commentNo, int groupNo);
+
+	void deleteComment(int commentNo);
+
+	void updateComment(BoardCommentDto comment);
+
+	void writeReComment(BoardCommentDto comment);
 
 
 }

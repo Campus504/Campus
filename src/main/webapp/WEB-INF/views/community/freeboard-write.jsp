@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,6 +116,7 @@
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
+.error{color:red;font-weight:bold; font-size:8pt;position: absolute; top: 37px; left: 7px;}
 
 </style>
 
@@ -152,12 +154,13 @@
 
 						<article class="entry entry-single">
 
-							<form action="freeboard-write.action" method="post">
+							<form action="freeboard-write.action" method="post" >
 								<input type="hidden" name = "memberId" value="${ loginuser.memberId }">
 								<input type="hidden" name = "category" value="freeboard">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title" id="freeboard-title">
+										<form:errors path="title" class="error" />
 								</h2>
 
 								<div class="entry-meta">
@@ -171,6 +174,7 @@
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>내용</span>
 									<textarea name="content" ></textarea>
+									<form:errors path="content" class="error" />
 								</div>
 								
 								<div class="entry-content">
@@ -185,7 +189,7 @@
 									
 								</div>
 
-								<input type="submit" value="글쓰기" style="height: 25px" /> 
+								<input id="freeboard" type="submit" value="글쓰기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
@@ -269,10 +273,7 @@
 			location.href="/campus/freeboard.action";
 		});
 		
-		
-		
-		
-		
+
 		
 	});
 	</script>	

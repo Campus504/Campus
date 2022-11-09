@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 
@@ -80,6 +81,31 @@ public interface CommunityMapper {
 
 	@Select("SELECT COUNT(*) FROM board WHERE category = 'tip' and ${searchOption} like '%${search}%'")
 	int selectTipBoardCount(@Param("searchOption") String searchOption, @Param("search") String search);
+
+	@Select("SELECT * FROM boardComment where boardNo = ${boardNo} ")
+	List<BoardCommentDto> selectCommentByBoardNo(int boardNo);
+
+	@Insert("INSERT INTO boardComment (content, commentGroup, depth, step, boardNo, memberId) VALUES (#{content},#{commentGroup},#{depth},#{step},#{boardNo},#{memberId} ) ")
+	@Options(useGeneratedKeys = true, keyColumn = "commentno", keyProperty = "commentNo")
+	void insertComment(BoardCommentDto commentDto);
+
+	@Update("UPDATE boardComment SET commentGroup = #{commentGroup} WHERE commentNo = #{commentNo}")
+	void updateGroupNo(@Param("commentNo") int commentNo,@Param("commentGroup") int commentGroup);
+
+	@Delete("DELETE FROM boardComment WHERE commentGroup = ${commentNo}")
+	void deleteComment(int commentNo);
+
+	@Update("UPDATE boardComment SET content = #{content} WHERE commentNo = #{commentNo}")
+	void updateComment(BoardCommentDto comment);
+
+	@Insert("INSERT INTO boardComment (boardno, memberId, content, commentGroup, step, depth) VALUES (#{boardNo}, #{memberId}, #{content}, #{commentGroup}, #{step}, #{depth})) ")
+	void insertReComment(BoardCommentDto comment);
+
+	@Select("SELECT * FROM boardComment WHERE commentNo=#{commentNo} ")
+	BoardCommentDto selectCommentByCommentNo(int commentNo);
+
+	@Update("UPDATE boardComment SET step = step + 1 WHERE commentGroup = #{commentGroup} and step > #{step}")
+	void updateStepNo(@Param("commentGroup") int commentGroup,@Param("step") int step);
 
 
 }

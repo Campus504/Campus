@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 import com.campus.service.CommunityService;
@@ -83,8 +86,10 @@ public class CommunityController {
 	
 	// 포스트  : 글쓰고 DB에 저장
 	@PostMapping(path= {"freeboard-write.action"})
-	public String writeFreeboard(BoardDto board, CommunityDto community ) {
-		
+	public String writeFreeboard(@Valid BoardDto board, BindingResult br, CommunityDto community ) {
+		if(br.hasErrors()) {
+			return "community/freeboard-write";
+		}
 		communityService.writeFreeboard(board); //board 데이터 저장
 		
 		if (community.getTag()!=null) {
@@ -325,6 +330,51 @@ public class CommunityController {
 			return "community/tip-search-content-list";
 		}
 	
+		///////////////////////////댓글//////////////////////////////////
+		
+		@GetMapping(path= {"comment-list.action"})
+		public String showCommentList(int boardNo,  Model model) {
+			
+			List<BoardCommentDto> comments =  communityService.findBoardCommentByBoardNo(boardNo);
+			
+			model.addAttribute("comments", comments);
+			return "community/comment-list";
+		}
+		
+		@PostMapping(path= {"write-comment.action"}) @ResponseBody
+		public String writeComment(BoardCommentDto commentDto, int pageNo) {
+			communityService.writeComment(commentDto);
+			communityService.updateGroupNo(commentDto.getCommentNo(), commentDto.getCommentNo());
+			
+			return "success";
+		}
+		
+
+		@GetMapping(path= {"delete-comment.action"})
+		@ResponseBody 
+		public String deleteComment(int commentNo) {
+			communityService.deleteComment(commentNo);
+			
+			return "success"; // 
+		}
+		
+		@PostMapping(path= {"update-comment.action"})
+		@ResponseBody
+		public String updateComment(BoardCommentDto comment) {
+			communityService.updateComment(comment);
+			
+			return "success";
+		}
+		
+		@PostMapping(path= {"write-recomment.action"})
+		@ResponseBody
+		public String writeReComment(BoardCommentDto comment) {
+			
+			communityService.writeReComment(comment);
+			
+			return "success";
+		}
+		
 	
 
 }
