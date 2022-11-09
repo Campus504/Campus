@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
-import com.campus.mapper.AdminGoodsRegisterInMapper;
 import com.campus.mapper.AdminGoodsRegisterMapper;
 
 import lombok.Setter;
@@ -18,13 +17,13 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 
 
 	@Setter
-	private AdminGoodsRegisterInMapper admingoodsregisterinMapper;
+	private AdminGoodsRegisterMapper admingoodsregisterMapper;
 
 	// 입고 등록
 	@Override
 	public void adminGoodsRegisterIn(GoodsRegisterDto goodsregister) {
 		
-		admingoodsregisterinMapper.adminGoodsRegisterIn(goodsregister);
+		admingoodsregisterMapper.adminGoodsRegisterIn(goodsregister);
 	}
 
 

@@ -33,7 +33,8 @@
 	<import resource="inquiry-context.xml" />
 	<import resource="faq-context.xml" />
 	<import resource="goods-context.xml" />
-	<import resource="goodsin-context.xml" />
+<!-- 	<import resource="goodsin-context.xml" /> -->
+<!-- <import resource="goodslist-context.xml" /> -->
 
 	<!-- DataSourceTransactionManager. 트랜젝션 매니저 추가 -->
 	<bean id="txManager" 

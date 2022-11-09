@@ -14,4 +14,13 @@
 		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />					
 	</bean>
 
+	<bean id="admingoodsregisterinService" class="com.campus.service.AdminGoodsRegisterInServiceImpl">
+		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
+	</bean>
+	
+	<bean id="admingoodsregisterlistService" class="com.campus.service.AdminGoodsRegisterListServiceImpl">
+		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
+	</bean>
+	
+
 </beans>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.campus.dto.GoodsDto;
+import com.campus.dto.GoodsOptionDto;
+import com.campus.dto.GoodsOptionSeletionDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.mapper.AdminGoodsRegisterMapper;
 
@@ -26,17 +28,22 @@ public class AdminGoodsRegisterServiceImpl implements AdminGoodsRegisterService 
 		admingoodsregisterMapper.adminGoodsRegister(goods);
 		
 	}
-
+	
+	// 상품 등록
 	@Override
-	public GoodsDto selectGoodsList(int GoodsCode) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adminGoodsOption(GoodsOptionDto goodsoption) {
+		
+		admingoodsregisterMapper.adminGoodsOption(goodsoption);
+		
+	}
+	
+	// 상품 등록
+	@Override
+	public void adminGoodsOptionSelection(GoodsOptionSeletionDto goodsoptionselection) {
+
+		admingoodsregisterMapper.adminGoodsOptionSelection(goodsoptionselection);
+		
 	}
 
-	@Override
-	public GoodsDto findBoardByBoardNo(int GoodsCode) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

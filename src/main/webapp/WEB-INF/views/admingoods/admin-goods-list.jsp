@@ -119,9 +119,10 @@
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div id="DataTables_Table_3_filter" class="dataTables_filter">
-								<label>Search: <input type="search"
-									class="form-control form-control-sm" placeholder="Search"
-									aria-controls="DataTables_Table_3">
+								<label>Search: 
+								<input type="search"
+									   class="form-control form-control-sm" placeholder="Search"
+									   aria-controls="DataTables_Table_3">
 								</label>
 							</div>
 						</div>
@@ -157,10 +158,11 @@
 											</div>
 										</td>
 										
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
+										<td>${ goods.goodsCode }</td>
+										<td>${ goods.category }</td>
+										<td>${ goods.brand }</td>
+										<td>${ goods.goodsName }</td>
+										
 										<td>${ admin-goods-in.testData }</td>
 										<td>${ admin-goods-in.testData }</td>
 									</tr>

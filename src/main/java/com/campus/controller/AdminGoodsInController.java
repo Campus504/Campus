@@ -43,7 +43,7 @@ public class AdminGoodsInController {
 	
 		// 3. View에서 사용할 수 있도록 데이터 전달
 		model.addAttribute("goodsregister", goodsregister);
-	
+		
 		// 4. View 또는 다른 Controller로 이동
 		return "admingoods/admin-goods-register-in";
 		
