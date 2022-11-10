@@ -30,8 +30,9 @@ public interface AccountService {
 
 	void deleteByMember(MemberDto member);
 
-	void updatePasswwd(MemberDto member);
+	MemberDto selectMemberPasswd(String memberId) throws Exception;
 
-	
+	void updatePasswd(MemberDto member) throws Exception;
+
 
 }

@@ -33,14 +33,5 @@ public class MemberDto {
 	private Date joinDate;
 	private String admin;
 	
-	//비밀번호 수정
-	private String old_passwd;
-	
-	public String getOld_passwd() {
-		return old_passwd;
-	}
-	public void setOld_passwd(String old_passwd) {
-		this.old_passwd = old_passwd;
-	}
 }
 

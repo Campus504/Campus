@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -141,34 +142,67 @@ public class AccountController {
 	
 	
 	  // 비밀번호 수정
-	  
+	
+		@GetMapping(path = { "/my-page-password.action" })
+		public String myPagePassword(String memberId, Model model) throws Exception {
+			MemberDto member = accountService.selectMemberPasswd(memberId);
+			model.addAttribute("member", member);
+			return "my-page-password";
+		}
+		
+		@PostMapping("my-page-password.action")
+		public String passwdUpdate(@ModelAttribute MemberDto member) throws Exception {
+			accountService.updatePasswd(member);
+			
+			return "redirect:main";
+		}
+		/*
+		 * @RequestMapping(value="/my-page-password.action" , method=RequestMethod.POST)
+		 * 
+		 * @ResponseBody public int pwCheck(MemberDto memberDto) throws Exception{
+		 * String memberPw = accountService.pwCheck(memberDto.getMemberId()); if(
+		 * memberDto == null || !BCrypt.checkpw(memberDto.getPasswd(), memberPw)) {
+		 * return 0; } return 1; }
+		 */
+		/*
+		 * @RequestMapping(value="/pwUpdate" , method=RequestMethod.POST) public String
+		 * pwUpdate(String memberId,String memberPw1,RedirectAttributes rttr,HttpSession
+		 * session)throws Exception{ String hashedPw = BCrypt.hashpw(memberPw1,
+		 * BCrypt.gensalt()); memberService.pwUpdate(memberId, hashedPw);
+		 * session.invalidate(); rttr.addFlashAttribute("msg",
+		 * "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		 * 
+		 * return "redirect:/member/loginView"; } }
+		 */
+		
 		/*
 		 * @GetMapping(path = {"/my-page-password.action"}) public String
 		 * myPagePassword() { return "my-page-password"; }
+		 * 
+		 * 
+		 * 
+		 * @RequestMapping(value="/my-page-password.action",method = RequestMethod.GET)
+		 * public String myPagePassword(HttpSession session, Model model, String
+		 * memberId) {
+		 * 
+		 * MemberDto member = accountService.selectMemberInfo(memberId);
+		 * session.getAttribute(memberId); model.addAttribute("member",member); return
+		 * "my-page-password"; }
+		 * 
+		 * @RequestMapping(value = "/my-page-password.action", method =
+		 * RequestMethod.POST) public String changePassword(@Valid MemberDto memberDto,
+		 * BindingResult result) {
+		 * 
+		 * MemberDto member = accountService.selectMemberInfo(memberDto.getMemberId());
+		 * if(!member.getPasswd().equals(memberDto.getOld_passwd())) {
+		 * result.rejectValue("old_passwd", "invalidPassword"); return
+		 * "/my-page-password"; }
+		 * 
+		 * accountService.updatePasswwd(memberDto);
+		 * 
+		 * return "redirect:main"; }
 		 */
-	  
-	  @RequestMapping(value="/my-page-password.action",method = RequestMethod.GET)
-	  public String myPagePassword(HttpSession session, Model model, String memberId) {
-		  
-		  MemberDto member = accountService.selectMemberInfo(memberId);
-		  session.getAttribute(memberId);
-		  model.addAttribute("member",member);
-		  return "my-page-password";
-	  }
-	  
-	  @RequestMapping(value = "/my-page-password.action", method = RequestMethod.POST)
-	  public String changePassword(@Valid MemberDto memberDto, BindingResult result) {
-		
-		  MemberDto member = accountService.selectMemberInfo(memberDto.getMemberId());
-		  if(!member.getPasswd().equals(memberDto.getOld_passwd())) {
-			  result.rejectValue("old_passwd", "invalidPassword");
-			  return "/my-page-password";
-		  }
-		  
-		  accountService.updatePasswwd(memberDto);
-		  
-		  return "redirect:main";
-	  }
+		 
 	  
 	// 회원탈퇴
 

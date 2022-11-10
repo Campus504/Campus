@@ -49,6 +49,9 @@ public interface MemberMapper {
 	  void updateMember(MemberDto member);
 	 
 	//비밀번호 수정
+	  @Select("SELECT passwd FROM member WHERE memberid = #{ memberId } AND active = TRUE ")
+	  MemberDto selectMemberPasswd(String memberId);
+	  
 	  @Update("UPDATE member SET passwd = #{ passwd } WHERE memberid = #{ memberId } ")
 	  void updatePasswd(MemberDto member);
 	
@@ -57,6 +60,8 @@ public interface MemberMapper {
 	void memberDelete(MemberDto member);
 	/*@Delete("DELETE FROM member WHERE memberid = #{ memberId } AND passwd = #{ passwd } AND email = #{ email } AND membername = #{ memberName } AND address = #{address} AND birth = #{birth} AND phone = #{ phone } " )
 	void memberDelete(MemberDto member);*/
+
+	
 
 
 				

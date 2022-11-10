@@ -147,18 +147,18 @@ input[type='date']:focus::before, input[type='date']:valid::before {
         
               <div class="input-div one">
                  <div class="div">
-                    <input type="text" id="memberId" class="input" name="memberId" value="${ member.memberId }" placeholder="${ member.memberId }" readonly>
+                    <input type="text" id="memberId" class="input" name="memberId" value="${ loginuser.memberId }" placeholder="${ member.memberId }" readonly>
                     <br>
                	</div>
               </div>
                  
-              <div class="input-div pass">
+	<!--            <div class="input-div pass">
 				 <div class="div">
                     <input type="password" id="old_passwd" class="input" name="old_passwd" placeholder="현재 비밀번호">
                     <br>
                  </div>
               </div>
-              
+     -->          
               <div class="input-div pass">
 				 <div class="div">
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="새 비밀번호">
@@ -236,10 +236,12 @@ input[type='date']:focus::before, input[type='date']:valid::before {
 		// 취소
 		$("#cancel").on("click", function(){
 			
-			location.href = "login.action";
+			location.href = "main";
 					    
 		});
 	});
+	
+	
 	/* 자바 스크립트 함수 선언(비밀번호 확인) */
 
 	function passConfirm() {

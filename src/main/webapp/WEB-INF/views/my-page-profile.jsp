@@ -265,7 +265,7 @@ input[type='date']:focus::before, input[type='date']:valid::before {
 		// 취소
 		$("#cancel").on("click", function(){
 			
-			location.href = "login.action";
+			location.href = "main";
 					    
 		});
 	});

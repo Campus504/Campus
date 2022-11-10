@@ -114,10 +114,18 @@ public class AccountServiceImpl implements AccountService {
 
 	//비밀번호 수정
 	@Override
-	public void updatePasswwd(MemberDto member) {
+	public MemberDto selectMemberPasswd(String memberId)throws Exception{
+		 return memberMapper.selectMemberPasswd(memberId);
+	}
+	@Override
+	public void updatePasswd(MemberDto member)throws Exception {
+		String passwd = Util.getHashedString(member.getPasswd(), "SHA-256");
+		member.setPasswd(passwd);
 		memberMapper.updatePasswd(member);
+		
 	}
 	
+	//회원 탈퇴
 	@Override
 	public void memberDelete(MemberDto memberDto) throws Exception {
 		memberMapper.memberDelete(memberDto);
@@ -126,5 +134,8 @@ public class AccountServiceImpl implements AccountService {
 	public void deleteByMember(MemberDto member) {
 		memberMapper.memberDelete(member);
 	}
+
+
+	
 
 }
