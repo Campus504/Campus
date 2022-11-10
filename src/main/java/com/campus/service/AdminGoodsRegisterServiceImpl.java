@@ -28,22 +28,21 @@ public class AdminGoodsRegisterServiceImpl implements AdminGoodsRegisterService 
 		admingoodsregisterMapper.adminGoodsRegister(goods);
 		
 	}
-	
-	// 상품 등록
+
 	@Override
-	public void adminGoodsOption(GoodsOptionDto goodsoption) {
+	public void adminGoodsOptionRegister(String[] optionInputs) {
 		
-		admingoodsregisterMapper.adminGoodsOption(goodsoption);
+		admingoodsregisterMapper.adminGoodsOptionRegister(optionInputs);
 		
 	}
-	
-	// 상품 등록
+
 	@Override
 	public void adminGoodsOptionSelection(GoodsOptionSeletionDto goodsoptionselection) {
-
-		admingoodsregisterMapper.adminGoodsOptionSelection(goodsoptionselection);
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 	
 }

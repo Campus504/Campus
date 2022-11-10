@@ -25,6 +25,8 @@ public interface AdminGoodsRegisterMapper {
 	@Insert("INSERT INTO goodsoption (optionNo, optionName, optionDesc, goodsCode, optionDataType, optionValue) " +
 			"VALUES (#{ optionNo }, #{ optionName }, #{ optionDesc }, #{ goodsCode }, #{ optionDataType }, #{ optionValue })")
 	void adminGoodsOption(GoodsOptionDto goodsoption);	
+
+	void adminGoodsOptionRegister(String[] optionInputs);
 	
 	// 상품 등록 3
 	@Insert("INSERT INTO goodsoptionselection (goodsOptionSelectionNo, optionSelectionValue, optionNo) " +
@@ -33,14 +35,16 @@ public interface AdminGoodsRegisterMapper {
 	
 
 	// 등록된 상품 불러 오기
-	@Select("SELECT * " +
-			"FROM goods" )
-	GoodsDto selectGoodsList(int goodsCode);
+//	@Select("SELECT * " +
+//			"FROM goods" )
+//	GoodsDto selectGoodsList(int goodsCode);
 
 	// 입고 등록
-	@Insert("INSERT INTO goodsRegister (inCode, detail, rentPrice, goodsIn, goodsInDate, goodsCode) " +
-			"VALUES (#{ inCode }, #{ detail }, #{ rentPrice }, #{ goodsIn }, #{ goodsInDate }, #{ goodsCode })" ) 
-	void adminGoodsRegisterIn(GoodsRegisterDto goodsregister);
+//	@Insert("INSERT INTO goodsRegister (inCode, detail, rentPrice, goodsIn, goodsInDate, goodsCode) " +
+//			"VALUES (#{ inCode }, #{ detail }, #{ rentPrice }, #{ goodsIn }, #{ goodsInDate }, #{ goodsCode })" ) 
+//	void adminGoodsRegisterIn(GoodsRegisterDto goodsregister);
+
+
 
 	
 }

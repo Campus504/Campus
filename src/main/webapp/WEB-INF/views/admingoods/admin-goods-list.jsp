@@ -110,28 +110,34 @@
 									aria-controls="DataTables_Table_3"
 									class="custom-select custom-select-sm form-control form-control-sm">
 										<option value="10">10</option>
-										<option value="25">25</option>
-										<option value="50">50</option>
+										<option value="20">20</option>
 										<option value="-1">All</option>
 								</select> entries
 								</label>
 							</div>
 						</div>
+						
 						<div class="col-sm-12 col-md-6">
-							<div id="DataTables_Table_3_filter" class="dataTables_filter">
-								<label>Search: 
-								<input type="search"
-									   class="form-control form-control-sm" placeholder="Search"
-									   aria-controls="DataTables_Table_3">
-								</label>
+							<div class="dataTables_filter">
+								<form action="admin-goods-list-search.action" method="post">
+									<label>Search: <input type="search" name="search"
+										class="form-control form-control-sm" placeholder="Enter"
+										aria-controls="DataTables_Table_3">
+									</label>
+									<button type="submit">
+										<i class="bi bi-search"></i>
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
+					
+					<!-- 등록된 상품의 리스트 테이블 만들기 -->
 					<div class="row">
 						<div class="col-sm-12">
 							
 							<form action="" method="">
-							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="DataTables_Table_3" role="grid" aria-describedby="DataTables_Table_3_info">
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								<thead>
 									<tr role="row">
 										<th class="dt-body-center sorting_disabled" rowspan="1" colspan="1" aria-label="">
@@ -140,12 +146,16 @@
 												<span class="dt-checkbox-label"></span>
 											</div>
 										</th>
-										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">상품코드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품분류</th>
+										
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">상품분류</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">대여가격</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">입고일자</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성이름</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성자료형</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성값</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성설명</th>
+									
 									</tr>
 								</thead>
 								<tbody>
@@ -158,11 +168,19 @@
 											</div>
 										</td>
 										
-										<td>${ goods.goodsCode }</td>
+										
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										
+										<%-- <td>${ goods.goodsCode }</td>
 										<td>${ goods.category }</td>
 										<td>${ goods.brand }</td>
-										<td>${ goods.goodsName }</td>
+										<td>${ goods.goodsName }</td> --%>
 										
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
 										<td>${ admin-goods-in.testData }</td>
 										<td>${ admin-goods-in.testData }</td>
 									</tr>
@@ -176,35 +194,19 @@
 					<div class="row">
 						<div class="col-sm-12 col-md-5">
 							<div class="dataTables_info" id="DataTables_Table_3_info"
-								role="status" aria-live="polite">1-10 of 14 entries</div>
+								role="status" aria-live="polite">1-10 of ${ admin-goods-in.testData } entries</div>
 						</div>
 						
-						<div class="col-sm-12 col-md-7">
-							<div class="dataTables_paginate paging_simple_numbers"
-								id="DataTables_Table_3_paginate">
-								<ul class="pagination">
-									<li class="paginate_button page-item previous disabled"
-										id="DataTables_Table_3_previous"><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="0"
-										tabindex="0" class="page-link"><i
-											class="ion-chevron-left"></i></a></li>
-									<li class="paginate_button page-item active"><a
-										href="#" aria-controls="DataTables_Table_3" data-dt-idx="1"
-										tabindex="0" class="page-link">1</a></li>
-									<li class="paginate_button page-item "><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="2"
-										tabindex="0" class="page-link">2</a></li>
-									<li class="paginate_button page-item next"
-										id="DataTables_Table_3_next"><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="3"
-										tabindex="0" class="page-link"><i
-											class="ion-chevron-right"></i></a></li>
-								</ul>
-							</div>
-						</div>
+					<!-- paging -->
+					<jsp:include page="/WEB-INF/views/include/admin-paging.jsp" />
+					<!-- end of paging -->
+						
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
+		</div>
 		</div>
 		<!-- 상품 리스트 ! -->	
 		

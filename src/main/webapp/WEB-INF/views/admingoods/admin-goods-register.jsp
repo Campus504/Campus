@@ -89,7 +89,7 @@
 						</div>
 					</div>
 				</div>
-	
+		
 				<!-- 상품 등록 페이지 시작 -->
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
@@ -101,51 +101,48 @@
 							<div class="content clearfix">								
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
-							 		<form action="admin-goods-register.action" name="admin-goods-register-form" method="post" modelAttribute="memberDto" enctype="multipart/form-data">
+							 		<form action="register-goods" id="admin-goods-register-form" method="post">
 									
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label>1. 상품분류(대카테고리) :</label>
+												<label>1. 상품분류(대카테고리) :</label>													
 												<select name=category class="custom-select form-control">
-													
-													<option value="">--옵션을선택하세요(선택불가)--</option>
-													<option value="텐트/타프">텐트/타프</option>
-													<!-- <option value="텐트">텐트</option>
+													<option value="">--텐트/타프(선택불가)--</option>
+													<option value="텐트">텐트</option>
 													<option value="타프">타프</option>
-													<option value="텐트/타프(소품)">텐트/타프(소품)</option> -->
+													<option value="텐트/타프(소품)">텐트/타프(소품)</option>
 													
-													<option value="테이블/체어">테이블/체어</option>
-													<!-- <option value="테이블">테이블</option>
-													<option value="체어">체어</option> -->
+													<option value="">--테이블/체어(선택불가)--</option>
+													<option value="테이블">테이블</option>
+													<option value="체어">체어</option>
 													
-													<option value="침낭/매트">침낭/매트</option>
-													<!-- <option value="침낭">침낭</option>
+													<option value="">--침낭/매트(선택불가)--</option>
+													<option value="침낭">침낭</option>
 													<option value="매트">매트</option>
-													<option value="매트">야전침대</option>
-													<option value="매트">베개/해먹</option>
-													<option value="매트">소품</option> -->
+													<option value="야전침대">야전침대</option>
+													<option value="베개/해먹">베개/해먹</option>
+													<option value="소품">소품</option>
 													
-													<option value="식기">식기</option>
-													<!-- <option value="코펠">코펠</option>
+													<option value="">--식기(선택불가)--</option>
+													<option value="코펠">코펠</option>
 													<option value="프라이팬">프라이팬</option>
 													<option value="컵/머그컵">컵/머그컵</option>
-													<option value="취사도구">취사도구/양념통</option> -->
+													<option value="취사도구/양념통">취사도구/양념통</option>
 													
-													<option value="화로/버너">화로/버너</option>
-													<!-- <option value="버너/스토브">버너/스토브</option>
+													<option value="">--화로/버너(선택불가)--</option>
+													<option value="버너/스토브">버너/스토브</option>
 													<option value="화로대">화로대</option>
 													<option value="난로">난로</option>
-													<option value="화로/버너(소품)">화로/버너(소품)</option> -->
+													<option value="화로/버너(소품)">화로/버너(소품)</option>
 													
-													<option value="캠핑소품">캠핑소품</option>
-													<!-- <option value="가전기기">가전기기</option>
+													<option value="">--캠핑소품(선택불가)--</option>
+													<option value="가전기기">가전기기</option>
 													<option value="랜턴/손전등">랜턴/손전등</option>
 													<option value="아이스박스/쿨러">아이스박스/쿨러</option>
 													<option value="수납박스/케이스">수납박스/케이스</option>
-													<option value="기타소품">기타소품</option> -->
-												
-												</select>	
+													<option value="기타소품">기타소품</option>
+												</select>
 											</div>
 										</div>
 										
@@ -156,6 +153,8 @@
 												<select name="brand" class="custom-select form-control" >
 													<option value="">--브랜드선택(선택불가)--</option>
 													<option value="snowline">snowline</option>
+													<option value="Covea">Covea</option>
+													<option value="Snowpeak">Snowpeak</option>
 												</select>
 																
 											</div>
@@ -169,7 +168,7 @@
 										</div>
 									</div>		
 									
-									<!-- 속성값을 받을 테이블 추가 -->
+							<!-- 속성값을 받을 테이블 추가 -->
 								<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="options-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								<thead>
 									<tr role="row">
@@ -179,30 +178,35 @@
 												<span class="dt-checkbox-label"></span>
 											</div>
 										</th>
-										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">상품코드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품분류</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">속성이름</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성자료형</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성값</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성설명</th>
 										
 									</tr>
 								</thead>
+								
 								<tbody>
-									
+									<!-- 추가된 속성이 표시 되기위해 만들어 진 tbody 입니다 -->
 								</tbody>
-							</table>
-									<!-- 속성값을 받을 테이블 추가 끗 -->
-										
-									<div class="footer-wrap pd-20 mb-20 card-box">
-											<div class="form-group">
-											<!-- Button trigger modal -->
-												<button type="button" class="btn btn-success btn-lg btn-block" id="add-goods-property">속성추가</button>
-											</div>
-									</div>
+								
+								</table>
+							<!-- 속성값을 받을 테이블 추가 끗 -->
+						
+						<!-- 속성추가 버튼 추가 시작 -->				
+						<div class="footer-wrap pd-20 mb-20 card-box">
+							<div class="form-group">
+							<!-- Button trigger modal -->
+								<button type="button" class="btn btn-success btn-lg btn-block" id="add-goods-property">속성을 추가하세요</button>
+							</div>
+						</div>
+						<!-- 속성추가 버튼 추가 끗 -->
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						<div class="btn-list">
-							<button type="reset" id="goodsRegister" name="goodsRegister" value="초기화" class="btn btn-secondary btn-lg">초기화</button>
-							<button type="submit" id="goodsRegister" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button>
+							<button type="reset" id="goodsRegisterReset" name="goodsRegister" value="초기화" class="btn btn-secondary btn-lg">초기화</button>
+							<button type="submit" id="goodsRegisterConfirm" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button>
 							<button type="button" class="btn btn-secondary btn-lg">취소</button>
 						</div>	
 						
@@ -228,44 +232,6 @@
 						      <div class="form-group">
 								<label>4. 속성이름 :</label>
 								<input type="text" class="form-control" name="option_name" placeholder="속성 이름을 입력하세요">
-								<!--
-								<select name=category class="custom-select form-control">
-									<option value="">--텐트/타프 (선택불가)--</option>
-									<option value="텐트">텐트</option>
-									<option value="타프">타프</option>
-									<option value="텐트/타프(소품)">텐트/타프(소품)</option>
-									
-									<option value="">--테이블/체어 (선택불가)--</option>
-									<option value="테이블">테이블</option>
-									<option value="체어">체어</option>
-									
-									<option value="">--침낭/매트 (선택불가)--</option>
-									<option value="침낭">침낭</option>
-									<option value="매트">매트</option>
-									<option value="야전침대">야전침대</option>
-									<option value="베개/해먹">베개/해먹</option>
-									<option value="소품">소품</option>
-									
-									<option value="">--식기 (선택불가)--</option>
-									<option value="코펠">코펠</option>
-									<option value="프라이팬">프라이팬</option>
-									<option value="컵/머그컵">컵/머그컵</option>
-									<option value="취사도구/양념통">취사도구/양념통</option>
-									
-									<option value="">--화로/버너 (선택불가)--</option>
-									<option value="버너/스토브">버너/스토브</option>
-									<option value="화로대">화로대</option>
-									<option value="난로">난로</option>
-									<option value="화로/버너(소품)">화로/버너(소품)</option>
-									
-									<option value="">--캠핑소품 (선택불가)--</option>
-									<option value="가전기기">가전기기</option>
-									<option value="랜턴/손전등">랜턴/손전등</option>
-									<option value="아이스박스/쿨러">아이스박스/쿨러</option>
-									<option value="수납박스/케이스">수납박스/케이스</option>
-									<option value="기타소품">기타소품</option>
-								</select>
-								-->
 							</div>
 							
 								
@@ -276,9 +242,10 @@
 								<label class="btn btn-outline-secondary active">
 									<input type="radio" name="option_value_type" autocomplete="off" value="single" checked> 단일 값 
 								</label>
-								<label class="btn btn-outline-secondary">
+								
+								<!-- <label class="btn btn-outline-secondary">
 									<input type="radio" name="option-value-type" autocomplete="off" value="selection"> 선택 값
-								</label>
+								</label> -->
 							
 							</div>
 						</div>
@@ -306,14 +273,19 @@
 				  	</div>
 						      
 					      <div class="modal-footer">
-					        <button type="reset" id="goodsRegister" name="goodsRegister" class="btn btn-secondary" value="초기화">초기화</button>
+					        <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button>
 					        <button type="button" id="add-goods-property-modal-confirm" class="btn btn-primary">속성저장</button>
 					        <button type="button" id="add-goods-property-modal-cancel" class="btn btn-secondary">취소</button>
 					      </div>
 					    </div>
 					  </div>
 					</div>
-				<!--  상품 속성 등록 팝업  / end of goods option registration modal -->
+
+				<!-- 해더 닫기 -->			
+					</div>
+				</div>
+				</div>
+				<!--  상품 속성 등록 팝업 / end of goods option registration modal -->
 	
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
@@ -322,45 +294,112 @@
 		<script type="text/javascript">
 			$(function() {
 				$('#add-goods-property').on('click', function(event) {
-					$('#add-goods-property-modal').modal("show");
+					$('#add-goods-property-modal').modal("show");									// 상품 속성 팝업 열기
 				});
 				
 				$('#add-goods-property-modal-cancel').on('click', function(event) {
-					$('#add-goods-property-modal').modal("hide");
+					$('#add-goods-property-modal').modal("hide");									// 상품 속성 팝업 숨기기
 				});
+				
+				/* $('#').on('click', funtion(event){
+					$('#').();
+				}); */
 				
 				$('#add-goods-property-modal-confirm').on('click', function(event) {
 					// 입력된 속성을 저장하는 코드 작성
-					const option_name = $('input[name=option_name]').val();
-					const option_value_type = $('input[name=option_value_type]:checked').val();
-					const option_single_value = $('input[name=option_single_value]').val();
-					const option_description = $('input[name=option_description]').val();
+					const option_name = $('input[name=option_name]').val(); 						// option_name / 속성이름 입력
+					const option_value_type = $('input[name=option_value_type]:checked').val();		// option_value_type / 속성자료형 입력
+					const option_single_value = $('input[name=option_single_value]').val();			// option_single_value / 속성값 입력
+					const option_description = $('input[name=option_description]').val();			// option_description / 속성설명 입력
 					
 					// alert(option_name + " / " + option_value_type + " / " + option_single_value + " / " + option_description);
+
+					// 테이블에 들어갈 데이터 표시
 					const tr = `<tr role="row" class="odd">
 						<td class=" dt-body-center" tabindex="0">
-							<div class="dt-checkbox">
+							<div class="dt-checkbox">							// 각 행당 체크박스 배치
 								<input type="checkbox" name="id[]" value="">
 								<span class="dt-checkbox-label"></span>
 							</div>
 						</td>
 					
-						<td>` + option_name + `</td>
-						<td>` + option_value_type + `</td>
-						<td>` + option_single_value + `</td>
-						<td>` + option_description + `</td>
+						<td>` + option_name + `</td> 			// option_name / 속성이름 출력
+						<td>` + option_value_type + `</td> 		// option_value_type / 속성자료형 출력 
+						<td>` + option_single_value + `</td> 	// option_single_value / 속성값 출력
+						<td>` + "&nbsp;" + `</td>				// 테이블 빈공간
+						<td>` + option_description + `</td> 	// option_description / 속성설명 출력
+						<td>` + `<button type="button" class="btn btn-primary btn-sm remove-option-btn">삭제</button>` + `</td>	// td 내에 삭제 버튼 추가
 			
 					</tr>`
 					
-					$('#options-table tbody').append(tr)
+					$('#options-table tbody').append(tr)			// tr 의 데이터 options-table tbody 으로 저장
 					
-					
-					$('#add-goods-property-modal').modal("hide");
+					$('#add-goods-property-modal').modal("hide");	// 상품 속성 팝업 숨기기
 				});
 				
+				$('#options-table').on('click', '.remove-option-btn', function(event) {		// th 삭제 버튼 클릭 시 row 리스트 삭제
+					const ok = confirm('속성을 삭제할까요?');	// ok는 '속성을 삭제할까요?' 라는 confirm alert을 실행한다
+					if (!ok) {  							// ok가 아닐때
+						return;								// 실행한다
+					}
+					
+					$(this).parent().parent().remove();  // 위에 호출되는 함수(this) parent 내에 parent까지 삭제
+				});
+				
+				$('#goodsRegisterConfirm').on('click', function(event) {				// goodsRegisterConfirm 의 버튼을 클릭 하면 이하 이벤트 실행!
+					event.preventDefault();												// 부모 태그로 이벤트 전달 되는 것을 방지
+				
+					$('#options-table tbody tr').each(function(idx, tr) {				// idx(배열의 인덱스), tr(option테이블의 데이터) 
+						let option = '';												// option 변수 선언
+						$.each([1, 2, 3, 5], function(idx, no) {						// tr
+							option += ($(tr).find('td:eq(' + no + ')').text() + ",");	// tr 내에 td의 모든 데이터를 option에 주입
+						});			
+						option.trim(",");												// option 데이터의 마지막 "," 삭제
+						
+						$('#admin-goods-register-form').append("<input type='hidden' name='optionInputs', value='" + option + "'>") // option의 모든 데이터를 admin-goods-register-form 에 주입
+						
+					});
+					
+					$('#admin-goods-register-form')[0].submit();   // admin-goods-register-form 데이터를 서버로 전송
+					
+					/*
+					const formData = {};
+					formData['category'] = $('select[name=category]').val();
+					formData['brand'] = $('select[name=brand]').val();
+					formData['goodsName'] = $('input[name=goodsName]').val();
+					
+					let options = ""
+					$('#options-table tbody td').each(function(idx, td) {
+						let option = '';
+						$.each([1, 2, 3, 5], function(idx, no) {
+							option += ($(tr).find('td:eq(' + no + ')').text() + ",");
+						});
+						options += option + "$";
+						
+					});
+					formData["options"] =  options;
+					// console.log(formData);
+					
+					const jsonFormData = JSON.stringify(formData);
+					
+					$.ajax({
+						"url": "register-goods",
+						"method": "post",
+						"data": jsonFormData,
+						// "dataType": "json",
+						"success": function(data, status, xhr) {
+							console.log(data);
+						},
+						"error": function(xhr, status, err) {
+							console.log(err);
+						}
+						
+					});
+					*/
+					
+				});
 			});
 		</script>
-
 
 </body>
 </html>
