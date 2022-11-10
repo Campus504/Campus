@@ -137,6 +137,12 @@
                   <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
+               <div class="entry-meta">
+                <c:forEach var="attachment" items="${ board.attachments }">
+		                	<a href="download.action?attachNo=${ attachment.attachNo }" style="text-decoration:none">${ attachment.fileName }</a>
+		                	<br>
+	                	</c:forEach>
+              </div>
 
               <div class="entry-content">
                 <p>

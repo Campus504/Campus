@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.AttachDto;
 import com.campus.dto.BoardDto;
 import com.campus.mapper.FaqMapper;
 
@@ -17,7 +18,17 @@ public class FAQServiceImpl implements FAQService{
 
 		faqMapper.insertAdminBoard(board);
 		
+		if(board.getAttachments()!=null) {
+			for(AttachDto attachment: board.getAttachments()) {
+				attachment.setBoardNo(board.getBoardNo());
+				faqMapper.insertBoardAttach(attachment);
+			}
+		}
+		
+		
 	}
+	
+	 
 
 	@Override
 	public List<BoardDto> findNoticeByPage(int pageNo, int PAGE_SIZE) {
@@ -103,6 +114,13 @@ public class FAQServiceImpl implements FAQService{
 	@Override
 	public void editFaq(BoardDto board) {
 		faqMapper.updateFaq(board);
+	}
+
+
+	@Override
+	public AttachDto findBoardAttachByAttachNo(int attachNo) {
+		AttachDto attachment = faqMapper.selectAttachByAttachNo(attachNo);
+		return attachment;
 	}
 
 	

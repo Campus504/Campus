@@ -137,7 +137,7 @@
 					<li><a href="admin-main">관리자페이지</a></li>
 				</ol>
 				
-				<h2>공지사항 쓰기 / <a href="admin-write2.action" style="color:gray">자주묻는질문 쓰기</a></h2>
+				<h2><a href="admin-write.action" style="color:gray">공지사항 쓰기</a> / 자주묻는질문 쓰기</h2>
 
 			</div>
 		</section>
@@ -153,23 +153,22 @@
 
 						<article class="entry entry-single">
 
-							<form action="admin-write.action" enctype="multipart/form-data" method="post">
+							<form action="admin-write2.action" method="post">
 								<input type="hidden" name = "memberId" value="${ loginuser.memberId }">
-								<input type="hidden" name = "category" value="notice">
+								<input type="hidden" name = "category" value="faq">
+								
+								<div class="entry-meta">
+									<ul>
+										<li class="d-flex align-items-center">
+										
+										</li>
+									</ul>
+								</div>
 								
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
 										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
 								</h2>
-								
-								<div class="entry-meta">
-									<ul>
-										<li class="d-flex align-items-center">
-										<input type="file" name="attach" style="width:580px;height:30px" />
-										
-										</li>
-									</ul>
-								</div>
 
 								<div class="entry-content">
 									<span class="d-flex align-items-center">

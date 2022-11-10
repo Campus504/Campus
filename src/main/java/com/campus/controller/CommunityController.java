@@ -369,7 +369,6 @@ public class CommunityController {
 		@PostMapping(path= {"write-recomment.action"})
 		@ResponseBody
 		public String writeReComment(BoardCommentDto comment) {
-			
 			communityService.writeReComment(comment);
 			
 			return "success";

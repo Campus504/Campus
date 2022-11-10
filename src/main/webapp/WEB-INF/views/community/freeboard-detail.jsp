@@ -172,9 +172,7 @@
 " />
 									${ fn:replace(board.content, enter, "<br>") }
 								</p>
-
 							</div>
-
 
 						</article>
 						<!-- End blog entry -->
@@ -185,15 +183,17 @@
 						</article>
 						<div class="blog-comments" id="comment-list"></div>
 
-						<div class="blog-comments" >
+						<div class="blog-comments">
 
 							<!-- 댓글 출력 위치 -->
 
 							<div class="reply-form">
-								<form id="commentform" action="write-comment.action" method="post">
+								<form id="commentform" action="write-comment.action"
+									method="post">
 									<input type="hidden" name="boardNo" value="${ board.boardNo }" />
-									<input type="hidden" name="memberId" value="${ loginuser.memberId }" /> 
-									<input type="hidden" name="pageNo" value="${ pageNo }" />
+									<input type="hidden" name="memberId"
+										value="${ loginuser.memberId }" /> <input type="hidden"
+										name="pageNo" value="${ pageNo }" />
 									<div class="row">
 										<div class="col-md-6 form-group">
 											<input value="${ loginuser.memberId }" readonly>
@@ -205,11 +205,12 @@
 												class="form-control" placeholder="댓글을 작성하세요"></textarea>
 										</div>
 									</div>
-									<a id="writecomment" href="javascript:" class="btn btn-primary">댓글 	등록</a>
+									<a id="writecomment" href="javascript:" class="btn btn-primary">댓글
+										등록</a>
 
 								</form>
 
-								<!-- 대댓글 모달 -->
+								<%-- 	<!-- 대댓글 모달 -->
 								<div class="modal fade" id="recomment-modal"
 									data-bs-backdrop="static" data-bs-keyboard="false"
 									tabindex="-1" aria-labelledby="recomment-madal-label"
@@ -235,7 +236,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 
 							</div>
 
@@ -266,7 +267,6 @@
 									<button type="button" id="search-btn">
 										<i class="bi bi-search"></i>
 									</button>
-
 								</form>
 							</div>
 							<!-- End sidebar search form-->
@@ -280,7 +280,6 @@
 								</ul>
 							</div>
 							<!-- End sidebar categories-->
-
 
 							<h3 class="sidebar-title">태그</h3>
 							<div class="sidebar-item tags">
@@ -383,167 +382,204 @@
 	<script type="text/javascript">
 		$(function() {
 
-			$('.delete_button')
-					.on(
-							'click',
-							function(event) {
+			$('.delete_button').on('click',	function(event) {
 								const ok = confirm("글을 삭제할까요?");
 								if (!ok)
 									return;
 								location.href = 'freeboard-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
 							});
 
-			$('#search-btn').on(
-					'click',
-					function(event) {
+			$('#search-btn').on('click',function(event) {
 						let search = $('#search').val();
 						let searchOption = $('#searchOption').val();
 						location.href = 'freeboard-search.action?search='
 								+ search + '&searchOption=' + searchOption;
-
 					});
+
+			
 			
 			//////////////////////////댓글/////////////////////////////////////
 			
 			
+
 			$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}&pageNo=${pageNo}");
+
+			$('#writecomment').on('click',function(event) { // 댓글 작성
+				
+				if( ${loginuser.memberId==null} ){
+					alert('로그인 후 댓글을 작성하세요');
+					return;
+				};
+				
+				
 			
-			$('#writecomment').on('click',function(event){ // 댓글 작성
-	 			const formData = $('#commentform').serialize(); //form 내부의 모든 입력요소의 값을 전송 가능한 형태로 반환
-	 			
-				$.ajax({
-					"url":"write-comment.action",
-					"method":"post",
-					"data":formData,
-					"success":function(data,status,xhr){
-						if(data=="success"){
-							$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
-							$('#commentform textarea').val('');
-							}
-						},
-					"error":function(xhr,status,err){
-						}
-					})
-				});
-			
+								const formData = $('#commentform').serialize(); //form 내부의 모든 입력요소의 값을 전송 가능한 형태로 반환
+
+								$.ajax({
+											"url" : "write-comment.action",
+											"method" : "post",
+											"data" : formData,
+											"success" : function(data, status, xhr) {
+												if (data == "success") {
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#commentform textarea').val('');
+												}
+											},
+											"error" : function(xhr, status, err) {
+											}
+										});
+							});
+
 			var correntEditCommentNo = null;
-			
-			$('#comment-list').on('click','.edit-comment',function(event){ //댓글 편집
+
+			$('#comment-list').on('click', '.edit-comment', function(event) { //댓글 편집
 				event.preventDefault();
-				if(correntEditCommentNo !=null){
-					$('#comment-view-area-'+correntEditCommentNo).show();
-					$('#comment-edit-area-'+correntEditCommentNo).hide();
+				if (correntEditCommentNo != null) {
+					$('#comment-view-area-' + correntEditCommentNo).show();
+					$('#comment-edit-area-' + correntEditCommentNo).hide();
+					$("div [id*='recomment-area']").hide();
 				}
-			
+
 				var commentNo = $(this).data('comment-no');
-				
-				$('#comment-view-area-'+commentNo).hide();
-				$('#comment-edit-area-'+commentNo).show();
-				
+
+				$('#comment-view-area-' + commentNo).hide();
+				$('#comment-edit-area-' + commentNo).show();
+				$("div [id*='recomment-area']").hide();
+
 				correntEditCommentNo = commentNo;
 			});
+
+			$('#comment-list').on(
+					'click',
+					'.cancel-edit-comment',
+					function(event) { //댓글 수정 취소
+						event.preventDefault();
+
+						var commentNo = $(this).data('comment-no');
+						const editForm = $('#comment-edit-area-' + commentNo+ ' form');
+						editForm[0].reset(); //editForm : JQuery객체 / editForm[0] : javascript 객체(reset은 jquery로 못씀)
+
+						$('#comment-view-area-' + commentNo).show();
+						$('#comment-edit-area-' + commentNo).hide();
+
+						correntEditCommentNo = null;
+					});
+
+			$('#comment-list').on('click','.update-comment',function(event) { // 댓글 수정
+								event.preventDefault();
+
+								const commentNo = $(this).data('comment-no');
+								const editForm = $('#comment-edit-area-'+ commentNo + ' form');
+								$.ajax({
+											"url" : "update-comment.action",
+											"method" : "post",
+											"data" : editForm.serialize(),
+											"success" : function(data, status, xhr) {
+												if (data == "success") {
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+												}
+											},
+											"error" : function(xhr, status, err) {
+
+											}
+										});
+							});
+
+			$('#comment-list').on('click','.delete-comment',function(event) { // 댓글 삭제
+								event.preventDefault();
+
+								var commentNo = $(this).data('comment-no');
+
+								const yn = confirm('댓글을 삭제할까요?');
+								if (!yn)
+									return;
+
+								$.ajax({
+											"url" : "delete-comment.action",
+											"method" : "get",
+											"data" : 'commentNo=' + commentNo,
+											"success" : function(data, status,
+													xhr) {
+												if (data == "success") {
+													// 댓글 목록 전체 갱신 (jQuery load 함수 : 지정된 html요소의 내용을 응답받은 부분 html로 (비동기)갱신함))
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+												} else {
+													alert("ㅠㅠㅠㅠㅠ");
+												}
+											},
+											"error" : function(xhr, status, err) {
+												alert('ㅠㅠ');
+											}
+										});
+							});
+
+			/////////////////////////////////////////////////대댓글//////////////////////////////////////
+
+
+			var reCommentNo = null;
+			$('#comment-list').on('click','.reply',function(event) { // 대댓글 창 열기
+						event.preventDefault();
 			
-			$('#comment-list').on('click','.cancel-edit-comment',function(event){ //댓글 수정 취소
+						if( ${loginuser.memberId==null} ){
+							alert('로그인 후 댓글을 작성하세요');
+							return;
+						};
+
+						$("div [id*='comment-view-area']").show();
+
+						var commentNo = $(this).data('comment-no');
+
+						$("div [id*='comment-edit-area']").hide();
+						$('#recomment-area-' + commentNo).show();
+						$("div [id!='recomment-area-" + commentNo+ "'][id*='recomment-area-']").hide();
+
+					});
+			
+			$('#comment-list').on('click','.cancel-recomment-write',function(event) { // 대댓글 작성 취소
 				event.preventDefault();
+
+				$("div [id*='comment-view-area']").show();
 				
 				var commentNo = $(this).data('comment-no');
-				const editForm = $('#comment-edit-area-'+commentNo+' form');
-				editForm[0].reset(); //editForm : JQuery객체 / editForm[0] : javascript 객체(reset은 jquery로 못씀)
+				$("div [id*='comment-edit-area']").hide();
+				$('#recomment-area-' + commentNo).hide();
 				
-				$('#comment-view-area-'+commentNo).show();
-				$('#comment-edit-area-'+commentNo).hide();
-				
-				correntEditCommentNo = null;
+				const editForm = $('#recomment-area-' + commentNo+ ' form');
+				editForm[0].reset();
+
 			});
 			
-			$('#comment-list').on('click','.update-comment',function(event){ // 댓글 수정
-				event.preventDefault();
 			
-				const commentNo = $(this).data('comment-no');
-				const editForm = $('#comment-edit-area-'+commentNo+' form');
-				$.ajax({
-					"url":"update-comment.action",
-					"method":"post",
-					"data":editForm.serialize(),
-					"success":function(data,status,xhr){
-						if(data=="success"){
-							$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
-							}
-						},
-					"error":function(xhr,status,err){
-					
-						}
-				});
-				});
+			$('#comment-list').on('click','.recomment-write',function(event) { // 대댓글 쓰기
+								event.preventDefault();
 			
-			
-			$('#comment-list').on('click', '.delete-comment', function(event){ // 댓글 삭제
-				event.preventDefault();
-				
-				var commentNo = $(this).data('comment-no');
-				
-				const yn = confirm('댓글을 삭제할까요?');
-				if(!yn) return;
-				
-				$.ajax({
-					"url":"delete-comment.action",
-					"method":"get",
-					"data": 'commentNo='+commentNo,
-					"success":function(data,status,xhr){
-						if (data == "success"){
-							// 댓글 목록 전체 갱신 (jQuery load 함수 : 지정된 html요소의 내용을 응답받은 부분 html로 (비동기)갱신함))
-	 						$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
-						}else{
-							alert("ㅠㅠㅠㅠㅠ");
-					}
-					},
-					"error":function(xhr,status,err){
-						alert('ㅠㅠ');
-					}
-				});
-			});
-		
-		
-		/////////////////////////////////////////////////대댓글//////////////////////////////////////
-		
-		
-			$('#comment-list').on('click','.reply',function(event){ // modal 열기
-				event.preventDefault();
-			
-				var commentNo = $(this).data("comment-no");
-				$('#recommentform')[0].reset();
-				$('#recommentform input[name=commentNo]').val(commentNo);
-				
-				//javascript 코드로 모달 띄우기
-				$('#recomment-modal').modal('show');
-			});
-			
-			$('#recomment-modal .write-button').on('click',function(event){ // 대댓글 쓰기
-				event.preventDefault();
-				
-				if($('#recommentform textarea').val().length == 0){
-					alert('댓글을 작성하세요.');
-					return;
-				}
-				
-				var formData = $('#recommentform').serialize();
-				
-				$.ajax({
-					"url":"write-recomment.action",
-					"method":"post",
-					"data":formData,
-					"success":function(data){
-						if(data=="success"){
-							$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
-							$('#recomment-modal').modal('hide');
-						}
-					},
-					"error":function(){
-						alert("???");
-					}
-				});
-				
-			});
+								var commentNo = $(this).data('comment-no');
+
+								/* if ($('#recomment-area-' + commentNo).val().length == 0) { */
+								if ($('#comment_content-'+commentNo).val() == '') {
+									alert('댓글을 작성하세요.');
+								
+									return;
+								}
+
+								var formData = $('#recomment-area-' + commentNo+ " form").serialize();
+
+								$.ajax({
+											"url" : "write-recomment.action",
+											"method" : "post",
+											"data" : formData,
+											"success" : function(data) {
+												if (data == "success") {
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#recomment-area-'+ commentNo).hide();
+												}
+											},
+											"error" : function() {
+												alert("???");
+											}
+										});
+
+							});
 
 		});
 	</script>

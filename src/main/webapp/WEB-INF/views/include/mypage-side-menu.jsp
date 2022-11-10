@@ -10,7 +10,6 @@
                             홈
                         </span>
                     </a>
-                  
                 </li>
                 <li class="has-subnav">
                     <a href="my-page-profile.action?memberId=${ loginuser.memberId }">
@@ -19,22 +18,29 @@
                             프로필 수정
                         </span>
                     </a>
-                    
+                     </li>
                       <li class="has-subnav">
                     <a href="my-page-password.action?memberId=${ loginuser.memberId }">
-                       <i class="fa fa-folder-open fa-2x"></i>
+                       <i class="fa fa-gear fa-2x"></i>
                         <span class="nav-text">
                             비밀번호 수정
                         </span>
                     </a>
-                   
-                </li>
                 </li>
                 <li class="has-subnav">
                     <a href="#">
-                       <i class="fa fa-list fa-2x"></i>
+                       <i class="fa fa-shopping-bag fa-2x"></i>
                         <span class="nav-text">
                             주문내역 조회
+                        </span>
+                    </a>
+                    
+                </li>
+                    <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+                            내 게시글 관리
                         </span>
                     </a>
                     
@@ -81,7 +87,6 @@
                     </a>
                 </li>
             </ul>
-
             <ul class="logout">
                 <li>
                    <a href="logout.action" title="로그아웃">
