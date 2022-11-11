@@ -233,12 +233,18 @@ public class AccountController {
 	  @GetMapping(path= {"my-page-order-list.action"})
 	  public String myPageOrderList(String memberId, Model model) {
 		  
-		  
+		  //DB에서 주문 내역 가져와야함
 		  
 		  return "/account/my-page-order-list";
 	  }
 	  
-	  
+	  @GetMapping(path= {"my-page-order-detail.action"})
+	  public String myPageOrderDetail(String memberId, Model model) {
+		  
+		  //DB에서 주문 내역 가져와야함
+		  
+		  return "/account/my-page-order-detail";
+	  }
 	  
 	  
 	  

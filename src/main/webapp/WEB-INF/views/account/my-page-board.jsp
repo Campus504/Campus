@@ -95,22 +95,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
-	#search-btn{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    font-size: 16px;
-    padding: 0 30px;
-    margin: -1px;
-    background: #18d26e;
-    color: #fff;
-    transition: 0.3s;
-    line-height: 0;
-    border-radius: 50px;
-	}
+
 	.container{
 	display:flex;
 	padding-top:100px;
@@ -235,7 +220,7 @@
 			</c:if>
 			
               </c:forEach>
-           
+           <div><br><br><br></div>
            
           </div><!-- End blog entries list -->
 

@@ -114,6 +114,7 @@
 	.container .title{
 	padding-top:80px;
 	height: 20px;
+    padding-bottom: 10px;
 	}
 
 	</style>
@@ -139,61 +140,93 @@
       <div class="container" >
 
         <div class="row">
-		<h2 class="title">주문내역 조회</h2>
+		<h2 class="title">상세 주문내역</h2>
 		
           <div class="col-lg-8 entries">
           
+          	<div class="invoice-wrap">
+					<div class="invoice-box">
+						<div class="invoice-header">
+							<div class="logo text-center">
+								<img src="vendors/images/deskapp-logo.png" alt="">
+							</div>
+						</div>
+						<h4 class="text-center mb-30 weight-600">INVOICE</h4>
+						<div class="row pb-30">
+							<div class="col-md-6">
+								<h5 class="mb-15">Client Name</h5>
+								<p class="font-14 mb-5">Date Issued: <strong class="weight-600">10 Jan 2018</strong></p>
+								<p class="font-14 mb-5">Invoice No: <strong class="weight-600">4556</strong></p>
+							</div>
+							<div class="col-md-6">
+								<div class="text-right">
+									<p class="font-14 mb-5">Your Name </p>
+									<p class="font-14 mb-5">Your Address</p>
+									<p class="font-14 mb-5">City</p>
+									<p class="font-14 mb-5">Postcode</p>
+								</div>
+							</div>
+						</div>
+						<div class="invoice-desc pb-30">
+							<div class="invoice-desc-head clearfix">
+								<div class="invoice-sub">Description</div>
+								<div class="invoice-rate">Rate</div>
+								<div class="invoice-hours">Hours</div>
+								<div class="invoice-subtotal">Subtotal</div>
+							</div>
+							<div class="invoice-desc-body">
+								<ul>
+									<li class="clearfix">
+										<div class="invoice-sub">Website Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Logo Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Website Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Logo Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="invoice-desc-footer">
+								<div class="invoice-desc-head clearfix">
+									<div class="invoice-sub">Bank Info</div>
+									<div class="invoice-rate">Due By</div>
+									<div class="invoice-subtotal">Total Due</div>
+								</div>
+								<div class="invoice-desc-body">
+									<ul>
+										<li class="clearfix">
+											<div class="invoice-sub">
+												<p class="font-14 mb-5">Account No: <strong class="weight-600">123 456 789</strong></p>
+												<p class="font-14 mb-5">Code: <strong class="weight-600">4556</strong></p>
+											</div>
+											<div class="invoice-rate font-20 weight-600">10 Jan 2018</div>
+											<div class="invoice-subtotal"><span class="weight-600 font-24 text-danger">$8000</span></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<h4 class="text-center pb-20">Thank You!!</h4>
+					</div>
+				</div>
           
-          
-          
-          
-          
-          
-        <table class="table table-striped">
-        
-         <thead>
-         <tr>
-         <th>주문번호</th>
-         <th>주문일자</th>
-         <th>수령일</th>
-         <th>반납일</th>
-         <th>대여물품</th>
-         <th>결제금액</th>
-         <th></th>
-         </tr>
- 		 </thead>
-		  <tbody>
-		    <tr >
-				<td>1</td>
-				<td>2022-11-01</td>
-				<td>2022-11-02</td>
-				<td>2022-11-05</td>
-				<td>텐트</td>
-				<td>10000000000</td>
-				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
-		    </tr>
-		     <tr >
-				<td>2</td>
-				<td>2022-11-04</td>
-				<td>2022-11-07</td>
-				<td>2022-11-11</td>
-				<td>침낭</td>
-				<td>1210000000000</td>
-				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
-		    </tr>
-		 
-		  </tbody>
-		</table>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
+          <br><br><br>
            
           </div><!-- End blog entries list -->
 
