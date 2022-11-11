@@ -114,10 +114,11 @@
 
   <main id="main">
   
-  <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
+  <!-- <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png"> -->
   <div class="container">
     <div class="img">
-      <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+      <!-- <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg"> -->
+      <img src="/campus/resources/assets/img/login2.gif">
     </div>
     <div class="login-content login-content2">
        <form:form id="registerform" action="register.action" method="post" name="register-form" modelAttribute="memberDto">
@@ -193,7 +194,7 @@
               </div>
               
               
-              <a href="login.action" title="로그인">로그인 바로가기</a>
+              <a href="login.action" title="로그인" style="font-size:10pt; color:#ccc;">로그인 바로가기</a>
               <div class="log-btn">
               <input id="register" type="submit" value="가입" />
               <input id="cancel" type="button" value="취소" />

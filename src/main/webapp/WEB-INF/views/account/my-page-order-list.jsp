@@ -139,7 +139,16 @@
     }
 
 	</style>
-  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119386393-1');
+	</script>
 </head>
 <body>
 
@@ -157,7 +166,7 @@
 
 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <!-- <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -166,7 +175,7 @@
 		
           <div class="col-lg-8 entries">
           
-          	<!-- Simple Datatable start -->
+          	Simple Datatable start
 				<div class="card-box mb-30">
 					<div class="pd-20">
 						
@@ -203,16 +212,176 @@
 						</table>
 					</div>
 				</div>
-				<!-- Simple Datatable End -->
+				Simple Datatable End
            
            
-          </div><!-- End blog entries list -->
+          </div>End blog entries list
 
 
         </div>
 
       </div>
-    </section><!-- End Blog Section -->
+    </section> --><!-- End Blog Section -->
+    
+    <div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+
+		<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+
+		<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="title">
+						<h4> 주문목록</h4>
+					</div>
+					<nav aria-label="breadcrumb" role="navigation">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page"> 주문목록</li>
+						</ol>
+					</nav>
+				</div>
+				
+				<div class="col-md-6 col-sm-12 text-right">
+					<div class="dropdown">
+						<a class="btn btn-primary dropdown-toggle" href="#"
+							role="button" data-toggle="dropdown"> Oct 2022 </a>
+						
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">기능1)Export List </a> 
+							<a class="dropdown-item" href="#">기능2)Policies </a> 
+							<a class="dropdown-item" href="#">기능3)View Assets </a>
+							<a class="dropdown-item" href="#">기능4)View Assets </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+	
+	<!-- 주문 리스트 시작! -->
+	<div class="pd-20 card-box mb-30">
+
+		<div class="clearfix">
+			<h4 class="text-blue h4">사용자 페이지에서 등록 된 주문 리스트를 표시하는 페이지 입니다.</h4>
+			<p class="mb-30">주문 목록을 확인하세요</p>
+		</div>
+
+		<div class="card-box mb-30">
+			<div class="pd-20">
+				<h4 class="text-blue h4"></h4>
+			</div>
+
+			<div class="pb-20">
+				<div id="DataTables_Table_3_wrapper"
+					class="dataTables_wrapper dt-bootstrap4 no-footer">
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="dataTables_length" id="DataTables_Table_3_length">
+								<label>Show <select name="DataTables_Table_3_length"
+									aria-controls="DataTables_Table_3"
+									class="custom-select custom-select-sm form-control form-control-sm">
+										<option value="10">10</option>
+										<option value="25">25</option>
+										<option value="50">50</option>
+										<option value="-1">All</option>
+								</select> entries
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div id="DataTables_Table_3_filter" class="dataTables_filter">
+								<label>Search: <input type="search"
+									class="form-control form-control-sm" placeholder="Search"
+									aria-controls="DataTables_Table_3">
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							
+							<form action="" method="">
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="DataTables_Table_3" role="grid" aria-describedby="DataTables_Table_3_info">
+								<thead>
+									<tr role="row">
+										<th class="dt-body-center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+											<div class="dt-checkbox">
+												<input type="checkbox" name="select_all" value="1" id="example-select-all"> <span class="dt-checkbox-label"></span>
+											</div>
+										</th>
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">주문코드</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품코드</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품분류</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">대여가격</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">주문일자</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr role="row" class="odd">
+										<td class=" dt-body-center" tabindex="0">
+											<div class="dt-checkbox">
+												<input type="checkbox" name="id[]" value="">
+												<span class="dt-checkbox-label"></span>
+											</div>
+										</td>
+										
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+										<td>${ admin-goods-in.testData }</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							</form>										
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-12 col-md-5">
+							<div class="dataTables_info" id="DataTables_Table_3_info"
+								role="status" aria-live="polite">1-10 of 14 entries</div>
+						</div>
+						
+						<div class="col-sm-12 col-md-7">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="DataTables_Table_3_paginate">
+								<ul class="pagination">
+									<li class="paginate_button page-item previous disabled"
+										id="DataTables_Table_3_previous"><a href="#"
+										aria-controls="DataTables_Table_3" data-dt-idx="0"
+										tabindex="0" class="page-link"><i
+											class="ion-chevron-left"></i></a></li>
+									<li class="paginate_button page-item active"><a
+										href="#" aria-controls="DataTables_Table_3" data-dt-idx="1"
+										tabindex="0" class="page-link">1</a></li>
+									<li class="paginate_button page-item "><a href="#"
+										aria-controls="DataTables_Table_3" data-dt-idx="2"
+										tabindex="0" class="page-link">2</a></li>
+									<li class="paginate_button page-item next"
+										id="DataTables_Table_3_next"><a href="#"
+										aria-controls="DataTables_Table_3" data-dt-idx="3"
+										tabindex="0" class="page-link"><i
+											class="ion-chevron-right"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 주문 리스트 끝! -->	
+    
 
   </main><!-- End #main -->
 

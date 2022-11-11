@@ -87,6 +87,10 @@
   	<!-- 사이드바 아이콘 링크  -->
   	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
   	
+  	
+  	<style>
+  		video{width:1920px;}
+  	</style>
 </head>
 
 <body>
@@ -97,7 +101,29 @@
 
   <!-- ======= hero Section ======= -->
   <section id="hero">
-    <div class="hero-container">
+  <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <!-- <ol id="hero-carousel-indicators" class="carousel-indicators"></ol> -->
+
+        <div class="carousel-inner" role="listbox">
+  
+  <div class="carousel-item active"><!-- style="background-image: url(/campus/resources/assets/img/hero-carousel/1.jpg)" -->
+  <video muted autoplay loop>
+        <source src="/campus/resources/assets/img/hero-carousel/main_vid.mp4" type="video/mp4">
+      </video>
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">준비할 것도 알아볼 것도 많은 캠핑,<br>
+                 <b>Campus</b>에서 시작하세요.</h2>
+                <!-- <p class="animate__animated animate__fadeInUp">준비할 것도 알아볼 것도 많은 캠핑, <b>Campus</b>에서 시작하세요.</p> -->
+                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+              </div>
+            </div>
+          </div>
+  	</div>
+  	</div>
+    <!-- <div class="hero-container">
       <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
         <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
@@ -166,7 +192,7 @@
 
       </div>
     </div>
-  </section><!-- End Hero Section -->
+ -->  </section><!-- End Hero Section -->
    
 
   <main id="main">
