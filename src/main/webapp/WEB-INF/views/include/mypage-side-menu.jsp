@@ -27,9 +27,21 @@
                         </span>
                     </a>
                 </li>
+                
+                <li class="has-subnav">
+                    <a href="my-page-cart.action?memberId=${ loginuser.memberId }">
+                       <i class="fa fa-shopping-cart fa-2x"></i>
+                        <span class="nav-text">
+                            장바구니
+                        </span>
+                    </a>
+                    
+                </li>
+                
+                
                 <li class="has-subnav">
                     <a href="my-page-order-list.action?memberId=${ loginuser.memberId }">
-                       <i class="fa fa-shopping-bag fa-2x"></i>
+                       <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
                             주문내역 조회
                         </span>
@@ -38,7 +50,7 @@
                 </li>
                     <li class="has-subnav">
                     <a href="my-page-board.action?memberId=${ loginuser.memberId }">
-                       <i class="fa fa-list fa-2x"></i>
+                       <i class="fa fa-pencil-square-o fa-2x"></i>
                         <span class="nav-text">
                             내 게시글 관리
                         </span>

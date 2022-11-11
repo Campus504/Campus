@@ -31,6 +31,11 @@
 
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
 
   <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -96,24 +101,21 @@
 	  background: rgba(26, 26, 26, 0.9);
 	}
 
-	.container{
-	display:flex;
-	padding-top:100px;
-	}
-	.container [class='row']{
-	width:1200px;
-	}
-	.entry-title a{
-	font-size:30px;
-	text-align: left;
-	}
-	.blog .entry {
-    height:120px;
-    margin-bottom: 20px;
-    }
     section{
     overflow:scroll !important;
     }
+	.container [class='row'] {
+    width: 1200px;
+}
+
+	.area {
+	    width: 3.5% !important;
+	}
+	.container .title{
+	padding-top:80px;
+	height: 20px;
+    padding-bottom: 10px;
+	}
 
 	</style>
   
@@ -135,92 +137,96 @@
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
+      <div class="container" >
 
         <div class="row">
-		
-		<h2 class="title">내 게시글 관리</h2>
+		<h2 class="title">상세 주문내역</h2>
 		
           <div class="col-lg-8 entries">
           
-          <h4>자유게시판</h4>
-			<c:forEach var="board" items="${boards}">
-			
-			<c:if test="${board.category=='freeboard'}">
-			<input type="hidden" name="boardNo" value="board.boardNo">
-            <article class="entry" >
-
-              <h2 class="entry-title">
-                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
-                </ul>
-              </div>
-              </article>
-			</c:if>
-			
-              </c:forEach>
-
-					<hr style="width:750px; background:#18d26e;">
-           
-            <h4>캠핑 팁</h4>
-           <c:forEach var="board" items="${boards}">
-			
-			<c:if test="${board.category=='tip'}">
-			<input type="hidden" name="boardNo" value="board.boardNo">
-            <article class="entry" >
-
-              <h2 class="entry-title">
-                <a href="tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
-                </ul>
-              </div>
-              
-             
-              </article>
-			</c:if>
-			
-              </c:forEach>
-              
-              	<hr style="width:750px; background:#18d26e;">
-              
-              
-              <h4>1:1 문의</h4>
-           <c:forEach var="board" items="${boards}">
-			
-			<c:if test="${board.category=='inquiry'}">
-			<input type="hidden" name="boardNo" value="board.boardNo">
-            <article class="entry" >
-
-              <h2 class="entry-title">
-                <a href="inquiry-detail.action?boardNo=${board.boardNo}&pageNo=1">${board.title}</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
-                </ul>
-              </div>
-              
-              
-              </article>
-			</c:if>
-			
-              </c:forEach>
-           <div><br><br><br></div>
+          	<div class="invoice-wrap">
+					<div class="invoice-box">
+						<div class="invoice-header">
+							<div class="logo text-center">
+								<img src="vendors/images/deskapp-logo.png" alt="">
+							</div>
+						</div>
+						<h4 class="text-center mb-30 weight-600">INVOICE</h4>
+						<div class="row pb-30">
+							<div class="col-md-6">
+								<h5 class="mb-15">Client Name</h5>
+								<p class="font-14 mb-5">Date Issued: <strong class="weight-600">10 Jan 2018</strong></p>
+								<p class="font-14 mb-5">Invoice No: <strong class="weight-600">4556</strong></p>
+							</div>
+							<div class="col-md-6">
+								<div class="text-right">
+									<p class="font-14 mb-5">Your Name </p>
+									<p class="font-14 mb-5">Your Address</p>
+									<p class="font-14 mb-5">City</p>
+									<p class="font-14 mb-5">Postcode</p>
+								</div>
+							</div>
+						</div>
+						<div class="invoice-desc pb-30">
+							<div class="invoice-desc-head clearfix">
+								<div class="invoice-sub">Description</div>
+								<div class="invoice-rate">Rate</div>
+								<div class="invoice-hours">Hours</div>
+								<div class="invoice-subtotal">Subtotal</div>
+							</div>
+							<div class="invoice-desc-body">
+								<ul>
+									<li class="clearfix">
+										<div class="invoice-sub">Website Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Logo Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Website Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+									<li class="clearfix">
+										<div class="invoice-sub">Logo Design</div>
+										<div class="invoice-rate">$20</div>
+										<div class="invoice-hours">100</div>
+										<div class="invoice-subtotal"><span class="weight-600">$2000</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="invoice-desc-footer">
+								<div class="invoice-desc-head clearfix">
+									<div class="invoice-sub">Bank Info</div>
+									<div class="invoice-rate">Due By</div>
+									<div class="invoice-subtotal">Total Due</div>
+								</div>
+								<div class="invoice-desc-body">
+									<ul>
+										<li class="clearfix">
+											<div class="invoice-sub">
+												<p class="font-14 mb-5">Account No: <strong class="weight-600">123 456 789</strong></p>
+												<p class="font-14 mb-5">Code: <strong class="weight-600">4556</strong></p>
+											</div>
+											<div class="invoice-rate font-20 weight-600">10 Jan 2018</div>
+											<div class="invoice-subtotal"><span class="weight-600 font-24 text-danger">$8000</span></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<h4 class="text-center pb-20">Thank You!!</h4>
+					</div>
+				</div>
+          
+          <br><br><br>
            
           </div><!-- End blog entries list -->
 
@@ -275,6 +281,10 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+
+<!-- js -->
+		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+		<!-- end of js -->
 
 <script type="text/javascript">
 $(function(){

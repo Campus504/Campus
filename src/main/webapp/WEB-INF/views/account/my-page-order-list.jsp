@@ -100,43 +100,21 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
-	#search-btn{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    font-size: 16px;
-    padding: 0 30px;
-    margin: -1px;
-    background: #18d26e;
-    color: #fff;
-    transition: 0.3s;
-    line-height: 0;
-    border-radius: 50px;
-	}
-	.container{
-	display:flex;
-	padding-top:100px;
-	}
-	.container [class='row']{
-	width:1200px;
-	}
-	.entry-title a{
-	font-size:30px;
-	text-align: left;
-	}
-	.blog .entry {
-    height:120px;
-    margin-bottom: 20px;
-    }
+
     section{
     overflow:scroll !important;
     }
-    .data-table table stripe hover nowrap th{
-    width:100px;
-    }
+	.container [class='row'] {
+    width: 1200px;
+}
+
+	.area {
+	    width: 3.5% !important;
+	}
+	.container .title{
+	padding-top:80px;
+	height: 20px;
+	}
 
 	</style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -166,15 +144,20 @@
 
 
     <!-- ======= Blog Section ======= -->
+
     <!-- <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
+=======
+    <section id="blog" class="blog">
+      <div class="container" >
+>>>>>>> b233e3eeaae103b5578fa3cadc3d25d92e7da07a
 
         <div class="row">
-		
 		<h2 class="title">주문내역 조회</h2>
 		
           <div class="col-lg-8 entries">
           
+<<<<<<< HEAD
           	Simple Datatable start
 				<div class="card-box mb-30">
 					<div class="pd-20">
@@ -214,6 +197,59 @@
 				</div>
 				Simple Datatable End
            
+=======
+          
+          
+          
+          
+          
+          
+        <table class="table table-striped">
+        
+         <thead>
+         <tr>
+         <th>주문번호</th>
+         <th>주문일자</th>
+         <th>수령일</th>
+         <th>반납일</th>
+         <th>대여물품</th>
+         <th>결제금액</th>
+         <th></th>
+         </tr>
+ 		 </thead>
+		  <tbody>
+		    <tr >
+				<td>1</td>
+				<td>2022-11-01</td>
+				<td>2022-11-02</td>
+				<td>2022-11-05</td>
+				<td>텐트</td>
+				<td>10000000000</td>
+				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
+		    </tr>
+		     <tr >
+				<td>2</td>
+				<td>2022-11-04</td>
+				<td>2022-11-07</td>
+				<td>2022-11-11</td>
+				<td>침낭</td>
+				<td>1210000000000</td>
+				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
+		    </tr>
+		 
+		  </tbody>
+		</table>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+>>>>>>> b233e3eeaae103b5578fa3cadc3d25d92e7da07a
            
           </div>End blog entries list
 
