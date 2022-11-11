@@ -2,8 +2,8 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.AttachDto;
 import com.campus.dto.BoardDto;
-import com.campus.mapper.FaqMapper;
 
 public interface FAQService {
 
@@ -34,6 +34,8 @@ public interface FAQService {
 	BoardDto findFaqByBoardNo(int boardNo);
 
 	void editFaq(BoardDto board);
+
+	AttachDto findBoardAttachByAttachNo(int attachNo);
 	
 
 }

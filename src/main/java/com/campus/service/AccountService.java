@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
 
 public interface AccountService {
@@ -33,6 +34,8 @@ public interface AccountService {
 	MemberDto selectMemberPasswd(String memberId) throws Exception;
 
 	void updatePasswd(MemberDto member) throws Exception;
+
+	List<BoardDto> findAllBoardByMemberId(String memberId);
 
 
 }

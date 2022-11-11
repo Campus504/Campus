@@ -49,11 +49,7 @@ public class CommunityController {
 	
 	// 겟 : 글 상세페이지 보기 (+조회수 증가)
 	@GetMapping(path= {"freeboard-detail.action"})
-	public String showFreeboardDetail(@RequestParam(defaultValue = "-1") int boardNo, @RequestParam(defaultValue = "-1") int pageNo, Model model, HttpSession session) {
-		
-		if(boardNo==-1||pageNo==-1) {
-			return "redirect:freeboard.action";
-		}
+	public String showFreeboardDetail(@RequestParam(defaultValue = "-1") int boardNo, @RequestParam(defaultValue = "1") int pageNo, Model model, HttpSession session) {
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
@@ -90,13 +86,16 @@ public class CommunityController {
 		if(br.hasErrors()) {
 			return "community/freeboard-write";
 		}
-		communityService.writeFreeboard(board); //board 데이터 저장
 		
 		if (community.getTag()!=null) {
-		int boardTagNo = communityService.findLastBoardNo(); //tag 저장용 최근 값 저장한 boardNo 찾기
-		String tag = community.getTag();
-		communityService.writeFreeboardTags(boardTagNo, tag); //가져온 boardNo로 DB에 태그 저장하기
+			
+			ArrayList<CommunityDto> tags = new ArrayList<>(); 
+			CommunityDto tag = new CommunityDto();
+			tag.setTag(community.getTag());
+			tags.add(tag);
+			board.setTags(tags);
 		}
+		communityService.writeFreeboard(board); //board 데이터 저장
 		
 		return "redirect:freeboard.action";
 	}
@@ -240,11 +239,8 @@ public class CommunityController {
 	
 	//겟 : 캠핑팁 상세페이지 보기 (+조회수 증가)
 	@GetMapping(path= {"tip-detail.action"})
-	public String showTipDetail(@RequestParam(defaultValue = "-1") int boardNo, @RequestParam(defaultValue = "-1") int pageNo, Model model, HttpSession session) {
+	public String showTipDetail(@RequestParam(defaultValue = "1") int boardNo, @RequestParam(defaultValue = "1") int pageNo, Model model, HttpSession session) {
 		
-		if(boardNo==-1||pageNo==-1) {
-			return "redirect:tip-list.action";
-		}
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
@@ -369,7 +365,6 @@ public class CommunityController {
 		@PostMapping(path= {"write-recomment.action"})
 		@ResponseBody
 		public String writeReComment(BoardCommentDto comment) {
-			
 			communityService.writeReComment(comment);
 			
 			return "success";

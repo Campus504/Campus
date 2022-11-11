@@ -19,18 +19,12 @@ public class CommunityServiceImpl implements CommunityService {
 	public void writeFreeboard(BoardDto board) {
 		communityMapper.insertBoard(board); 
 		
-	}
-	
-	@Override
-	public int findLastBoardNo() {
-		int tagNo = communityMapper.selectLastBoardNo();
-		return tagNo;
-	}
-	
-	@Override
-	public void writeFreeboardTags(int boardTagNo, String tag) {
-		communityMapper.insertFreeboardTags(boardTagNo, tag);
-		
+		if(board.getTags()!=null) {
+			for(CommunityDto tag: board.getTags()) {
+				tag.setBoardNo(board.getBoardNo());
+				communityMapper.insertBoardTag(tag);
+			}
+		}
 	}
 
 	@Override
@@ -187,6 +181,7 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public void deleteComment(int commentNo) {
+		
 		communityMapper.deleteComment(commentNo);
 	}
 
@@ -195,17 +190,54 @@ public class CommunityServiceImpl implements CommunityService {
 		communityMapper.updateComment(comment);
 	}
 
+//	@Override
+//	public void writeReComment(BoardCommentDto comment) {
+//		
+//		// 1. 부모글 조회 -> 그룹번호(groupno), 그룹내 순서 번호(step), 들여쓰기(depth) 적용
+//				BoardCommentDto parent = communityMapper.selectCommentByCommentNo(comment.getCommentNo());
+//				comment.setBoardNo(parent.getBoardNo());
+//				comment.setCommentGroup(parent.getCommentGroup());
+//				comment.setStep(parent.getStep()+1);
+//				comment.setDepth(parent.getDepth()+1);
+//				// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
+//				communityMapper.updateStepNo(parent.getCommentGroup(), parent.getStep());
+//				
+//				// 3. 대댓글 저장
+//		communityMapper.insertReComment(comment);
+//	
+
 	@Override
 	public void writeReComment(BoardCommentDto comment) {
 		
 		// 1. 부모글 조회 -> 그룹번호(groupno), 그룹내 순서 번호(step), 들여쓰기(depth) 적용
-				BoardCommentDto parent = communityMapper.selectCommentByCommentNo(comment.getCommentNo());
-				comment.setBoardNo(parent.getBoardNo());
-				comment.setCommentGroup(parent.getCommentGroup());
-				comment.setStep(parent.getStep()+1);
-				comment.setDepth(parent.getDepth()+1);
-				// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
-				communityMapper.updateStepNo(parent.getCommentGroup(), parent.getStep());
+				BoardCommentDto reCommentStep = communityMapper.selectReCommentInfo(comment.getCommentNo());
+				if(reCommentStep==null) { //그냥 대댓글 달때
+					
+					int maxDepth = communityMapper.selectMaxDepthBycommentGroup(comment.getCommentNo());
+					if(maxDepth==1) {
+						BoardCommentDto reCommentWithMaxDepth = communityMapper.selectRecommentWithMaxDepth(comment.getCommentNo());
+						comment.setBoardNo(reCommentWithMaxDepth.getBoardNo());
+						comment.setCommentGroup(reCommentWithMaxDepth.getCommentGroup());
+						comment.setStep(reCommentWithMaxDepth.getStep());
+						comment.setDepth(reCommentWithMaxDepth.getDepth());
+						communityMapper.updateStepNo(reCommentWithMaxDepth.getCommentGroup(), reCommentWithMaxDepth.getStep());
+					}else {
+						BoardCommentDto reCommentStep2 = communityMapper.selectReCommentInfo2(comment.getCommentNo());
+						comment.setBoardNo(reCommentStep2.getBoardNo());
+						comment.setCommentGroup(reCommentStep2.getCommentGroup());
+						comment.setStep(reCommentStep2.getStep());
+						comment.setDepth(reCommentStep2.getDepth());
+					}
+					
+				}else { // 대대대ㅐ댓글 달때
+					comment.setBoardNo(reCommentStep.getBoardNo());
+					comment.setCommentGroup(reCommentStep.getCommentGroup());
+					comment.setStep(reCommentStep.getStep());
+					comment.setDepth(reCommentStep.getDepth());
+					// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
+					communityMapper.updateStepNo(reCommentStep.getCommentGroup(), reCommentStep.getStep());
+					
+				}
 				
 				// 3. 대댓글 저장
 		communityMapper.insertReComment(comment);

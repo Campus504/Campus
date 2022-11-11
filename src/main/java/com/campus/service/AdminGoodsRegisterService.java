@@ -14,8 +14,8 @@ public interface AdminGoodsRegisterService {
 	
 	void adminGoodsRegister(GoodsDto goods);
 	
-	void adminGoodsOption(GoodsOptionDto goodsoption);
+	void adminGoodsOptionRegister(String[] optionInputs);
 	
-	void adminGoodsOptionSelection(GoodsOptionSeletionDto goodsoptionselection);
+
 	
 }

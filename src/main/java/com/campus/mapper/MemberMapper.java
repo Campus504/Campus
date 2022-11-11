@@ -61,6 +61,9 @@ public interface MemberMapper {
 	/*@Delete("DELETE FROM member WHERE memberid = #{ memberId } AND passwd = #{ passwd } AND email = #{ email } AND membername = #{ memberName } AND address = #{address} AND birth = #{birth} AND phone = #{ phone } " )
 	void memberDelete(MemberDto member);*/
 
+	@Select("SELECT * FROM board WHERE memberId = #{memberId} ")
+	List<BoardDto> selectAllBoardByMemberId(String memberId);
+
 	
 
 

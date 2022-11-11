@@ -173,4 +173,26 @@ public class AccountController {
 	  	return "main";
 	  }
 	  
+	  @GetMapping(path= {"my-page-board.action"})
+	  public String myPageBoardList(String memberId, Model model) {
+		  
+		  List<BoardDto> boards = accountService.findAllBoardByMemberId(memberId);
+		  
+		  model.addAttribute("boards", boards);
+		  
+		  return "/account/my-page-board";
+	  }
+	  
+	  @GetMapping(path= {"my-page-order-list.action"})
+	  public String myPageOrderList(String memberId, Model model) {
+		  
+		  
+		  
+		  return "/account/my-page-order-list";
+	  }
+	  
+	  
+	  
+	  
+	  
 }

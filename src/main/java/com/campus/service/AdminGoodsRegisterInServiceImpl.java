@@ -23,7 +23,7 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 	@Override
 	public void adminGoodsRegisterIn(GoodsRegisterDto goodsregister) {
 		
-		admingoodsregisterMapper.adminGoodsRegisterIn(goodsregister);
+		
 	}
 
 

@@ -25,25 +25,21 @@ public class AdminGoodsRegisterServiceImpl implements AdminGoodsRegisterService 
 	@Override
 	public void adminGoodsRegister(GoodsDto goods) {
 		
-		admingoodsregisterMapper.adminGoodsRegister(goods);
-		
-	}
-	
-	// 상품 등록
-	@Override
-	public void adminGoodsOption(GoodsOptionDto goodsoption) {
-		
-		admingoodsregisterMapper.adminGoodsOption(goodsoption);
-		
-	}
-	
-	// 상품 등록
-	@Override
-	public void adminGoodsOptionSelection(GoodsOptionSeletionDto goodsoptionselection) {
-
-		admingoodsregisterMapper.adminGoodsOptionSelection(goodsoptionselection);
+		admingoodsregisterMapper.insertGoods(goods);
+		if (goods.getOptions() != null) {
+			for (GoodsOptionDto option : goods.getOptions()) {
+				option.setGoodsCode(goods.getGoodsCode());
+				admingoodsregisterMapper.insertOption(option);
+			}
+		}
 		
 	}
 
-	
-}
+	@Override
+	public void adminGoodsOptionRegister(String[] optionInputs) {
+		
+		// admingoodsregisterMapper.adminGoodsOptionRegister(optionInputs);
+		
+	}
+
+}                                                                                                 

@@ -22,5 +22,6 @@ public class BoardDto {
 	private boolean secret;
 	
 	private List<CommunityDto> tags;
+	private List<AttachDto> attachments;
 
 }

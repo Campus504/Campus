@@ -10,10 +10,6 @@ public interface CommunityService {
 	
 	void writeFreeboard(BoardDto board);
 
-	int findLastBoardNo();
-
-	void writeFreeboardTags(int boardTagNo, String tag);
-
 	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
 
 	int findBoardCount();

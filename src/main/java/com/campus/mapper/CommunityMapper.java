@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.campus.dto.BoardCommentDto;
@@ -19,14 +18,8 @@ import com.campus.dto.CommunityDto;
 public interface CommunityMapper {
 	
 	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title},#{memberId}, #{content}, #{category})")
-	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
+	@Options(useGeneratedKeys = true, keyColumn = "boardNo", keyProperty = "boardNo")
 	void insertBoard(BoardDto board);
-	
-	@Select("SELECT MAX(boardNo) FROM board")
-	int selectLastBoardNo();
-
-	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
-	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);
 
 	@Select("SELECT count(*) FROM board WHERE category = 'freeboard'")
 	int selectBoardCount();
@@ -82,7 +75,9 @@ public interface CommunityMapper {
 	@Select("SELECT COUNT(*) FROM board WHERE category = 'tip' and ${searchOption} like '%${search}%'")
 	int selectTipBoardCount(@Param("searchOption") String searchOption, @Param("search") String search);
 
-	@Select("SELECT * FROM boardComment where boardNo = ${boardNo} ")
+	/////////////////////////댓글//////////////////////////////////////
+	
+	@Select("SELECT * FROM boardComment where boardNo = ${boardNo} ORDER bY commentGroup, step  ")
 	List<BoardCommentDto> selectCommentByBoardNo(int boardNo);
 
 	@Insert("INSERT INTO boardComment (content, commentGroup, depth, step, boardNo, memberId) VALUES (#{content},#{commentGroup},#{depth},#{step},#{boardNo},#{memberId} ) ")
@@ -92,20 +87,33 @@ public interface CommunityMapper {
 	@Update("UPDATE boardComment SET commentGroup = #{commentGroup} WHERE commentNo = #{commentNo}")
 	void updateGroupNo(@Param("commentNo") int commentNo,@Param("commentGroup") int commentGroup);
 
-	@Delete("DELETE FROM boardComment WHERE commentGroup = ${commentNo}")
+	@Delete("DELETE FROM boardComment WHERE commentNo = ${commentNo} OR commentGroup = ${commentNo}")
 	void deleteComment(int commentNo);
 
 	@Update("UPDATE boardComment SET content = #{content} WHERE commentNo = #{commentNo}")
 	void updateComment(BoardCommentDto comment);
 
-	@Insert("INSERT INTO boardComment (boardno, memberId, content, commentGroup, step, depth) VALUES (#{boardNo}, #{memberId}, #{content}, #{commentGroup}, #{step}, #{depth})) ")
+	@Insert("INSERT INTO boardComment (boardno, memberId, content, commentGroup, step, depth) VALUES (#{boardNo}, #{memberId}, #{content}, #{commentGroup}, #{step}, #{depth}) ")
 	void insertReComment(BoardCommentDto comment);
 
-	@Select("SELECT * FROM boardComment WHERE commentNo=#{commentNo} ")
-	BoardCommentDto selectCommentByCommentNo(int commentNo);
+	@Select("SELECT boardNo, commentGroup, MAX(step)+1 step , depth FROM boardComment WHERE commentGroup=(SELECT commentGroup FROM boardComment WHERE commentNo= ${commentNo}) and depth= (SELECT (depth+1) depth FROM boardComment WHERE commentNo=${commentNo}) "
+			+ "AND step < (SELECT MiN(step) FROM boardComment WHERE depth = (SELECT depth FROM boardComment WHERE commentNo= ${commentNo}) AND step > (SELECT step FROM boardComment WHERE commentNo=${commentNo} ))")
+	BoardCommentDto selectReCommentInfo(int commentNo);
 
-	@Update("UPDATE boardComment SET step = step + 1 WHERE commentGroup = #{commentGroup} and step > #{step}")
+	@Update("UPDATE boardComment SET step = step + 1 WHERE commentGroup = ${commentGroup} and step >= ${step}")
 	void updateStepNo(@Param("commentGroup") int commentGroup,@Param("step") int step);
+
+	@Select("SELECT MAX(step)+1 step, boardNo, commentGroup, 1 depth  FROM boardComment WHERE commentGroup = #{commentGroup} ")
+	BoardCommentDto selectReCommentInfo2(int commentNo);
+
+	@Select("SELECT COUNT(*) FROM boardComment WHERE commentGroup= (select commentGroup from boardComment WHERE commentNo = ${commentNo}) AND depth = (SELECT MAX(depth) FROM boardComment WHERE commentGroup = (select commentGroup from boardComment WHERE commentNo = ${commentNo}))")
+	int selectMaxDepthBycommentGroup(int commentNo);
+
+	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) AND depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
+	BoardCommentDto selectRecommentWithMaxDepth(int commentNo);
+
+	@Insert("INSERT INTO community (boardNo, tag) VALUES (#{boardNo}, #{tag})")
+	void insertBoardTag(CommunityDto tag);
 
 
 }

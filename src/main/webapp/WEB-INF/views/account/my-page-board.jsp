@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CAMPUS - 공지사항</title>
+  <title>CAMPUS - 마이페이지</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -75,6 +75,8 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
+    <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
+    <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -83,143 +85,176 @@
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
     
-    <!--  사이드바 관리자 아이콘 -->
+        <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="/campus/resources/assets/js/login.js"></script>
     
-    <style type="text/css">
+    
+    
+  <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
-	  }
+	}
+	#search-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 30px;
+    margin: -1px;
+    background: #18d26e;
+    color: #fff;
+    transition: 0.3s;
+    line-height: 0;
+    border-radius: 50px;
+	}
+	.container{
+	display:flex;
+	padding-top:100px;
+	}
+	.container [class='row']{
+	width:1200px;
+	}
+	.entry-title a{
+	font-size:30px;
+	text-align: left;
+	}
+	.blog .entry {
+    height:120px;
+    margin-bottom: 20px;
+    }
+    section{
+    overflow:scroll !important;
+    }
 
 	</style>
   
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+ 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
+  
+  <!-- ======= mypage-side-menu ======= -->
+ 	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
+  <!-- End mypage-side-menu -->
+  
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
 
-        <ol>
-          <li><a href="main">홈</a></li>
-          <li><a href="notice-list.action">공지사항</a></li>
-        </ol>
-        <h2>공지사항</h2>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Blog Single Section ======= -->
+    <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-
+		
+		<h2 class="title">내 게시글 관리</h2>
+		
           <div class="col-lg-8 entries">
-
-            <article class="entry entry-single">
+          
+          <h4>자유게시판</h4>
+			<c:forEach var="board" items="${boards}">
+			
+			<c:if test="${board.category=='freeboard'}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
+            <article class="entry" >
 
               <h2 class="entry-title">
-               ${ board.title }
+                <a href="freeboard-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
-                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
                   <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
-               <div class="entry-meta">
-                <c:forEach var="attachment" items="${ board.attachments }">
-		                	<a href="download.action?attachNo=${ attachment.attachNo }" style="text-decoration:none">${ attachment.fileName }</a>
-		                	<br>
-	                	</c:forEach>
-              </div>
+              </article>
+			</c:if>
+			
+              </c:forEach>
 
-              <div class="entry-content">
-                <p>
-<c:set var="enter" value="
-" />
-						${ fn:replace(board.content, enter, "<br>") }
-                </p>
+					<hr style="width:750px; background:#18d26e;">
+           
+            <h4>캠핑 팁</h4>
+           <c:forEach var="board" items="${boards}">
+			
+			<c:if test="${board.category=='tip'}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
+            <article class="entry" >
 
-              </div>
-              
-	           
-            </article><!-- End blog entry -->
-            
+              <h2 class="entry-title">
+                <a href="tip-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
+              </h2>
 
-          </div><!-- End blog entries list -->
-
-          <div class="col-lg-4">
-
-            <div class="sidebar">
-
-            
-             <h3 class="sidebar-title">검색하기</h3>
-              <div class="sidebar-item search-form">
-              
-              <div class="mb-3">
-                 <select class="form-select form-select-lg" id="searchOption" name="searchOption">
-	                 <option value="title">제목</option>
-	                 <option value="content">내용</option>
-	                 <option value="memberId">작성자</option>
-                 </select>
-                 </div>
-                 <form>
-               <input type="text" class="form-control" id="search" name="search">
-                  <button type="button" id="search-btn"><i class="bi bi-search"></i></button>
-                
-              </form>
-              </div><!-- End sidebar search form-->
-
-              <h3 class="sidebar-title">카테고리</h3>
-              <div class="sidebar-item categories">
+              <div class="entry-meta">
                 <ul>
-                	<li><a href="notice-list.action">공지사항</a></li>
-                  <li><a href="freeboard.action">자유 게시판</a></li>
-                  <li><a href="tip-list.action">캠핑 팁</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
                 </ul>
               </div>
-              <!-- End sidebar categories-->
+              
+             
+              </article>
+			</c:if>
+			
+              </c:forEach>
+              
+              	<hr style="width:750px; background:#18d26e;">
+              
+              
+              <h4>1:1 문의</h4>
+           <c:forEach var="board" items="${boards}">
+			
+			<c:if test="${board.category=='inquiry'}">
+			<input type="hidden" name="boardNo" value="board.boardNo">
+            <article class="entry" >
 
-            </div>
-            <!-- End sidebar -->
-            
-             <article class="entry">
+              <h2 class="entry-title">
+                <a href="inquiry-detail.action?boardNo=${board.boardNo}&pageNo=1">${board.title}</a>
+              </h2>
 
-              <div class="entry-content">
-                <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
-                  <a href="notice-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
-                  <a class="delete_button">삭제</a>
-                  </c:if>
-                  <a href="notice-list.action?pageNo=${pageNo}">목록보기</a>
-                </div>
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>${board.memberId}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>${board.writeDate}</li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i>${board.readCount}</li>
+                </ul>
               </div>
-            </article><!-- End write entry -->
+              
+              
+              </article>
+			</c:if>
+			
+              </c:forEach>
+           
+           
+          </div><!-- End blog entries list -->
 
-          </div><!-- End blog sidebar -->
 
         </div>
 
       </div>
-    </section><!-- End Blog Single Section -->
+    </section><!-- End Blog Section -->
+
   </main><!-- End #main -->
 
   	<!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
 	<!-- End Footer --> 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
@@ -255,29 +290,23 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
-  
-  <script type="text/javascript">
-  $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'notice-delete.action?boardNo=${board.boardNo}';
-	  });
-	  
-	  $('#search-btn').on('click',function(event){
-			let search=$('#search').val();
-			let searchOption=$('#searchOption').val();
-			location.href = 'notice-search.action?search='+search+'&searchOption='+searchOption;
-			
-			
-		});
-	  
-	  
-  });
-  
-  </script>
+
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+	
+});
+
+
+
+
+</script>
+
 
 </body>
+
+
 
 </html>
