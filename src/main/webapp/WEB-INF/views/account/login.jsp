@@ -102,6 +102,10 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+/* input::placeholder {
+  	color: #fff;
+	}
+ */	/* .img{background-image:url('/webapp/resources/src/images/login.gif'); width:100%;} */
 	</style>
 </head>
 
@@ -113,14 +117,11 @@
 
 
   <main id="main">
-
-
-  
-  <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
-  <div class="container">
-    <div class="img">
-      <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+<div class="img">
+     <img src="/campus/resources/assets/img/login2.gif">
     </div>
+  <div class="container">
+    
     <div class="login-content">
        <form action="login.action" method="post">
         <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
@@ -138,7 +139,7 @@
                  </div>
               </div>
                
-              <a href="register.action" title="회원가입">회원이 아니십니까?</a>
+              <a href="register.action" title="회원가입" style="font-size:10pt;">회원이 아니십니까?</a>
               <input type="submit" id="login" value="로그인" />
             </form>
         </div>
