@@ -1988,13 +1988,13 @@ ul.client-thumb-2 li a img:hover{
     transition: opacity 0.35s, transform 0.35s;
     -o-transition: opacity 0.35s, -o-transform 0.35s;
 }
-.img:hover img {
+/* .img:hover img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     transition: -webkit-transform 3s;
     transition: transform 0.5s;
 }
-.overlay-thumb a.main-portfolio-link {
+ */.overlay-thumb a.main-portfolio-link {
     position: absolute;
     top: 0;
     left: 0;
