@@ -31,6 +31,13 @@ public interface AdminGoodsRegisterMapper {
 //	이후에 사용 : String optionName, String optionDataType, String optionValue, String optionDesc					
 //	int goodsCode, int optionNo
 
+	// 상품 리스트 불러오기
+	@Select("SELECT * FROM goods, goodsOption")
+	public GoodsDto goodsGetDetail(int goodsCode);
 
+	
+	@Select("SELECT * FROM goods, goodsOption")
+	List<GoodsDto> findGoodsAll(List<GoodsDto> goods, List<GoodsDto> options);
+	
 	
 }

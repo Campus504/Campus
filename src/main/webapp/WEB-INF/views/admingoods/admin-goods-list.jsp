@@ -2,6 +2,12 @@
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="enter" value="
+" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,14 +91,15 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 	
 	<!-- 상품 리스트 시작! -->
 	<div class="pd-20 card-box mb-30">
 
 		<div class="clearfix">
-			<h4 class="text-blue h4">관리자페이지를 통해 등록된 상품을 확인 할 수 있는 리스트입니다.</h4>
-			<p class="mb-30">상품 리스트를 확인해 주세요</p>
+			<h4 class="text-blue h4">관리자페이지 내에 상품 등록을 통해 등록된 상품을 확인 할 수 있는 페이지 입니다.</h4>
+			<p class="mb-30">등록 된 상품 리스트를 확인하여 상품들의 현황을 확인 해주세요.</p>
 		</div>
 
 		<div class="card-box mb-30">
@@ -136,7 +143,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							
-							<form action="" method="">
+							<form action="admin-goods-list.action" method="get">
 							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								<thead>
 									<tr role="row">
@@ -146,7 +153,6 @@
 												<span class="dt-checkbox-label"></span>
 											</div>
 										</th>
-										
 										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">상품분류</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
@@ -159,7 +165,6 @@
 									</tr>
 								</thead>
 								<tbody>
-
 									<tr role="row" class="odd">
 										<td class=" dt-body-center" tabindex="0">
 											<div class="dt-checkbox">
@@ -168,23 +173,17 @@
 											</div>
 										</td>
 										
-										
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										
-										<%-- <td>${ goods.goodsCode }</td>
 										<td>${ goods.category }</td>
-										<td>${ goods.brand }</td>
-										<td>${ goods.goodsName }</td> --%>
+										<td>${ goods.category }</td>
+										<td>${ goods.category }</td>
+										<td>${ goods.category }</td>
 										
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
+										<td>${ goods.category }</td>
+										<td>${ goods.category }</td>
+										<td>${ goods.category }</td>
+										<td>${ goods.category }</td>
+										
 									</tr>
-									
 								</tbody>
 							</table>
 							</form>										
@@ -194,7 +193,7 @@
 					<div class="row">
 						<div class="col-sm-12 col-md-5">
 							<div class="dataTables_info" id="DataTables_Table_3_info"
-								role="status" aria-live="polite">1-10 of ${ admin-goods-in.testData } entries</div>
+								role="status" aria-live="polite">1-10 of ${ goods.goodsCode } entries</div>
 						</div>
 						
 					<!-- paging -->

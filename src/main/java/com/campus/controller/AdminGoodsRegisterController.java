@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -39,7 +40,7 @@ public class AdminGoodsRegisterController {
 	
 	// 관리자페이지) 상품 등록 정보 와 옵션 내용을 서버에 저장
 	@PostMapping(path = { "admin-goods-register.action" })
-//	@ResponseBody  // 문자열을 그대로 실행 
+//	@ResponseBody  // 리턴값에 입력 된 문자열을 그대로 실행하도록 하는 어노테이션
 	public String register(GoodsDto goods, String[] optionInputs, Model model) {		
 		
 		System.out.println("상품 정보 저장 시작");
@@ -81,7 +82,6 @@ public class AdminGoodsRegisterController {
 		model.addAttribute("optionInputs", optionInputs);
 
 		return "redirect:admin-goods-register.action";
-	
 	}
 
 	
