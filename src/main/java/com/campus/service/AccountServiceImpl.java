@@ -135,6 +135,12 @@ public class AccountServiceImpl implements AccountService {
 		memberMapper.memberDelete(member);
 	}
 
+	@Override
+	public List<BoardDto> findAllBoardByMemberId(String memberId) {
+		List<BoardDto> boards = memberMapper.selectAllBoardByMemberId(memberId);
+		return boards;
+	}
+
 
 	
 

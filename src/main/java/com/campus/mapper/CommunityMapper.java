@@ -18,14 +18,8 @@ import com.campus.dto.CommunityDto;
 public interface CommunityMapper {
 	
 	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title},#{memberId}, #{content}, #{category})")
-	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
+	@Options(useGeneratedKeys = true, keyColumn = "boardNo", keyProperty = "boardNo")
 	void insertBoard(BoardDto board);
-	
-	@Select("SELECT MAX(boardNo) FROM board")
-	int selectLastBoardNo();
-
-	@Insert("INSERT INTO community (boardNo, tag ) VALUES (#{boardNo}, #{tag}) ")
-	void insertFreeboardTags(@Param("boardNo") int boardTagNo, @Param("tag") String tag);
 
 	@Select("SELECT count(*) FROM board WHERE category = 'freeboard'")
 	int selectBoardCount();
@@ -102,11 +96,6 @@ public interface CommunityMapper {
 	@Insert("INSERT INTO boardComment (boardno, memberId, content, commentGroup, step, depth) VALUES (#{boardNo}, #{memberId}, #{content}, #{commentGroup}, #{step}, #{depth}) ")
 	void insertReComment(BoardCommentDto comment);
 
-	/*
-	 * @Select("SELECT * FROM boardComment WHERE commentNo=#{commentNo} ")
-	 * BoardCommentDto selectReCommentInfo(int commentNo);
-	 */
-	
 	@Select("SELECT boardNo, commentGroup, MAX(step)+1 step , depth FROM boardComment WHERE commentGroup=(SELECT commentGroup FROM boardComment WHERE commentNo= ${commentNo}) and depth= (SELECT (depth+1) depth FROM boardComment WHERE commentNo=${commentNo}) "
 			+ "AND step < (SELECT MiN(step) FROM boardComment WHERE depth = (SELECT depth FROM boardComment WHERE commentNo= ${commentNo}) AND step > (SELECT step FROM boardComment WHERE commentNo=${commentNo} ))")
 	BoardCommentDto selectReCommentInfo(int commentNo);
@@ -120,8 +109,11 @@ public interface CommunityMapper {
 	@Select("SELECT COUNT(*) FROM boardComment WHERE commentGroup= (select commentGroup from boardComment WHERE commentNo = ${commentNo}) AND depth = (SELECT MAX(depth) FROM boardComment WHERE commentGroup = (select commentGroup from boardComment WHERE commentNo = ${commentNo}))")
 	int selectMaxDepthBycommentGroup(int commentNo);
 
-	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
+	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) AND depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
 	BoardCommentDto selectRecommentWithMaxDepth(int commentNo);
+
+	@Insert("INSERT INTO community (boardNo, tag) VALUES (#{boardNo}, #{tag})")
+	void insertBoardTag(CommunityDto tag);
 
 
 }

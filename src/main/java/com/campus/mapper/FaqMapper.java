@@ -73,10 +73,6 @@ public interface FaqMapper {
 	@Update("UPDATE board SET title =#{title} , content = #{content} WHERE  boardno = #{boardNo} ")
 	void updateFaq(BoardDto board);
 
-	@Insert("INSERT INTO board (title, memberId, content, category) VALUES (#{title}, #{memberId}, #{content}, #{category})")
-	@Options(useGeneratedKeys = true, keyColumn = "boardNo", keyProperty = "boardNo")
-	void insertAdminBoardWithAttach(BoardDto board);
-
 	@Select("SELECT * FROM attach WHERE attachno = ${attachNo} ")
 	AttachDto selectAttachByAttachNo(int attachNo);
 

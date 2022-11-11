@@ -19,18 +19,12 @@ public class CommunityServiceImpl implements CommunityService {
 	public void writeFreeboard(BoardDto board) {
 		communityMapper.insertBoard(board); 
 		
-	}
-	
-	@Override
-	public int findLastBoardNo() {
-		int tagNo = communityMapper.selectLastBoardNo();
-		return tagNo;
-	}
-	
-	@Override
-	public void writeFreeboardTags(int boardTagNo, String tag) {
-		communityMapper.insertFreeboardTags(boardTagNo, tag);
-		
+		if(board.getTags()!=null) {
+			for(CommunityDto tag: board.getTags()) {
+				tag.setBoardNo(board.getBoardNo());
+				communityMapper.insertBoardTag(tag);
+			}
+		}
 	}
 
 	@Override
