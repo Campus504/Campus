@@ -101,7 +101,7 @@
 							<div class="content clearfix">								
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
-							 		<form action="register-goods" id="admin-goods-register-form" method="post">
+							 		<form action="admin-goods-register.action" id="admin-goods-register-form" method="post">
 									
 									<div class="row">
 										<div class="col-md-6">
@@ -317,7 +317,7 @@
 					// 테이블에 들어갈 데이터 표시
 					const tr = `<tr role="row" class="odd">
 						<td class=" dt-body-center" tabindex="0">
-							<div class="dt-checkbox">							// 각 행당 체크박스 배치
+							<div class="dt-checkbox">							
 								<input type="checkbox" name="id[]" value="">
 								<span class="dt-checkbox-label"></span>
 							</div>

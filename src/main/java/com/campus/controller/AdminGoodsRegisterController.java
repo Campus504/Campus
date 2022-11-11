@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
 @Controller
 //@RequestMapping(path = { "/admingoods" })
 public class AdminGoodsRegisterController {
@@ -34,67 +32,57 @@ public class AdminGoodsRegisterController {
 
 	// 관리자 페이지) 상품등록 페이지 이동
 	@GetMapping(path = {"admin-goods-register.action"})
-	public String adminGoodsRegister(GoodsDto goods, GoodsOptionDto goodsoption, GoodsOptionSeletionDto goodsoptionseletion) {
+	public String adminGoodsRegister(GoodsDto goods, String[] optionInputs) {
 		
 		return "admingoods/admin-goods-register";
 	}
 	
 	// 관리자페이지) 상품 등록 정보 와 옵션 내용을 서버에 저장
-	@PostMapping(path = { "register-goods" })
-	@ResponseBody
+	@PostMapping(path = { "admin-goods-register.action" })
+//	@ResponseBody  // 문자열을 그대로 실행 
 	public String register(GoodsDto goods, String[] optionInputs, Model model) {		
+		
+		System.out.println("상품 정보 저장 시작");
+		
+		// 상품기본정보, 상품옵션 ( 이름, 자료형, 값, 설명 )
+		if (optionInputs != null) {										//  optionInputs 의 값이 null이 아닌게 맞을 경우 실
+			ArrayList<GoodsOptionDto> optionDtos = new ArrayList<>();	//	GoodsOptionDto의 데이터를 리스트화해서 optionDtos에 담기 
+			String[] opt = optionInputs[0].split(",");					// 	String 배열의 opt내에 ","를 모두 제
+			if (opt.length == 1) {										//	opt의 길이가 1과 같을때 이하 실행
+				GoodsOptionDto optionDto = new GoodsOptionDto();		//  GoodsOptionDto를 담은 optionDto를 새로 생성
+				optionDto.setOptionName(optionInputs[0]); 				// 	optionDto 내에 optionInputs[0]의 OptionName을 담기 
+				optionDto.setOptionDataType(optionInputs[1]);			// 	optionDto 내에 optionInputs[1]의 OptionDataType을 담기
+				optionDto.setOptionValue(optionInputs[2]);				// 	optionDto 내에 optionInputs[2]의 OptionValue을 담기
+				optionDto.setOptionDesc(optionInputs[3]);				// 	optionDto 내에 optionInputs[3]의 OptionDesc을 담기
+				optionDtos.add(optionDto);								//	담은 모든 내용을 optionDto에 모두 저장
+			} else {													//  opt의 길이가 1과 같지 않을때 이하 실행
+				for (String option : optionInputs) {					//  이하 내용 리딩 필요  
+					String[] list = option.split(",");					//	String 배열의 list 내에 "," 제거 
+					GoodsOptionDto optionDto = new GoodsOptionDto();	//  GoodsOptionDto를 담은 optionDto를 새로 생성
+					optionDto.setOptionName(list[0]);					//
+					optionDto.setOptionDataType(list[1]);				//
+					optionDto.setOptionValue(list[2]);					//
+					optionDto.setOptionDesc(list[3]);					//
+					optionDtos.add(optionDto);							//
+				}
+				
+			}
+			       goods.setOptions(optionDtos);
+		}
 		
 		System.out.println("상품 정보 저장 완료");
 		
-		if (optionInputs != null) {
-			ArrayList<GoodsOptionDto> optionDtos = new ArrayList<>();
-			String[] opt = optionInputs[0].split(",");
-			if (opt.length == 1) {
-				GoodsOptionDto optionDto = new GoodsOptionDto();
-				optionDto.setOptionName(optionInputs[0]);
-				optionDto.setOptionDataType(optionInputs[1]);
-				optionDto.setOptionValue(optionInputs[2]);
-				optionDto.setOptionDesc(optionInputs[3]);
-				optionDtos.add(optionDto);
-			} else {
-				// 상품기본정보, 상품옵션 ( 이름, 자료형, 값, 설명 )
-				for (String option : optionInputs) {
-					String[] list = option.split(",");
-					GoodsOptionDto optionDto = new GoodsOptionDto();
-					optionDto.setOptionName(list[0]);
-					optionDto.setOptionDataType(list[1]);
-					optionDto.setOptionValue(list[2]);
-					optionDto.setOptionDesc(list[3]);
-					optionDtos.add(optionDto);
-				}
-				goods.setOptions(optionDtos);
-			}
-		}
-		
-		// 요청 처리 : 데이터베이스에 데이터 저장 
+	// 요청 처리 : 데이터베이스에 데이터 저장 
 		admingoodsregisterService.adminGoodsRegister(goods);
-		admingoodsregisterService.adminGoodsOptionRegister(optionInputs);
-		
-		// View에서 사용할 수 있도록 데이터 전달
+	// admingoodsregisterService.adminGoodsOptionRegister(optionInputs);
+	
+	// View에서 사용할 수 있도록 데이터 전달
 		model.addAttribute("goods", goods);
 		model.addAttribute("optionInputs", optionInputs);
-		
-		return "admingoods/admin-goods-register";  // success  //  admingoods/admin-goods-register
-	}
+
+		return "redirect:admin-goods-register.action";
 	
-	// 관리자페이지) 상품등록 정보 와 옵션 내용들을 GoodsDto, GoodsOptionDto, GoodsOptionSeletionDto 에 담아 데이터 서버에 저장
-//	@PostMapping(path = { "admin-goods-register.action" })
-//	public String register(@Valid GoodsDto goods,  GoodsOptionDto goodsoption, GoodsOptionSeletionDto goodsoptionselection, Model model) {		
-//		
-//		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-//		
-//		// 2. 요청 처리
-//		
-//		// 3. View에서 사용할 수 있도록 데이터 전달
-//		
-//		// 4. View 또는 다른 Controller로 이동
-//		return null;
-//	}
-		
+	}
+
 	
 }

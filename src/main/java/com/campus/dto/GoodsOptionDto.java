@@ -1,6 +1,7 @@
 package com.campus.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -17,5 +18,7 @@ public class GoodsOptionDto {
 	private String optionValue;				// 속성값
 	private String optionDesc;				// 속성설명
 	
+	private List<GoodsOptionDto> options;	// 속성 리스트로 만들기
+
 	
 }
