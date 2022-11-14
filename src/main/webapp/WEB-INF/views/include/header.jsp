@@ -69,44 +69,44 @@
 										<li class="menu-item-has-children"><a href="#"
 											title="텐트/타프">텐트/타프</a>
 											<ul class="sub-menu">
-												<li><a href="goods-list.action" title="텐트">텐트</a></li>
-												<li><a href="goods-list.action" title="타프">타프</a></li>
-												<li><a href="goods-list.action" title="텐트/타프(소품)">텐트/타프(소품)</a></li>
+												<li><a href="goods-list.action?category=텐트" title="텐트">텐트</a></li>
+												<li><a href="goods-list.action?category=타프" title="타프">타프</a></li>
+												<li><a href="goods-list.action?category=텐트/타프(소품)" title="텐트/타프(소품)">텐트/타프(소품)</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a href="#"
 											title="테이블/체어">테이블/체어</a>
 											<ul class="sub-menu">
-												<li><a href="goods-list.action" title="테이블">테이블</a></li>
-												<li><a href="goods-list.action" title="체어">체어</a></li>
+												<li><a href="goods-list.action?category=테이블" title="테이블">테이블</a></li>
+												<li><a href="goods-list.action?category=체어" title="체어">체어</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a
-											href="goods-list.action">침낭/매트</a></li>
+											href="goods-list.action?category=침낭/매트">침낭/매트</a></li>
 
 										<li class="menu-item-has-children"><a href="#">식기</a>
 											<ul class="sub-menu">
-												<li><a href="goods-list.action" title="코펠">코펠</a></li>
-												<li><a href="goods-list.action" title="프라이팬">프라이팬</a></li>
-												<li><a href="goods-list.action" title="컵/머그컵">컵/머그컵</a></li>
-												<li><a href="goods-list.action" title="취사도구">취사도구</a></li>
+												<li><a href="goods-list.action?category=코펠" title="코펠">코펠</a></li>
+												<li><a href="goods-list.action?category=프라이팬" title="프라이팬">프라이팬</a></li>
+												<li><a href="goods-list.action?category=컵/머그컵" title="컵/머그컵">컵/머그컵</a></li>
+												<li><a href="goods-list.action?category=취사도구" title="취사도구">취사도구</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a href="#">화로/버너</a>
 											<ul class="sub-menu">
-												<li><a href="goods-list.action" title="버너/스토브">버너/스토브</a></li>
-												<li><a href="goods-list.action" title="화로대">화로대</a></li>
-												<li><a href="goods-list.action" title="난로">난로</a></li>
-												<li><a href="goods-list.action" title="화로/버너(소품)">화로/버너(소품)</a></li>
+												<li><a href="goods-list.action?category=버너/스토브" title="버너/스토브">버너/스토브</a></li>
+												<li><a href="goods-list.action?category=화로대" title="화로대">화로대</a></li>
+												<li><a href="goods-list.action?category=난로" title="난로">난로</a></li>
+												<li><a href="goods-list.action?category=화로/버너(소품)" title="화로/버너(소품)">화로/버너(소품)</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a href="#">캠핑소품</a>
 											<ul class="sub-menu">
-												<li><a href="goods-list.action" title="가전기기">가전기기</a></li>
-												<li><a href="goods-list.action" title="랜턴/손전등">랜턴/손전등</a></li>
-												<li><a href="goods-list.action" title="아이스박스/쿨러">아이스박스/쿨러</a></li>
-												<li><a href="goods-list.action" title="수납박스/케이스">수납박스/케이스</a></li>
-												<li><a href="goods-list.action" title="캠핑소품">캠핑소품</a></li>
+												<li><a href="goods-list.action?category=가전기기" title="가전기기">가전기기</a></li>
+												<li><a href="goods-list.action?category=랜턴/손전등" title="랜턴/손전등">랜턴/손전등</a></li>
+												<li><a href="goods-list.action?category=아이스박스/쿨러" title="아이스박스/쿨러">아이스박스/쿨러</a></li>
+												<li><a href="goods-list.action?category=수납박스/케이스" title="수납박스/케이스">수납박스/케이스</a></li>
+												<li><a href="goods-list.action?category=캠핑소품" title="캠핑소품">캠핑소품</a></li>
 											</ul></li>
 
 										<li class="menu-item-has-children"><a

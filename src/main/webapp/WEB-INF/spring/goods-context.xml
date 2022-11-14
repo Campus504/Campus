@@ -22,5 +22,9 @@
 		<property name="adminGoodsRegisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
 	
+		<bean id="goodsService" class="com.campus.service.GoodsServiceImpl">
+		<property name="goodsMapper" ref="goodsMapper" />	
+	</bean>
+	
 
 </beans>
