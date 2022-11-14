@@ -210,33 +210,7 @@
 
 								</form>
 
-								<%-- 	<!-- 대댓글 모달 -->
-								<div class="modal fade" id="recomment-modal"
-									data-bs-backdrop="static" data-bs-keyboard="false"
-									tabindex="-1" aria-labelledby="recomment-madal-label"
-									aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h1 class="modal-title fs-5" id="recomment-madal-label">댓글 	쓰기</h1>
-											</div>
-											<div class="modal-body">
-												<form id="recommentform" action="write-recomment.action" method="post">
-													<input type="hidden" name="commentNo" value="" /> 
-													<input type="hidden" name="writer" value="${ loginuser.memberId }" />
-
-													<textarea class="form-control" name="content" rows="3"></textarea>
-												</form>
-											</div>
-											<div class="modal-footer">
-												<button type="button"
-													class="btn btn-secondary cancel-button"
-													data-bs-dismiss="modal">취소</button>
-												<button type="button" class="btn btn-primary write-button">쓰기</button>
-											</div>
-										</div>
-									</div>
-								</div> --%>
+								
 
 							</div>
 

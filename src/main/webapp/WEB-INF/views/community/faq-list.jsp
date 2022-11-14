@@ -342,7 +342,6 @@
 						last_char = this.id.substr(10);
 						$('#toggle-content'+last_char).removeAttr("style").hide();
 					}
-				
 			});
 			
 			$('#faq-delete').on('click', function(event) {
@@ -351,7 +350,6 @@
 				if (!ok)
 					return;
 				location.href = 'faq-delete.action?boardNo='+$('#hiddenBoardNo'+last_char).val();
-				
 			});
 			
 		});

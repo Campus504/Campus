@@ -24,6 +24,23 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 		return goods;
 	}
 
+	@Override
+	public void deleteGoods(int goodsCode) {
+		adminGoodsRegisterMapper.deleteGoods(goodsCode);
+	}
+
+	@Override
+	public List<GoodsOptionJoinDto> adminGoodsListSearch(String search) {
+		List<GoodsOptionJoinDto> goods = adminGoodsRegisterMapper.adminGoodsListSearch(search);
+		return goods;
+	}
+
+	@Override
+	public List<GoodsOptionJoinDto> findAdminGoodsByGoodsCode(int goodsCode) {
+		List<GoodsOptionJoinDto> goods = adminGoodsRegisterMapper.selectAdminGoodsByGoodsCode(goodsCode);
+		return goods;
+	}
+
 
 
 	

@@ -151,6 +151,7 @@
 								<tbody>
 								
 									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
+								
 										
 										<td>${ goods.goodsName }</td>
 										<td>${ goods.brand }</td>

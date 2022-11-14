@@ -30,13 +30,12 @@
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 	
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
-
 		gtag('config', 'UA-119386393-1');
 	</script>
 	
@@ -102,45 +101,77 @@
 							<div class="content clearfix">								
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
-								<form action="admin-goods-register-in.action" name="admin-goods-in-form" method="post">
-							 		<div class="row">
+							 		<form action="admin-goods-register-in.action" name="admin-goods-in-form" method="post" enctype="multipart/form-data">
+									
+									<div class="row">
 										<div class="col-md-6">
 		
 											<!-- 입고 미 입고 여부 확인 -->
 											<div class="form-group">
-												<label>1. 입고 상품:</label>
-												<input type="hidden" class="form-control" id="goodsCode" name="goodsCode" value="${goodsCode}">
-												<input type="text" class="form-control" id="goodsName" name="goodsName" placeholder="입고 상품" value="${goodsName}">
+												<label>1. 입고 :</label>
+												<input type="text" class="form-control" id="goodsIn" name="goodsIn" placeholder="입고">
 											</div>
+										</div>
 										
+											<!-- <div class="form-check">
+											<input class="form-check-input" type="radio"
+												name="flexRadioDefault" id="flexRadioDefault2" checked>
+											<label class="form-check-label" for="flexRadioDefault2">
+												입고 </label>
+										</div>
+										</div>
+											
+											<div class="form-check">
+											<input class="form-check-input" type="radio"
+												name="flexRadioDefault" id="flexRadioDefault2" checked>
+											<label class="form-check-label" for="flexRadioDefault2">
+												미입고 </label>
+										</div>
+										</div>
+										
+											<div class="form-check">
+											<input class="form-check-input" type="radio"
+												name="flexRadioDefault" id="flexRadioDefault2" checked>
+											<label class="form-check-label" for="flexRadioDefault2">
+												입고대기 </label>
+										</div>
+										</div>
+										 -->
+										 
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>2. 입고일자 :</label>
+												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
+											</div>
+										</div>
+										
+										
+										<div class="col-md-6">
 											<div class="form-group">
 												<label>3. 대여가격 :</label>
 												<input type="text" class="form-control" id="rentPrice" name="rentPrice" placeholder="대여가격">
+												<!-- <select name="optionDataType" class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
+													<option value="#">test 1</option>
+													<option value="#">test 2</option>
+												</select> -->
 											</div>
+										</div>
 										
+										<div class="col-md-6">
 											<div class="form-group">
-												<label>5. 입고일자 :</label>
-												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
+												<label>4. 상세설명 :</label>
+												<input type="text" class="form-control" id="detail" name="detail" placeholder="상세설명">
+												<!-- <select name="optionDataType" class="custom-select form-control" >
+													<option value="">--옵션을선택하세요--</option>
+													<option value="#">test 1</option>
+													<option value="#">test 2</option>
+												</select> -->
 											</div>
-											
-											</div>
-											
-											<div class="col-md-6">
-											<div class="form-group">
-												<label>2. 상세 설명:</label>
-												<input type="text" class="form-control" id="detail" name="detail" placeholder="상세설명" >
-											</div>
-											
-											<div class="form-group">
-												<label>4. 입고 수량 :</label>
-												<input type="text" class="form-control" id="goodsIn" name="goodsIn" placeholder="입고 수량">
-											</div>
-											
-											
-											</div>
-											
-											</div>
+										</div>
 										
+										
+							</div>
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						
@@ -149,19 +180,12 @@
 							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button>
 							<button type="button" class="btn btn-secondary btn-lg">취소</button>
 						</div>	
-							 		</form>
-								</section>
-							 		
-							 		</div>
-							 		</div>
-							 		</div>
-							 		
-							 		</div>
-							 		</div>
-							 		</div>
-									
-									
 				
+						</form>
+						</section>
+						
+				</div> 
+			</div>
 				<!-- 상품 등록 페이지 끝 -->	
 	
 	

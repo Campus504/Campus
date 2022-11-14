@@ -2,6 +2,7 @@ package com.campus.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -35,7 +36,16 @@ public interface AdminGoodsRegisterMapper {
 	@Select("SELECT * FROM goods, goodsOption")
 	List<GoodsDto> findGoodsAll(List<GoodsDto> goods, List<GoodsDto> options);
 	
-	@Select("select * from goods a left join goodsOption b on a.goodsCode = b.goodsCode order by a.goodsCode ")
+	@Select("select * from goods a left join goodsOption b on a.goodsCode = b.goodsCode order by a.goodsName ")
 	List<GoodsOptionJoinDto> selectJoinedList();
+
+	@Delete("DELETE FROM goods WHERE goodsCode = ${goodsCode} ")
+	void deleteGoods(int goodsCode);
+
+	@Select("SELECT * FROM goods a left join goodsOption b on a.goodsCode = b.goodsCode having ( a.goodsName like '%${search}%' OR a.brand like '%${search}%' OR a.category like '%${search}%' ) order by a.goodsName ")
+	List<GoodsOptionJoinDto> adminGoodsListSearch(String search);
+
+	@Select("SELECT * from goods a left join goodsOption b on a.goodsCode = b.goodsCode HAVING a.goodsCode = ${goodsCode} ")
+	List<GoodsOptionJoinDto> selectAdminGoodsByGoodsCode(int goodsCode);
 	
 }
