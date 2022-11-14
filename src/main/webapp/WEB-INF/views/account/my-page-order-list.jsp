@@ -29,6 +29,9 @@
   <link href="/campus/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="/campus/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/core.css">
@@ -36,6 +39,15 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
+	
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
+	
 
   <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -68,7 +80,7 @@
     <link rel="stylesheet" href="/campus/resources/sidebar/css/ionicons.css">
 
     <!-- Magnific PopUp -->
-    <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css">
+    <!-- <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css"> -->
 
     <!-- Tabs -->
     <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabs.css" />
@@ -114,7 +126,7 @@
 	.container .title{
 	padding-top:80px;
 	height: 20px;
-	}
+	} 
 
 	</style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -143,122 +155,6 @@
 
 
 
-    <!-- ======= Blog Section ======= -->
-
-    <!-- <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
-=======
-    <section id="blog" class="blog">
-      <div class="container" >
->>>>>>> b233e3eeaae103b5578fa3cadc3d25d92e7da07a
-
-        <div class="row">
-		<h2 class="title">주문내역 조회</h2>
-		
-          <div class="col-lg-8 entries">
-          
-<<<<<<< HEAD
-          	Simple Datatable start
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						
-						
-					</div>
-					<div class="pb-20">
-						<table class="data-table table stripe hover nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">주문번호</th>
-									<th>주문일자</th>
-									<th>수령일</th>
-									<th>반납일</th>
-									<th>주문상품</th>
-									<th>결제금액</th>
-									
-									<th class="datatable-nosort"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>2022-11-01</td>
-									<td>2022-11-02</td>
-									<td>2022-11-03</td>
-									<td>텐트</td>
-									<td>100000000000000000000</td>
-									<td>
-										<a>상세보기</a>
-									</td>
-								</tr>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-				Simple Datatable End
-           
-=======
-          
-          
-          
-          
-          
-          
-        <table class="table table-striped">
-        
-         <thead>
-         <tr>
-         <th>주문번호</th>
-         <th>주문일자</th>
-         <th>수령일</th>
-         <th>반납일</th>
-         <th>대여물품</th>
-         <th>결제금액</th>
-         <th></th>
-         </tr>
- 		 </thead>
-		  <tbody>
-		    <tr >
-				<td>1</td>
-				<td>2022-11-01</td>
-				<td>2022-11-02</td>
-				<td>2022-11-05</td>
-				<td>텐트</td>
-				<td>10000000000</td>
-				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
-		    </tr>
-		     <tr >
-				<td>2</td>
-				<td>2022-11-04</td>
-				<td>2022-11-07</td>
-				<td>2022-11-11</td>
-				<td>침낭</td>
-				<td>1210000000000</td>
-				<td><a href="my-page-order-detail.action?memberId=${ loginuser.memberId }.action">주문 상세 보기</a></td>		   
-		    </tr>
-		 
-		  </tbody>
-		</table>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
->>>>>>> b233e3eeaae103b5578fa3cadc3d25d92e7da07a
-           
-          </div>End blog entries list
-
-
-        </div>
-
-      </div>
-    </section> --><!-- End Blog Section -->
-    
     <div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
@@ -416,10 +312,15 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 		<!-- 주문 리스트 끝! -->	
     
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   	<!-- ======= Footer ======= -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
@@ -443,7 +344,7 @@
   <script src="/campus/resources/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="/campus/resources/assets/js/main.js"></script>
+  <!-- <script src="/campus/resources/assets/js/main.js"></script> -->
   
     <!-- sidebar -->
      <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
@@ -458,7 +359,7 @@
     <script src="/campus/resources/sidebar/js/vendor/tabs.js"></script>
     <script src="/campus/resources/sidebar/js/ef-slider.js"></script>    
     <script src="/campus/resources/sidebar/js/vendor/owl.carousel.min.js"></script>
-    <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script> -->
     <script src="/campus/resources/sidebar/js/vendor/jquery.social-buttons.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/wow.min.js"></script>
     <script src="/campus/resources/sidebar/js/main.js"></script>
@@ -468,19 +369,6 @@
 <!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 		<!-- end of js -->
-
-<script type="text/javascript">
-$(function(){
-	
-	
-	
-	
-});
-
-
-
-
-</script>
 
 
 </body>
