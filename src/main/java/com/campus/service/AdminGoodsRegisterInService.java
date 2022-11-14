@@ -10,4 +10,8 @@ public interface AdminGoodsRegisterInService {
 
 	void adminGoodsRegisterIn(GoodsRegisterDto goodsregister);
 	
+	void adminGoodsRegisterInList(GoodsRegisterDto goodsregister);
+	
+	
+	
 }

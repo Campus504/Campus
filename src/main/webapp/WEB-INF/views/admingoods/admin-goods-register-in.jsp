@@ -122,8 +122,7 @@
 												<label>5. 입고일자 :</label>
 												<input type="text" class="form-control date-picker" id="goodsInDate" name="goodsInDate" placeholder="입고일자">
 											</div>
-											
-											</div>
+										</div>
 											
 											<div class="col-md-6">
 											<div class="form-group">
@@ -160,8 +159,6 @@
 							 		</div>
 							 		</div>
 									
-									
-				
 				<!-- 상품 등록 페이지 끝 -->	
 	
 	

@@ -38,20 +38,22 @@ public class AdminGoodsInController {
 
 	// 관리자페이지) 입고등록 버튼 클릭 시 GoodsRegisterDto 상품등록(입고) 테이블에 데이터 저장
 	@PostMapping(path = { "/admin-goods-register-in.action" })
-	public String registerin(@Valid GoodsRegisterDto goodsregister, Model model) {		
+	public String registerin(@RequestParam(defaultValue = "0") int goodsCode, GoodsRegisterDto goodsregister, Model model) {		
 		
 		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-		System.out.println("입고 상품 저장 완료");
+		System.out.println("입고 상품 저장 시작");
 		
 		// 2. 요청 처리
 		admingoodsregisterinService.adminGoodsRegisterIn(goodsregister);
 	
 		// 3. View에서 사용할 수 있도록 데이터 전달
+		model.addAttribute("goodsCode", goodsCode);
 		model.addAttribute("goodsregister", goodsregister);
 		
 		// 4. View 또는 다른 Controller로 이동
-		return "admingoods/admin-goods-register-in";
+		System.out.println("입고 상품 저장 완료");
 		
+		return "redirect:admingoods/admin-goods-register-in.action";
 	}
 	
 	// 관리자페이지) 입고등록 후 입고목록에서 데이터 불러오기

@@ -37,7 +37,7 @@ public class AdminGoodsListController {
 	// 리스트에서 상품 삭제
 	@GetMapping(path= {"admin-goods-delete.action"})
 	public String adminGoodsDelete(@RequestParam(defaultValue = "0") int goodsCode) {
-		if(goodsCode==0) {
+		if(goodsCode == 0) {
 			return "redirect:admin-goods-list.action";
 		}
 		
@@ -46,10 +46,11 @@ public class AdminGoodsListController {
 		return "redirect:admin-goods-list.action";
 	}
 	
-	//상품 리스트에서 검색
+	// 상품리스트에서 검색
 	@PostMapping(path= {"admin-goods-list-search.action"})
 	public String adminGoodsSearch(@RequestParam(defaultValue = "") String search, Model model) {
-		if(search=="") {
+	
+		if(search == "") {
 			return "redirect:admin-goods-list.action";
 		}
 		
@@ -57,27 +58,21 @@ public class AdminGoodsListController {
 		model.addAttribute("goods", goods);
 		
 		return "admingoods/admin-goods-list-search";
-		
 	}
+	
 	
 	@GetMapping(path= {"admin-goods-edit.action"})
 	public String adminGoodsEdit(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
-		if(goodsCode==0) {
+
+		if(goodsCode == 0) {
 			return "redirect:admin-goods-list.action";
 		}
 		
 		List<GoodsOptionJoinDto> goods = adminGoodsRegisterListService.findAdminGoodsByGoodsCode(goodsCode);
 		model.addAttribute("goods", goods);
+
 		return "admingoods/admin-goods-list-edit";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

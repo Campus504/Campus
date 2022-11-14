@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsOptionDto;
 import com.campus.dto.GoodsOptionJoinDto;
+import com.campus.dto.GoodsRegisterDto;
 
 @Mapper
 public interface AdminGoodsRegisterMapper {
@@ -25,9 +26,6 @@ public interface AdminGoodsRegisterMapper {
 	@Insert("INSERT INTO goodsOption (optionName, optionDataType, optionValue, optionDesc, goodscode) " +
 			"VALUES (#{ optionName }, #{ optionDataType }, #{ optionValue }, #{ optionDesc }, #{ goodsCode })")
 	void insertOption(GoodsOptionDto option);
-
-//	이후에 사용 : String optionName, String optionDataType, String optionValue, String optionDesc					
-//	int goodsCode, int optionNo
 
 	// 상품 리스트 불러오기
 	@Select("SELECT * FROM goods, goodsOption")
@@ -48,4 +46,15 @@ public interface AdminGoodsRegisterMapper {
 	@Select("SELECT * from goods a left join goodsOption b on a.goodsCode = b.goodsCode HAVING a.goodsCode = ${goodsCode} ")
 	List<GoodsOptionJoinDto> selectAdminGoodsByGoodsCode(int goodsCode);
 	
+	// 입고 기본 정보 입력 - goodsregister Table
+	@Insert("INSERT INTO goodsRegister (inCode, detail, rentPrice, goodsIn, goodsInDate, goodsCode) " +
+			"VALUES (#{ inCode }, #{ detail }, #{ rentPrice }, #{ goodsIn }, #{ goodsInDate }, #{ goodsCode }) ")
+	@Options(useGeneratedKeys = true, keyColumn = "goodscode", keyProperty = "goodsCode")
+	void insertGoodsIn(GoodsRegisterDto goodsregister);
+	
+	// 입고 리스트 불러오기
+	@Select("SELECT * FROM goodsRegister")
+	public GoodsRegisterDto goodsGetListAll(int inCode);
+	
+
 }

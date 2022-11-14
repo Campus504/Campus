@@ -173,9 +173,7 @@
 								
 							</table>
 							</form>		
-							
-							
-									
+
 						</div>
 					</div>
 					
@@ -191,18 +189,21 @@
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 		<!-- end of js -->
+
 		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<!-- <script src="vendors/scripts/core.js"></script> -->
+
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
+
 		$(function(){
 			
-			let rowNo = null;
-			let rowNoBefore = null;
+			let rowNo = null;               // rowNo 는 null
+			let rowNoBefore = null;         // rowNoBefore 는 null
 			
-				for(var n=2;n<=${i};n++){
+				for(var n=2; n<=${i}; n++){
 					
 					if($('#findRowNo'+n).val()!=$( '#findRowNo'+(n-1)).val()){
 						rowNo = $('#findRowNo'+n).val();
@@ -230,13 +231,8 @@
 				location.href = 'admin-goods-delete.action?goodsCode='+goodsCode;
 				
 			});
-			
-			
-	
-			
-			
+
 		});
-			
 
 		</script>
 		

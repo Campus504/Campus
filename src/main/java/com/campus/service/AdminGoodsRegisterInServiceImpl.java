@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.campus.dto.GoodsDto;
+import com.campus.dto.GoodsOptionDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.mapper.AdminGoodsRegisterMapper;
 
@@ -21,12 +22,16 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 
 	// 입고 등록
 	@Override
-	public void adminGoodsRegisterIn(GoodsRegisterDto goodsregister) {
+	public void adminGoodsRegisterIn(GoodsRegisterDto goodsregisters) {
 		
-		
+		admingoodsregisterMapper.insertGoodsIn(goodsregisters);
+					
 	}
 
+	@Override
+	public void adminGoodsRegisterInList(GoodsRegisterDto goodsregister) {
 
-
+		
+	}
 
 }

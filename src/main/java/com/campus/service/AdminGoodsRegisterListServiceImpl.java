@@ -41,7 +41,5 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 		return goods;
 	}
 
-
-
 	
 }
