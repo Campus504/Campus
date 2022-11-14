@@ -33,6 +33,7 @@
 	<import resource="inquiry-context.xml" />
 	<import resource="faq-context.xml" />
 	<import resource="goods-context.xml" />
+	<import resource="cart-context.xml" />
 <!-- 	<import resource="goodsin-context.xml" /> -->
 <!-- <import resource="goodslist-context.xml" /> -->
 

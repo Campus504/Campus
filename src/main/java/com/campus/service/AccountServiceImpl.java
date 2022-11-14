@@ -1,14 +1,9 @@
 package com.campus.service;
 
 import java.io.IOException;
-import java.sql.SQLData;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.ibatis.javassist.compiler.ast.Member;
-import org.apache.ibatis.jdbc.SQL;
-import org.apache.ibatis.session.SqlSession;
 
 import com.campus.common.Util;
 import com.campus.dto.BoardDto;

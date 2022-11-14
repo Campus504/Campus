@@ -84,6 +84,7 @@
   	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     
       <style type="text/css">
+      main{height:1000px;}
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
@@ -154,11 +155,33 @@
             </div>
             <div class="portfolio-info">
               <textarea readonly>
-              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
-              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
-              contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+              contentcontentcontentcontentcontentcontentcontentcontentcontentcontent
               </textarea>
             </div>
+            <form name="addForm" action="" method="post" style="text-align:center;">
+            	<a href="#" class="btn btn-info" onclick="addToCart">상품주문</a>
+            	<a href="cart-list.action" class="btn btn-warning">장바구니</a>
+            	<a href="goods-list.action" class="btn btn-secondary">상품목록</a>
+            </form>
           </div>
 
         </div>
@@ -208,6 +231,16 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+
+	<script type="text/javascript">
+		function addToCart(){
+			if(cofirm("장바구니에 추가하시겠습니까?")){
+				document.addForm.submit();
+			}else{
+				document.addForm.reset();
+			}
+		}
+	</script>
 
 
 </body>

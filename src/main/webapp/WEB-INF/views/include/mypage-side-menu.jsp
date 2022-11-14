@@ -29,7 +29,7 @@
                 </li>
                 
                 <li class="has-subnav">
-                    <a href="cart-list.action">
+                    <a href="cart-list.action?memberId=${ loginuser.memberId }">
                        <i class="fa fa-shopping-cart fa-2x"></i>
                         <span class="nav-text">
                             장바구니
