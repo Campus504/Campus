@@ -5,14 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsOptionDto;
-import com.campus.dto.GoodsOptionSeletionDto;
-import com.campus.dto.GoodsRegisterDto;
-import com.campus.dto.MemberDto;
+import com.campus.dto.GoodsOptionJoinDto;
 
 @Mapper
 public interface AdminGoodsRegisterMapper {
@@ -34,10 +31,11 @@ public interface AdminGoodsRegisterMapper {
 	// 상품 리스트 불러오기
 	@Select("SELECT * FROM goods, goodsOption")
 	public GoodsDto goodsGetDetail(int goodsCode);
-
 	
 	@Select("SELECT * FROM goods, goodsOption")
 	List<GoodsDto> findGoodsAll(List<GoodsDto> goods, List<GoodsDto> options);
 	
+	@Select("select * from goods a left join goodsOption b on a.goodsCode = b.goodsCode order by a.goodsCode ")
+	List<GoodsOptionJoinDto> selectJoinedList();
 	
 }

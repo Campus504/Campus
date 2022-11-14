@@ -72,23 +72,13 @@
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page">상품목록</li>
 						</ol>
 					</nav>
 				</div>
 				
-				<div class="col-md-6 col-sm-12 text-right">
-					<div class="dropdown">
-						<a class="btn btn-primary dropdown-toggle" href="#"
-							role="button" data-toggle="dropdown"> Oct 2022 </a>
-						
-							<div class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" href="#">기능1</a> 
-								<a class="dropdown-item" href="#">기능2</a> 
-							</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -113,13 +103,14 @@
 					<div class="row">
 						<div class="col-sm-12 col-md-6">
 							<div class="dataTables_length" id="DataTables_Table_3_length">
-								<label>Show <select name="DataTables_Table_3_length"
+								<label><select name="DataTables_Table_3_length"
 									aria-controls="DataTables_Table_3"
 									class="custom-select custom-select-sm form-control form-control-sm">
+										<option value="-1">All</option>
 										<option value="10">10</option>
 										<option value="20">20</option>
-										<option value="-1">All</option>
-								</select> entries
+										
+								</select>
 								</label>
 							</div>
 						</div>
@@ -127,11 +118,11 @@
 						<div class="col-sm-12 col-md-6">
 							<div class="dataTables_filter">
 								<form action="admin-goods-list-search.action" method="post">
-									<label>Search: <input type="search" name="search"
-										class="form-control form-control-sm" placeholder="Enter"
+									<label>검색하기: <input type="search" name="search"
+										class="form-control form-control-sm" placeholder="상품 이름을 입력하세요"
 										aria-controls="DataTables_Table_3">
 									</label>
-									<button type="submit">
+									<button type="submit" style="display:none;">
 										<i class="bi bi-search"></i>
 									</button>
 								</form>
@@ -143,57 +134,74 @@
 					<div class="row">
 						<div class="col-sm-12">
 							
-							<form action="admin-goods-list.action" method="get">
+							<form action="admin-goods-list.action" method="post">
 							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								<thead>
-									<tr role="row">
-										<th class="dt-body-center sorting_disabled" rowspan="1" colspan="1" aria-label="">
-											<div class="dt-checkbox">
-												<input type="checkbox" name="select_all" value="1" id="example-select-all"> 
-												<span class="dt-checkbox-label"></span>
-											</div>
-										</th>
-										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">상품분류</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
+									<tr role="row" >
+										
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품코드</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성이름</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성자료형</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성값</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성설명</th>
-									
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">브랜드</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품분류</th>
+										
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션번호</th>
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">옵션이름</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션설명</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">단일값/목록값</th>
+										
+										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">옵션 값</th>
+										
+										<th>입고 등록</th>
+										<th>상품 정보 수정</th>
+										<th>상품 삭제</th>
+										
 									</tr>
 								</thead>
+								
+								<c:forEach  var="goods" items='${goods}' >
 								<tbody>
-									<tr role="row" class="odd">
-										<td class=" dt-body-center" tabindex="0">
-											<div class="dt-checkbox">
-												<input type="checkbox" name="id[]" value="">
-												<span class="dt-checkbox-label"></span>
-											</div>
-										</td>
-										
-										<td>${ goods.category }</td>
-										<td>${ goods.category }</td>
-										<td>${ goods.category }</td>
-										<td>${ goods.category }</td>
-										
-										<td>${ goods.category }</td>
-										<td>${ goods.category }</td>
-										<td>${ goods.category }</td>
+								
+								<c:choose>
+								<c:when test="${ goods.goodsCode%2==0}">
+									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background:lightgray;">
+								</c:when>
+								<c:otherwise>
+									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" >
+								</c:otherwise>
+								</c:choose>
+								
+										<td>${ goods.goodsCode }</td>
+										<td>${ goods.goodsName }</td>
+										<td>${ goods.brand }</td>
 										<td>${ goods.category }</td>
 										
+										<td>${ goods.optionNo }</td>
+										<td>${ goods.optionName }</td>
+										<td>${ goods.optionDesc }</td>
+										<td>${ goods.optionDataType }</td>
+										
+										<td>${ goods.optionValue }</td>
+										
+										<td><a href="admin-goods-register-in.action"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i></a></td>
+										<td><a class="edit-goods-${ goods.goodsCode }"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
+										<td><a class="delete-goods-${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true"></i></a></td>
 									</tr>
+									
 								</tbody>
+								</c:forEach>
+								
 							</table>
-							</form>										
+							</form>		
+							
+							
+									
 						</div>
 					</div>
 					
 					<div class="row">
 						<div class="col-sm-12 col-md-5">
 							<div class="dataTables_info" id="DataTables_Table_3_info"
-								role="status" aria-live="polite">1-10 of ${ goods.goodsCode } entries</div>
+								role="status" aria-live="polite">1-10 of entries</div>
 						</div>
 						
 					<!-- paging -->
@@ -212,6 +220,32 @@
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 		<!-- end of js -->
+		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+		<!-- <script src="vendors/scripts/core.js"></script> -->
+		<script src="vendors/scripts/script.min.js"></script>
+		<script src="vendors/scripts/process.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+		});
+		
+		</script>
 		
 </body>
 </html>

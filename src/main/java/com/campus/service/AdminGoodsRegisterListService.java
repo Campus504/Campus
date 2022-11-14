@@ -2,10 +2,10 @@ package com.campus.service;
 
 import java.util.List;
 
-import com.campus.dto.GoodsDto;
-import com.campus.dto.GoodsOptionDto;
+import com.campus.dto.GoodsOptionJoinDto;
 
 public interface AdminGoodsRegisterListService {
 
+	List<GoodsOptionJoinDto> findGoodsJoinedList();
 	
 }
