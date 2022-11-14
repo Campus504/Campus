@@ -13,7 +13,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="UTF-8">
-	<title>Campus - 상품목록 </title>
+	<title>Campus - 상품 정보 수정 </title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/campus/resources/vendors/images/apple-touch-icon.png">
@@ -42,6 +42,10 @@
 		gtag('config', 'UA-119386393-1');
 	</script>
 	
+	<style>
+	
+	</style>
+	
 </head>
 <body>
 
@@ -68,12 +72,12 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4> 상품목록</h4>
+						<h4> 상품 정보 수정</h4>
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">상품목록</li>
+							<li class="breadcrumb-item active" aria-current="page">상품 정보 수정</li>
 						</ol>
 					</nav>
 				</div>
@@ -88,8 +92,8 @@
 	<div class="pd-20 card-box mb-30">
 
 		<div class="clearfix">
-			<h4 class="text-blue h4">관리자페이지 내에 상품 등록을 통해 등록된 상품을 확인 할 수 있는 페이지 입니다.</h4>
-			<p class="mb-30">등록 된 상품 리스트를 확인하여 상품들의 현황을 확인 해주세요.</p>
+			<h4 class="text-blue h4">등록된 상품의 정보를 수정할 수 있는 페이지 입니다.</h4>
+			<p class="mb-30">상품 정보를 수정한 후 [수정] 버튼을 눌러주세요.</p>
 		</div>
 
 		<div class="card-box mb-30">
@@ -102,26 +106,14 @@
 					class="dataTables_wrapper dt-bootstrap4 no-footer">
 					<div class="row" style="margin-right: 100%;">
 						
-						<div class="col-sm-12 col-md-6">
-							<div class="dataTables_filter">
-								<form action="admin-goods-list-search.action" method="post">
-									<label>검색하기: <input type="search" name="search"
-										class="form-control form-control-sm" placeholder="상품 이름, 브랜드, 분류"
-										aria-controls="DataTables_Table_3" >
-									</label>
-									<button type="submit" style="display:none;">
-										<i class="bi bi-search"></i>
-									</button>
-								</form>
-							</div>
-						</div>
+						
 					</div>
 					
 					<!-- 등록된 상품의 리스트 테이블 만들기 -->
 					<div class="row">
 						<div class="col-sm-12">
 							
-							<form action="admin-goods-list.action" method="post">
+							<form action="admin-goods-list-edit.action" method="post">
 							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								<thead>
 									<tr role="row" >
@@ -138,38 +130,36 @@
 										
 										<th>옵션 값</th>
 										
-										<th>입고 등록</th>
-										<th>상품 정보 수정</th>
-										<th>상품 삭제</th>
 										
 									</tr>
 								</thead>
 								
 								<c:forEach  var="goods" items='${goods}' >
-								<c:set var="i" value="${ i+1 }" />
-								<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
 								<tbody>
 								
-									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
+									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" >
 										
-										<td>${ goods.goodsName }</td>
-										<td>${ goods.brand }</td>
-										<td>${ goods.category }</td>
+										<td><input name="goodsName" value="${ goods.goodsName }" /></td>
+										<td><input name="brand" value="${ goods.brand }" /></td>
+										<td><input name="category" value="${ goods.category }" /></td>
 										
+										<td><input name="optionName" value="${ goods.optionName }" /></td>
+										<td><input name="optionDesc" value="${ goods.optionDesc }" /></td>
+										<td>
+										<select name="optionDataType">
+										<option>단일값</option>
+										<option>목록값</option>
+										</select>
 										
-										<td>${ goods.optionName }</td>
-										<td>${ goods.optionDesc }</td>
-										<td>${ goods.optionDataType }</td>
+										<%-- <input name="optionDataType" value="${ goods.optionDataType }" /> --%></td>
 										
-										<td>${ goods.optionValue }</td>
+										<td><input name="optionValue" value="${ goods.optionValue }" /></td>
 										
-										<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i></a></td>
-										<td><a href="admin-goods-edit.action?goodsCode=${goods.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
-										<td><a class="delete-goods" data-goodscode="${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
 									</tr>
 									
 								</tbody>
 								</c:forEach>
+								
 								
 							</table>
 							</form>		
@@ -199,38 +189,8 @@
 		<script type="text/javascript">
 		$(function(){
 			
-			let rowNo = null;
-			let rowNoBefore = null;
 			
-				for(var n=2;n<=${i};n++){
-					
-					if($('#findRowNo'+n).val()!=$( '#findRowNo'+(n-1)).val()){
-						rowNo = $('#findRowNo'+n).val();
-						rowNoBefore  =$('#findRowNo'+(n-1)).val();
-						
-						if( $('.goodsCode-'+rowNoBefore).css("background-color")=='rgb(255, 255, 255)' ){
-							$('.goodsCode-'+rowNo).css("background-color","lightgray");
-						}else if($('.goodsCode-'+rowNoBefore).css("background-color")!='rgb(255, 255, 255)'){
-							$('.goodsCode-'+rowNo).css("background-color","rgb(255,255,255)");
-						}
-						}
-					}
-			    
-			    
-		    
-			let goodsCode = null;
-								
-			$('[class*=delete-goods]').on('click', function(event) {
-
-				const ok = confirm("등록된 상품을 삭제할까요?");
-				if (!ok)
-					return;
-				
-				goodsCode = $(this).data('goodscode');
-				location.href = 'admin-goods-delete.action?goodsCode='+goodsCode;
-				
-			});
-			
+		 
 			
 	
 			
