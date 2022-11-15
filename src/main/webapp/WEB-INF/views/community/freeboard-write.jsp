@@ -154,13 +154,12 @@
 
 						<article class="entry entry-single">
 
-							<form action="freeboard-write.action" method="post" >
+							<form action="freeboard-write.action" method="post" id="submitForm"  onsubmit="return validateform()"  >
 								<input type="hidden" name = "memberId" value="${ loginuser.memberId }">
 								<input type="hidden" name = "category" value="freeboard">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
 										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title" id="freeboard-title">
-										<form:errors path="title" class="error" />
 								</h2>
 
 								<div class="entry-meta">
@@ -173,8 +172,7 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" ></textarea>
-									<form:errors path="content" class="error" />
+									<textarea name="content" id="freeboard-content"></textarea>
 								</div>
 								
 								<div class="entry-content">
@@ -265,6 +263,8 @@
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
 	
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	
 	<script type="text/javascript">
 	$(function(){
 		
@@ -273,7 +273,23 @@
 			location.href="/campus/freeboard.action";
 		});
 		
-
+		
+		function validateform(){  
+			var boardTitle=$('#freeboard-title').value;  
+			var boardContent=$('#freeboard-content').val();  
+			
+			alert("hh");
+			  
+			if (boardTitle==null || boardTitle==""){  
+			  alert("제목을 입력하세요");  
+			  return false;  
+			}else if(boardContent==null || boardContent==""){  
+			  alert("내용을 입력하세요");  
+			  return false;  
+			  }  
+			return true;
+			}  
+		
 		
 	});
 	</script>	

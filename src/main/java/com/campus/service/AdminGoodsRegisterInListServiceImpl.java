@@ -22,11 +22,11 @@ public class AdminGoodsRegisterInListServiceImpl implements AdminGoodsRegisterIn
 	private AdminGoodsRegisterMapper admingoodsregisterMapper;
 
 	@Override
-	public void adminGoodsRegisterInList(GoodsRegisterDto goodsregisters) {
+	public List<GoodsRegisterDto> adminGoodsRegisterInList() {
 		
-//		List<GoodsRegisterDto> goodsregisters = admingoodsregisterMapper.adminGoodsRegisterInList(); 
-//		
-//		return goodsregisters;
+		List<GoodsRegisterDto> goodsregisters = admingoodsregisterMapper.adminGoodsRegisterInList(); 
+		
+		return goodsregisters;
 		
 	}
 
