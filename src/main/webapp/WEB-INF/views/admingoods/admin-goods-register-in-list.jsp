@@ -141,7 +141,7 @@
 								</thead>
 								
 								<c:forEach  var="goodsregister" items='${goodsregisters}' varStatus="status">
-								
+								<c:set var="i" value="${ i+1 }" />
 								<input id="findRowNo${i}" style="display:none" value="${ goodsregister.goodsCode }" />
 								<tbody>
 								

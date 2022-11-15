@@ -13,5 +13,6 @@ public interface AdminGoodsRegisterInListService {
 	List<GoodsRegisterDto> adminGoodsRegisterInList();
 
 	List<GoodsRegisterDto> findGoodsInList();
+
 	
 }

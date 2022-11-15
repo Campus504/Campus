@@ -29,5 +29,4 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 	}
 
 
-
 }
