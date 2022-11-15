@@ -29,6 +29,7 @@ public class GoodsController {
 		}
 		
 		List<GoodsDto> goods = goodsService.findGoodsByCategory(category);
+		model.addAttribute("category", category);
 		model.addAttribute("goods", goods);
 		return "order/goods-list";
 	}

@@ -130,13 +130,13 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3 class="section-title">상품 목록</h3>
+          <h3 class="section-title">${category}</h3>
         </header>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div class=" col-lg-12">
           <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter="*" class="filter-active">전체</li>
             <li data-filter=".filter-app">App</li>
             <li data-filter=".filter-card">Card</li>
             <li data-filter=".filter-web">Web</li>

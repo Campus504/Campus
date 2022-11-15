@@ -85,6 +85,9 @@
     <!-- sidebar css,js -->
     <!-- 사이드바 아이콘 링크  -->
   	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  	
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     
       <style type="text/css">
 	.container-fluid{
@@ -144,8 +147,9 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
-		<form  action="showOrderPage.action" method="post" >
+		
 		<div class="col-lg-4">
+		<form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;">
             <div class="portfolio-info">
               <h3>${goods.goodsName}</h3>
               <ul>
@@ -160,18 +164,21 @@
                 <option>${i}</option>
                 </c:forEach>
                 </select></li>
-                <li><strong>상품 수령일</strong>: <input type="date" id="rentDate" name="rentDate"></li>
-                <li><strong>상품 반납일</strong>: <input type="date" id="returnDate" name="returnDate"></li>
-                <li><button id="goToOrder" type="submit" value="바로 주문하기">바로 주문하기</button>
-                <button id="goToCart" type="button" value="장바구니">장바구니</button>
-               </li>
+                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
+                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
+               
+                <li>
+                <a href="#" class="btn btn-info" onclick="addToCart">상품주문</a>
+            	<a href="cart-list.action" class="btn btn-warning">장바구니</a>
+            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
                 
+                </li>
                 
               </ul>
             </div>
-            
+            </form>
           </div>
-		</form>
+		
           
 
         </div>
@@ -203,7 +210,8 @@
   <script src="/campus/resources/assets/js/main.js"></script>
 
   <!-- sidebar -->
-     <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+     <!-- <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script> -->
     <script data-pace-options='{ "ajax": false }' src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/classie.js"></script>
@@ -221,7 +229,45 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+  
+  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
+<script type="text/javascript">
+$(function(){
+	
+	
+	$("#rentDate").datepicker({
+		 dateFormat: 'yy-mm-dd',
+		 minDate: new Date(),
+		  maxDate: "+3M",
+		  onClose: function( selectedDate ) {    
+              $("#returnDate").datepicker( "option", "minDate", selectedDate );
+          }                
+	});
+	
+	$("#returnDate").datepicker({
+		 dateFormat: 'yy-mm-dd',
+		 minDate: new Date(),
+		  maxDate: "+3M",
+		  onClose: function( selectedDate ) {    
+              $("#rentDate").datepicker( "option", "maxDate", selectedDate );
+          }  
+	});
+	
+	function addToCart(){
+		if(cofirm("장바구니에 추가하시겠습니까?")){
+			document.addForm.submit();
+		}else{
+			document.addForm.reset();
+		}
+	}
+	
 
+	
+	
+});
+</script>
 
 </body>
 
