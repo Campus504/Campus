@@ -1,5 +1,8 @@
 package com.campus.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
+import com.campus.dto.MemberDto;
+import com.campus.dto.OrderListDto;
 import com.campus.service.GoodsService;
 
 @Controller
@@ -51,9 +56,15 @@ public class GoodsController {
 	}
 	
 	@PostMapping(path= {"showOrderPage.action"})
-	public String showOrderPage() {
+	public String showOrderPage(OrderListDto orderList, GoodsDto goods, int goodsPrice, int orderAmount, Model model) throws ParseException {
+		MemberDto member = goodsService.findMemberByMemberId(orderList.getMemberId());
 		
-		return "";
+		model.addAttribute("goods", goods);
+		model.addAttribute("goodsPrice", goodsPrice);
+		model.addAttribute("member", member);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("orderAmount", orderAmount);
+		return "order/order";
 	}
 	
 	

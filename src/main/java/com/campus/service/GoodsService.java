@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
+import com.campus.dto.MemberDto;
 
 public interface GoodsService {
 
@@ -12,5 +13,7 @@ public interface GoodsService {
 	GoodsDto findGoodsByGoodsCode(int goodsCode);
 
 	GoodsRegisterDto findGoodsInByGoodsCode(int goodsCode);
+
+	MemberDto findMemberByMemberId(String memberId);
 
 }

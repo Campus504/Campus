@@ -150,6 +150,11 @@
 		
 		<div class="col-lg-4">
 		<form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;">
+		<input type="hidden" name="memberId" value="${loginuser.memberId}">
+		<input type="hidden" name="goodsPrice" value="${goodsIn.rentPrice}">
+		<input type="hidden" name="goodsName" value="${goods.goodsName}">
+		<input type="hidden" name="brand" value="${goods.brand}">
+		<input type="hidden" name="category" value="${goods.category}">
             <div class="portfolio-info">
               <h3>${goods.goodsName}</h3>
               <ul>
@@ -158,7 +163,7 @@
                 <li><strong>상품 분류</strong>: ${goods.category}</li>
                 <li><strong>이용금액(1일)</strong>: ${goodsIn.rentPrice}</li>
                 
-                <li><strong>주문 수량</strong>: <select>
+                <li><strong>주문 수량</strong>: <select name="orderAmount">
                 <c:forEach begin="1" end="${goodsIn.goodsIn}">
                 <c:set var="i" value="${ i+1 }"/>
                 <option>${i}</option>
@@ -168,8 +173,8 @@
                 <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
                
                 <li>
-                <a href="#" class="btn btn-info" onclick="addToCart">상품주문</a>
-            	<a href="cart-list.action" class="btn btn-warning">장바구니</a>
+                <button type="submit" class="btn btn-info">상품주문</button>
+            	<a href="cart-list.action" class="btn btn-warning" onclick="addToCart">장바구니</a>
             	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
                 
                 </li>

@@ -19,7 +19,7 @@ public interface MemberMapper {
 			"VALUES (#{ memberId }, #{ passwd }, #{ email }, #{ memberName }, #{ address }, #{ birth }, #{ phone })")
 	void insertMember(MemberDto member);
 	
-	@Select("SELECT memberid, email, membername, address, birth, p–hone, active, joindate, admin " +
+	@Select("SELECT memberid, email, membername, address, birth, phone, active, joindate, admin " +
 			"FROM member " +
 			"WHERE memberid = #{ memberId } AND passwd = #{ passwd } AND active = TRUE ")
 	MemberDto selectMemberByIdAndPasswd(@Param("memberId")String memberId, @Param("passwd") String passwd);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
+import com.campus.dto.MemberDto;
 import com.campus.mapper.GoodsMapper;
 
 import lombok.Setter;
@@ -29,6 +30,12 @@ public class GoodsServiceImpl implements GoodsService {
 	public GoodsRegisterDto findGoodsInByGoodsCode(int goodsCode) {
 		GoodsRegisterDto goodsIn = goodsMapper.selectGoodsInByGoodsCode(goodsCode);
 		return goodsIn;
+	}
+
+	@Override
+	public MemberDto findMemberByMemberId(String memberId) {
+		MemberDto member = goodsMapper.selectMemberByMemberId(memberId);
+		return member;
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
+import com.campus.dto.MemberDto;
 
 @Mapper
 public interface GoodsMapper {
@@ -19,5 +20,8 @@ public interface GoodsMapper {
 
 	@Select("SELECT ROUND(avg(rentPrice),0) rentPrice, sum(goodsIn) goodsIn, goodsCode FROM goodsRegister Group By goodsCode Having goodsCode = #{goodsCode} ")
 	GoodsRegisterDto selectGoodsInByGoodsCode(int goodsCode);
+
+	@Select("SELECT * FROM member WHERE memberId = #{memberId}")
+	MemberDto selectMemberByMemberId(String memberId);
 
 }
