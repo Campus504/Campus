@@ -28,10 +28,6 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 					
 	}
 
-	@Override
-	public void adminGoodsRegisterInList(GoodsRegisterDto goodsregister) {
-
-		
-	}
+	
 
 }
