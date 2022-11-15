@@ -14,17 +14,21 @@
 		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />					
 	</bean>
 
-	<bean id="admingoodsregisterinService" class="com.campus.service.AdminGoodsRegisterInServiceImpl">
-		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
-	</bean>
-	
 	<bean id="adminGoodsRegisterListService" class="com.campus.service.AdminGoodsRegisterListServiceImpl">
 		<property name="adminGoodsRegisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
 	
-		<bean id="goodsService" class="com.campus.service.GoodsServiceImpl">
-		<property name="goodsMapper" ref="goodsMapper" />	
+	<bean id="admingoodsregisterinService" class="com.campus.service.AdminGoodsRegisterInServiceImpl">
+		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
-	
+
+	<bean id="admingoodsregisterinlistService" class="com.campus.service.AdminGoodsRegisterInListServiceImpl">
+		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
+	</bean>
+
+	<bean id="goodsService" class="com.campus.service.GoodsServiceImpl">
+	<property name="goodsMapper" ref="goodsMapper" />	
+
+</bean>
 
 </beans>

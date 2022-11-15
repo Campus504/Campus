@@ -8,6 +8,7 @@
 <c:set var="enter" value="
 " />
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,6 @@
 					</nav>
 				</div>
 				
-				
 			</div>
 		</div>
 	</div>
@@ -123,9 +123,9 @@
 							
 							<form action="admin-goods-list.action" method="post">
 							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+								
 								<thead>
 									<tr role="row" >
-										
 										
 										<th>상품명</th>
 										<th>브랜드</th>
@@ -167,7 +167,7 @@
 										<td><a href="admin-goods-edit.action?goodsCode=${goods.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
 										<td><a class="delete-goods" data-goodscode="${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
 									</tr>
-									
+								
 								</tbody>
 								</c:forEach>
 								

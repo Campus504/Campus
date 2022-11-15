@@ -17,5 +17,4 @@ public class GoodsDto {
 	
 	private List<GoodsOptionDto> options;
 	
-	
 }

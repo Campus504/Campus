@@ -21,13 +21,13 @@ public class AdminGoodsListController {
 
 	@Autowired
 	@Qualifier("adminGoodsRegisterListService")
-	private AdminGoodsRegisterListService adminGoodsRegisterListService;
+	private AdminGoodsRegisterListService admingoodsregisterlistService;
 	
 	// 상품리스트 페이지로 이동
 	@GetMapping(path = {"admin-goods-list.action"})
 	public String adminGoodsList(Model model) {
 		
-		List<GoodsOptionJoinDto> goods = adminGoodsRegisterListService.findGoodsJoinedList();
+		List<GoodsOptionJoinDto> goods = admingoodsregisterlistService.findGoodsJoinedList();
 		
 		model.addAttribute("goods", goods);
 		
@@ -41,7 +41,7 @@ public class AdminGoodsListController {
 			return "redirect:admin-goods-list.action";
 		}
 		
-		adminGoodsRegisterListService.deleteGoods(goodsCode);
+		admingoodsregisterlistService.deleteGoods(goodsCode);
 		
 		return "redirect:admin-goods-list.action";
 	}
@@ -54,7 +54,7 @@ public class AdminGoodsListController {
 			return "redirect:admin-goods-list.action";
 		}
 		
-		List<GoodsOptionJoinDto> goods = adminGoodsRegisterListService.adminGoodsListSearch(search);
+		List<GoodsOptionJoinDto> goods = admingoodsregisterlistService.adminGoodsListSearch(search);
 		model.addAttribute("goods", goods);
 		
 		return "admingoods/admin-goods-list-search";
@@ -68,7 +68,7 @@ public class AdminGoodsListController {
 			return "redirect:admin-goods-list.action";
 		}
 		
-		List<GoodsOptionJoinDto> goods = adminGoodsRegisterListService.findAdminGoodsByGoodsCode(goodsCode);
+		List<GoodsOptionJoinDto> goods = admingoodsregisterlistService.findAdminGoodsByGoodsCode(goodsCode);
 		model.addAttribute("goods", goods);
 
 		return "admingoods/admin-goods-list-edit";

@@ -1,6 +1,7 @@
 package com.campus.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -16,5 +17,7 @@ public class GoodsRegisterDto {
 	private Date goodsInDate;		// 입고일자
 	
 	private int goodsCode;			// *상품코드
+	
+	private List<GoodsRegisterDto> goodsregisters;
 	
 }
