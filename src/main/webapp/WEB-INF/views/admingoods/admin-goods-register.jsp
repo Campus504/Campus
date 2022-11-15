@@ -314,7 +314,8 @@
 					
 					// alert(option_name + " / " + option_value_type + " / " + option_single_value + " / " + option_description);
 
-					// 테이블에 들어갈 데이터 표시
+					// 테이블에 들어갈 데이터 표시\
+					
 					const tr = `<tr role="row" class="odd">
 						<td class=" dt-body-center" tabindex="0">
 							<div class="dt-checkbox">							
