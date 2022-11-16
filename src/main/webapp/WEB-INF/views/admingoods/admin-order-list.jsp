@@ -166,9 +166,9 @@
 		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<!-- <script src="vendors/scripts/core.js"></script> -->
 
-		<script src="vendors/scripts/script.min.js"></script>
-		<script src="vendors/scripts/process.js"></script>
-		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
+		<script src="/campus/resources/vendors/scripts/process.js"></script>
+		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
 
 		$(function(){
