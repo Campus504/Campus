@@ -18,13 +18,13 @@ public class AdminGoodsRegisterInServiceImpl implements AdminGoodsRegisterInServ
 
 
 	@Setter
-	private AdminGoodsRegisterMapper admingoodsregisterMapper;
+	private AdminGoodsRegisterMapper adminGoodsRegisterMapper;
 
 	// 입고 등록
 	@Override
 	public void adminGoodsRegisterIn(GoodsRegisterDto goodsregisters) {
 		
-		admingoodsregisterMapper.insertGoodsIn(goodsregisters);
+		adminGoodsRegisterMapper.insertGoodsIn(goodsregisters);
 					
 	}
 

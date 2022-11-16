@@ -10,7 +10,7 @@
 		<property name="communityMapper" ref="communityMapper" />
 	</bean> -->
 		
-	<bean id="admingoodsregisterService" class="com.campus.service.AdminGoodsRegisterServiceImpl">
+	<bean id="adminGoodsRegisterService" class="com.campus.service.AdminGoodsRegisterServiceImpl">
 		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />					
 	</bean>
 
@@ -18,12 +18,12 @@
 		<property name="adminGoodsRegisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
 	
-	<bean id="admingoodsregisterinService" class="com.campus.service.AdminGoodsRegisterInServiceImpl">
-		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
+	<bean id="adminGoodsRegisterInService" class="com.campus.service.AdminGoodsRegisterInServiceImpl">
+		<property name="adminGoodsRegisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
 
 	<bean id="admingoodsregisterinlistService" class="com.campus.service.AdminGoodsRegisterInListServiceImpl">
-		<property name="admingoodsregisterMapper" ref="adminGoodsRegisterMapper" />	
+		<property name="adminGoodsRegisterMapper" ref="adminGoodsRegisterMapper" />	
 	</bean>
 
 	<bean id="goodsService" class="com.campus.service.GoodsServiceImpl">

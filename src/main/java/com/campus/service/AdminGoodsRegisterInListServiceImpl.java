@@ -19,12 +19,12 @@ public class AdminGoodsRegisterInListServiceImpl implements AdminGoodsRegisterIn
 
 
 	@Setter
-	private AdminGoodsRegisterMapper admingoodsregisterMapper;
+	private AdminGoodsRegisterMapper adminGoodsRegisterMapper;
 
 	@Override
 	public List<GoodsRegisterDto> adminGoodsRegisterInList() {
 		
-		List<GoodsRegisterDto> goodsregisters = admingoodsregisterMapper.adminGoodsRegisterInList(); 
+		List<GoodsRegisterDto> goodsregisters = adminGoodsRegisterMapper.adminGoodsRegisterInList(); 
 		
 		return goodsregisters;
 		
@@ -33,7 +33,7 @@ public class AdminGoodsRegisterInListServiceImpl implements AdminGoodsRegisterIn
 	@Override
 	public List<GoodsRegisterDto> findGoodsInList() {
 		
-		List<GoodsRegisterDto> goodsregisters = admingoodsregisterMapper.adminGoodsRegisterInList(); 
+		List<GoodsRegisterDto> goodsregisters = adminGoodsRegisterMapper.adminGoodsRegisterInList(); 
 		
 		return goodsregisters;
 	}

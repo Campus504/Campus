@@ -23,8 +23,8 @@ public class AdminGoodsRegisterInController {
 	private final int PAGE_SIZE = 30; // 한 페이지에 표시 되는 데이터 개수
 	
 	@Autowired
-	@Qualifier("admingoodsregisterinService")
-	private AdminGoodsRegisterInService admingoodsregisterinService;
+	@Qualifier("adminGoodsRegisterInService")
+	private AdminGoodsRegisterInService adminGoodsRegisterInService;
 	
 	// 관리자 페이지) 상품입고 페이지로 이동
 	@GetMapping(path = {"/admin-goods-register-in.action"})
@@ -44,7 +44,7 @@ public class AdminGoodsRegisterInController {
 		System.out.println("입고 상품 저장 시작");
 		
 		// 2. 요청 처리
-		admingoodsregisterinService.adminGoodsRegisterIn(goodsregister);
+		adminGoodsRegisterInService.adminGoodsRegisterIn(goodsregister);
 	
 		// 3. View에서 사용할 수 있도록 데이터 전달
 		model.addAttribute("goodsCode", goodsCode);
