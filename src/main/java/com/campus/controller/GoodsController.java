@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderDetailDto;
 import com.campus.dto.OrderListDto;
 import com.campus.service.GoodsService;
 
@@ -37,7 +38,7 @@ public class GoodsController {
 		model.addAttribute("category", category);
 		model.addAttribute("goods", goods);
 		return "order/goods-list";
-	}
+		}
 	
 	@GetMapping(path= {"goods-detail.action"})
 	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
@@ -56,16 +57,23 @@ public class GoodsController {
 	}
 	
 	@PostMapping(path= {"showOrderPage.action"})
-	public String showOrderPage(OrderListDto orderList, GoodsDto goods, int goodsPrice, int orderAmount, Model model) throws ParseException {
+	public String showOrderPage(OrderListDto orderList, GoodsDto goods, OrderDetailDto orderDetail, Model model) throws ParseException {
 		MemberDto member = goodsService.findMemberByMemberId(orderList.getMemberId());
 		
 		model.addAttribute("goods", goods);
-		model.addAttribute("goodsPrice", goodsPrice);
+		model.addAttribute("orderDetail", orderDetail);
 		model.addAttribute("member", member);
 		model.addAttribute("orderList", orderList);
-		model.addAttribute("orderAmount", orderAmount);
 		return "order/order";
 	}
+	
+	@PostMapping(path= {"orderGoods.action"})
+	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail ) {
+		goodsService.insertOrder(orderList, orderDetail);
+		
+		return "redirect:my-page-order-list.action";
+	}
+	
 	
 	
 	

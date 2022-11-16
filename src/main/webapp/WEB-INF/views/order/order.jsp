@@ -148,7 +148,6 @@
   padding: 10px;
 }
 .accordion table td {
-  width: 100%;
   padding: 10px;
   vertical-align: top;
 }
@@ -156,6 +155,44 @@
   cursor: pointer;
 }
 
+.test_obj input[type="radio"] {
+    display: none;
+}
+
+.test_obj input[type="radio"] + span {
+    display: inline-block;
+    padding: 15px 10px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    border-radius:10px;
+}
+
+.test_obj input[type="radio"]:checked + span {
+    background-color: #18d26e;
+    color: #ffffff;
+}
+
+.entry-content .read-more button{
+border-radius: 7px; 
+width:100%;
+justify-content: center; 
+margin: 0 auto;
+font-size: 30px;
+    height: 75px;
+}
+
+.entry-content .read-more button:hover{
+border-radius: 7px; 
+width:100%;
+justify-content: center; 
+margin: 0 auto;
+backgound-color:#18d26e;
+color:#18d26e;
+font-size: 30px;
+    height: 75px;
+}
 
 
 
@@ -191,7 +228,12 @@
 				<div class="row">
 				
 				<form method="post" action="orderGoods.action">
-				
+				<input type="hidden" name="memberId" value="${loginuser.memberId}">
+				<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
+				<input type="hidden" name="returnDate" value="${orderList.rentDate}">
+				<input type="hidden" name="rentDate" value="${orderList.returnDate}">
+				<input type="hidden" name="amount" value="${orderDetail.amount}">
+				<input type="hidden" id="hidden-total-price" name="price">
 				<div class="col-lg-8 entries">
 							<div class="accordion">
 								<table>
@@ -201,7 +243,6 @@
 											<th ></th>
 											<th ></th>
 											<th ></th>											
-
 											
 											<th >
 											<i id="toggle-btn" style="float:right;" class="bi bi-caret-down-fill"></i></th>
@@ -210,13 +251,17 @@
 									<tbody id="toggle-content" style="display:none">
 										<tr><td>상품명</td><td>대여금액(1일)</td><td>브랜드</td><td>수령일</td><td>반납일</td>
 										</tr>
+										
+										<%-- <c:forEach var="goods" items="goods"> --%>
 										<tr>
 											<td>${goods.goodsName}</td>
-											<td>${goodsPrice}</td>
+											<td>${orderDetail.price}</td><!-- 서로 다른 DTO에 담은 값 for로 불러오기?.. -->
 											<td>${goods.brand}</td>
 											<td>${orderList.rentDate}</td>
 											<td>${orderList.returnDate}</td>
 											</tr>
+										<%-- </c:forEach> --%>
+										
 										
 									</tbody>
 								</table>
@@ -269,10 +314,11 @@
 										</tr>
 									</thead>
 									<tbody >
+									
 										<tr>
 											<td id="goodsName">${goods.goodsName}</td>
-											<td id="goodsPrice">${orderAmount}개</td>
-											<td id="goodsPrice">${goodsPrice}</td>
+											<td id="amount">${orderDetail.amount}개</td>
+											<td id="goodsPrice">${orderDetail.price}</td>
 											<td id="usePeriod"></td>
 										</tr>
 										
@@ -303,15 +349,30 @@
 								
 								  <h3 class="sidebar-title">결제방법</h3>
 					              <div class="sidebar-item tags">
-					              <input type="hidden" name="pay" value="cash">
-					                <ul>
 					                
-					                	<!-- <li><a href="freeboard-tag.action?tag=질문">현금</a></li>
-					                	<li><a href="freeboard-tag.action?tag=질문">계좌이체</a></li>
-					                    <li><a href="freeboard-tag.action?tag=후기">카드</a></li>
-					                    <li><a href="freeboard-tag.action?tag=자랑">카카오페이</a></li>
-					                    <li><a href="freeboard-tag.action?tag=일상">네이버페이</a></li> -->
-					                </ul>
+					                <label class="test_obj">
+									    <input type="radio" class="pay-radio" name="pay" value="cash" checked>
+									    <span>현금</span>
+									</label>
+									<label class="test_obj">
+									    <input type="radio" class="pay-radio" name="pay" value="account">
+									    <span>계좌이체</span>
+									</label>
+									<label class="test_obj">
+									    <input type="radio" class="pay-radio" name="pay" value="credit">
+									    <span>신용카드</span>
+									</label>
+									
+									<label class="test_obj">
+									    <input type="radio" class="pay-radio" name="pay" value="kakaoPay">
+									    <span>카카오페이</span>
+									</label>
+									<label class="test_obj">
+									    <input type="radio" class="pay-radio" name="pay" value="naverPay">
+									    <span>네이버페이</span>
+									</label>
+					                
+					                
 					              </div><!-- End sidebar tags-->
 								
 								
@@ -324,7 +385,7 @@
 							<article class="entry">
 								<div class="entry-content">
 									<div class="read-more">
-										<button type="submit" style="border-radius: 7px" class="btn btn-outline-success bnt-lg">주문하기</button>
+										<button type="submit" id="submit-order" class="btn bnt-lg">주문하기</button>
 									</div>
 								</div>
 							</article>
@@ -435,9 +496,20 @@
 				
 			$('#usePeriod').html(period+"일");
 			
-			var totalPrice = period*${orderAmount}*${goodsPrice};
+			var totalPrice = period*${orderDetail.amount}*${orderDetail.price};
 			
 			$('#totalPrice').html(totalPrice+"원");
+			$('#hidden-total-price').val(totalPrice);
+			
+			 $('#submit-order').on('click',function(event){
+				
+				const ok = confirm("주문을 진행합니다");
+				if (!ok){
+					return false;
+					} 
+				return true;
+			}); 
+			
 			
 		});
 	</script>

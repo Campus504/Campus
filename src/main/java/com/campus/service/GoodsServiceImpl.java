@@ -5,6 +5,8 @@ import java.util.List;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderDetailDto;
+import com.campus.dto.OrderListDto;
 import com.campus.mapper.GoodsMapper;
 
 import lombok.Setter;
@@ -36,6 +38,14 @@ public class GoodsServiceImpl implements GoodsService {
 	public MemberDto findMemberByMemberId(String memberId) {
 		MemberDto member = goodsMapper.selectMemberByMemberId(memberId);
 		return member;
+	}
+
+	@Override
+	public void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail) {
+		goodsMapper.insertOrder(orderList);
+		orderDetail.setOrderNo(orderList.getOrderNo());
+		goodsMapper.insertOrderDetail(orderDetail);
+		
 	}
 	
 }
