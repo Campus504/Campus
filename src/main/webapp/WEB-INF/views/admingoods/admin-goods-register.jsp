@@ -273,7 +273,7 @@
 				  	</div>
 						      
 					      <div class="modal-footer">
-					        <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button>
+					        <!-- <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button> -->
 					        <button type="button" id="add-goods-property-modal-confirm" class="btn btn-primary">속성저장</button>
 					        <button type="button" id="add-goods-property-modal-cancel" class="btn btn-secondary">취소</button>
 					      </div>

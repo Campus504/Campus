@@ -129,10 +129,10 @@
 										<th>입고코드</th>
 										<th>상품코드</th>
 										
-										<th style="width: 10px">상세설명</th>
 										<th>대여가격</th>
 										<th>입고수량</th>
 										<th>입고일자</th>
+										<th>입고메모</th>
 										
 										<th>입고 정보 수정</th>
 										<th>상품 삭제</th>
@@ -150,10 +150,10 @@
 										<td>${ goodsregister.goodsCode }</td>
 										<td>${ goodsregister.inCode }</td>
 										
-										<td>${ goodsregister.detail }</td>
 										<td>${ goodsregister.rentPrice }</td>
 										<td>${ goodsregister.goodsIn }</td>
 										<td>${ goodsregister.goodsInDate }</td>
+										<td>${ goodsregister.detail }</td>
 										
 										<td><a href="admin-goods-edit.action?goodsCode=${goodsregister.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
 										<td><a class="delete-goods" data-goodscode="${ goodsregister.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
@@ -207,8 +207,6 @@
 						}
 						}
 					}
-			    
-			    
 		    
 			let goodsCode = null;
 								

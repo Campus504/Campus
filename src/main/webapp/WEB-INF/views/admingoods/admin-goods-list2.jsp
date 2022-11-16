@@ -62,88 +62,124 @@
 	<div class="main-container">
 
 		<div class="pd-ltr-20 xs-pd-20-10">
-			
-			<div class="min-height-200px">
+		<div class="min-height-200px">
 
 		<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
-				<div class="page-header">
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4> 상품목록</h4>
-							</div>
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">상품목록</li>
-								</ol>
-							</nav>
-						</div>
-				
+		<div class="page-header">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="title">
+						<h4> 상품목록</h4>
 					</div>
+					<nav aria-label="breadcrumb" role="navigation">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">상품목록</li>
+						</ol>
+					</nav>
 				</div>
-	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
-	
-	<!-- 상품 리스트 시작! -->
-	
-				<!-- table -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">관리자페이지 내에 상품 등록을 통해 등록된 상품을 확인 할 수 있는 페이지 입니다.</h4>
-						<p class="mb-30">등록 된 상품 리스트를 확인하여 상품들의 현황을 확인 해주세요.</p>
-					</div>
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap" id="goods-register-list-table">
-							<thead>
-								<tr>
-									<th>상품명</th>
-									<th>브랜드</th>
-									<th>상품분류</th>
-									
-									<th>속성이름</th>
-									<th>속성설명</th>
-									<th>속성값(단일값)</th> <!-- 단일값/목록값 -->
-									
-									<th>옵션 값</th>
-									
-									<th>입고 등록</th>
-									<th>상품 정보 수정</th>
-									<th>상품 삭제</th>
-								</tr>
-							</thead>
-							<c:forEach  var="goods" items='${goods}' >
-							<c:set var="i" value="${ i+1 }" />
-							<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
-							<tbody>
-								
-								<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
-
-									<td>${ goods.goodsName }</td>
-									<td>${ goods.brand }</td>
-									<td>${ goods.category }</td>
-									
-									
-									<td>${ goods.optionName }</td>
-									<td>${ goods.optionDesc }</td>
-									<td>${ goods.optionDataType }</td>
-									
-									<td>${ goods.optionValue }</td>
-									
-									<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i></a></td>
-									<td><a href="admin-goods-edit.action?goodsCode=${goods.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
-									<td><a class="delete-goods" data-goodscode="${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
-								
-								</tr>
-							</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- end of table -->
 				
 			</div>
 		</div>
-	</div>			
+	</div>
+	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+	
+	<!-- 상품 리스트 시작! -->
+	<div class="pd-20 card-box mb-30">
+
+		<div class="clearfix">
+			<h4 class="text-blue h4">관리자페이지 내에 상품 등록을 통해 등록된 상품을 확인 할 수 있는 페이지 입니다.</h4>
+			<p class="mb-30">등록 된 상품 리스트를 확인하여 상품들의 현황을 확인 해주세요.</p>
+		</div>
+
+		<div class="card-box mb-30">
+			<div class="pd-20">
+				<h4 class="text-blue h4"></h4>
+			</div>
+
+			<div class="pb-20">
+				<div id="DataTables_Table_3_wrapper"
+					class="dataTables_wrapper dt-bootstrap4 no-footer">
+					<div class="row">
+					
+							<div class="dataTables_filter">
+								<form action="admin-goods-list-search.action" method="post">
+									<label>검색하기: <input type="search" name="search"
+										class="form-control form-control-sm" placeholder="상품 이름, 브랜드, 분류"
+										aria-controls="DataTables_Table_3" >
+									</label>
+									<button type="submit" style="display:none;">
+										<i class="bi bi-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col">
+							
+					<!-- 등록된 상품의 리스트 테이블 만들기 -->
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+								
+								<thead>
+									<tr role="row" >
+										
+										<th>상품명</th>
+										<th>브랜드</th>
+										<th>상품분류</th>
+										
+										
+										<th>옵션이름</th>
+										<th>옵션설명</th>
+										<th>단일값/목록값</th>
+										
+										<th>옵션 값</th>
+										
+										<th>입고 등록</th>
+										<th>상품 정보 수정</th>
+										<th>상품 삭제</th>
+										
+									</tr>
+								</thead>
+								
+								<c:forEach  var="goods" items='${goods}' >
+								<c:set var="i" value="${ i+1 }" />
+								<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
+								<tbody>
+								
+									<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
+										
+										<td>${ goods.goodsName }</td>
+										<td>${ goods.brand }</td>
+										<td>${ goods.category }</td>
+										
+										
+										<td>${ goods.optionName }</td>
+										<td>${ goods.optionDesc }</td>
+										<td>${ goods.optionDataType }</td>
+										
+										<td>${ goods.optionValue }</td>
+										
+										<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i></a></td>
+										<td><a href="admin-goods-edit.action?goodsCode=${goods.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
+										<td><a class="delete-goods" data-goodscode="${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
+									</tr>
+								
+								</tbody>
+								</c:forEach>
+								
+							</table>
+
+						</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<!-- 상품 리스트 ! -->	
 		
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
@@ -152,22 +188,9 @@
 		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<!-- <script src="vendors/scripts/core.js"></script> -->
 
-		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
-		<script src="/campus/resources/vendors/scripts/process.js"></script>
-		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-			<!-- buttons for Export datatable -->
-		<script src="/campus/resources/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/buttons.print.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/buttons.html5.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/buttons.flash.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/pdfmake.min.js"></script>
-		<script src="/campus/resources/src/plugins/datatables/js/vfs_fonts.js"></script>
-		<!-- Datatable Setting js -->
-		<script src="vendors/scripts/datatable-setting.js"></script>
+		<script src="vendors/scripts/script.min.js"></script>
+		<script src="vendors/scripts/process.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
 
 		$(function(){
@@ -188,7 +211,9 @@
 						}
 						}
 					}
-			
+			    
+			    
+		    
 			let goodsCode = null;
 								
 			$('[class*=delete-goods]').on('click', function(event) {
@@ -199,6 +224,7 @@
 				
 				goodsCode = $(this).data('goodscode');
 				location.href = 'admin-goods-delete.action?goodsCode='+goodsCode;
+				
 			});
 
 		});

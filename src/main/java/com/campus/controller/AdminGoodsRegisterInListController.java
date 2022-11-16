@@ -22,6 +22,8 @@ import com.campus.service.AdminGoodsRegisterInListService;
 @Controller
 public class AdminGoodsRegisterInListController {
 	
+	private final int PAGE_SIZE = 50; //한 페이지에 표시되는 데이터 개수
+
 	@Autowired
 	@Qualifier("admingoodsregisterinlistService")
 	private AdminGoodsRegisterInListService admingoodsregisterinlistService;

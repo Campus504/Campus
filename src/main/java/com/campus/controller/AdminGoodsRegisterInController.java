@@ -20,7 +20,7 @@ import com.campus.service.AdminGoodsRegisterInService;
 @Controller
 public class AdminGoodsRegisterInController {
 	
-	private final int PAGE_SIZE = 30; // 한 페이지에 표시 되는 데이터 개수
+	private final int PAGE_SIZE = 50; //한 페이지에 표시되는 데이터 개수
 	
 	@Autowired
 	@Qualifier("admingoodsregisterinService")
@@ -55,8 +55,5 @@ public class AdminGoodsRegisterInController {
 		
 		return "redirect:admin-goods-register-in-list.action";
 	}
-	
-	// 관리자페이지) 입고등록 후 입고목록에서 데이터 불러오기
-	
 	
 }

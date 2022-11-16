@@ -108,9 +108,9 @@
 		
 											<!-- 입고 미 입고 여부 확인 -->
 											<div class="form-group">
-												<label>1. 입고 상품:</label>
-												<input type="hidden" class="form-control" id="goodsCode" name="goodsCode" value="${goodsCode}">
-												<input type="text" class="form-control" id="goodsName" name="goodsName" placeholder="입고 상품" value="${goodsName}">
+												<label>1. 입고상품:</label>
+												<input type="hidden" class="form-control" id="goodsCode" name="goodsCode" value="${ goodsCode }">
+												<input type="text" class="form-control" id="goodsName" name="goodsName" placeholder="입고 상품" value="${ goodsName }">
 											</div>
 										
 											<div class="form-group">
@@ -126,23 +126,19 @@
 											
 											<div class="col-md-6">
 											<div class="form-group">
-												<label>2. 상세 설명:</label>
-												<input type="text" class="form-control" id="detail" name="detail" placeholder="상세설명" >
+												<label>2. 속성설명:</label>
+												<input type="text" class="form-control" id="detail" name="option_description" placeholder="상세설명" value="${ optionDesc }">
 											</div>
 											
 											<div class="form-group">
-												<label>4. 입고 수량 :</label>
+												<label>4. 입고수량 :</label>
 												<input type="text" class="form-control" id="goodsIn" name="goodsIn" placeholder="입고 수량">
 											</div>
 											
-											
-											</div>
-											
-											</div>
-										
+										</div>
+									</div>
 								
-						<!-- 상품등록, 취소 버튼 -->	
-						
+						<!-- 상품등록, 취소 버튼 -->
 						<div class="btn-list">
 							<button type="submit" id="adminGoodsRegisterIn" name="adminGoodsRegisterIn" value="입고등록" class="btn btn-lg btn-primary" >입고등록</button>
 							<button type="reset" id="goodsRegister" name="goodsRegister" value="입력초기화" class="btn btn-secondary btn-lg" >초기화</button>
@@ -155,10 +151,9 @@
 							 		</div>
 							 		</div>
 							 		
-							 		</div>
-							 		</div>
-							 		</div>
-									
+							 	</div>
+							</div>
+				 		</div>
 				<!-- 상품 등록 페이지 끝 -->	
 	
 	
