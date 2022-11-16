@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
     
-    <div class="right-sidebar">
-=======
+    <!-- <div class="right-sidebar"> -->
+
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="http://localhost:8080/campus/admin-main">
@@ -70,7 +69,7 @@
 		</div>
 	</div>
 	<div class="right-sidebar">
->>>>>>> 29fb036017a21b203e466692864dc53f115d39a5
+
 		<div class="sidebar-title">
 			<h3 class="weight-600 font-16 text-blue">
 				Layout Settings
