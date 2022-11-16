@@ -108,9 +108,12 @@ public class AccountController {
 	public String showMemberSearchList(String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
 
 		List<MemberDto> members = accountService.searchMember(search);
-
+		int memberCount = accountService.findMemberCount();
+		int pageCount = (memberCount / PAGE_SIZE) + ((memberCount % PAGE_SIZE) > 0 ? 1 : 0);
+		
 		model.addAttribute("members", members);
 		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("pageCount", pageCount);
 		model.addAttribute("search", search);
 
 		return "admin-member-search";
@@ -180,7 +183,7 @@ public class AccountController {
 		  
 		  model.addAttribute("boards", boards);
 		  
-		  return "/account/my-page-board";
+		  return "/account/my-page-board"; // 참고
 	  }
 	  
 	  @GetMapping(path= {"my-page-order-list.action"})
@@ -198,7 +201,17 @@ public class AccountController {
 		  
 		  return "/account/my-page-order-detail";
 	  }
-	  
-	  
-	  
+	 
+	  @GetMapping(path= {"admin-member-detail-info.action"})
+	  public String memberView(String memberId, Model model) {
+		  
+		  MemberDto member = accountService.viewMember(memberId);
+		  
+		  model.addAttribute("member", member);
+		  
+		  return "admin-member-detail-info";
+		  
+		 
+		  
+	  }
 }

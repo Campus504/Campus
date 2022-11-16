@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +125,7 @@
 				</div>
 				<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 
-				<!-- 상품 리스트 시작! -->
+				
 				<div class="pd-20 card-box mb-30">
 
 					<div class="clearfix">
@@ -238,21 +238,26 @@
 								<div class="row">
 									<div class="col-sm-12 col-md-5">
 										<div class="dataTables_info" id="DataTables_Table_3_info"
-											role="status" aria-live="polite">1-10 of entries</div>
+											role="status" aria-live="polite">1-10 of
+											${member.memberId} entries</div>
 									</div>
 
 									<!-- paging -->
-									<jsp:include page="/WEB-INF/views/include/admin-search-paging.jsp" />
+									<jsp:include
+										page="/WEB-INF/views/include/admin-search-paging.jsp" />
 									<!-- end of paging -->
-									
+
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- 상품 리스트 ! -->
+				</div>
+			</div>
+		</div>
+	</div>
 
-					<!-- js -->
-					<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
-					<!-- end of js -->
+	<!-- js -->
+	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+	<!-- end of js -->
 </body>
 </html>

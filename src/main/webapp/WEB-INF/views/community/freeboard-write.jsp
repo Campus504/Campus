@@ -274,21 +274,17 @@
 		});
 		
 		
-		function validateform(){  
-			var boardTitle=$('#freeboard-title').value;  
-			var boardContent=$('#freeboard-content').val();  
+		$('#freeboard').on('click', function(event){  
 			
-			alert("hh");
-			  
-			if (boardTitle==null || boardTitle==""){  
+			if ($('#freeboard-title').val()==''){
 			  alert("제목을 입력하세요");  
 			  return false;  
-			}else if(boardContent==null || boardContent==""){  
-			  alert("내용을 입력하세요");  
-			  return false;  
+			}else if($('#freeboard-content').val()==''){
+			  alert("내용을 입력하세요");
+			  return false;
 			  }  
 			return true;
-			}  
+			});  
 		
 		
 	});

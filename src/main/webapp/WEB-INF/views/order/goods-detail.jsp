@@ -150,8 +150,9 @@
 		
 		<div class="col-lg-4">
 		<form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;">
+		<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
 		<input type="hidden" name="memberId" value="${loginuser.memberId}">
-		<input type="hidden" name="goodsPrice" value="${goodsIn.rentPrice}">
+		<input type="hidden" name="price" value="${goodsIn.rentPrice}">
 		<input type="hidden" name="goodsName" value="${goods.goodsName}">
 		<input type="hidden" name="brand" value="${goods.brand}">
 		<input type="hidden" name="category" value="${goods.category}">
@@ -163,19 +164,35 @@
                 <li><strong>상품 분류</strong>: ${goods.category}</li>
                 <li><strong>이용금액(1일)</strong>: ${goodsIn.rentPrice}</li>
                 
-                <li><strong>주문 수량</strong>: <select name="orderAmount">
+                <c:choose>
+                <c:when test="${goodsIn.goodsIn==null}">
+                <li><strong>주문 수량</strong>: 재고 없음</li>
+                </c:when>
+                
+                <c:otherwise>
+                <li><strong>주문 수량</strong>: <select name="amount">
                 <c:forEach begin="1" end="${goodsIn.goodsIn}">
                 <c:set var="i" value="${ i+1 }"/>
                 <option>${i}</option>
                 </c:forEach>
                 </select></li>
+                </c:otherwise>
+                </c:choose>
+                
                 <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
                 <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
                
                 <li>
-                <button type="submit" class="btn btn-info">상품주문</button>
-            	<a href="cart-list.action" class="btn btn-warning" onclick="addToCart">장바구니</a>
+                
+                <c:if test="${goodsIn.goodsIn!=null}">
+                <button type="submit" id="order-btn" class="btn btn-info">상품주문</button>
+            	<a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart">장바구니</a>
+                </c:if>
+                
             	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
+                
+                
+                
                 
                 </li>
                 
@@ -260,14 +277,44 @@ $(function(){
           }  
 	});
 	
-	function addToCart(){
-		if(cofirm("장바구니에 추가하시겠습니까?")){
-			document.addForm.submit();
-		}else{
-			document.addForm.reset();
-		}
-	}
+
 	
+	$('#order-btn').on('click',function(event){
+		
+		if(${loginuser.memberId==null}){
+			alert('로그인 후에 이용해주세요');
+			return false;
+		}else if($('#rentDate').val()==''){
+			alert('이용 날짜를 선택해주세요');
+			return false;
+		}else if($('#returnDate').val()==''){
+			alert('이용 날짜를 선택해주세요');
+			return false;
+		}
+		return true;
+	});
+	
+$('#addToCart').on('click',function(event){
+		if(${loginuser.memberId==null}){
+			alert('로그인 후에 이용해주세요');
+			return false;
+		}else if($('#rentDate').val()==''){
+			alert('이용 날짜를 선택해주세요');
+			return false;
+		}else if($('#returnDate').val()==''){
+			alert('이용 날짜를 선택해주세요');
+			return false;
+		}
+		return true;
+	});
+	
+function addToCart(){
+	if(cofirm("장바구니에 추가하시겠습니까?")){
+		document.addForm.submit();
+	}else{
+		document.addForm.reset();
+	}
+}
 
 	
 	

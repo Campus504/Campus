@@ -1,7 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
     
     <div class="right-sidebar">
+=======
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a href="http://localhost:8080/campus/admin-main">
+				<img src="/campus/resources/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+				<img src="/campus/resources/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li class="dropdown">
+						<a href="http://localhost:8080/campus/" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-user-2"></span><span class="mtext">회원</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="admin-member-info.action">회원 정보</a></li>
+							<li><a href="admin-right.action">관리자 권한</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span class="mtext">상품</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="admin-goods-register.action">상품 등록</a></li>
+							<li><a href="admin-goods-list.action">상품 목록</a></li>
+							<li><a href="admin-goods-register-in.action">입고 등록</a></li>
+							<li><a href="admin-goods-register-in-list.action">입고 목록</a></li>
+							<li><a href="admin-order.action">주문 목록</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-edit2"></span><span class="mtext" >관리자 게시판</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="notice-list.action">공지사항</a></li>
+							<li><a href="faq-list.action">자주묻는 질문</a></li>
+							<li><a href="admin-write.action">관리자 글쓰기</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-analytics-21"></span><span class="mtext">차트</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="admin-chart.action">대여 통계</a></li>
+							<li><a href="admin-chart2.action">대여 통계2</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="dropdown-divider"></div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="right-sidebar">
+>>>>>>> 29fb036017a21b203e466692864dc53f115d39a5
 		<div class="sidebar-title">
 			<h3 class="weight-600 font-16 text-blue">
 				Layout Settings

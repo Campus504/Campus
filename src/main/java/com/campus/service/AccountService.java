@@ -37,5 +37,7 @@ public interface AccountService {
 
 	List<BoardDto> findAllBoardByMemberId(String memberId);
 
+	MemberDto viewMember(String memberId);
 
+	
 }

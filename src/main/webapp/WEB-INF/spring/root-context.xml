@@ -34,6 +34,7 @@
 	<import resource="faq-context.xml" />
 	<import resource="goods-context.xml" />
 	<import resource="cart-context.xml" />
+	<import resource="admin-order-context.xml" />
 
 
 	<!-- DataSourceTransactionManager. 트랜젝션 매니저 추가 -->

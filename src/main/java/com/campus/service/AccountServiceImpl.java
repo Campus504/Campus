@@ -136,7 +136,11 @@ public class AccountServiceImpl implements AccountService {
 		return boards;
 	}
 
-
+	@Override
+	public MemberDto viewMember(String memberId) {
+		MemberDto member = memberMapper.selectMemberByMemberId(memberId);
+		return member;
+	}
 	
 
 }
