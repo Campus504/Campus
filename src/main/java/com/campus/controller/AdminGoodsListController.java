@@ -18,7 +18,7 @@ import com.campus.service.AdminGoodsRegisterListService;
 @Controller
 //@RequestMapping(path = { "/admingoods" })
 public class AdminGoodsListController {
-
+	
 	@Autowired
 	@Qualifier("adminGoodsRegisterListService")
 	private AdminGoodsRegisterListService admingoodsregisterlistService;

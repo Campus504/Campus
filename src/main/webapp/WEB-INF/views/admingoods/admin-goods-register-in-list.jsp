@@ -121,7 +121,7 @@
 						<div class="col-sm-12">
 							
 							<form action="admin-goods-list.action" method="post">
-							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline overflow-auto" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								
 								<thead>
 									<tr role="row" >
@@ -129,7 +129,7 @@
 										<th>입고코드</th>
 										<th>상품코드</th>
 										
-										<th>상세설명</th>
+										<th style="width: 10px">상세설명</th>
 										<th>대여가격</th>
 										<th>입고수량</th>
 										<th>입고일자</th>

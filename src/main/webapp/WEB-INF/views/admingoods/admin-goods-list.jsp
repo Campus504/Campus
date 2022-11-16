@@ -100,9 +100,8 @@
 			<div class="pb-20">
 				<div id="DataTables_Table_3_wrapper"
 					class="dataTables_wrapper dt-bootstrap4 no-footer">
-					<div class="row" style="margin-right: 100%;">
-						
-						<div class="col-sm-12 col-md-6">
+					<div class="row">
+					
 							<div class="dataTables_filter">
 								<form action="admin-goods-list-search.action" method="post">
 									<label>검색하기: <input type="search" name="search"
@@ -115,13 +114,9 @@
 								</form>
 							</div>
 						</div>
-					</div>
-					
+						<div class="row">
+							<div class="col">
 					<!-- 등록된 상품의 리스트 테이블 만들기 -->
-					<div class="row">
-						<div class="col-sm-12">
-							
-							<form action="admin-goods-list.action" method="post">
 							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								
 								<thead>
@@ -172,11 +167,9 @@
 								</c:forEach>
 								
 							</table>
-							</form>		
 
 						</div>
 					</div>
-					
 					
 				</div>
 			</div>
