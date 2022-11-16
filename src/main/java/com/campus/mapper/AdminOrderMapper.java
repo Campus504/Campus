@@ -10,7 +10,7 @@ import com.campus.dto.OrderListDto;
 @Mapper
 public interface AdminOrderMapper {
 
-	@Select("SELECT * FROM orderList")
+	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList")
 	List<OrderListDto> selectAllOrderList();
 
 }

@@ -230,8 +230,8 @@ font-size: 30px;
 				<form method="post" action="orderGoods.action">
 				<input type="hidden" name="memberId" value="${loginuser.memberId}">
 				<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
-				<input type="hidden" name="returnDate" value="${orderList.rentDate}">
-				<input type="hidden" name="rentDate" value="${orderList.returnDate}">
+				<input type="hidden" name="rentDate" value="${orderList.rentDate}">
+				<input type="hidden" name="returnDate" value="${orderList.returnDate}">
 				<input type="hidden" name="amount" value="${orderDetail.amount}">
 				<input type="hidden" id="hidden-total-price" name="price">
 				<div class="col-lg-8 entries">

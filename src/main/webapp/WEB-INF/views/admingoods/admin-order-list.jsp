@@ -140,7 +140,27 @@
 										<td>${ orderList.orderDate }</td>
 										<td>${ orderList.rentDate }</td>
 										<td>${ orderList.returnDate }</td>
-										<td>${ orderList.pay }</td>
+										
+										<c:choose>
+										<c:when test="${orderList.pay=='cash'}">
+										<td>현금</td>
+										</c:when>
+										<c:when test="${orderList.pay=='credit'}">
+										<td>신용카드</td>
+										</c:when>
+										<c:when test="${orderList.pay=='account'}">
+										<td>계좌이체</td>
+										</c:when>
+										<c:when test="${orderList.pay=='kakaoPay'}">
+										<td>카카오페이</td>
+										</c:when>
+										<c:otherwise>
+										<td>네이버페이</td>
+										</c:otherwise>
+										</c:choose>
+										
+										
+										
 									</tr>
 								
 								</tbody>
