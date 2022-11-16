@@ -28,7 +28,7 @@ public class AdminGoodsRegisterController {
 //	private final int PAGE_SIZE = 30; // 한 페이지에 표시 되는 데이터 개수
 	
 	@Autowired
-	@Qualifier("adminGoodsRegisterService")
+	@Qualifier("admingoodsregisterService")
 	private AdminGoodsRegisterService adminGoodsRegisterService;
 
 	// 관리자 페이지) 상품등록 페이지 이동
