@@ -64,7 +64,9 @@ public interface MemberMapper {
 	@Select("SELECT * FROM board WHERE memberId = #{memberId} ")
 	List<BoardDto> selectAllBoardByMemberId(String memberId);
 
-	
+	// 회원 상세 정보 조회
+	@Select("SELECT * FROM member WHERE memberId = #{memberId} ")
+	MemberDto selectMemberByMemberId(String memberId);
 
 
 				

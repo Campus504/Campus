@@ -131,7 +131,7 @@
 				</div>
 				<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 
-				<!-- 상품 리스트 시작! -->
+				
 				<div class="pd-20 card-box mb-30">
 
 					<div class="clearfix">
@@ -212,7 +212,7 @@
 																</div>
 															</td>
 
-															<td>${ member.memberId }</td>
+															<td><a href="admin-member-detail-info.action?memberId=${member.memberId}">${ member.memberId }</a></td>
 															<td>${ member.admin }</td>
 															<td><div class="form-check">
 																	<input class="form-check-input" type="radio"
@@ -263,7 +263,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- 상품 리스트 ! -->
 
 	<!-- js -->
 	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
