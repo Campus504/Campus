@@ -82,73 +82,86 @@
 					</nav>
 				</div>
 				
-				
 			</div>
 		</div>
 	</div>
 	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 	
-	<!-- 상품 리스트 시작! -->
-			<div class="pd-20 card-box mb-30">
-				<div class="pd-20">
-					<h4 class="text-blue h4">등록된 상품의 정보를 수정할 수 있는 페이지 입니다.</h4>
-					<p class="mb-30">상품 정보를 수정한 후 [수정] 버튼을 눌러주세요.</p>
-				</div>
-		
-					<div class="pb-20">							
-						<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
-						<form action="admin-goods-list-edit.action" method="post">
-							<thead>
-								<tr>
-								<!-- <tr role="row" > -->
-					
-									<th>상품명</th>
-									<th>브랜드</th>
-									<th>상품분류</th>
+		<!-- 상품 리스트 시작! -->
+		<div class="pd-20 card-box mb-30">
 
-									<th>옵션이름</th>
-									<th>옵션설명</th>
-									<th>단일값/목록값</th>
-									
-									<th>옵션 값</th>
-								</tr>
-							</thead>
-							
-							<c:forEach  var="goods" items='${goods}' >
-							<tbody>
-								<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" >
-									
-									<td><input name="goodsName" value="${ goods.goodsName }" /></td>
-									<td><input name="brand" value="${ goods.brand }" /></td>
-									<td><input name="category" value="${ goods.category }" /></td>
-									
-									<td><input name="optionName" value="${ goods.optionName }" /></td>
-									<td><input name="optionDesc" value="${ goods.optionDesc }" /></td>
-									<td>
-									<select name="optionDataType">
-									<option>단일값</option>
-									<option>목록값</option>
-									</select>
-									
-									<%-- <input name="optionDataType" value="${ goods.optionDataType }" /> --%></td>
-									
-									<td><input name="optionValue" value="${ goods.optionValue }" /></td>
-									
-								</tr>
-								
-								</tbody>
-								</c:forEach>						
-								
-							</table>
-							</form>		
-									
-						</div>
-					</div>
-					
-					
-				</div>
+			<div class="clearfix">
+				<h4 class="text-blue h4">등록된 상품의 정보를 수정할 수 있는 페이지 입니다.</h4>
+				<p class="mb-30">상품 정보를 수정한 후 [수정] 버튼을 눌러주세요.</p>
 			</div>
+		</div>	
+				
+		<div class="card-box mb-30">
+		<div class="pd-20">
+			<h4 class="text-blue h4"></h4>
 		</div>
+	
+		<div class="row">
+			<div class="col-sm-12">		
+
+				<form action="admin-goods-list-edit.action" method="post">	
+				<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline overflow-auto" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+					
+					<thead>
+						<tr role="row" >
+					
+							<th>상품명</th>
+							<th>브랜드</th>
+							<th>상품분류</th>
+		
+							<th>옵션이름</th>
+							<th>옵션설명</th>
+							<th>단일값/목록값</th>
+							
+							<th>옵션 값</th>
+						
+						</tr>
+					</thead>
+						
+					<c:forEach  var="goods" items='${goods}' varStatus="status">
+					<tbody>
+						
+						<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" >
+							
+						<td><input name="goodsName" value="${ goods.goodsName }" /></td>
+						<td><input name="brand" value="${ goods.brand }" /></td>
+						<td><input name="category" value="${ goods.category }" /></td>
+						
+						<td><input name="optionName" value="${ goods.optionName }" /></td>
+						<td><input name="optionDesc" value="${ goods.optionDesc }" /></td>
+						<td><select name="optionDataType">
+							<option>단일값</option>
+							<option>목록값</option>
+						</select>
+						</td>
+						
+						<%-- <input name="optionDataType" value="${ goods.optionDataType }" /> --%>
+							
+						<td><input name="optionValue" value="${ goods.optionValue }" /></td>
+					</tr>
+					
+					</tbody>
+					</c:forEach>						
+							
+					</table>
+					</form>	
+				
+				<!-- 상품등록, 취소 버튼 -->	
+					<div class="btn-list">
+						<button type="submit" class="btn btn-primary btn-sm" value="수정" >수정</button>
+						<button type="button" class="btn btn-secondary btn-sm" value="취소" >취소</button>
+					</div>		
+				
+				<!-- 상품등록, 취소 버튼 종료 -->
+				
+				</div>			
+			</div>
+		
 		</div>
 		</div>
 		</div>
@@ -159,16 +172,10 @@
 		<!-- end of js -->
 		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<!-- <script src="vendors/scripts/core.js"></script> -->
-		<script src="vendors/scripts/script.min.js"></script>
-		<script src="vendors/scripts/process.js"></script>
-		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
+		<script src="/campus/resources/vendors/scripts/process.js"></script>
+		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
-		$(function(){
-		
-			
-			
-		});
-			
 
 		</script>
 		

@@ -145,7 +145,7 @@
 								<input id="findRowNo${i}" style="display:none" value="${ goodsregister.goodsCode }" />
 								<tbody>
 								
-									<tr role="row" class="goodsCode-${ goodsregister.goodsCode }" data-goodscode="${ goodsregister.goodsCode }" style="background-color:rgb(255,255,255)" >
+									<tr role="row" class="goodsCode-${ goodsregister.goodsCode }" data-goodscode="${ goodsregister.goodsCode }"  >
 										
 										<td>${ goodsregister.goodsCode }</td>
 										<td>${ goodsregister.inCode }</td>
@@ -168,7 +168,6 @@
 						</div>
 					</div>
 					
-					
 				</div>
 			</div>
 		</div>
@@ -184,9 +183,9 @@
 		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<!-- <script src="vendors/scripts/core.js"></script> -->
 
-		<script src="vendors/scripts/script.min.js"></script>
-		<script src="vendors/scripts/process.js"></script>
-		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
+		<script src="/campus/resources/vendors/scripts/process.js"></script>
+		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
 
 		$(function(){

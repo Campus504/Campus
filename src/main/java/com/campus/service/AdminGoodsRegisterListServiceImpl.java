@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.campus.dto.GoodsDto;
+import com.campus.dto.GoodsOptionDto;
 import com.campus.dto.GoodsOptionJoinDto;
 import com.campus.mapper.AdminGoodsRegisterMapper;
 
@@ -39,6 +41,11 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 	public List<GoodsOptionJoinDto> findAdminGoodsByGoodsCode(int goodsCode) {
 		List<GoodsOptionJoinDto> goods = adminGoodsRegisterMapper.selectAdminGoodsByGoodsCode(goodsCode);
 		return goods;
+	}
+
+	@Override			// 상품 정보 수정
+	public void updategoodslist(GoodsOptionJoinDto goodsoptionjoins) {
+		adminGoodsRegisterMapper.updategoodslist();
 	}
 
 	
