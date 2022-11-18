@@ -35,13 +35,13 @@
 	href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/campus/resources/vendors/styles/style.css">
-<!-- 	<link rel="stylesheet" type="text/css"
-	href="/campus/resources/assets/css/style.css">
-	
-	<link rel="stylesheet" type="text/css"
-	href="/campus/resources/sidebar/css/main.css">
-	
- -->
+<!-- <link rel="stylesheet" type="text/css"
+	href="/campus/resources/assets/css/style.css"> -->
+
+<!-- <link rel="stylesheet" type="text/css"
+	href="/campus/resources/sidebar/css/main.css"> -->
+
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
 <style>
@@ -109,7 +109,9 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">회원정보</li>
+									<li class="breadcrumb-item"><a href="#">회원</a></li>
+									<li class="breadcrumb-item active" aria-current="page"><a
+										href="admin-member-info.action" style="color: blue">회원정보</a></li>
 								</ol>
 							</nav>
 						</div>
@@ -131,12 +133,12 @@
 				</div>
 				<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 
-				
+
 				<div class="pd-20 card-box mb-30">
 
 					<div class="clearfix">
 						<h4 class="text-blue h4">관리자페이지를 통해 회원 정보를 확인 할 수 있는 리스트입니다.</h4>
-						<p class="mb-30">회원 리스트를 확인해 주세요</p>
+						<p class="mb-30">회원 리스트를 확인해 주세요 (아이디를 클릭하면 상세 정보로 이동합니다.)</p>
 					</div>
 
 					<div class="card-box mb-30">
@@ -168,9 +170,7 @@
 													class="form-control form-control-sm" placeholder="Enter"
 													aria-controls="DataTables_Table_3">
 												</label>
-												<button type="submit">
-													<i class="bi bi-search"></i>
-												</button>
+
 											</form>
 										</div>
 									</div>
@@ -195,10 +195,10 @@
 														</th>
 														<th class="sorting_asc" tabindex="0" rowspan="1"
 															colspan="1">아이디</th>
-														<th class="sorting" tabindex="0" rowspan="1" colspan="1">권한
+														<th class="sorting" tabindex="0" rowspan="1" colspan="	1">권한
 															이름</th>
-														<th class="sorting" tabindex="0" rowspan="1" colspan="1">권한
-															부여</th>
+														<th class="sorting" tabindex="0" rowspan="1" colspan="1" ><span style="margin-left: 80px">권한</span>
+														</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -212,27 +212,26 @@
 																</div>
 															</td>
 
-															<td><a href="admin-member-detail-info.action?memberId=${member.memberId}">${ member.memberId }</a></td>
+															<td><a
+																href="admin-member-detail-info.action?memberId=${member.memberId}">${ member.memberId }</a></td>
 															<td>${ member.admin }</td>
-															<td><div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault1">
-																	<label class="form-check-label" for="flexRadioDefault1">
-																		Super Admin </label>
-																</div>
+															<td>
 																<div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault2" checked>
 																	<label class="form-check-label" for="flexRadioDefault2">
-																		Admin </label>
+																		<input type="button"
+																		class="change-admin btn-primary btn-rounded"
+																		style="height: 40px; width: 80px"
+																		data-memberId="${member.memberId}" name="Admin"
+																		value="Admin" />
+																	</label> &nbsp; <label class="form-check-label"
+																		for="flexRadioDefault2"> <input type="button"
+																		class="change-member btn-primary btn-rounded"
+																		style="height: 40px; width: 80px"
+																		data-memberId="${member.memberId}" name="Member"
+																		value="Member" />
+																	</label>
 																</div>
-
-																<div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault2" checked>
-																	<label class="form-check-label" for="flexRadioDefault2">
-																		Member </label>
-																</div></td>
+															</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -266,6 +265,39 @@
 
 	<!-- js -->
 	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+	<script type="text/javascript">
+		$(function() {
+			$(".change-admin").on('click', function(event) {
+				var memberId = $(this).attr('data-memberId')
+
+				location.href = memberId + "/admin-change";
+				alert(memberId + "님을 관리자로 변경했습니다")
+
+			})
+
+			$(".change-member").on('click', function(event) {
+				var memberId = $(this).attr('data-memberId')
+				location.href = memberId + "/member-change";
+				alert(memberId + "님을 회원으로 변경했습니다")
+
+			})
+		})
+	</script>
 	<!-- end of js -->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -141,6 +141,20 @@ public class AccountServiceImpl implements AccountService {
 		MemberDto member = memberMapper.selectMemberByMemberId(memberId);
 		return member;
 	}
-	
+
+	@Override
+	public void adminchange(String memberId) {
+		
+		memberMapper.updateAdmin(memberId);
+		
+	}
+
+
+	@Override
+	public void memberChange(String memberId) {
+		
+		memberMapper.updateMember2(memberId);
+		
+	}
 
 }

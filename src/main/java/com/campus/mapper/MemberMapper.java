@@ -68,6 +68,11 @@ public interface MemberMapper {
 	@Select("SELECT * FROM member WHERE memberId = #{memberId} ")
 	MemberDto selectMemberByMemberId(String memberId);
 
-
+	// 관리자 권한 부여
+	@Update("UPDATE member SET admin = 'Admin' WHERE memberid = #{memberId} ")
+	void updateAdmin(String memberId);
+	
+	@Update("UPDATE member SET admin = 'Member' WHERE memberid = #{memberId} ")
+	void updateMember2(String memberId);
 				
 }

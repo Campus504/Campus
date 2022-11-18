@@ -97,13 +97,9 @@
 						</a>
 					</li>
 					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
+						<a href="admin-member-info.action" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-user-2"></span><span class="mtext">회원</span>
 						</a>
-						<ul class="submenu">
-							<li><a href="admin-member-info.action">회원 정보</a></li>
-							<li><a href="admin-right.action">관리자 권한</a></li>
-						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">

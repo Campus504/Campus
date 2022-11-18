@@ -125,7 +125,7 @@
 				</div>
 				<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 
-				
+
 				<div class="pd-20 card-box mb-30">
 
 					<div class="clearfix">
@@ -162,9 +162,6 @@
 													class="form-control form-control-sm" placeholder="Enter"
 													aria-controls="DataTables_Table_3">
 												</label>
-												<button type="submit">
-													<i class="bi bi-search"></i>
-												</button>
 											</form>
 										</div>
 									</div>
@@ -207,26 +204,24 @@
 															</td>
 
 															<td>${ member.memberId }</td>
-															<td>${ member.admin }</td>
-															<td><div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault1">
-																	<label class="form-check-label" for="flexRadioDefault1">
-																		Super Admin </label>
-																</div>
+															<td id="member-admin-${ member.memberId }">${ member.admin }</td>
+															<td>
 																<div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault2" checked>
 																	<label class="form-check-label" for="flexRadioDefault2">
-																		Admin </label>
+																		<input type="button" class="change-admin"
+																		style="cursor:" data-memberId="${member.memberId}"
+																		name="Admin" value="Admin" />
+																	</label>
 																</div>
 
 																<div class="form-check">
-																	<input class="form-check-input" type="radio"
-																		name="flexRadioDefault" id="flexRadioDefault2" checked>
 																	<label class="form-check-label" for="flexRadioDefault2">
-																		Member </label>
-																</div></td>
+																		<input type="button" class="change-member2"
+																		style="cursor:" data-memberId2="${member.memberId}"
+																		name="Member" value="Member" />
+																	</label>
+																</div>
+															</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -258,6 +253,42 @@
 
 	<!-- js -->
 	<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+	<script type="text/javascript">
+		$(function() {
+			/* $(".change-member2").on('click', function(event) {
+				var memberId = $(this).attr('data-memberId2');
+				$.ajax({
+					"url" : memberId + "/member-change2",
+					"type" : "POST",
+					"data" : "memberId=" + memberId,
+					"success" : function(data) {
+						
+						location.href = memberId + "/member-change2";
+						alert(memberId + "님을 회원으로 변경했습니다");
+					},
+					"error" : function(request, status, error) {
+						alert("error");
+						$('#member-admin-' + memberId).load('#DataTables_Table_3')
+					}
+				});
+			}); */
+
+			$(".change-admin").on('click', function(event) {
+				var memberId = $(this).attr('data-memberId')
+
+				location.href = memberId + "/admin-change";
+				alert(memberId + "님을 관리자로 변경했습니다")
+
+			});
+
+			$(".change-member2").on('click', function(event) {
+				var memberId = $(this).attr('data-memberId2')
+				location.href = memberId + "/member-change";
+				alert(memberId + "님을 회원으로 변경했습니다")
+
+			})
+		});
+	</script>
 	<!-- end of js -->
 </body>
 </html>

@@ -16,7 +16,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -211,7 +213,23 @@ public class AccountController {
 		  
 		  return "admin-member-detail-info";
 		  
-		 
-		  
 	  }
+	  
+	  // 관리자 권한 부여
+	  @GetMapping(path = {"/{memberId}/admin-change"})
+	  public String adminChange(@PathVariable ("memberId") String memberId) {
+		  
+		  accountService.adminchange(memberId);
+		  
+		  return "redirect:/admin-member-info.action";
+	  }
+	  
+	  @GetMapping(path = {"/{memberId}/member-change"})
+	  public String memberChange(@PathVariable ("memberId") String memberId) {
+		  
+		  accountService.memberChange(memberId);
+		  
+		  return "redirect:/admin-member-info.action";
+	  }
+	  
 }

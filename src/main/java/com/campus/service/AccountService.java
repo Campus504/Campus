@@ -39,5 +39,8 @@ public interface AccountService {
 
 	MemberDto viewMember(String memberId);
 
-	
+	void adminchange(String memberId);
+
+	void memberChange(String memberId);
+
 }
