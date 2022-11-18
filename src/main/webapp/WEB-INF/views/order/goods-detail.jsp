@@ -179,21 +179,9 @@
                 </c:otherwise>
                 </c:choose>
                 
-                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
-                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
                
                 <li>
-                
-                <c:if test="${goodsIn.goodsIn!=null}">
-                <button type="submit" id="order-btn" class="btn btn-info">상품주문</button>
-            	<a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart">장바구니</a>
-                </c:if>
-                
-            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
-                
-                
-                
-                
+         
                 </li>
                 
               </ul>
@@ -201,7 +189,17 @@
             </form>
           </div>
 		
-          
+           <c:if test="${goodsIn.goodsIn!=null}">
+                <button type="button" id="order-btn" class="btn btn-info">상품주문</button>
+                </c:if>
+                <span>
+                <form method="post" action="addByCart.action">
+            	<button type="submit" id="addToCart" onclick="addToCart"><!-- <a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart"> -->장바구니<!-- </a> --></button>
+            	</form>
+                
+                </span>
+                
+            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
 
         </div>
 
@@ -284,12 +282,6 @@ $(function(){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
 			return false;
-		}else if($('#rentDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
-		}else if($('#returnDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
 		}
 		return true;
 	});
@@ -298,18 +290,12 @@ $('#addToCart').on('click',function(event){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
 			return false;
-		}else if($('#rentDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
-		}else if($('#returnDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
 		}
 		return true;
 	});
 	
 function addToCart(){
-	if(cofirm("장바구니에 추가하시겠습니까?")){
+	if(confirm("장바구니에 추가하시겠습니까?")){
 		document.addForm.submit();
 	}else{
 		document.addForm.reset();

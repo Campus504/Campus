@@ -113,11 +113,19 @@
   <!-- End mypage-side-menu -->
 
   <main id="main">
-
+<c:if test="${ not empty loginuser }">
  <div class="jumbotron" style="margin-top:100px;">
-	<h2>${ member.memberId }님 장바구니</h2>
+	<h2>${ loginuser.memberId }님 장바구니</h2>
 </div>
-
+</c:if>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <c:if test="${ empty loginuser }">
 	<h1>장바구니가 비어있습니다.</h1>
 	<a href="goods-list.action">쇼핑하러가기</a>
@@ -128,34 +136,31 @@
 		<thead>
 			<tr>
 				<th>상품명</th>
+				<th>가격</th>
 				<th>구매수량</th>
-				<th>총가격</th>
-				<th>수정</th>
+				<th>대여날짜</th>
+				<th>반납날짜</th>
 				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="str" items="${myJangList}">
+			<%-- <c:forEach var="cart" items="${ map.list }"> --%>
 				<tr>
 					<form method="post" action="cart-list.action">
-						<input type="hidden" name="bookSeq" value="${str.bookSeq}">
-						<input type="hidden" name="orderSerialNum"
-							value="${str.orderSerialNum}">
-						<td>${str.bookTitle}</td>
-						<td><input type="number" name="bookOrderCnt"
-							value="${str.bookOrderCnt}" class="form-control"></td>
-
-						<td>${str.bookOrderCntPrice}</td>
-						<td><button type="submit" class="btn btn-info">수량번경</button></td>
+						<td>${goods.goodsName}</td>
+						<td>${cart.price}</td>
+						<td><input type="number" name="amount" value="${cart.amount}" class="form-control"></td>
+						<td>${cart.rentDate}</td>
+						<td>${cart.returnDate}</td>
+						<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
 					</form>
 
-					<td><a class="btn btn-danger"
-						href="${path}/jang/delete/book/${str.bookSeq}/${str.orderSerialNum}">상품삭제</a></td>
+					<td><a class="btn btn-danger" href="deleteCart.action?memberId=${ cart.memberId }">상품삭제</a></td>
 				</tr>
 
-				<c:set var="total" value="${total + str.bookOrderCntPrice}" />
+				<c:set var="total" value="${total + cart.price}" />
 
-			</c:forEach>
+			<%-- </c:forEach> --%>
 
 		</tbody>
 
@@ -173,7 +178,7 @@
 <div class="container">
 	<a class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" href="#">주문하기</a> 
 		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
-		<a class="btn btn-danger my-2 my-sm-0 ml-2"	href="${path}/remove/${myOrderSerialNum}">장바구니 전체 삭제</a>
+		<a class="btn btn-danger my-2 my-sm-0 ml-2"	href="#">장바구니 전체 삭제</a>
 			</div>
 
 </c:if>

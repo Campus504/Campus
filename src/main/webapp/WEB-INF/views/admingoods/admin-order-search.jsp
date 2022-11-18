@@ -8,12 +8,13 @@
 <c:set var="enter" value="
 " />
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="UTF-8">
-	<title>Campus - 입고목록 </title>
+	<title>Campus - 주문목록 </title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/campus/resources/vendors/images/apple-touch-icon.png">
@@ -68,12 +69,12 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4> 입고목록 </h4>
+						<h4> 주문목록</h4>
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">입고목록</li>
+							<li class="breadcrumb-item active" aria-current="page">주문목록</li>
 						</ol>
 					</nav>
 				</div>
@@ -87,8 +88,8 @@
 	<div class="pd-20 card-box mb-30">
 
 		<div class="clearfix">
-			<h4 class="text-blue h4">관리자페이지 내에 입고등록을 통해 입고된 상품을 확인 할 수 있는 페이지 입니다.</h4>
-			<p class="mb-30">입고등록 된 상품들의 현황을 확인하세요</p>
+			<h4 class="text-blue h4">회원들의 주문 목록을 확인 할 수 있는 페이지 입니다.</h4>
+			<p class="mb-30">클릭하여 상세 주문 정보를 확인 할 수 있습니다.</p>
 		</div>
 
 		<div class="card-box mb-30">
@@ -99,13 +100,12 @@
 			<div class="pb-20">
 				<div id="DataTables_Table_3_wrapper"
 					class="dataTables_wrapper dt-bootstrap4 no-footer">
-					<div class="row" style="margin-right: 100%;">
-						
-						<div class="col-sm-12 col-md-6">
+					<div class="row">
+					
 							<div class="dataTables_filter">
-								<form action="admin-goods-list-search.action" method="post">
+								<form action="admin-order-list-search.action" method="post">
 									<label>검색하기: <input type="search" name="search"
-										class="form-control form-control-sm" placeholder="상품 이름, 브랜드, 분류"
+										class="form-control form-control-sm" placeholder="회원아이디를 입력하세요"
 										aria-controls="DataTables_Table_3" >
 									</label>
 									<button type="submit" style="display:none;">
@@ -114,56 +114,96 @@
 								</form>
 							</div>
 						</div>
-					</div>
-					
+						<div class="row">
+							<div class="col">
 					<!-- 등록된 상품의 리스트 테이블 만들기 -->
-					<div class="row">
-						<div class="col-sm-12">
-							
-							<form action="admin-goods-list.action" method="post">
-							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline overflow-auto" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 								
 								<thead>
 									<tr role="row" >
 										
-										<th>입고코드</th>
-										<th>상품코드</th>
-										
-										<th>대여가격</th>
-										<th>입고수량</th>
-										<th>입고일자</th>
-										<th>입고메모</th>
-										
-										<th>입고 정보 수정</th>
-										<th>상품 삭제</th>
+										<th>회원아이디</th>
+										<th>주문일</th>
+										<th>상품 수령일</th>
+										<th>상품 반납일</th>
+										<th>결제방법</th>
 										
 									</tr>
 								</thead>
-								
-								<c:forEach  var="goodsregister" items='${goodsregisters}' varStatus="status">
-								<c:set var="i" value="${ i+1 }" />
-								<input id="findRowNo${i}" style="display:none" value="${ goodsregister.goodsCode }" />
+								<c:choose>
+								<c:when test="${orderList.size()==0}">
+								<tr></tr>
+								</c:when>
+								<c:otherwise>
+								<c:forEach  var="orderList" items='${orderList}' >
 								<tbody>
-								
-									<tr role="row" class="goodsCode-${ goodsregister.goodsCode }" data-goodscode="${ goodsregister.goodsCode }"  >
-										
-										<td>${ goodsregister.goodsCode }</td>
-										<td>${ goodsregister.inCode }</td>
-										
-										<td>${ goodsregister.rentPrice }</td>
-										<td>${ goodsregister.goodsIn }</td>
-										<td>${ goodsregister.goodsInDate }</td>
-										<td>${ goodsregister.detail }</td>
-										
-										<td><a href="admin-goods-edit.action?goodsCode=${goodsregister.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
-										<td><a class="delete-goods" data-goodscode="${ goodsregister.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
+									<tr role="row" class="orderNo-${ orderList.orderNo }" >
+										<td>
+										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
+										${ orderList.memberId }</a></td>
+										<td>${ orderList.orderDate }</td>
+										<td>${ orderList.rentDate }</td>
+										<td>${ orderList.returnDate }</td>
+										<c:choose>
+										<c:when test="${orderList.pay=='cash'}">
+										<td>현금</td>
+										</c:when>
+										<c:when test="${orderList.pay=='credit'}">
+										<td>신용카드</td>
+										</c:when>
+										<c:when test="${orderList.pay=='account'}">
+										<td>계좌이체</td>
+										</c:when>
+										<c:when test="${orderList.pay=='kakaoPay'}">
+										<td>카카오페이</td>
+										</c:when>
+										<c:otherwise>
+										<td>네이버페이</td>
+										</c:otherwise>
+										</c:choose>
 									</tr>
-									
 								</tbody>
 								</c:forEach>
+								</c:otherwise>
+								</c:choose>
+								
 								
 							</table>
-							</form>		
+							
+							
+							
+						<!-- 옵션 모달 시작-->	
+							<div class="col-md-4 col-sm-12 mb-30">
+						<div  >
+							
+							<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myLargeModalLabel">주문 상세 보기</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										</div>
+										<div class="modal-body">
+										<p>ㅇㅅㅇ</p>
+										
+										<!-- 상품 상세 정보 불러오기 -->
+										
+										
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">창 닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+							
+							<!-- 옵션 모달 끝-->	
+							
+							
+							
 
 						</div>
 					</div>
@@ -180,8 +220,8 @@
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 		<!-- end of js -->
 
-		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-		<!-- <script src="vendors/scripts/core.js"></script> -->
+		<!-- <script src="http://code.jquery.com/jquery-3.6.1.min.js"></script> -->
+		<script src="vendors/scripts/core.js"></script>
 
 		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
 		<script src="/campus/resources/vendors/scripts/process.js"></script>
@@ -190,35 +230,32 @@
 
 		$(function(){
 			
-			let rowNo = null;               // rowNo 는 null
-			let rowNoBefore = null;         // rowNoBefore 는 null
 			
-				for(var n=2; n<=${i}; n++){
-					
-					if($('#findRowNo'+n).val()!=$( '#findRowNo'+(n-1)).val()){
-						rowNo = $('#findRowNo'+n).val();
-						rowNoBefore  =$('#findRowNo'+(n-1)).val();
-						
-						if( $('.goodsCode-'+rowNoBefore).css("background-color")=='rgb(255, 255, 255)' ){
-							$('.goodsCode-'+rowNo).css("background-color","lightgray");
-						}else if($('.goodsCode-'+rowNoBefore).css("background-color")!='rgb(255, 255, 255)'){
-							$('.goodsCode-'+rowNo).css("background-color","rgb(255,255,255)");
-						}
-						}
-					}
-		    
-			let goodsCode = null;
-								
-			$('[class*=delete-goods]').on('click', function(event) {
+			
+			$(".btn-block").on('click',function(event){
+				 const orderNo = $(this).data('orderno');
+				$('.modal-body').load("find-order-detail.action?orderNo="+orderNo);
+			 	$.ajax({
+							"url" : "find-order-detail.action",
+							"method" : "get",
+							"data" : { "orderNo":orderNo },
+							dataType:'JSON',
+							cache: false,
+							async:false,
+							"success" : function(data) {
+								for(var i =0; i<data.length;i++){
+									$('.modal-body').html("<div><p>상품 가격 : "+data[i].price+"</p><br></div>");
+									$('.modal-body').append("<p>주문 수량 : "+data[i].amount+"</p><br><br>");
+								}
 
-				const ok = confirm("등록된 상품을 삭제할까요?");
-				if (!ok)
-					return;
-				
-				goodsCode = $(this).data('goodscode');
-				location.href = 'admin-goods-delete.action?goodsCode='+goodsCode;
-				
+								
+								},
+							"error" : function() {
+								alert("???");
+							}
+						}); 
 			});
+		    
 
 		});
 

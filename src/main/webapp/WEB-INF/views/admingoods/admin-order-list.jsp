@@ -103,9 +103,9 @@
 					<div class="row">
 					
 							<div class="dataTables_filter">
-								<form action="admin-goods-list-search.action" method="post">
+								<form action="admin-order-list-search.action" method="post">
 									<label>검색하기: <input type="search" name="search"
-										class="form-control form-control-sm" placeholder=" "
+										class="form-control form-control-sm" placeholder="회원아이디를 입력하세요"
 										aria-controls="DataTables_Table_3" >
 									</label>
 									<button type="submit" style="display:none;">
@@ -134,9 +134,12 @@
 								<c:forEach  var="orderList" items='${orderList}' >
 								<tbody>
 								
-									<tr role="row" class="orderNo-${ orderList.orderNo }" data-orderNo="${ orderList.orderNo }" >
+									<tr role="row" class="orderNo-${ orderList.orderNo }" >
 										
-										<td>${ orderList.memberId }</td>
+										
+										<td>
+										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
+										${ orderList.memberId }</a></td>
 										<td>${ orderList.orderDate }</td>
 										<td>${ orderList.rentDate }</td>
 										<td>${ orderList.returnDate }</td>
@@ -167,6 +170,40 @@
 								</c:forEach>
 								
 							</table>
+							
+							
+							
+						<!-- 옵션 모달 시작-->	
+							<div class="col-md-4 col-sm-12 mb-30">
+						<div  >
+							
+							<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myLargeModalLabel">주문 상세 보기</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										</div>
+										<div class="modal-body">
+										
+										<!-- 상품 상세 정보 불러오기 -->
+										
+										
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">창 닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+							
+							<!-- 옵션 모달 끝-->	
+							
+							
+							
 
 						</div>
 					</div>
@@ -183,8 +220,8 @@
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 		<!-- end of js -->
 
-		<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-		<!-- <script src="vendors/scripts/core.js"></script> -->
+		<!-- <script src="http://code.jquery.com/jquery-3.6.1.min.js"></script> -->
+		<script src="vendors/scripts/core.js"></script>
 
 		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
 		<script src="/campus/resources/vendors/scripts/process.js"></script>
@@ -193,6 +230,31 @@
 
 		$(function(){
 			
+			
+			
+			$(".btn-block").on('click',function(event){
+				 const orderNo = $(this).data('orderno');
+			 	$.ajax({
+							"url" : "find-order-detail.action",
+							"method" : "get",
+							"data" : { "orderNo":orderNo },
+							dataType:'JSON',
+							cache: false,
+							async:false,
+							"success" : function(data) {
+								for(var i =0; i<data.length;i++){
+									$('.modal-body').append("<p>주문 번호 : "+data[i].orderNo+"</p>");
+									$('.modal-body').append("<p>상품 코드 : "+data[i].goodsCode+"</p>");
+									$('.modal-body').append("<p>상품 가격 : "+data[i].price+"</p>");
+									$('.modal-body').append("<p>주문 수량 : "+data[i].amount+"</p><br><br>");
+								}
+								
+								},
+							"error" : function() {
+								alert("???");
+							}
+						}); 
+			});
 		    
 
 		});
