@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <!-- <div class="right-sidebar"> -->
 
 	<div class="right-sidebar">
 
@@ -102,7 +100,6 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="admin-member-info.action">회원 정보</a></li>
-							<li><a href="admin-member-detail-info.action">회원 상세 정보</a></li>
 							<li><a href="admin-right.action">관리자 권한</a></li>
 						</ul>
 					</li>
@@ -116,7 +113,6 @@
 							<li><a href="admin-goods-register-in.action">입고 등록</a></li>
 							<li><a href="admin-goods-register-in-list.action">입고 목록</a></li>
 							<li><a href="admin-order.action">주문 목록</a></li>
-							<li><a href="admin-order-detail.action">주문 상세</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -146,5 +142,3 @@
 			</div>
 		</div>
 	</div>
-	
-	

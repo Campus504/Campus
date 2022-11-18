@@ -373,7 +373,19 @@ font-size: 30px;
 									</label>
 					                
 					                
-					              </div><!-- End sidebar tags-->
+					              </div><!-- End sidebar pay-->
+					              
+					              
+					              
+					              
+					               <div class="sidebar-item tags">
+					                <ul>
+					                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
+					                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
+               						</ul>
+					                
+					                
+					              </div><!-- End sidebar date-->
 								
 								
 							</div>
