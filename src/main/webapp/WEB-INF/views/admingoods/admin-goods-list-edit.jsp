@@ -104,7 +104,7 @@
 		<div class="row">
 			<div class="col-sm-12">		
 
-				<form action="admin-goods-list-edit.action" method="post">	
+				<form action="admin-goods-list-edit.action" method="post" autocomplete="off">	
 				<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline overflow-auto" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 					
 					<thead>
@@ -148,15 +148,15 @@
 					</tbody>
 					</c:forEach>						
 							
-					</table>
-					</form>	
+					</table>	
 				
 				<!-- 상품등록, 취소 버튼 -->	
 					<div class="btn-list">
-						<button type="submit" class="btn btn-primary btn-sm" value="수정" >수정</button>
+						<button type="submit" id="goodsEditConfirm" name="goodsEditConfirm" class="btn btn-primary btn-sm" value="수정" >수정</button>
 						<button type="button" class="btn btn-secondary btn-sm" value="취소" >취소</button>
 					</div>		
 				
+					</form>
 				<!-- 상품등록, 취소 버튼 종료 -->
 				
 				</div>			
@@ -175,8 +175,36 @@
 		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
 		<script src="/campus/resources/vendors/scripts/process.js"></script>
 		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
+		
 		<script type="text/javascript">
+			
+			/* var formObj = $("form[role='form']");
+			  
+			  $("#goodsEditConfirm").click(function(){
+			   formObj.attr("action", "/admin-goods-list");
+			   formObj.attr("method", "get")
+			   formObj.submit();
+			  });
+			  
+			  alert() */
+			
+/* 			$(function() {
+				$('#goodsEditConfirm').on('click', function(event) {
+					event.preventDefault();
+					
+					
+					$('#goods-register-list-table tbody tr').each(idx, tr) {
+					
+						
+					}
+					
+				});
 
+				$('#admin-goods-register-form')[0].submit();   // admin-goods-register-form 데이터를 서버로 전송
+
+			}); */
+		
+		
 		</script>
 		
 </body>

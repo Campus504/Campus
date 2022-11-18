@@ -47,11 +47,17 @@ public interface AdminGoodsRegisterMapper {
 	@Select("SELECT * from goods a left join goodsOption b on a.goodsCode = b.goodsCode HAVING a.goodsCode = ${goodsCode} ")
 	List<GoodsOptionJoinDto> selectAdminGoodsByGoodsCode(int goodsCode);
 	
-	// 상품 정보 수정
-	@Update("UPDATE goods SET category = #{category}, brand = #{brand}, goodsName = #{goodsName} WHERE category = #{category}, brand = #{brand}, goodsName = #{goodsName}"
-		  + "UPDATE goodsOption SET optionName = #{optionName}, optionDesc = #{optionDesc} WHERE optionName = #{optionName}, optionDesc = #{optionDesc}")
-	List<GoodsOptionJoinDto> updategoodslist();
 	
+	
+	// 상품 정보 수정
+	@Update("UPDATE goods SET category = #{category}, brand = #{brand}, goodsName = #{goodsName}' WHERE goodsCode = #{goodsCode}")
+	void updategoodslist(GoodsDto goods);	
+	
+	@Update("UPDATE goodsOption SET optionName = #{optionName}, optionDesc = #{optionDesc} WHERE optionNo = #{optionNo}")
+	void updategoodsoptionlist(GoodsOptionDto goodsoptions);
+	
+	
+		
 	
 	// 입고 기본 정보 입력 - goodsregister Table
 	@Insert("INSERT INTO goodsRegister (inCode, detail, rentPrice, goodsIn, goodsInDate, goodsCode) " +
@@ -69,6 +75,10 @@ public interface AdminGoodsRegisterMapper {
 
 	@Select("SELECT * FROM goodsRegister")
 	List<GoodsRegisterDto> adminGoodsRegisterInList();
+
+	
+
+
 	
 	
 

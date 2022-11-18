@@ -115,7 +115,7 @@
 										
 											<div class="form-group">
 												<label>3. 대여가격 :</label>
-												<input type="text" class="form-control" id="rentPrice" name="rentPrice" placeholder="대여가격">
+												<input type="text" class="form-control" id="rentPrice" name="rentPrice" placeholder="숫자만 입력하세요">
 											</div>
 										
 											<div class="form-group">

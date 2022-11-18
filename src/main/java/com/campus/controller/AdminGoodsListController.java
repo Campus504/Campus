@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.campus.dto.BoardDto;
+import com.campus.dto.CommunityDto;
 import com.campus.dto.GoodsOptionJoinDto;
 import com.campus.service.AdminGoodsRegisterListService;
 
@@ -37,11 +39,16 @@ public class AdminGoodsListController {
 	// 리스트에서 상품 삭제
 	@GetMapping(path= {"admin-goods-delete.action"})
 	public String adminGoodsDelete(@RequestParam(defaultValue = "0") int goodsCode) {
+		
+		System.out.println("상품 삭제 시작!");
+		
 		if(goodsCode == 0) {
 			return "redirect:admin-goods-list.action";
 		}
 		
 		adminGoodsRegisterListService.deleteGoods(goodsCode);
+		
+		System.out.println("상품 삭제 종료!");
 		
 		return "redirect:admin-goods-list.action";
 	}
@@ -60,7 +67,7 @@ public class AdminGoodsListController {
 		return "admingoods/admin-goods-list-search";
 	}
 	
-	
+	// 상품 정보 수정 페이지로 이동
 	@GetMapping(path= {"admin-goods-edit.action"})
 	public String adminGoodsEdit(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
 
@@ -74,6 +81,17 @@ public class AdminGoodsListController {
 		return "admingoods/admin-goods-list-edit";
 	}
 	
+	// 상품 정보 수정 기능
+	@PostMapping(path = { "admin-goods-edit.action" })
+	public String goodsEdit(GoodsOptionJoinDto goods, @RequestParam(defaultValue = "1") int goodsCode, Model model) {
+		
+		adminGoodsRegisterListService.updategoodslist(goods);
+		
+		model.addAttribute("goods", goods);
+		
+		return "redirect:admingoods/admin-goods-list";
+		
+	}
 	
 	
 }

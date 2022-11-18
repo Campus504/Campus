@@ -45,7 +45,8 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 
 	@Override			// 상품 정보 수정
 	public void updategoodslist(GoodsOptionJoinDto goodsoptionjoins) {
-		adminGoodsRegisterMapper.updategoodslist();
+		// adminGoodsRegisterMapper.updategoodslist(goodsoptionjoins);
+	
 	}
 
 	

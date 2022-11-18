@@ -62,30 +62,39 @@
 	<div class="main-container">
 
 		<div class="pd-ltr-20 xs-pd-20-10">
-			
 			<div class="min-height-200px">
 
-		<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+				<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4> 상품목록</h4>
+								<h4>상품목록</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">상품목록</li>
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">상품등록</li>
 								</ol>
 							</nav>
 						</div>
-				
+						
+						<div class="col-md-6 col-sm-12 text-right">
+							<div class="dropdown">
+								<a class="btn btn-primary dropdown-toggle" href="#"
+									role="button" data-toggle="dropdown"> Oct 2022 </a>
+								
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="#">기능1</a> 
+									<a class="dropdown-item" href="#">기능2</a> 
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
-	
-	<!-- 상품 리스트 시작! -->
-	
+				
+					
+			<!-- 상품 리스트 시작! -->
 				<!-- table -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
@@ -96,21 +105,17 @@
 						<table class="table hover multiple-select-row data-table-export nowrap" id="goods-register-list-table">
 							<thead>
 								<tr>
-									<th>상품명</th>
+									
+									<th>상품이름</th>
 									<th>브랜드</th>
 									<th>상품분류</th>
 									
-									<th>속성이름</th>
-									<th>속성설명</th>
-									<th>속성값(단일값)</th> <!-- 단일값/목록값 -->
-									
-									<th>옵션 값</th>
-									
-									<th>입고 등록</th>
-									<th>상품 정보 수정</th>
+									<th>옵션보기</th> <!-- Modal Popup 상품 정보 수정 -->
 									<th>상품 삭제</th>
+									
 								</tr>
 							</thead>
+							
 							<c:forEach  var="goods" items='${goods}' >
 							<c:set var="i" value="${ i+1 }" />
 							<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
@@ -122,17 +127,12 @@
 									<td>${ goods.brand }</td>
 									<td>${ goods.category }</td>
 									
+									<td>
 									
-									<td>${ goods.optionName }</td>
-									<td>${ goods.optionDesc }</td>
-									<td>${ goods.optionDataType }</td>
+									<button type="button" class="btn btn-success btn-lg btn-block" id="add-goods-property">삼품 옵션 보기</button></td>
 									
-									<td>${ goods.optionValue }</td>
+									<td><button type="button" data-goodscode="${ goods.goodsCode }" class="btn btn-secondary btn-lg delete-goods" >취소</button></td>
 									
-									<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i></a></td>
-									<td><a href="admin-goods-edit.action?goodsCode=${goods.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
-									<td><a class="delete-goods" data-goodscode="${ goods.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
-								
 								</tr>
 							</c:forEach>
 							</tbody>
@@ -144,6 +144,69 @@
 			</div>
 		</div>
 	</div>			
+						<!-- 상품 속성 등록 팝업 / goods option registration modal -->	
+						<div class="modal fade" id="add-goods-property-modal" tabindex="-1" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h3 class="modal-title fs-5">상품 속성 입력</h3>
+						      </div>
+						      <div class="modal-body">
+						      
+						      <form>
+						      
+						      <div class="form-group">
+								<label>4. 속성이름 :</label>
+								<input type="text" class="form-control" name="option_name" placeholder="속성 이름을 입력하세요">
+							</div>
+							
+								
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">		
+							<div class="form-group">
+								<label>5. 속성자료형 (두가지선택) :</label>
+								
+								<label class="btn btn-outline-secondary active">
+									<input type="radio" name="option_value_type" autocomplete="off" value="single" checked> 단일 값 
+								</label>
+								
+								<!-- <label class="btn btn-outline-secondary">
+									<input type="radio" name="option-value-type" autocomplete="off" value="selection"> 선택 값
+								</label> -->
+							
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label>6. 속성값 :</label>
+								<input type="text" class="form-control" name="option_single_value" name="category" placeholder="옵션 값을 입력하세요">
+							</div>
+							
+						<div class="form-group">
+							<label>7. 옵션값(속성값에 따른 옵션값 추가예정) :</label>
+							<!-- <input type="text" class="form-control" id="category" name="category" placeholder="상품분류"> -->
+								<select name=category class="custom-select form-control">
+									<option value="">--옵션을선택하세요--</option>
+									<option value="optionSeletionValue">Test</option>
+								</select>	
+							</div>
+						
+						<div class="form-group">
+							 <label>8. 속성설명(상품상세정보, 이미지 or 텍스트 추가):</label>
+							 <input type="text" class="form-control" name="option_description" placeholder="속성 설명을 입력하세요">
+
+								</div>
+					      </form>
+				  	</div>
+						      
+					      <div class="modal-footer">
+					        <!-- <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button> -->
+					        <button type="button" id="add-goods-property-modal-confirm" class="btn btn-primary">속성저장</button>
+					        <button type="button" id="add-goods-property-modal-cancel" class="btn btn-secondary">취소</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<!--  상품 속성 등록 팝업 / end of goods option registration modal -->
 		
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
