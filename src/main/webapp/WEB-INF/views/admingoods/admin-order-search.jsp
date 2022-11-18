@@ -88,7 +88,7 @@
 	<div class="pd-20 card-box mb-30">
 
 		<div class="clearfix">
-			<h4 class="text-blue h4">회원들의 전체 주문 목록을 확인 할 수 있는 페이지 입니다.</h4>
+			<h4 class="text-blue h4">회원들의 주문 목록을 확인 할 수 있는 페이지 입니다.</h4>
 			<p class="mb-30">클릭하여 상세 주문 정보를 확인 할 수 있습니다.</p>
 		</div>
 
@@ -130,20 +130,20 @@
 										
 									</tr>
 								</thead>
-								
+								<c:choose>
+								<c:when test="${orderList.size()==0}">
+								<tr></tr>
+								</c:when>
+								<c:otherwise>
 								<c:forEach  var="orderList" items='${orderList}' >
 								<tbody>
-								
 									<tr role="row" class="orderNo-${ orderList.orderNo }" >
-										
-										
 										<td>
 										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
 										${ orderList.memberId }</a></td>
 										<td>${ orderList.orderDate }</td>
 										<td>${ orderList.rentDate }</td>
 										<td>${ orderList.returnDate }</td>
-										
 										<c:choose>
 										<c:when test="${orderList.pay=='cash'}">
 										<td>현금</td>
@@ -161,13 +161,12 @@
 										<td>네이버페이</td>
 										</c:otherwise>
 										</c:choose>
-										
-										
-										
 									</tr>
-								
 								</tbody>
 								</c:forEach>
+								</c:otherwise>
+								</c:choose>
+								
 								
 							</table>
 							

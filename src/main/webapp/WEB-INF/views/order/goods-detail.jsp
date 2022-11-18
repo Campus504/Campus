@@ -179,8 +179,6 @@
                 </c:otherwise>
                 </c:choose>
                 
-                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
-                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
                
                 <li>
                 
@@ -284,12 +282,6 @@ $(function(){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
 			return false;
-		}else if($('#rentDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
-		}else if($('#returnDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
 		}
 		return true;
 	});
@@ -297,12 +289,6 @@ $(function(){
 $('#addToCart').on('click',function(event){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
-			return false;
-		}else if($('#rentDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
-			return false;
-		}else if($('#returnDate').val()==''){
-			alert('이용 날짜를 선택해주세요');
 			return false;
 		}
 		return true;
