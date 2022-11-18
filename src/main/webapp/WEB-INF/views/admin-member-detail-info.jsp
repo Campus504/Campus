@@ -138,7 +138,7 @@
 													&nbsp;<p class="text-800">이메일 : ${member.email}</p>
 													&nbsp;<p class="text-800">전화번호 : ${member.phone}</p>
 													&nbsp;<p class="text-800">가입 일자 : ${member.joinDate}</p>
-													&nbsp;<p class="text-800">권한 : ${member.phone}</p>
+													&nbsp;<p class="text-800">권한 : ${member.admin}</p>
 													
 													<div>
 														<a class="me-2" href="#!"><span
