@@ -36,13 +36,21 @@ public class CartServiceImpl implements CartService {
 	
 	// 장바구니 삭제
 	@Override
-	public void deleteCart(String memberId) {
-		cartMapper.deleteCart(memberId);
+	public void deleteCart(CartDto cart) {
+		cartMapper.deleteCart(cart);
+		
+	}
+	//장바구니 전체삭제
+	@Override
+	public void deleteAllCart(String memberId) {
+		cartMapper.deleteAllCart(memberId);
 	}
 
 	@Override
 	public int sumMoney(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int a = cartMapper.sumMoney(memberId); 
+		return a;
 	}
+
+	
 }

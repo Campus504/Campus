@@ -118,14 +118,7 @@
 	<h2>${ loginuser.memberId }님 장바구니</h2>
 </div>
 </c:if>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <c:if test="${ empty loginuser }">
 	<h1>장바구니가 비어있습니다.</h1>
 	<a href="goods-list.action">쇼핑하러가기</a>
@@ -138,29 +131,22 @@
 				<th>상품명</th>
 				<th>가격</th>
 				<th>구매수량</th>
-				<th>대여날짜</th>
-				<th>반납날짜</th>
 				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
-			<%-- <c:forEach var="cart" items="${ map.list }"> --%>
+			<c:forEach var="cart" items="${ list }">
 				<tr>
-					<form method="post" action="cart-list.action">
-						<td>${goods.goodsName}</td>
-						<td>${cart.price}</td>
-						<td><input type="number" name="amount" value="${cart.amount}" class="form-control"></td>
-						<td>${cart.rentDate}</td>
-						<td>${cart.returnDate}</td>
-						<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
-					</form>
-
+					<td>${cart.goods.goodsName}</td>
+					<td>${cart.price}</td>
+					<td><input type="number" name="amount" value="${cart.amount}" class="form-control"></td>
+					<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
 					<td><a class="btn btn-danger" href="deleteCart.action?memberId=${ cart.memberId }">상품삭제</a></td>
 				</tr>
 
-				<c:set var="total" value="${total + cart.price}" />
+				<%-- <c:set var="total" value="${total + cart.price}" /> --%>
 
-			<%-- </c:forEach> --%>
+			</c:forEach>
 
 		</tbody>
 
@@ -170,7 +156,7 @@
 
 <p class="container ">
 	총 합계금액:
-	<c:out value="${total}" />
+	<c:out value="${sumMoney}" />
 	원
 </p>
 
@@ -178,7 +164,7 @@
 <div class="container">
 	<a class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" href="#">주문하기</a> 
 		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
-		<a class="btn btn-danger my-2 my-sm-0 ml-2"	href="#">장바구니 전체 삭제</a>
+		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
 
 </c:if>

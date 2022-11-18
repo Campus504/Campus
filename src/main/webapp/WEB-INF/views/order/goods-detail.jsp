@@ -149,7 +149,8 @@
           </div>
 		
 		<div class="col-lg-4">
-		<form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;">
+		<form name="addForm" action="addByCart.action" method="post"  style="text-align:center;">
+		<!-- <form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;"> -->
 		<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
 		<input type="hidden" name="memberId" value="${loginuser.memberId}">
 		<input type="hidden" name="price" value="${goodsIn.rentPrice}">
@@ -181,7 +182,17 @@
                 
                
                 <li>
-         
+           <c:if test="${goodsIn.goodsIn!=null}">
+                <button type="submit" id="order-btn" class="btn btn-info">상품주문</button>
+                </c:if>
+                <span>
+                <!-- <form method="post" action="addByCart.action"> -->
+            	<button type="submit" id="addToCart" onclick="addToCart" class="btn btn-warning"><!-- <a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart"> -->장바구니<!-- </a> --></button>
+            	<!-- </form> -->
+                
+                </span>
+                
+            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
                 </li>
                 
               </ul>
@@ -189,17 +200,7 @@
             </form>
           </div>
 		
-           <c:if test="${goodsIn.goodsIn!=null}">
-                <button type="button" id="order-btn" class="btn btn-info">상품주문</button>
-                </c:if>
-                <span>
-                <form method="post" action="addByCart.action">
-            	<button type="submit" id="addToCart" onclick="addToCart"><!-- <a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart"> -->장바구니<!-- </a> --></button>
-            	</form>
-                
-                </span>
-                
-            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
+         
 
         </div>
 

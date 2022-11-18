@@ -2,6 +2,8 @@ package com.campus.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+
 import com.campus.dto.CartDto;
 
 public interface CartService {
@@ -12,8 +14,10 @@ public interface CartService {
 
 	void updateCart(CartDto cart);
 
-	void deleteCart(String memberId);
+	void deleteCart(CartDto cart);
 
 	int sumMoney(String memberId);
 
+	void deleteAllCart(String memberId);
+	
 }
