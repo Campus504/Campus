@@ -17,7 +17,7 @@ public interface AdminOrderMapper {
 	@Select("SELECT * FROM orderDetail WHERE orderNo = #{orderNo} ")
 	List<OrderDetailDto> selectOrderDetailsByOrderNo(int orderNo);
 
-	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId LIKE '%${search}%' Order By orderDate DESC ")
+	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId like '%${search}%' Order By orderDate DESC ")
 	List<OrderListDto> selectOrderByMemberId(String search);
 
 }

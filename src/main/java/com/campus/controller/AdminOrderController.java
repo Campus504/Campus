@@ -50,8 +50,8 @@ public class AdminOrderController {
 		if(search.length()==0) {
 			return "redirect:admin-order.action";
 		}
-		List<OrderListDto> orderlist = adminOrderService.findOrderByMemberId(search);
-		model.addAttribute("orderlist", orderlist);
+		List<OrderListDto> orderList = adminOrderService.findOrderByMemberId(search);
+		model.addAttribute("orderList", orderList);
 		
 		return "/admingoods/admin-order-search";
 	}
