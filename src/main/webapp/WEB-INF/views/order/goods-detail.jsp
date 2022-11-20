@@ -113,7 +113,7 @@
           <h2>상품 상세</h2>
           <ol>
             <li><a href="main">Home</a></li>
-            <li><a href="goods-list.action?category=${goods.category}">상품 목록</a></li>
+            <li>상품 목록</li>
             <li>상품 상세</li>
           </ol>
         </div>

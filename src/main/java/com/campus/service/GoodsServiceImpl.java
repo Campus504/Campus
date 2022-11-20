@@ -17,8 +17,33 @@ public class GoodsServiceImpl implements GoodsService {
 	private GoodsMapper goodsMapper;
 
 	@Override
-	public List<GoodsDto> findGoodsByCategory(String category) {
-		List<GoodsDto> goods = goodsMapper.selectGoodsByCategory(category);
+	public List<GoodsDto> findGoodsByCategoryTent() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryTent();
+		return goods;
+	}
+	@Override
+	public List<GoodsDto> findGoodsByCategoryTable() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryTable();
+		return goods;
+	}
+	@Override
+	public List<GoodsDto> findGoodsByCategoryMat() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryMat();
+		return goods;
+	}
+	@Override
+	public List<GoodsDto> findGoodsByCategoryDish() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryDish();
+		return goods;
+	}
+	@Override
+	public List<GoodsDto> findGoodsByCategoryStove() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryStove();
+		return goods;
+	}
+	@Override
+	public List<GoodsDto> findGoodsByCategoryEtc() {
+		List<GoodsDto> goods = goodsMapper.selectGoodsByCategoryEtc();
 		return goods;
 	}
 
@@ -46,6 +71,11 @@ public class GoodsServiceImpl implements GoodsService {
 		orderDetail.setOrderNo(orderList.getOrderNo());
 		goodsMapper.insertOrderDetail(orderDetail);
 		
+	}
+	@Override
+	public List<GoodsDto> findBestGoods() {
+		List<GoodsDto> goods = goodsMapper.selectBestGoods();
+		return goods;
 	}
 	
 }

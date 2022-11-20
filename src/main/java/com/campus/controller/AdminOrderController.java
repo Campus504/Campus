@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campus.dto.GoodsDto;
 import com.campus.dto.OrderDetailDto;
 import com.campus.dto.OrderListDto;
 import com.campus.service.AdminOrderService;
@@ -56,6 +57,21 @@ public class AdminOrderController {
 		return "/admingoods/admin-order-search";
 	}
 	
+	@GetMapping(path= {"load-sales-dataset"}) @ResponseBody
+	public List<OrderListDto> findSalesData(){
+		
+		List<OrderListDto> order = adminOrderService.findSalesData();
+		
+		return order;
+	}
+	
+	@GetMapping(path= {"load-category-dataset"}) @ResponseBody
+	public List<GoodsDto> findCategoryData(){
+		
+		List<GoodsDto> goods = adminOrderService.findCategoryData();
+		
+		return goods;
+	}
 	
 	
 	

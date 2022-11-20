@@ -243,6 +243,12 @@ public class CommunityServiceImpl implements CommunityService {
 		communityMapper.insertReComment(comment);
 	}
 
+	@Override
+	public List<BoardDto> findBestBoard() {
+		List<BoardDto> board = communityMapper.selectBestBoard();
+		return board;
+	}
+
 
 	
 	

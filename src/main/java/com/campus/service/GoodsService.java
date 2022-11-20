@@ -10,7 +10,12 @@ import com.campus.dto.OrderListDto;
 
 public interface GoodsService {
 
-	List<GoodsDto> findGoodsByCategory(String category);
+	List<GoodsDto> findGoodsByCategoryTent();
+	List<GoodsDto> findGoodsByCategoryTable();
+	List<GoodsDto> findGoodsByCategoryMat();
+	List<GoodsDto> findGoodsByCategoryDish();
+	List<GoodsDto> findGoodsByCategoryStove();
+	List<GoodsDto> findGoodsByCategoryEtc();
 
 	GoodsDto findGoodsByGoodsCode(int goodsCode);
 
@@ -19,5 +24,7 @@ public interface GoodsService {
 	MemberDto findMemberByMemberId(String memberId);
 
 	void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail);
+	
+	List<GoodsDto> findBestGoods();
 
 }

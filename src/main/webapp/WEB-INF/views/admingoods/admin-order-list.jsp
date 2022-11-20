@@ -242,6 +242,7 @@
 							cache: false,
 							async:false,
 							"success" : function(data) {
+								$('.modal-body').html("<p></p>");
 								for(var i =0; i<data.length;i++){
 									$('.modal-body').append("<p>주문 번호 : "+data[i].orderNo+"</p>");
 									$('.modal-body').append("<p>상품 코드 : "+data[i].goodsCode+"</p>");

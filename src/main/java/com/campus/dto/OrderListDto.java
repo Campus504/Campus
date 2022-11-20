@@ -15,5 +15,6 @@ public class OrderListDto {
 	private String memberId;
 	
 	List<OrderDetailDto> orderDetails;
+	OrderDetailDto orderDetail;
 
 }

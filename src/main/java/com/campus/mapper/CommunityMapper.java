@@ -115,5 +115,8 @@ public interface CommunityMapper {
 	@Insert("INSERT INTO community (boardNo, tag) VALUES (#{boardNo}, #{tag})")
 	void insertBoardTag(CommunityDto tag);
 
+	@Select("select * from board WHERE boardNo in (select boardNo from board WHERE category = 'freeboard'  ) order By readCount desc limit 6 ")
+	List<BoardDto> selectBestBoard();
+
 
 }

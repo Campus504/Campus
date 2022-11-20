@@ -134,11 +134,27 @@
           <h3 class="section-title">${category}</h3>
         </header>
 
+	  <div class="row" data-aos="fade-up" data-aos-delay="100">
+	      <div class=" col-lg-12">
+	          <ul id="portfolio-flters">
+	          <c:if test="${goods.size()>0}">
+	           <li data-filter="*" class="filter-All">전체</li>
+	           <c:forEach var="goods" items="${goods}">
+	           <c:set var="i" value="${ i+1 }" />
+				<li data-filter=".filter-${goods.category}" class="filter-${i}" value='${goods.category}' >${goods.category}</li>	           
+	           </c:forEach>
+	         
+	           </c:if>
+	          </ul>
+	        </div>
+	      </div>
+
+
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
        <c:if test="${goods.size()>0}">
         <c:forEach var="goods" items="${goods}">
-       <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+       <div class="col-lg-4 col-md-6 portfolio-item filter-${goods.category}">
           <div class="portfolio-wrap">
             <figure>
               <img src="/campus/resources/assets/img/portfolio/card1.jpg" class="img-fluid" alt="">
@@ -212,5 +228,22 @@
   <!-- /.sidebar -->
 
 </body>
+<script type="text/javascript">
+$(function(){
+	for(var j = 2; j<=${i};j++){
+		for(var k=1; k<j; k++){
+			if(
+					$('.filter-'+j).data('filter')==$('.filter-'+k).data('filter')
+			){
+				$('.filter-'+j).css("display","none");
+			}
+		}
+}
+	
+	
+	
+});
+
+</script>
 
 </html>

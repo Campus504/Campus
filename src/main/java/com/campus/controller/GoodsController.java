@@ -29,12 +29,34 @@ public class GoodsController {
 	
 	@GetMapping(path= {"goods-list.action"})
 	public String goodsList(@RequestParam(defaultValue = "0") String category, Model model) {
-		
+		List<GoodsDto> goods = null;
 		if(category=="0") {
 			return "redirect:main";
+		}else if(category.equals("텐트/타프")) {
+			
+			goods = goodsService.findGoodsByCategoryTent();
+			
+		}else if(category.equals("테이블/체어")) {
+			
+			goods = goodsService.findGoodsByCategoryTable();
+			
+		}else if(category.equals("침낭/매트")) {
+			
+			goods = goodsService.findGoodsByCategoryMat();
+			
+		}else if(category.equals("식기")) {
+			
+			goods = goodsService.findGoodsByCategoryDish();
+			
+		}else if(category.equals("화로/버너")) {
+			
+			goods = goodsService.findGoodsByCategoryStove();
+			
+		}else{//캠핑소품리스트 출력
+			
+			goods = goodsService.findGoodsByCategoryEtc();
+			
 		}
-		
-		List<GoodsDto> goods = goodsService.findGoodsByCategory(category);
 		model.addAttribute("category", category);
 		model.addAttribute("goods", goods);
 		return "order/goods-list";

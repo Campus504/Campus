@@ -58,5 +58,7 @@ public interface CommunityService {
 
 	void writeReComment(BoardCommentDto comment);
 
+	List<BoardDto> findBestBoard();
+
 
 }

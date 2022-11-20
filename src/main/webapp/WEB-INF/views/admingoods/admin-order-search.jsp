@@ -184,7 +184,7 @@
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 										</div>
 										<div class="modal-body">
-										<p>ㅇㅅㅇ</p>
+										
 										
 										<!-- 상품 상세 정보 불러오기 -->
 										
@@ -234,7 +234,6 @@
 			
 			$(".btn-block").on('click',function(event){
 				 const orderNo = $(this).data('orderno');
-				$('.modal-body').load("find-order-detail.action?orderNo="+orderNo);
 			 	$.ajax({
 							"url" : "find-order-detail.action",
 							"method" : "get",
@@ -243,11 +242,13 @@
 							cache: false,
 							async:false,
 							"success" : function(data) {
+								$('.modal-body').html("<p></p>");
 								for(var i =0; i<data.length;i++){
-									$('.modal-body').html("<div><p>상품 가격 : "+data[i].price+"</p><br></div>");
+									$('.modal-body').append("<p>주문 번호 : "+data[i].orderNo+"</p>");
+									$('.modal-body').append("<p>상품 코드 : "+data[i].goodsCode+"</p>");
+									$('.modal-body').append("<p>상품 가격 : "+data[i].price+"</p>");
 									$('.modal-body').append("<p>주문 수량 : "+data[i].amount+"</p><br><br>");
 								}
-
 								
 								},
 							"error" : function() {

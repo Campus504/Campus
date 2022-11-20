@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -202,50 +204,34 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>나중에 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h3>고객후기</h3>
         </header>
 
         <div class="row about-cols">
-
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+		
+		<c:forEach var="board" items="${boards}">
+		<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="about-col">
               <div class="img">
-                <img src="/campus/resources/assets/img/about-mission.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="bi bi-bar-chart"></i></div>
+                <div class="icon"></div>
               </div>
-              <h2 class="title"><a href="#">Our Mission</a></h2>
+              <h2 class="title"><a href="freeboard-detail.action?boardNo=${board.boardNo}">${board.title}</a></h2>
+              
+                <ul>
+                  <li style="font-color:#18d26e" class="d-flex align-items-center">${board.memberId}</li>
+                  <li class="d-flex align-items-center">${board.writeDate}</li>
+                  <li class="d-flex align-items-center">${board.readCount}</li>
+                </ul>
+              
               <p>
-                Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              ${board.content}
               </p>
             </div>
           </div>
+		</c:forEach>
+          
 
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="about-col">
-              <div class="img">
-                <img src="/campus/resources/assets/img/about-plan.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="bi bi-brightness-high"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Our Plan</a></h2>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
-            </div>
-          </div>
 
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="about-col">
-              <div class="img">
-                <img src="/campus/resources/assets/img/about-vision.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Our Vision</a></h2>
-              <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-              </p>
-            </div>
-          </div>
 
         </div>
 
@@ -253,7 +239,7 @@
     </section><!-- End About Us Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services">
+   <!--  <section id="services">
       <div class="container" data-aos="fade-up">
 
         <header class="section-header wow fadeInUp">
@@ -297,7 +283,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
     <!-- End Services Section -->
     
     <!-- ======= Portfolio Section ======= -->
@@ -308,153 +294,43 @@
           <h3 class="section-title">베스트 상품</h3>
         </header>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class=" col-lg-12">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+	      <div class=" col-lg-12">
+	          <ul id="portfolio-flters">
+	          <c:if test="${goods.size()>0}">
+	           <li data-filter="*" class="filter-All">전체</li>
+	           <c:forEach var="goods" items="${goods}">
+	           <c:set var="i" value="${ i+1 }" />
+				<li data-filter=".filter-${goods.category}" class="filter-${i}" value='${goods.category}' >${goods.category}</li>	           
+	           </c:forEach>
+	         
+	           </c:if>
+	          </ul>
+	        </div>
+	      </div>
 
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/app1.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">App 1</a></h4>
-              <p>App</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/web3.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/web3.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Web 3"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Web 3</a></h4>
-              <p>Web</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/app2.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/app2.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="App 2"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">App 2</a></h4>
-              <p>App</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/card2.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/card2.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Card 2"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Card 2</a></h4>
-              <p>Card</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/web2.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/web2.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Web 2"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Web 2</a></h4>
-              <p>Web</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/app3.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/app3.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="App 3"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">App 3</a></h4>
-              <p>App</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+        <c:if test="${goods.size()>0}">
+        <c:forEach var="goods" items="${goods}">
+       <div class="col-lg-4 col-md-6 portfolio-item filter-${goods.category}">
           <div class="portfolio-wrap">
             <figure>
               <img src="/campus/resources/assets/img/portfolio/card1.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/card1.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Card 1"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
             </figure>
 
             <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Card 1</a></h4>
-              <p>Card</p>
+              <h4><a href="goods-detail.action?goodsCode=${goods.goodsCode}">${goods.goodsName}</a></h4>
+              <p></p>
             </div>
           </div>
         </div>
+       </c:forEach>
+       </c:if>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/card3.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/card3.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Card 3"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
+        
 
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Card 3</a></h4>
-              <p>Card</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <figure>
-              <img src="/campus/resources/assets/img/portfolio/web1.jpg" class="img-fluid" alt="">
-              <a href="/campus/resources/assets/img/portfolio/web1.jpg" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Web 1"><i class="bi bi-plus"></i></a>
-              <a href="/campus/goods-detail.action" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-            </figure>
-
-            <div class="portfolio-info">
-              <h4><a href="/campus/goods-detail.action">Web 1</a></h4>
-              <p>Web</p>
-            </div>
-          </div>
-        </div>
+       
 
       </div>
 
@@ -462,7 +338,7 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Our Clients Section ======= -->
-    <section id="clients">
+   <!--  <section id="clients">
       <div class="container" data-aos="zoom-in">
 
         <header class="section-header">
@@ -484,7 +360,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
     <!-- End Our Clients Section -->
 
     <!-- ======= Contact Section ======= -->
@@ -586,5 +462,22 @@
   <!-- /.sidebar -->
 
 </body>
+<script type="text/javascript">
+$(function(){
+	for(var j = 2; j<=${i};j++){
+				for(var k=1; k<j; k++){
+					if(
+							$('.filter-'+j).data('filter')==$('.filter-'+k).data('filter')
+					){
+						$('.filter-'+j).css("display","none");
+					}
+				}
+		}
+	
+	
+	
+});
+
+</script>
 
 </html>
