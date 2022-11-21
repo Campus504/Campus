@@ -26,5 +26,7 @@ public interface GoodsService {
 	void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail);
 	
 	List<GoodsDto> findBestGoods();
+	
+	List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods);
 
 }

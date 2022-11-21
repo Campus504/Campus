@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 
@@ -53,9 +55,6 @@ public interface InquiryMapper {
 	List<BoardDto> selectInquiryByTag(String tag);
 
 	@Select("select * from board WHERE category = 'inquiry' and title like '%${search}%' OR content like '%${search}%' order By boardNo DESC")
-	List<BoardDto> selectInquiryBySearch(String search);
-
-	
-	
+	List<BoardDto> selectInquiryBySearch(String search);	
 
 }

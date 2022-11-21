@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 

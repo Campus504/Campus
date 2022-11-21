@@ -171,7 +171,7 @@
                 </c:when>
                 
                 <c:otherwise>
-                <li><strong>주문 수량</strong>: <select name="amount">
+                <li><strong>주문 수량</strong>: <select name="amount" id="amount">
                 <c:forEach begin="1" end="${goodsIn.goodsIn}">
                 <c:set var="i" value="${ i+1 }"/>
                 <option>${i}</option>
@@ -183,7 +183,7 @@
                
                 <li>
            <c:if test="${goodsIn.goodsIn!=null}">
-                <a href="showOrderPage.action?goodsCode=${goods.goodsCode}" id="order-btn" class="btn btn-info">상품주문</a>
+                <a  id="order-btn" class="btn btn-info">상품주문</a>
                 </c:if>
                 <span>
                 <!-- <form method="post" action="addByCart.action"> -->
@@ -257,34 +257,14 @@
 <script type="text/javascript">
 $(function(){
 	
-	
-	$("#rentDate").datepicker({
-		 dateFormat: 'yy-mm-dd',
-		 minDate: new Date(),
-		  maxDate: "+3M",
-		  onClose: function( selectedDate ) {    
-              $("#returnDate").datepicker( "option", "minDate", selectedDate );
-          }                
-	});
-	
-	$("#returnDate").datepicker({
-		 dateFormat: 'yy-mm-dd',
-		 minDate: new Date(),
-		  maxDate: "+3M",
-		  onClose: function( selectedDate ) {    
-              $("#rentDate").datepicker( "option", "maxDate", selectedDate );
-          }  
-	});
-	
-
-	
 	$('#order-btn').on('click',function(event){
-		
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
 			return false;
+		}else{
+		var amount=$('#amount').val();
+		location.href="showOrderPage.action?goodsCode="+${goods.goodsCode}+"&amount="+amount+"&price="+${goodsIn.rentPrice}+"&memberId=${loginuser.memberId}";
 		}
-		return true;
 	});
 	
 $('#addToCart').on('click',function(event){
@@ -296,6 +276,7 @@ $('#addToCart').on('click',function(event){
 	});
 	
 
+
 $('#addToCart').click(function(){ 
 	var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
 		if(check){
@@ -306,8 +287,7 @@ $('#addToCart').click(function(){
 			}
 		
 });
-	
-	
+
 });
 </script>
 

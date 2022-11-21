@@ -183,7 +183,8 @@
 
 						<div class="blog-pagination">
 							<ul class="justify-content-center">
-								<c:choose>
+							
+								<%-- <c:choose>
 									<c:when test="${pageNo==1}">
 										<li class="active"><a href="#">${ pageNo }</a></li>
 										<li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
@@ -198,6 +199,61 @@
 										<li><a href="inquiry.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
 										<li class="active"><a href="#">${ pageNo }</a></li>
 										<li><a href="inquiry.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+									</c:otherwise>
+								</c:choose> --%>
+								
+								<c:choose>
+									<c:when test="${pageCount==0}">
+										<li class="active"><a href="#">검색 결과가 없습니다.</a></li>
+									</c:when>
+
+									<c:when test="${pageCount==1}">
+										<li class="active"><a href="#">${ pageNo }</a></li>
+									</c:when>
+
+									<c:when test="${pageCount==2}">
+
+										<c:choose>
+											<c:when test="${pageNo==1}">
+												<li class="active"><a href="#">${ pageNo }</a></li>
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+											</c:when>
+											<c:when test="${pageNo==2}">
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+												<li class="active"><a href="#">${ pageNo }</a></li>
+											</c:when>
+										</c:choose>
+
+									</c:when>
+
+									<c:otherwise>
+
+										<c:choose>
+											<c:when test="${pageNo==1}">
+												<li class="active"><a href="#">${ pageNo }</a></li>
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo+2 }&search=${search}&searchOption=${searchOption}">${ pageNo+2 }</a></li>
+											</c:when>
+											<c:when test="${pageNo==pageCount}">
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo-2 }&search=${search}&searchOption=${searchOption}">${ pageNo-2 }</a></li>
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+												<li class="active"><a href="#">${ pageNo }</a></li>
+											</c:when>
+											<c:when test="${pageNo!=pageCount}">
+												<li><a
+													href="inquiry-search.action?pageNo=${pageNo-1 }&search=${search}&searchOption=${searchOption}">${ pageNo-1 }</a></li>
+												<li class="active"><a href="#">${ pageNo }</a></li>
+												<li><a
+													href="inquiry-search.action?pageNo=${ pageNo+1 }&search=${search}&searchOption=${searchOption}">${ pageNo+1 }</a></li>
+											</c:when>
+										</c:choose>
+
 									</c:otherwise>
 								</c:choose>
 							</ul>
@@ -324,7 +380,21 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
+<script type="text/javascript">
+$(function(){
+	
+	$('#search-btn').on('click',function(event){
+		let search=$('#search').val();
+		let searchOption=$('#searchOption').val();
+		location.href = 'inquiry-search.action?search='+search+'&searchOption='+searchOption;
+		
+		
+	});
+	
+	
+});
 
+</script>
 </body>
 
 </html>

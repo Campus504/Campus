@@ -183,121 +183,44 @@
 
 							<span class="tag">태그 : ${community.tag}</span>
 						</article>
+						<div class="blog-comments" id="comment-list"></div>
 
 						<div class="blog-comments">
 
-							<div id="comment-1" class="comment">
-								<div class="d-flex">
-									<div class="comment-img"></div>
-									<div>
-										<h5>
-											Georgia Reader<a href="#" class="reply"><i
-												class="bi bi-reply-fill"></i>댓글쓰기</a>
-										</h5>
-										<time datetime="2020-01-01">01 Jan, 2020</time>
-										<p>Et rerum totam nisi. Molestiae vel quam dolorum vel
-											voluptatem et et. Est ad aut sapiente quis molestiae est qui
-											cum soluta. Vero aut rerum vel. Rerum quos laboriosam placeat
-											ex qui. Sint qui facilis et.</p>
-									</div>
-								</div>
-							</div>
-							<!-- End comment #1 -->
-
-							<div id="comment-2" class="comment">
-								<div class="d-flex">
-									<div class="comment-img"></div>
-									<div>
-										<h5>
-											Aron Alvarado<a href="#" class="reply"><i
-												class="bi bi-reply-fill"></i> Reply</a>
-										</h5>
-										<time datetime="2020-01-01">01 Jan, 2020</time>
-										<p>Ipsam tempora sequi voluptatem quis sapiente non. Autem
-											itaque eveniet saepe. Officiis illo ut beatae.</p>
-									</div>
-								</div>
-
-								<div id="comment-reply-1" class="comment comment-reply">
-									<div class="d-flex">
-										<div class="comment-img"></div>
-										<div>
-											<h5>
-												Lynda Small<a href="#" class="reply"><i
-													class="bi bi-reply-fill"></i> Reply</a>
-											</h5>
-											<time datetime="2020-01-01">01 Jan, 2020</time>
-											<p>Enim ipsa eum fugiat fuga repellat. Commodi quo quo
-												dicta. Est ullam aspernatur ut vitae quia mollitia id non.
-												Qui ad quas nostrum rerum sed necessitatibus aut est. Eum
-												officiis sed repellat maxime vero nisi natus. Amet nesciunt
-												nesciunt qui illum omnis est et dolor recusandae. Recusandae
-												sit ad aut impedit et. Ipsa labore dolor impedit et natus in
-												porro aut. Magnam qui cum. Illo similique occaecati nihil
-												modi eligendi. Pariatur distinctio labore omnis incidunt et
-												illum. Expedita et dignissimos distinctio laborum minima
-												fugiat. Libero corporis qui. Nam illo odio beatae enim
-												ducimus. Harum reiciendis error dolorum non autem quisquam
-												vero rerum neque.</p>
-										</div>
-									</div>
-
-									<div id="comment-reply-2" class="comment comment-reply">
-										<div class="d-flex">
-											<div class="comment-img"></div>
-											<div>
-												<h5>
-													Sianna Ramsay <a href="#" class="reply"><i
-														class="bi bi-reply-fill"></i> Reply</a>
-												</h5>
-												<time datetime="2020-01-01">01 Jan, 2020</time>
-												<p>Et dignissimos impedit nulla et quo distinctio ex
-													nemo. Omnis quia dolores cupiditate et. Ut unde qui
-													eligendi sapiente omnis ullam. Placeat porro est commodi
-													est officiis voluptas repellat quisquam possimus.
-													Perferendis id consectetur necessitatibus.</p>
-											</div>
-										</div>
-
-									</div>
-									<!-- End comment reply #2-->
-
-								</div>
-								<!-- End comment reply #1-->
-
-							</div>
-							<!-- End comment #2-->
-
-
+							<!-- 댓글 출력 위치 -->
 
 							<div class="reply-form">
-								<form action="">
+								<form id="commentform" action="write-comment.action"
+									method="post">
+									<input type="hidden" name="boardNo" value="${ board.boardNo }" />
+									<input type="hidden" name="memberId"
+										value="${ loginuser.memberId }" /> <input type="hidden"
+										name="pageNo" value="${ pageNo }" />
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<input value="Comment Writer" readonly>
+											<input value="${ loginuser.memberId }" readonly>
 										</div>
 									</div>
 									<div class="row">
-										<div class="col form-group">
-											<input value="Reg Date" readonly>
+										<div class="col-md-6 form-group">
+											<textarea id="comment_content" name="content"
+												class="form-control" placeholder="댓글을 작성하세요"></textarea>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col form-group">
-											<textarea name="comment" class="form-control"
-												placeholder="Your Comment*"></textarea>
-										</div>
-									</div>
-									<button type="submit" class="btn btn-primary">쓰기</button>
+									<a id="writecomment" href="javascript:" class="btn btn-primary">댓글
+										등록</a>
 
 								</form>
 
 							</div>
-
 						</div>
-						<!-- End blog comments -->
+						<!-- End comment #1 -->
+
 
 					</div>
+					<!-- End blog comments -->
+
+
 					<!-- End blog entries list -->
 
 					<div class="col-lg-4">
@@ -306,9 +229,19 @@
 
 							<h3 class="sidebar-title">검색하기</h3>
 							<div class="sidebar-item search-form">
-								<form action="inquiry-search.action" method="post">
-									<input type="text" class="form-control" name="search">
-									<button type="submit">
+
+								<div class="mb-3">
+									<select class="form-select form-select-lg" id="searchOption"
+										name="searchOption">
+										<option value="title">제목</option>
+										<option value="content">내용</option>
+										<option value="memberId">작성자</option>
+									</select>
+								</div>
+								<form>
+									<input type="text" class="form-control" id="search"
+										name="search">
+									<button type="button" id="search-btn">
 										<i class="bi bi-search"></i>
 									</button>
 								</form>
@@ -421,20 +354,139 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
-	
-	 <script type="text/javascript">
-  $(function(){
-	 
-	  $('.delete_button').on('click',function(event){
-		  const ok = confirm("글을 삭제할까요?");
-			if(!ok) return;
-			location.href = 'inquiry-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
-	  });
-	  
-	  
-  });
-  
-  </script>
+
+	<script type="text/javascript">
+		$(function() {
+
+			$('.delete_button').on('click', function(event) {
+								const ok = confirm("글을 삭제할까요?");
+								if (!ok)
+									return;
+								location.href = 'inquiry-delete.action?boardNo=${board.boardNo}&pageNo=${ pageNo }';
+							});
+
+			$('#search-btn').on('click',function(event) {
+				let search = $('#search').val();
+				let searchOption = $('#searchOption').val();
+				location.href = 'inquiry-search.action?search='
+						+ search + '&searchOption=' + searchOption;
+			});
+			
+			////////////////////////////////////////// 댓글 ///////////////////////////////////////////
+			
+			$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}&pageNo=${pageNo}");
+
+			$('#writecomment').on('click',function(event) { // 댓글 작성
+				
+				if( ${loginuser.memberId==null} ){
+					alert('로그인 후 댓글을 작성하세요');
+					return;
+				};
+				
+				
+			
+								const formData = $('#commentform').serialize(); //form 내부의 모든 입력요소의 값을 전송 가능한 형태로 반환
+
+								$.ajax({
+											"url" : "write-comment.action",
+											"method" : "post",
+											"data" : formData,
+											"success" : function(data, status, xhr) {
+												if (data == "success") {
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#commentform textarea').val('');
+												}
+											},
+											"error" : function(xhr, status, err) {
+											}
+										});
+							});
+
+			var correntEditCommentNo = null;
+
+			$('#comment-list').on('click', '.edit-comment', function(event) { //댓글 편집
+				event.preventDefault();
+				if (correntEditCommentNo != null) {
+					$('#comment-view-area-' + correntEditCommentNo).show();
+					$('#comment-edit-area-' + correntEditCommentNo).hide();
+					$("div [id*='recomment-area']").hide();
+				}
+
+				var commentNo = $(this).data('comment-no');
+
+				$('#comment-view-area-' + commentNo).hide();
+				$('#comment-edit-area-' + commentNo).show();
+				$("div [id*='recomment-area']").hide();
+
+				correntEditCommentNo = commentNo;
+			});
+
+			$('#comment-list').on(
+					'click',
+					'.cancel-edit-comment',
+					function(event) { //댓글 수정 취소
+						event.preventDefault();
+
+						var commentNo = $(this).data('comment-no');
+						const editForm = $('#comment-edit-area-' + commentNo+ ' form');
+						editForm[0].reset(); //editForm : JQuery객체 / editForm[0] : javascript 객체(reset은 jquery로 못씀)
+
+						$('#comment-view-area-' + commentNo).show();
+						$('#comment-edit-area-' + commentNo).hide();
+
+						correntEditCommentNo = null;
+					});
+
+			$('#comment-list').on('click','.update-comment',function(event) { // 댓글 수정
+								event.preventDefault();
+
+								const commentNo = $(this).data('comment-no');
+								const editForm = $('#comment-edit-area-'+ commentNo + ' form');
+								$.ajax({
+											"url" : "update-comment.action",
+											"method" : "post",
+											"data" : editForm.serialize(),
+											"success" : function(data, status, xhr) {
+												if (data == "success") {
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+												}
+											},
+											"error" : function(xhr, status, err) {
+
+											}
+										});
+							});
+
+			$('#comment-list').on('click','.delete-comment',function(event) { // 댓글 삭제
+								event.preventDefault();
+
+								var commentNo = $(this).data('comment-no');
+
+								const yn = confirm('댓글을 삭제할까요?');
+								if (!yn)
+									return;
+
+								$.ajax({
+											"url" : "delete-comment.action",
+											"method" : "get",
+											"data" : 'commentNo=' + commentNo,
+											"success" : function(data, status,
+													xhr) {
+												if (data == "success") {
+													// 댓글 목록 전체 갱신 (jQuery load 함수 : 지정된 html요소의 내용을 응답받은 부분 html로 (비동기)갱신함))
+													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+												} else {
+													alert("ㅠㅠㅠㅠㅠ");
+												}
+											},
+											"error" : function(xhr, status, err) {
+												alert('ㅠㅠ');
+											}
+										});
+							});
+
+		});
+	</script>
 
 </body>
 

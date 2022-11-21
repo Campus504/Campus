@@ -18,6 +18,10 @@ public interface AdminOrderService {
 
 	List<GoodsDto> findCategoryData();
 
+	List<GoodsDto> findBestGoods();
+
+	List<GoodsDto> findLatestGoods();
+
 	
 	
 }

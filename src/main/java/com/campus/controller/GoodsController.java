@@ -5,20 +5,25 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.campus.dto.CartDto;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
 import com.campus.dto.OrderDetailDto;
 import com.campus.dto.OrderListDto;
 import com.campus.service.GoodsService;
+import com.mysql.cj.Session;
 
 @Controller
 public class GoodsController {
@@ -71,23 +76,37 @@ public class GoodsController {
 		
 		GoodsDto goods = goodsService.findGoodsByGoodsCode(goodsCode);
 		GoodsRegisterDto goodsIn = goodsService.findGoodsInByGoodsCode(goodsCode);
-		
 		model.addAttribute("goods", goods);
 		model.addAttribute("goodsIn", goodsIn);
 		
 		return "order/goods-detail";
 	}
 	
-	@PostMapping(path= {"showOrderPage.action"})
-	public String showOrderPage(OrderListDto orderList, GoodsDto goods, OrderDetailDto orderDetail, Model model) throws ParseException {
-		MemberDto member = goodsService.findMemberByMemberId(orderList.getMemberId());
+	@GetMapping(path= {"showOrderPage.action"})
+	public String showOrderPage(CartDto cart, Model model) {
+		MemberDto member = goodsService.findMemberByMemberId(cart.getMemberId());
 		
-		model.addAttribute("goods", goods);
-		model.addAttribute("orderDetail", orderDetail);
+		cart.setGoods(goodsService.findGoodsByGoodsCode(cart.getGoodsCode()));
+		model.addAttribute("cart", cart);
 		model.addAttribute("member", member);
-		model.addAttribute("orderList", orderList);
 		return "order/order";
 	}
+	
+	
+	  @PostMapping(path= {"showOrderPage.action"}) 
+	  public String showOneItemOrderPage(List<CartDto> cart, Model model, HttpSession session) {
+	  
+	  MemberDto member =
+	  goodsService.findMemberByMemberId(cart.get(0).getMemberId()); 
+	  GoodsDto goods = 
+	  goodsService.findGoodsByGoodsCode(cart.get(0).getGoodsCode());
+	  
+	  model.addAttribute("member", member); 
+	  model.addAttribute("goods", goods);
+	  model.addAttribute("cart", cart); 
+	  return "order/order"; 
+	  }
+	 
 	
 	@PostMapping(path= {"orderGoods.action"})
 	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail ) {

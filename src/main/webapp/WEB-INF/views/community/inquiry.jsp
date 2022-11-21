@@ -118,6 +118,23 @@
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
+
+#search-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	border: 0;
+	background: none;
+	font-size: 16px;
+	padding: 0 30px;
+	margin: -1px;
+	background: #18d26e;
+	color: #fff;
+	transition: 0.3s;
+	line-height: 0;
+	border-radius: 50px;
+}
 </style>
 
 </head>
@@ -207,8 +224,17 @@
 					<div class="col-lg-4">
 
 						<div class="sidebar">
-							<h3 class="sidebar-title">검섹</h3>
+							<h3 class="sidebar-title">검색하기</h3>
 							<div class="sidebar-item search-form">
+							
+								<div class="mb-3">
+									<select class="form-select form-select-lg" id="searchOption"
+										name="searchOption">
+										<option value="title">제목</option>
+										<option value="content">내용</option>
+										<option value="memberId">작성자</option>
+									</select>
+								</div>
 								<form action="inquiry-search.action" method="post">
 									<input type="text" class="form-control" name="search">
 									<button type="submit">
@@ -322,6 +348,21 @@
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
+	<script type="text/javascript">
+		$(function() {
+
+			$('#search-btn').on(
+					'click',
+					function(event) {
+						let search = $('#search').val();
+						let searchOption = $('#searchOption').val();
+						location.href = 'inquiry-search.action?search='
+								+ search + '&searchOption=' + searchOption;
+
+					});
+
+		});
+	</script>
 
 </body>
 
