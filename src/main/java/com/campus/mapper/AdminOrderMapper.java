@@ -27,4 +27,10 @@ public interface AdminOrderMapper {
 	@Select("select g.category ,sum(amount) as goodsCode  from orderList l Inner Join orderDetail d on l.orderNo = d.orderNo inner Join goods g on g.goodsCode = d.goodsCode group by g.category")
 	List<GoodsDto> selectCategoryData();
 
+	@Select("select g.goodsCode, g.goodsName, g.brand, g.category from goods g inner join orderDetail d on g.goodsCode = d.goodsCode group by g.goodsCode order by sum(d.amount) desc limit 5")
+	List<GoodsDto> selectBestGoods();
+
+	@Select("select g.goodsCode, g.goodsName, g.brand, g.category from goods g inner join goodsRegister r on g.goodsCode = r.goodsCode  order by goodsInDate DESC limit 5")
+	List<GoodsDto> selectLatestGoods();
+
 }

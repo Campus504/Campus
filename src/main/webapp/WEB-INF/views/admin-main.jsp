@@ -1,6 +1,7 @@
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -106,12 +107,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Shirt</td>
-							<td>M</td>
-							<td>1</td>
+					
+					<c:forEach var="goods" items="${bestGoods}">
+					<tr>
+							<td>${goods.goodsName}</td>
+							<td>${goods.brand}</td>
+							<td>${goods.category}</td>
 							
 						</tr>
+					</c:forEach>
+						
 						
 					</tbody>
 				</table>
@@ -131,12 +136,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Shirt</td>
-							<td>M</td>
-							<td>1</td>
+					<c:forEach var="goods" items="${latestGoods}">
+					<tr>
+							<td>${goods.goodsName}</td>
+							<td>${goods.brand}</td>
+							<td>${goods.category}</td>
 							
 						</tr>
+					</c:forEach>
+						
 						
 					</tbody>
 				</table>
@@ -166,87 +174,98 @@
 	$(function(){
 		var list = [];
 		var pricelist = [];
-		var sataset = null;
-		$(window).on('load',function(){
-			$.ajax({
-				"url": "load-sales-dataset",
-				"method": "get",
-				"dataType": "json", 
-				"success": function(data) {
-					dataset=data;
-					for(var i=0;i<dataset.length;i++){
-						list.push(dataset[i].orderDate);
-						pricelist.push(Number(dataset[i].orderNo));
-					}
-					Highcharts.chart('chart-bar', {
-						 chart: {type: 'line'},
-					    title: {text: '일일 매출액'},
-					    yAxis: {
-					        title: {text: '매출액'},
-							labels : {format: '{value:,.0f}'}
-					    },
-					    xAxis: {categories: list},
-					    legend: {
-					        layout: 'vertical',
-					        align: 'right',
-					        verticalAlign: 'middle'
-					    },
-					    series: [{ name:'일일 매출액',
-					    	data: pricelist}]
-					});
-				},
-				"error": function(err) {
-					alert('fail to load dataset1');
+		var dataset = null;
+		
+		$.ajax({
+			"url": "load-sales-dataset",
+			"method": "get",
+			"dataType": "json", 
+			"success": function(data) {
+				dataset=data;
+				for(var i=0;i<dataset.length;i++){
+					list.push(dataset[i].orderDate);
+					pricelist.push(Number(dataset[i].orderNo));
 				}
-			});
-			
-			var category = [];
-			var amount = [];
-			$.ajax({
-				"url": "load-category-dataset",
-				"method": "get",
-				"dataType": "json", 
-				"success": function(data) {
-					var oObj = [];
-				      $.each(data, function(ix,sliceData) {
-				         oObj.push({
-				            name: sliceData.category,
-				            y: eval(sliceData.goodsCode)
-				         });
-				      });
-					
-					Highcharts.chart('chart-pie', {
-					    chart: {
-					        type: 'pie'
-					    },
-					    title: {
-					        text: '상품 종류별 주문 비율'
-					    },
-					    tooltip: {
-					        headerFormat: '',
-					        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}: <b>{point.percentage:.1f}%</b></b><br/>'
-					    },
-					    xAxis: {
-					        categories: category
-					      },
-					    series: [{
-					        minPointSize: 10,
-					        innerSize: '20%',
-					        zMin: 0,
-					        name: '상품',
-					        data: oObj
-					    }]
-					});
-				},
-				"error": function(err) {
-					alert('fail to load dataset2');
-				}
-			});
+				setTimeout(showLineChart, 100);
+				
+			},
+			"error": function(err) {
+				alert('fail to load dataset1');
+			}
 		});
 		
+		var category = [];
+		var amount = [];
+		var oObj = [];
+		$.ajax({
+			"url": "load-category-dataset",
+			"method": "get",
+			"dataType": "json", 
+			"success": function(data) {
+				
+			      $.each(data, function(ix,sliceData) {
+			         oObj.push({
+			            name: sliceData.category,
+			            y: eval(sliceData.goodsCode)
+			         });
+			      });
+			      setTimeout(showPieChart, 100);
+				
+			},
+			"error": function(err) {
+				alert('fail to load dataset2');
+			}
+		});
+		
+		function showLineChart(){
+			Highcharts.chart('chart-bar', {
+				 chart: {type: 'line'},
+			    title: {text: '일일 매출액'},
+			    yAxis: {
+			        title: {text: '매출액'},
+					labels : {format: '{value:,.0f}'}
+			    },
+			    xAxis: {categories: list},
+			    legend: {
+			        layout: 'vertical',
+			        align: 'right',
+			        verticalAlign: 'middle'
+			    },
+			    series: [{ name:'일일 매출액',
+			    	data: pricelist}]
+			});
+			
+		}
+		
+		function showPieChart(){
+			
+			Highcharts.chart('chart-pie', {
+			    chart: {
+			        type: 'pie'
+			    },
+			    title: {
+			        text: '상품 종류별 주문 비율'
+			    },
+			    tooltip: {
+			        headerFormat: '',
+			        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}: <b>{point.percentage:.1f}%</b></b><br/>'
+			    },
+			    xAxis: {
+			        categories: category
+			      },
+			    series: [{
+			        minPointSize: 10,
+			        innerSize: '20%',
+			        zMin: 0,
+			        name: '상품',
+			        data: oObj
+			    }]
+			});
+		}
 		
 		
-	})
+		
+	});
 	
 	</script>
 </body>

@@ -45,6 +45,18 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		List<GoodsDto> goods = adminOrderMapper.selectCategoryData();
 		return goods;
 	}
+
+	@Override
+	public List<GoodsDto> findBestGoods() {
+		List<GoodsDto> goods = adminOrderMapper.selectBestGoods();
+		return goods;
+	}
+
+	@Override
+	public List<GoodsDto> findLatestGoods() {
+		List<GoodsDto> goods = adminOrderMapper.selectLatestGoods();
+		return goods;
+	}
 	
 	
 
