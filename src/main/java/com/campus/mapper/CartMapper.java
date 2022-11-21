@@ -47,8 +47,11 @@ public interface CartMapper {
 	@Delete("DELETE FROM cart WHERE memberid = #{ memberId } ")
 	void deleteAllCart(String memberId);
 	
-	@Select("SELECT sum(amount*price) FROM cart WHERE memberid = #{memberId} ")
+	//장바구니 총금액 nvl(값1,값).. 값1이 null일 경우 값2를 반환
+	@Select("select nvl(sum(amount*price),0) from cart where memberid = #{memberId} ")
 	int sumMoney(String memberId);
+
+	
 
 	
 

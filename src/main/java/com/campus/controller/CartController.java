@@ -33,16 +33,21 @@ public class CartController {
 		//로그인 여부 확인
 		MemberDto member = (MemberDto) session.getAttribute("loginuser");
 		cart.setMemberId(member.getMemberId());
-		if(member.getMemberId() == null) {
-		//로그인 하지않으면 로그인화면으로 	
-			return "redirect:login.action";
-		}//로그인 했을때 화면
-		cart.setMemberId(member.getMemberId());
+		//주석걸어둔거 장바구니 중복 검사
+		//int count = cartService.countCart(cart.getGoodsCode(),member);
+		
+		//count  cartService.updateCart(cart) : cartService.insertCart(cart);
+		/*
+		 * if(count == 0) { // 없으면 insertCart cartService.insertCart(cart); }else{ //있으면
+		 * update cartService.updateCart(cart); }
+		 */	cart.setMemberId(member.getMemberId());
 		List<CartDto> list = cartService.listCart(member.getMemberId());
 		/* cartService.insertCart(cart); */
 		model.addAttribute("list",list);
-		int sumMoney = cartService.sumMoney(member.getMemberId());
-		model.addAttribute("sumMoney", sumMoney);
+		
+		  int sumMoney = cartService.sumMoney(member.getMemberId());
+		  model.addAttribute("sumMoney", sumMoney);
+		 
 		return "cart/my-page-cart-list";
 	}
 	
@@ -71,10 +76,12 @@ public class CartController {
 		return mav;
 	}
 	
-	//장바구니 삭제
+	//장바구니 개별삭제
 	@RequestMapping("deleteCart.action")
 	public String deleteCart(CartDto cart) {
+		System.out.println(cart);
 		cartService.deleteCart(cart);
+		
 		return "redirect:cart-list.action";
 	}
 	

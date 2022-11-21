@@ -183,11 +183,11 @@
                
                 <li>
            <c:if test="${goodsIn.goodsIn!=null}">
-                <button type="submit" id="order-btn" class="btn btn-info">상품주문</button>
+                <a href="showOrderPage.action?goodsCode=${goods.goodsCode}" id="order-btn" class="btn btn-info">상품주문</a>
                 </c:if>
                 <span>
                 <!-- <form method="post" action="addByCart.action"> -->
-            	<button type="submit" id="addToCart" onclick="addToCart" class="btn btn-warning"><!-- <a href="cart-list.action" class="btn btn-warning" id="addToCart" onclick="addToCart"> -->장바구니<!-- </a> --></button>
+            	<button type="submit" id="addToCart" onclick="addToCart" class="btn btn-warning">장바구니</button>
             	<!-- </form> -->
                 
                 </span>
