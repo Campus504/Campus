@@ -40,7 +40,6 @@ public class AdminOrderController {
 	public List<OrderDetailDto> findOrderDetailInModal(int orderNo) {
 		
 		List<OrderDetailDto> details = adminOrderService.findOrderDetails(orderNo);
-		//System.out.println(details);
 		return details;
 				
 		

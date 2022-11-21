@@ -118,6 +118,8 @@
 <!--  사이드바 관리자 아이콘 -->
 <script
 	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+	
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 <style type="text/css">
 .container-fluid {
@@ -229,10 +231,8 @@ font-size: 30px;
 				
 				<form method="post" action="orderGoods.action">
 				<input type="hidden" name="memberId" value="${loginuser.memberId}">
-				<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
-				<input type="hidden" name="rentDate" value="${orderList.rentDate}">
-				<input type="hidden" name="returnDate" value="${orderList.returnDate}">
-				<input type="hidden" name="amount" value="${orderDetail.amount}">
+				<input type="hidden" name="goodsCode" value="${cart.goodsCode}">
+				<input type="hidden" name="amount" value="${cart.amount}">
 				<input type="hidden" id="hidden-total-price" name="price">
 				<div class="col-lg-8 entries">
 							<div class="accordion">
@@ -249,18 +249,27 @@ font-size: 30px;
 										</tr>
 									</thead>
 									<tbody id="toggle-content" style="display:none">
-										<tr><td>상품명</td><td>대여금액(1일)</td><td>브랜드</td><td>수령일</td><td>반납일</td>
+										<tr><td>상품명</td><td>대여금액(1일)</td><td>브랜드</td>
 										</tr>
-										
-										<%-- <c:forEach var="goods" items="goods"> --%>
+										<c:choose>
+										<c:when test="${Array.isArray(cart)}">
+										<c:forEach var="cart" items="cart">
 										<tr>
-											<td>${goods.goodsName}</td>
-											<td>${orderDetail.price}</td><!-- 서로 다른 DTO에 담은 값 for로 불러오기?.. -->
-											<td>${goods.brand}</td>
-											<td>${orderList.rentDate}</td>
-											<td>${orderList.returnDate}</td>
+											<td>${cart.goods.goodsName}</td>
+											<td>${cart.price}</td>
+											<td>${cart.goods.brand}</td>
 											</tr>
-										<%-- </c:forEach> --%>
+										</c:forEach>
+										</c:when>
+										<c:otherwise>
+										<tr>
+											<td>${cart.goods.goodsName}</td>
+											<td>${cart.price}</td>
+											<td>${cart.goods.brand}</td>
+											</tr>
+										</c:otherwise>
+										</c:choose>
+										
 										
 										
 									</tbody>
@@ -280,7 +289,10 @@ font-size: 30px;
 									</thead>
 									<tbody >
 										<tr>
-											<td>이름 : </td><td>${member.memberId}</td>
+											<td>아이디 : </td><td>${member.memberId}</td>
+										</tr>
+										<tr>
+											<td>이름 : </td><td>${member.memberName}</td>
 										</tr>
 										<tr>
 											<td>연락처 : </td><td>${member.phone}</td>
@@ -302,28 +314,42 @@ font-size: 30px;
 								<table class="table">
 								<thead>
 										<tr>
-											<th >주문 합계</th>
+											<th ><a id="totalOrderInfo">주문 합계 확인</a> </th>
 											
 										</tr>
 										<tr>
 											<th >상품명</th>
 											<th >주문 수량</th>
 											<th >이용금액(1일)</th>
-											<th >이용 기간</th>
-											
+											<th >이용기간</th>
 										</tr>
 									</thead>
 									<tbody >
 									
+											<c:choose>
+										<c:when test="${Array.isArray(cart)}">
+										<c:forEach var="cart" items="cart">
 										<tr>
-											<td id="goodsName">${goods.goodsName}</td>
-											<td id="amount">${orderDetail.amount}개</td>
-											<td id="goodsPrice">${orderDetail.price}</td>
-											<td id="usePeriod"></td>
-										</tr>
-										
-										
+											<td>${cart.goods.goodsName}</td>
+											<td>${cart.amount}</td>
+											<td>${cart.price}</td>
+											</tr>
+										</c:forEach>
+										</c:when>
+										<c:otherwise>
+										<tr>
+											<td>${cart.goods.goodsName}</td>
+											<td>${cart.amount}</td>
+											<td>${cart.price}</td>
+											</tr>
+										</c:otherwise>
+										</c:choose>
+									
+							
 										<tr style="height: 40px;"></tr>
+										<tr>
+											<td>이용기간 : </td><td id="totalPeriod"></td>
+										</tr>
 										<tr>
 											<td>총 합계 : </td><td id="totalPrice"></td>
 										</tr>
@@ -333,6 +359,8 @@ font-size: 30px;
 							</div>
 							
 							<hr style="width:102%">
+							
+							
 					
 					</div>
 					
@@ -375,13 +403,13 @@ font-size: 30px;
 					                
 					              </div><!-- End sidebar pay-->
 					              
-					              
-					              
+					              <br>
+					              <br>
 					              
 					               <div class="sidebar-item tags">
 					                <ul>
-					                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
-					                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:50%" placeholder="날짜를 선택하세요"></li>
+					                <li><strong>상품 수령일</strong>: <input type="text" id="rentDate" name="rentDate" style="width:60%" placeholder="날짜를 선택하세요"></li>
+					                <li><strong>상품 반납일</strong>: <input type="text" id="returnDate" name="returnDate" style="width:60%" placeholder="날짜를 선택하세요"></li>
                						</ul>
 					                
 					                
@@ -458,7 +486,8 @@ font-size: 30px;
 	<script src="/campus/resources/assets/js/main.js"></script>
 
 	<!-- sidebar -->
-	<script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<!-- <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script> -->
 	<script data-pace-options='{ "ajax": false }'
 		src="/campus/resources/sidebar/js/vendor/pace.min.js"></script>
 	<script src="/campus/resources/sidebar/js/vendor/bootstrap.min.js"></script>
@@ -482,9 +511,29 @@ font-size: 30px;
 	<script src="/campus/resources/sidebar/js/main.js"></script>
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 	<script type="text/javascript">
 		$(function() {
+			
+			$("#rentDate").datepicker({
+				 dateFormat: 'yy-mm-dd',
+				 minDate: new Date(),
+				  maxDate: "+3M",
+				  onClose: function( selectedDate ) {    
+		              $("#returnDate").datepicker( "option", "minDate", selectedDate );
+		          }                
+			});
+			
+			$("#returnDate").datepicker({
+				 dateFormat: 'yy-mm-dd',
+				 minDate: new Date(),
+				  maxDate: "+3M",
+				  onClose: function( selectedDate ) {    
+		              $("#rentDate").datepicker( "option", "maxDate", selectedDate );
+		          }  
+			});
+			
 			
 			
 			$('[id*=toggle-btn]').on('click',function(event){
@@ -498,29 +547,45 @@ font-size: 30px;
 					}
 			});
 			
-			var rentDate1 = ${orderList.rentDate};
-			var returnDate1 = ${orderList.returnDate};
+			var totalPrice = null;
 			
-			var rentDate2 = Date.parse(rentDate1);
-			var returnDate2 = Date.parse(returnDate1);
-			
-			var period = Math.floor(((rentDate2-returnDate2)/(60*24*60*1000*365))+1);
-				
-			$('#usePeriod').html(period+"일");
-			
-			var totalPrice = period*${orderDetail.amount}*${orderDetail.price};
-			
-			$('#totalPrice').html(totalPrice+"원");
-			$('#hidden-total-price').val(totalPrice);
-			
-			 $('#submit-order').on('click',function(event){
-				
-				const ok = confirm("주문을 진행합니다");
-				if (!ok){
+			$('#totalOrderInfo').on('click',function(event){
+				if($("#rentDate").val()==''||$("#returnDate").val()==''){
+					alert('이용날짜를 선택하세요');
 					return false;
-					} 
-				return true;
-			}); 
+				}else{
+					var rentDate = Date.parse($("#rentDate").val());
+					var returnDate = Date.parse($("#returnDate").val());
+					var period = Math.floor((Math.abs(rentDate-returnDate)/(60*24*60*1000))+1);
+					$('#usePeriod').html(period+"일");
+					
+					totalPrice = period*${cart.amount}*${cart.price};
+					$('#totalPrice').html(totalPrice+"원");
+					$('#totalPeriod').html(period+"일");
+					$('#hidden-total-price').val(totalPrice);
+				}
+			});
+			
+
+			
+			
+			
+			
+			$('#submit-order').on('click',function(event){
+				if($("#rentDate").val()==''||$("#returnDate").val()==''){
+					alert('이용날짜를 선택하세요');
+					return false;
+				}else if(totalPrice==null){
+					alert('주문 합계를 확인하세요');
+					return false;
+				}else{
+					const ok = confirm("주문을 진행합니다");
+					if (!ok){
+					return false;
+				}}
+					return true;
+			});
+			
 			
 			
 		});

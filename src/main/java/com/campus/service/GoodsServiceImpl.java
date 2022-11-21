@@ -78,4 +78,16 @@ public class GoodsServiceImpl implements GoodsService {
 		return goods;
 	}
 	
+	@Override
+	public List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods) {
+		/*
+		 * List<GoodsDto> goodsList = null; for(int i=0;i<goods.size();i++) {
+		 * 
+		 * GoodsDto good =
+		 * goodsMapper.selectGoodsByGoodsCode(goods.get(i).getGoodsCode());
+		 * goodsList.add(good); } System.out.println(goodsList);
+		 */
+		return null;
+	}
+	
 }

@@ -124,7 +124,10 @@
 	<a href="goods-list.action">쇼핑하러가기</a>
 </c:if>
 
-<c:if test="${ not empty loginuser }">
+<form method="post" action="showOrderPage.action">
+	<c:if test="${ not empty loginuser }">
+
+	
 	<table class="table text-center table-hover container">
 		<thead>
 			<tr>
@@ -160,14 +163,15 @@
 
 
 <div class="container">
-	<a class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" href="#">주문하기</a> 
+	<button class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="submit">주문하기</button> 
 		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
 		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
 
 </c:if>
+	
+</form>
 
- 
 
 
   </main><!-- End #main -->
