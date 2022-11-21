@@ -140,14 +140,6 @@
 													&nbsp;<p class="text-800">가입 일자 : ${member.joinDate}</p>
 													&nbsp;<p class="text-800">권한 : ${member.admin}</p>
 													
-													<div>
-														<a class="me-2" href="#!"><span
-															class="fab fa-linkedin-in text-400 hover-primary"></span></a><a
-															class="me-2" href="#!"><span
-															class="fab fa-facebook text-400 hover-primary"></span></a><a
-															href="#!"><span
-															class="fab fa-twitter text-400 hover-primary"></span></a>
-													</div>
 												</div>
 											</div>
 											

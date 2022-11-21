@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
 import com.campus.mapper.CommunityMapper;
@@ -13,7 +14,8 @@ public class InquiryServiceImpl implements InquiryService {
 	
 	@Setter
 	private InquiryMapper inquiryMapper;
-
+	@Setter
+	private CommunityMapper communityMapper;
 
 
 	@Override
@@ -107,5 +109,7 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		return boards;
 	}
+	
+	
 
 }

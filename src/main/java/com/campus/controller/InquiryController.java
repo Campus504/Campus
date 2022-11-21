@@ -12,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campus.dto.BoardCommentDto;
 import com.campus.dto.BoardDto;
 import com.campus.dto.CommunityDto;
+import com.campus.service.CommunityService;
 import com.campus.service.InquiryService;
 import com.campus.ui.CommunityPager;
 
@@ -25,6 +28,8 @@ public class InquiryController {
 	
 	@Autowired @Qualifier("inquiryService")
 	private InquiryService inquiryService; 
+	@Autowired @Qualifier("communityService")
+	private CommunityService communityService; 
 	
 	@GetMapping(path= {"inquiry.action"})
 	public String showInquiryList(@RequestParam(defaultValue = "1") int pageNo , Model model) {
@@ -138,5 +143,24 @@ public class InquiryController {
 		
 		return "community/inquiry-search";
 	}
-
+	
+//	@GetMapping(path= {"inquiry-search.action"})
+//	public String showGetFreeboardSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
+//		if(search.equals("")) {
+//			return "redirect:inquiry.action";
+//		}
+//		List<BoardDto> boards = inquiryService.searchInquiry(searchOption, search, pageNo, PAGE_SIZE); 
+//		int boardCount = communityService.findSearchBoardCount(searchOption, search);
+//		int pageCount = 
+//				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
+//		
+//		model.addAttribute("boards", boards);
+//		model.addAttribute("pageNo", pageNo);
+//		model.addAttribute("pageCount",pageCount);
+//		model.addAttribute("search", search);
+//		model.addAttribute("searchOption", searchOption);
+//		
+//		return "community/inquiry-search";
+//	}
+	
 }
