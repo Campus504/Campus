@@ -14,17 +14,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.dto.CartDto;
 import com.campus.dto.MemberDto;
 import com.campus.service.CartService;
 
+
 @Controller
 public class CartController {
 
 	@Autowired
+	
 	@Qualifier("cartService")
 	private CartService cartService;
 	
@@ -32,17 +33,9 @@ public class CartController {
 	public String cartList(@ModelAttribute CartDto cart, HttpSession session,Model model) {
 		//로그인 여부 확인
 		MemberDto member = (MemberDto) session.getAttribute("loginuser");
-		cart.setMemberId(member.getMemberId());
-		//주석걸어둔거 장바구니 중복 검사
-		//int count = cartService.countCart(cart.getGoodsCode(),member);
+		cart.setMemberId(member.getMemberId());	
 		
-		//count  cartService.updateCart(cart) : cartService.insertCart(cart);
-		/*
-		 * if(count == 0) { // 없으면 insertCart cartService.insertCart(cart); }else{ //있으면
-		 * update cartService.updateCart(cart); }
-		 */	cart.setMemberId(member.getMemberId());
 		List<CartDto> list = cartService.listCart(member.getMemberId());
-		/* cartService.insertCart(cart); */
 		model.addAttribute("list",list);
 		
 		  int sumMoney = cartService.sumMoney(member.getMemberId());
@@ -51,13 +44,13 @@ public class CartController {
 		return "cart/my-page-cart-list";
 	}
 	
+
 	//장바구니 추가
 	@PostMapping("addByCart.action")
 	public String addByCart(@ModelAttribute CartDto cart, HttpSession session) {
 		MemberDto member = (MemberDto) session.getAttribute("loginuser");
 		cart.setMemberId(member.getMemberId());
 		cartService.insertCart(cart);
-		System.out.println(cart);
 		return "redirect:cart-list.action";
 	}
 	

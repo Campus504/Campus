@@ -2,7 +2,10 @@ package com.campus.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.campus.dto.CartDto;
+import com.campus.dto.MemberDto;
 
 public interface CartService {
 
@@ -18,6 +21,6 @@ public interface CartService {
 
 	void deleteAllCart(String memberId);
 
-	/* int countCart(int goodsCode, String memberId); */
+
 	
 }

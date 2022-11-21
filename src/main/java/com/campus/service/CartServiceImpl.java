@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Repository;
 
 import com.campus.dto.CartDto;
@@ -55,11 +57,6 @@ public class CartServiceImpl implements CartService {
 		return a;
 	}
 
-	/* 장바구니 중복검사 
-	 * @Override public int countCart(int goodsCode, String memberId) { Map<String,
-	 * Object> map = new HashMap<String, Object>(); map.put("goodsCode", goodsCode);
-	 * map.put("memberId", memberId); return cartMapper.; }
-	 */
 
 	
 }

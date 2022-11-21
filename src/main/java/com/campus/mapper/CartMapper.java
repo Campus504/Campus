@@ -1,6 +1,9 @@
 package com.campus.mapper;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -50,8 +53,15 @@ public interface CartMapper {
 	//장바구니 총금액 nvl(값1,값).. 값1이 null일 경우 값2를 반환
 	@Select("select nvl(sum(amount*price),0) from cart where memberid = #{memberId} ")
 	int sumMoney(String memberId);
-
 	
+	
+	  //장바구니 중복확인
+	  
+		/*
+		 * @Select("SELECT COUNT(*) FROM cart WHERE memberid=#{ memberId } AND goodsCode = #{goodsCode} "
+		 * ) void selectCart(int goodsCode);
+		 * 
+		 */
 
 	
 

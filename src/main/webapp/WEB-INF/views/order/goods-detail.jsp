@@ -187,7 +187,7 @@
                 </c:if>
                 <span>
                 <!-- <form method="post" action="addByCart.action"> -->
-            	<button type="submit" id="addToCart" onclick="addToCart" class="btn btn-warning">장바구니</button>
+            	<button type="submit" id="addToCart" class="btn btn-warning">장바구니</button>
             	<!-- </form> -->
                 
                 </span>
@@ -295,14 +295,17 @@ $('#addToCart').on('click',function(event){
 		return true;
 	});
 	
-function addToCart(){
-	if(confirm("장바구니에 추가하시겠습니까?")){
-		document.addForm.submit();
-	}else{
-		document.addForm.reset();
-	}
-}
 
+$('#addToCart').click(function(){ 
+	var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
+		if(check){
+			location.assign('cart-list.action?memberId=${ loginuser.memberId }');
+			}else{
+				location.href = 'goods-detail.action?goodsCode=${goods.goodsCode}';
+				return false;
+			}
+		
+});
 	
 	
 });
