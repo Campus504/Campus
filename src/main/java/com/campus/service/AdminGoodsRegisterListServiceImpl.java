@@ -16,19 +16,19 @@ import lombok.Setter;
 @Repository
 public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterListService {
 
-
+      
 	@Setter
 	private AdminGoodsRegisterMapper adminGoodsRegisterMapper;
 
 	@Override
-	public List<GoodsOptionJoinDto> findGoodsJoinedList() {
+	public List<GoodsOptionJoinDto> findGoodsJoinedList() {   
 		List<GoodsOptionJoinDto> goods = adminGoodsRegisterMapper.selectJoinedList();
 		return goods;
 	}
 
-	@Override
-	public void deleteGoods(int goodsCode) {
-		adminGoodsRegisterMapper.deleteGoods(goodsCode);
+	@Override  // 상품 옵션 삭제
+	public void deleteGoodsOption(int optionNo) {
+		adminGoodsRegisterMapper.delectGoodsOption(optionNo);
 	}
 
 	@Override
@@ -43,10 +43,28 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 		return goods;
 	}
 
-	@Override			// 상품 정보 수정
+	@Override
+	public List<GoodsDto> findAllGoods() {
+		List<GoodsDto> goods = adminGoodsRegisterMapper.selectAllGoods();
+		return goods;
+	}
+
+	@Override
+	public List<GoodsOptionDto> findGoodsOptionsByGoodsCode(int goodsCode) {
+		List<GoodsOptionDto> options = adminGoodsRegisterMapper.selectGoodsOptionsByGoodsCode(goodsCode);
+		return options;
+	}
+
+	@Override
+	public void deleteGoods(String status) {
+		adminGoodsRegisterMapper.deleteGoods(status);
+		
+	}
+
+	@Override
 	public void updategoodslist(GoodsOptionJoinDto goodsoptionjoins) {
-		// adminGoodsRegisterMapper.updategoodslist(goodsoptionjoins);
-	
+		// TODO Auto-generated method stub
+		
 	}
 
 	
