@@ -111,7 +111,6 @@
           <li><a href="main">홈</a></li>
         </ol>
         <h2>공지사항</h2>
-
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -183,10 +182,9 @@
               </div><!-- End sidebar categories-->
 
               
-
             </div><!-- End sidebar -->
 
-           <c:if test="${not empty loginuser and loginuser.memberId eq board.memberId}">
+           <c:if test="${not empty loginuser and loginuser.admin eq 'Admin'}">
            <article class="entry">
               <div class="entry-content">
                 <div class="read-more">

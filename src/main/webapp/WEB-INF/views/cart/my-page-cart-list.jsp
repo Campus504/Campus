@@ -127,7 +127,7 @@
 <form method="post" action="showOrderPage.action">
 	<c:if test="${ not empty loginuser }">
 
-	
+	<input type="hidden"  name="memberId" value="${loginuser.memberId}">
 	<table class="table text-center table-hover container">
 		<thead>
 			<tr>
@@ -140,13 +140,15 @@
 		<tbody>
 			<c:forEach var="cart" items="${ list }">
 				<tr>
+					
 					<td>${cart.goods.goodsName}</td>
 					<td>${cart.price}</td>
-					<td><input type="number" name="amount" value="${cart.amount}" class="form-control"></td>
+					<td><input type="number"  name="amount" value="${cart.amount}" class="form-control"></td>
 					<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
 					<td><a class="btn btn-danger" href="deleteCart.action?memberId=${ cart.memberId }&goodsCode=${ cart.goodsCode }">상품삭제</a></td>
 				</tr>
-				
+				<input type="hidden"  name="price" value="${cart.price}">
+				<input type="hidden"  name="goodsCode" value="${cart.goodsCode}">
 			</c:forEach>
 
 		</tbody>
@@ -163,7 +165,7 @@
 
 
 <div class="container">
-	<button class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="submit">주문하기</button> 
+	<button class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" id="order-submit-btn" type="submit">주문하기</button> 
 		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
 		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
@@ -218,5 +220,43 @@
   <!-- /.sidebar -->
 
 </body>
+<script type="text/javascript">
+$(function(){
+	/* $('#order-submit-btn').on('click',function(event){
+		var cartList = [];
+		
+		 for(var j = 1;j<=${i};j++){
+			 cartList.push(
+					 {
+						 "goodsCode": $('#goodsCode'+j).val(),
+						 "amount":$('#amount'+j).val(),
+						 "price":$('#price'+j).val(),
+						 "memberId":$('#memberId'+j).val()
+					 }	 
+			 );
+		 }
+		console.log(cartList);
+		$.ajax({
+            url         :   "showOrderPage.action",
+            dataType    :   "json",
+            //contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
+            type        :   "post",
+            data        :   cartList,
+            success     :   function(data){
+				
+               alert(data);
+               console.log(data);
+                 
+            },
+            error       :   function(error){
+                console.log("AJAX_ERROR");
+            }
+        });
+	}); */
+	
+	
+});
+
+</script>
 
 </html>

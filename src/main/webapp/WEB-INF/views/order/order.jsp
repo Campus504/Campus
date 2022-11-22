@@ -231,9 +231,6 @@ font-size: 30px;
 				
 				<form method="post" action="orderGoods.action">
 				<input type="hidden" name="memberId" value="${loginuser.memberId}">
-				<input type="hidden" name="goodsCode" value="${cart.goodsCode}">
-				<input type="hidden" name="amount" value="${cart.amount}">
-				<input type="hidden" id="hidden-total-price" name="price">
 				<div class="col-lg-8 entries">
 							<div class="accordion">
 								<table>
@@ -251,26 +248,16 @@ font-size: 30px;
 									<tbody id="toggle-content" style="display:none">
 										<tr><td>상품명</td><td>대여금액(1일)</td><td>브랜드</td>
 										</tr>
-										<c:choose>
-										<c:when test="${Array.isArray(cart)}">
-										<c:forEach var="cart" items="cart">
+										<c:forEach var="cart" items="${cart}">
+										<input type="hidden" name="goodsCode" value="${cart.goodsCode}">
+										<input type="hidden" name="amount" value="${cart.amount}">
+										<input type="hidden" name="price" value="${cart.price}">
 										<tr>
 											<td>${cart.goods.goodsName}</td>
 											<td>${cart.price}</td>
 											<td>${cart.goods.brand}</td>
 											</tr>
 										</c:forEach>
-										</c:when>
-										<c:otherwise>
-										<tr>
-											<td>${cart.goods.goodsName}</td>
-											<td>${cart.price}</td>
-											<td>${cart.goods.brand}</td>
-											</tr>
-										</c:otherwise>
-										</c:choose>
-										
-										
 										
 									</tbody>
 								</table>
@@ -321,31 +308,20 @@ font-size: 30px;
 											<th >상품명</th>
 											<th >주문 수량</th>
 											<th >이용금액(1일)</th>
-											<th >이용기간</th>
+											
 										</tr>
 									</thead>
 									<tbody >
-									
-											<c:choose>
-										<c:when test="${Array.isArray(cart)}">
-										<c:forEach var="cart" items="cart">
+										
+										<c:forEach var="cart" items="${cart}">
+										<c:set var="i" value="${i+1}" />
 										<tr>
 											<td>${cart.goods.goodsName}</td>
-											<td>${cart.amount}</td>
-											<td>${cart.price}</td>
-											</tr>
+											<td id="amount${i}" data-amount="${cart.amount}">${cart.amount}</td>
+											<td id="price${i}" data-price="${cart.price}">${cart.price}</td>
+										</tr>
 										</c:forEach>
-										</c:when>
-										<c:otherwise>
-										<tr>
-											<td>${cart.goods.goodsName}</td>
-											<td>${cart.amount}</td>
-											<td>${cart.price}</td>
-											</tr>
-										</c:otherwise>
-										</c:choose>
 									
-							
 										<tr style="height: 40px;"></tr>
 										<tr>
 											<td>이용기간 : </td><td id="totalPeriod"></td>
@@ -512,85 +488,86 @@ font-size: 30px;
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+	 $("#rentDate").datepicker({
+		 dateFormat: 'yy-mm-dd',
+		 minDate: new Date(),
+		  maxDate: "+3M",
+		  onClose: function( selectedDate ) {    
+              $("#returnDate").datepicker( "option", "minDate", selectedDate );
+          }                
+	});
+	
+	$("#returnDate").datepicker({
+		 dateFormat: 'yy-mm-dd',
+		 minDate: new Date(),
+		  maxDate: "+3M",
+		  onClose: function( selectedDate ) {    
+              $("#rentDate").datepicker( "option", "maxDate", selectedDate );
+          }  
+	});
+	
+	
+	$('[id*=toggle-btn]').on('click',function(event){
+		
+				if($(this).hasClass('bi bi-caret-down-fill')) {
+				$(this).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
+				$('#toggle-content').removeAttr("style").show();
+			} else if($(this).hasClass('bi bi-caret-up-fill')){
+				$($(this)).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
+				$('#toggle-content').removeAttr("style").hide();
+			}
+	});
+	
+	
+	
+	var totalPrice = null;
+	
+	$('#totalOrderInfo').on('click',function(event){
+		if($("#rentDate").val()==''||$("#returnDate").val()==''){
+			alert('이용날짜를 선택하세요');
+			return false;
+		}else{
+			var rentDate = Date.parse($("#rentDate").val());
+			var returnDate = Date.parse($("#returnDate").val());
+			var period = Math.floor((Math.abs(rentDate-returnDate)/(60*24*60*1000))+1);
+			
+			var priceAmount = 0;
+			var one = 0
+			for(var i=1;i<=${i};i++){
+				one = $('#price'+i).data('price')*$('#amount'+i).data('amount');
+				priceAmount = priceAmount+one;
+			}
+			
+			totalPrice = priceAmount*period;
+			
+			$('#totalPrice').html(totalPrice+"원");
+			$('#totalPeriod').html(period+"일");
+		}
+	});
+	
+	
+	$('#submit-order').on('click',function(event){
+		if($("#rentDate").val()==''||$("#returnDate").val()==''){
+			alert('이용날짜를 선택하세요');
+			return false;
+		}else if(totalPrice==null){
+			alert('주문 합계를 확인하세요');
+			return false;
+		}else{
+			const ok = confirm("주문을 진행합니다");
+			if (!ok){
+			return false;
+		}}
+			return true;
+	}); 
+	
+	
+});
 
-	<script type="text/javascript">
-		$(function() {
-			
-			$("#rentDate").datepicker({
-				 dateFormat: 'yy-mm-dd',
-				 minDate: new Date(),
-				  maxDate: "+3M",
-				  onClose: function( selectedDate ) {    
-		              $("#returnDate").datepicker( "option", "minDate", selectedDate );
-		          }                
-			});
-			
-			$("#returnDate").datepicker({
-				 dateFormat: 'yy-mm-dd',
-				 minDate: new Date(),
-				  maxDate: "+3M",
-				  onClose: function( selectedDate ) {    
-		              $("#rentDate").datepicker( "option", "maxDate", selectedDate );
-		          }  
-			});
-			
-			
-			
-			$('[id*=toggle-btn]').on('click',function(event){
-				
-						if($(this).hasClass('bi bi-caret-down-fill')) {
-						$(this).removeClass('bi bi-caret-down-fill').addClass('bi bi-caret-up-fill');
-						$('#toggle-content').removeAttr("style").show();
-					} else if($(this).hasClass('bi bi-caret-up-fill')){
-						$($(this)).removeClass('bi bi-caret-up-fill').addClass('bi bi-caret-down-fill');
-						$('#toggle-content').removeAttr("style").hide();
-					}
-			});
-			
-			var totalPrice = null;
-			
-			$('#totalOrderInfo').on('click',function(event){
-				if($("#rentDate").val()==''||$("#returnDate").val()==''){
-					alert('이용날짜를 선택하세요');
-					return false;
-				}else{
-					var rentDate = Date.parse($("#rentDate").val());
-					var returnDate = Date.parse($("#returnDate").val());
-					var period = Math.floor((Math.abs(rentDate-returnDate)/(60*24*60*1000))+1);
-					$('#usePeriod').html(period+"일");
-					
-					totalPrice = period*${cart.amount}*${cart.price};
-					$('#totalPrice').html(totalPrice+"원");
-					$('#totalPeriod').html(period+"일");
-					$('#hidden-total-price').val(totalPrice);
-				}
-			});
-			
-
-			
-			
-			
-			
-			$('#submit-order').on('click',function(event){
-				if($("#rentDate").val()==''||$("#returnDate").val()==''){
-					alert('이용날짜를 선택하세요');
-					return false;
-				}else if(totalPrice==null){
-					alert('주문 합계를 확인하세요');
-					return false;
-				}else{
-					const ok = confirm("주문을 진행합니다");
-					if (!ok){
-					return false;
-				}}
-					return true;
-			});
-			
-			
-			
-		});
-	</script>
-
+</script>
+	
 </body>
 
 </html>
