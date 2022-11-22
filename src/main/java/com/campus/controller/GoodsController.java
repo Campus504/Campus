@@ -115,7 +115,4 @@ public class GoodsController {
 		return "redirect:my-page-order-list.action";
 	}
 	
-	
-	
-	
 }

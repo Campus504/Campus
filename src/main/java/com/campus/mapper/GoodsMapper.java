@@ -47,5 +47,19 @@ public interface GoodsMapper {
 	
 	@Select("select * from goods where goodsCode in ( SELECT goodsCode from orderDetail group by goodsCode order by sum(amount) DESC ) limit 10")
 	List<GoodsDto> selectBestGoods();
+	
+	@Select("select oL.orderNo, oL.orderDate, oL.returnDate, oL.rentDate, oL.pay, oL.memberId, od.goodsCode, od.amount, od.price " +
+			"from orderList oL " +
+			"left outer join orderDetail od " +
+			"on oL.orderNo=od.orderNo " + 
+			"where oL.memberId=#{memberId} " )
+	List<OrderListDto> selectOrderListByMemberId(String memberId);
 
 }
+
+
+
+
+
+
+

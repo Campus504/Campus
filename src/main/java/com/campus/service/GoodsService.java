@@ -28,5 +28,7 @@ public interface GoodsService {
 	List<GoodsDto> findBestGoods();
 	
 	List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods);
+	
+	List<OrderListDto> orderListByMemberId(String memberId);
 
 }

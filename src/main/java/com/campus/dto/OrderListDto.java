@@ -17,4 +17,8 @@ public class OrderListDto {
 	List<OrderDetailDto> orderDetails;
 	OrderDetailDto orderDetail;
 
+	private int goodsCode;
+	private int amount;
+	private int price;
+	
 }

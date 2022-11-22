@@ -16,6 +16,7 @@ public class BoardDto {
 	private String category;
 	private String memberId;
 	private boolean secret;
+	private boolean active;
 	
 	private List<CommunityDto> tags;
 	private List<AttachDto> attachments;

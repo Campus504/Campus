@@ -89,5 +89,10 @@ public class GoodsServiceImpl implements GoodsService {
 		 */
 		return null;
 	}
+	@Override
+	public List<OrderListDto> orderListByMemberId(String memberId) {
+		List<OrderListDto> orderList = goodsMapper.selectOrderListByMemberId(memberId);
+		return orderList;
+	}
 	
 }
