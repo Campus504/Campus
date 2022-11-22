@@ -56,11 +56,17 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 	}
 
 	@Override
-	public void deleteGoods(String status) {
-		adminGoodsRegisterMapper.deleteGoods(status);
+	public void deleteGoods(int goodsCode) {
+		adminGoodsRegisterMapper.deleteGoods(goodsCode);
 		
 	}
 
+	@Override
+	public void activeGoods(int goodsCode) {
+		adminGoodsRegisterMapper.activeGoods(goodsCode);
+		
+	}
+	
 	@Override
 	public void updategoodslist(GoodsOptionJoinDto goodsoptionjoins) {
 		// TODO Auto-generated method stub

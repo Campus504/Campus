@@ -38,10 +38,13 @@ public interface AdminGoodsRegisterMapper {
 	List<GoodsOptionJoinDto> selectJoinedList();
 
 	
-	// 상품 상태 수정 : active -> deleted
-	@Update("UPDATE goods SET status = 'deleted' WHERE goodsCode = ${ goodsCode } ")
-	void deleteGoods(String status);
-	
+	// 상품 상태 수정 : active -> deleted : st
+	@Update("UPDATE goods SET status = 'deleted' WHERE goodsCode = #{ goodsCode } ")
+	void deleteGoods(int goodsCode);	
+
+	// 상품 상태 수정 : active -> deleted : st
+	@Update("UPDATE goods SET status = 'active' WHERE goodsCode = #{ goodsCode } ")
+	void activeGoods(int goodsCode);
 	
 	// 상품 옵션 삭제
 	@Delete("DELETE FROM goodsOption WHERE optionNo = #{optionNo}")

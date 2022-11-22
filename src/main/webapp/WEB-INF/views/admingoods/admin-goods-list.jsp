@@ -104,16 +104,15 @@
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap" id="goods-list-table">
 							<thead>
-								<tr>
+								<tr class="table-active">
 									
-									<th>상품이름</th>
 									<th>상태</th>
+									<th>상품이름</th>
 									<th>브랜드</th>
 									<th>상품분류</th>
 									
 									<th>입고등록</th>
 									<th>속성보기</th> <!-- Modal Popup 상품 정보 수정 -->
-									<th>상품삭제</th>
 									
 								</tr>
 							</thead>
@@ -121,20 +120,33 @@
 							<c:forEach  var="goods" items='${goods}' >
 							<c:set var="i" value="${ i+1 }" />
 							<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
+												
 							<tbody>
 								
 								<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
+									
+									<c:if test="${ goods.status eq 'active' }">
+									<td>
+									<button type="button" name="goodsCode" data-goodscodefordeleted="${ goods.goodsCode }" class="btn btn-warning btn-lg delete-goods" id="deleted-${ goods.goodsCode }">대여가능
+									</button>
+									</td>
+									</c:if>
 
+									<c:if test="${ goods.status eq 'deleted' }">
+									<td>
+									<button type="button" name="goodsCode" data-goodscodeforactive="${ goods.goodsCode }" class="btn btn-success btn-lg active-goods" id="active-${ goods.goodsCode }">대여불가
+									</button>
+									</td>
+									</c:if>
+									
 									<td>${ goods.goodsName }</td>
-									<td>${ goods.status }</td>
 									<td>${ goods.brand }</td>
 									<td>${ goods.category }</td>
 									
 									<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><button type="submit" id="add-goods-option-list-modal-confirm" name="goodsRegisterList" value="입고등록" class="btn btn-lg btn-primary" >입고등록</button></a></td>
-									<td><button type="button" class="btn btn-success btn-lg btn-block" id="show-goods-option-list" value="상품옵션보기">상품 옵션 보기</button></td>
-									<td><button type="button" data-goodscode="${ goods.goodsCode }" class="btn btn-secondary btn-lg delete-goods" >상품삭제</button></td>
-									
+									<td><button type="button" class="btn btn-success btn-lg btn-block show-goods-option-list" id="show-goods-option-list" value="상품옵션보기">상품 옵션 보기</button></td>
 								</tr>
+
 							</c:forEach>
 							</tbody>
 						</table>
@@ -164,12 +176,12 @@
 										
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션이름</th>
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션설명</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">단일값/목록값</th> <!-- 확인 후 삭제 예정 -->
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">단일값/목록값</th>
 										
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th> 		<!-- 확인 후 삭제 예정 -->
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th> 
 										
 										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성수정</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성삭제</th>
+										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션삭제</th>
 										
 									</tr>
 								</thead>				
@@ -181,7 +193,7 @@
 						</form>
 					</div>
 				
-			<!-- 모달 푸터 -->
+			<!-- modal footer -->
 			      <div class="modal-footer">
 			        <!-- <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button> -->
 					<!-- <button type="submit" id="goods-option-list-modal-confirm" name="goodsRegisterList" value="상품속성수정" class="btn btn-lg btn-primary" >속성수정</button> -->
@@ -223,8 +235,8 @@
 			// 상품 속성 보기 모달에 대해서
 			
 			// 상품 속성 보기 팝업 열기
-			$('#show-goods-option-list').on('click', function(event) {
-				
+			/* $('#show-goods-option-list').on('click', function(event) { */
+			$('.show-goods-option-list').on('click', function(event) {
 				const goodsCode = $(this).parent().parent().data('goodscode');
 			
 				$('#goods-option-list-tbody').load("load-goods-option-list.action?goodsCode=" + goodsCode, function() {
@@ -233,41 +245,49 @@
 				
 			});
 			
-			
 			// 상품 속성 보기 팝업 숨기기
 			$('#goods-option-list-modal-cancel').on('click', function(event) {
 				$('#goods-option-list-modal').modal("hide");		
 			});
 			
-			// 상품 속성 삭제하기
+			// 상품 속성 삭제하기  ???????????????? 얼럿이 보이지 않아요~~!
 			$('#options-table').on('click', '.remove-option-btn', function(event) {		// th 삭제 버튼 클릭 시 row 리스트 삭제
-				const ok = confirm('속성을 삭제할까요?');	// ok는 '속성을 삭제할까요?' 라는 confirm alert을 실행한다
-				if (!ok) {  							// ok가 아닐때
+
+			const ok = confirm('속성을 삭제할까요?');	// ok는 '속성을 삭제할까요?' 라는 confirm alert을 실행한다
+				if (!ok)   							// ok가 아닐때
 					return;								// 실행한다
-				}
 				
 				$(this).parent().parent().remove();  // 위에 호출되는 함수(this) parent 내에 parent까지 삭제
 			});
 			
-			
-			// 상품 상태 delect로 수정하기
+			// 상품 상태 deleted로 수정하기
 			let goodsCode = null;
 								
-			$('[class*=delete-goods]').on('click', function(event) {
-
-				const ok = confirm("상품상태를 수정하시겠습니까?");
+			$('.delete-goods').on('click', function(event) {
+				
+				var goodsCode = $(this).attr('data-goodscodefordeleted');
+				const ok = confirm("상품상태를 Deleted로 수정하시겠습니까?");
 				if (!ok)
 					return;
 				
-				status = $(this).data('status');
-						
-				location.href = 'admin-goods-delete.action?status=' + status;
+				/* alert(goodsCode); */
+				
+				location.href = 'admin-goods-delete.action?goodsCode=' + goodsCode;
 			});
 			
+			$('.active-goods').on('click', function(event) {
+
+				var goodsCode = $(this).attr('data-goodscodeforactive');
+				const ok = confirm("상품상태를 Active로 수정하시겠습니까?");
+				if (!ok)
+					return;
+
+				/* alert(goodsCode); */
+				
+				location.href = 'admin-goods-active.action?goodsCode=' + goodsCode;
+			});
 			
 		});
-		
-		
 		</script>
 		
 </body>
