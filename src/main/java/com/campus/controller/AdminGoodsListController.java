@@ -64,12 +64,14 @@ public class AdminGoodsListController {
 	}
 	
 	// 상품삭제 클릭 시 상태 수정
-	@GetMapping(path= {"admin-goods-delete.action"})
-	public String adminGoodsDelete(@RequestParam(defaultValue = "0") String status) {
+	@PostMapping(path = {"admin-goods-delete.action"})
+	public String adminGoodsDelete(@RequestParam(defaultValue = "0") String status, Model model) {
 		
 		System.out.println("상품 상태 수정 시작합니다.");
 		
 		adminGoodsRegisterListService.deleteGoods(status);
+
+		model.addAttribute("status", status);
 		
 		System.out.println("상품 상태 수정 종료합니다.");
 		

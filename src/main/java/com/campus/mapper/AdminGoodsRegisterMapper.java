@@ -37,8 +37,11 @@ public interface AdminGoodsRegisterMapper {
 	@Select("select * from goods a left join goodsOption b on a.goodsCode = b.goodsCode order by a.goodsName ")
 	List<GoodsOptionJoinDto> selectJoinedList();
 
-	@Update("UPDATE goods SET status = 'deleted' WHERE goodsCode = ${goodsCode} ")
-	void deleteGoods(String status);		// 상품 상태 수정
+	
+	// 상품 상태 수정 : active -> deleted
+	@Update("UPDATE goods SET status = 'deleted' WHERE goodsCode = ${ goodsCode } ")
+	void deleteGoods(String status);
+	
 	
 	// 상품 옵션 삭제
 	@Delete("DELETE FROM goodsOption WHERE optionNo = #{optionNo}")
@@ -78,9 +81,6 @@ public interface AdminGoodsRegisterMapper {
 
 	@Select("SELECT * FROM goodsRegister")
 	List<GoodsRegisterDto> adminGoodsRegisterInList();
-
-	
-
 
 	
 	

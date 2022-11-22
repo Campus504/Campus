@@ -261,7 +261,7 @@
 				
 				status = $(this).data('status');
 						
-				location.href = 'admin-goods-delete.action?goodsCode=' + goodsCode;
+				location.href = 'admin-goods-delete.action?status=' + status;
 			});
 			
 			
