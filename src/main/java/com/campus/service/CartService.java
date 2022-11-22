@@ -13,14 +13,12 @@ public interface CartService {
 
 	List<CartDto> listCart(String memberId);
 
-	void updateCart(CartDto cart);
+	void updateCart(int cartNo, int amount);
 
-	void deleteCart(CartDto cart);
-
-	int sumMoney(String memberId);
+	void deleteCart(int cartNo);
 
 	void deleteAllCart(String memberId);
 
-
+	int selectCart(String memberId, int goodsCode);
 	
 }

@@ -4,6 +4,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html lang="ko">
 
@@ -124,9 +125,8 @@
 	<a href="goods-list.action">쇼핑하러가기</a>
 </c:if>
 
-<form method="post" action="showOrderPage.action">
+<form id="cartForm" method="post" action="showOrderPage.action" onsubmit="return false;">
 	<c:if test="${ not empty loginuser }">
-
 	
 	<table class="table text-center table-hover container">
 		<thead>
@@ -139,10 +139,15 @@
 		</thead>
 		<tbody>
 			<c:forEach var="cart" items="${ list }">
+			<input type="hidden" value="${cart.cartNo}" name="cartNo">
+			
+			<c:set var="sum" value="${sum+1}"></c:set>
 				<tr>
 					<td>${cart.goods.goodsName}</td>
-					<td>${cart.price}</td>
-					<td><input type="number" name="amount" value="${cart.amount}" class="form-control"></td>
+					
+					<td><input id="price${sum}" type="number" value="${cart.price}" readonly="readonly"></td>
+					
+					<td><input id="amount${sum}" type="number" min="1" name="amount" value="${cart.amount}" class="form-control"></td>
 					<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
 					<td><a class="btn btn-danger" href="deleteCart.action?memberId=${ cart.memberId }&goodsCode=${ cart.goodsCode }">상품삭제</a></td>
 				</tr>
@@ -156,14 +161,12 @@
 	</table>
 
 <p class="container ">
-	총 합계금액:
-	<c:out value="${sumMoney}" />
-	원
+	총 합계금액: <input id="totalPrice" readonly="readonly" value=""> 원
 </p>
 
 
 <div class="container">
-	<button class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="submit">주문하기</button> 
+	<button id="order-btn" class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="button">주문하기</button> 
 		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
 		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
@@ -216,6 +219,75 @@
     <script src="/campus/resources/sidebar/js/main.js"></script>
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
+
+<script type="text/javascript">
+$(function() {
+	
+	var size = ${ size } + 1
+	var price;
+	var amount;
+	var sum = 0;
+	
+	for (var i = 1; i < size; i++) {
+		
+		price = $('input[id=price'+i+']').val();
+		amount = $('input[id=amount'+i+']').val();
+		
+		sum = sum + price*amount;
+	}
+		
+	$('input[id=totalPrice]').val(sum);
+	
+	$('input[name=amount]').on('change',function(event) {
+		
+		if ($(this).val()<1) {
+			alert("최소 수량은 1개 입니다.")
+			$(this).val(1);
+		}	
+			
+			
+			var sum = 0;
+			
+		for (var i = 1; i < size; i++) {
+			
+			price = $('input[id=price'+i+']').val();
+			amount = $('input[id=amount'+i+']').val();
+			
+			sum = sum + price*amount;
+		}
+			
+		$('input[id=totalPrice]').val(sum);
+		
+	});
+	
+	$('#order-btn').on('click',function(event) {
+		var cartForm = $('#cartForm').serialize();
+		
+		if (cartForm.length == 0) {
+			alert("장바구니에 담긴 제품이 없습니다.")
+			return;
+		}
+		
+		$.ajax({
+			"url" : "modifyAmount.action",
+	 		"method" : "get",
+	 		"data" : cartForm,
+	 		"success" : function(data, status, xhr) {
+	 			
+	 			location.href='showOrderPageByCart.action?'
+	 			
+	 		},
+	 		"error" : function(xhr, status, err) {
+	 		}
+		});
+		
+		//location.href='showOrderPageByCart.action?'+cartForm;	
+		
+	})
+	
+});
+
+</script>
 
 </body>
 

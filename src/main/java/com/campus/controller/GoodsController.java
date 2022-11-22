@@ -3,6 +3,7 @@ package com.campus.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
 import com.campus.dto.OrderDetailDto;
 import com.campus.dto.OrderListDto;
+import com.campus.service.CartService;
 import com.campus.service.GoodsService;
 import com.mysql.cj.Session;
 
@@ -31,6 +33,10 @@ public class GoodsController {
 	@Autowired
 	@Qualifier("goodsService")
 	private GoodsService goodsService; 
+	
+	@Autowired
+	@Qualifier("cartService")
+	private CartService cartService;
 	
 	@GetMapping(path= {"goods-list.action"})
 	public String goodsList(@RequestParam(defaultValue = "0") String category, Model model) {
@@ -68,11 +74,24 @@ public class GoodsController {
 		}
 	
 	@GetMapping(path= {"goods-detail.action"})
-	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
+	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, HttpSession session, Model model) {
 		
 		if(goodsCode==0) {
 			return "redirect:main";
 		}
+		
+		MemberDto member = (MemberDto)session.getAttribute("loginuser");
+		
+		if (member != null) {
+			
+			int valid = cartService.selectCart(member.getMemberId(), goodsCode);
+			model.addAttribute("valid", valid);
+			
+		} else {
+			model.addAttribute("valid", -1);
+		}
+		
+		
 		
 		GoodsDto goods = goodsService.findGoodsByGoodsCode(goodsCode);
 		GoodsRegisterDto goodsIn = goodsService.findGoodsInByGoodsCode(goodsCode);
@@ -92,21 +111,48 @@ public class GoodsController {
 		return "order/order";
 	}
 	
-	
-	  @PostMapping(path= {"showOrderPage.action"}) 
-	  public String showOneItemOrderPage(List<CartDto> cart, Model model, HttpSession session) {
+	//장바구니에서 오더페이지 이동 - 강성훈
+	  @GetMapping(path= {"showOrderPageByCart.action"}) 
+	  public String showOneItemOrderPage(Model model, HttpSession session) {
+		  
+	  MemberDto member = (MemberDto)session.getAttribute("loginuser");
+	  String memberId = member.getMemberId();
 	  
-	  MemberDto member =
-	  goodsService.findMemberByMemberId(cart.get(0).getMemberId()); 
-	  GoodsDto goods = 
-	  goodsService.findGoodsByGoodsCode(cart.get(0).getGoodsCode());
+	  List<CartDto> carts = goodsService.findCartById(memberId);
 	  
-	  model.addAttribute("member", member); 
-	  model.addAttribute("goods", goods);
-	  model.addAttribute("cart", cart); 
-	  return "order/order"; 
+	  model.addAttribute("carts", carts); 
+	  return "order/cart-to-order"; 
 	  }
-	 
+	
+	 //장바구니 - 오더 - 결제 강성훈
+	  @PostMapping(path= {"orderGoodsByCart.action"})
+		public String insertOrderByCart(OrderListDto orderList, OrderDetailDto orderDetail ) {
+			
+		 String memberId = orderList.getMemberId();
+		 
+		 List<CartDto> carts = goodsService.findCartById(memberId);
+		 
+		 for (int i = 0; i < carts.size(); i++) {
+			
+			 if (i==0) {
+				 orderDetail.setAmount(carts.get(i).getAmount());
+				 orderDetail.setGoodsCode(carts.get(i).getGoodsCode());
+				 orderDetail.setPrice(carts.get(i).getPrice());
+				 goodsService.insertOrder(orderList, orderDetail);
+			} else {
+				orderDetail.setOrderNo(orderList.getOrderNo());
+				orderDetail.setAmount(carts.get(i).getAmount());
+				orderDetail.setGoodsCode(carts.get(i).getGoodsCode());
+				orderDetail.setPrice(carts.get(i).getPrice());
+				goodsService.insertOrderDetail(orderDetail);
+			}
+			 
+		}
+		 
+		 cartService.deleteAllCart(memberId);
+			return "redirect:my-page-order-list.action";
+		}  
+	  
 	
 	@PostMapping(path= {"orderGoods.action"})
 	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail ) {

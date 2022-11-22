@@ -5,8 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import com.campus.dto.CartDto;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
@@ -47,5 +50,22 @@ public interface GoodsMapper {
 	
 	@Select("select * from goods where goodsCode in ( SELECT goodsCode from orderDetail group by goodsCode order by sum(amount) DESC ) limit 10")
 	List<GoodsDto> selectBestGoods();
-
+	
+	//장바구니에 담긴 물품들 가져오기
+	@Select("SELECT c.*, g.goodsName FROM cart c " + 
+			"INNER JOIN goods g " + 
+			"ON c.goodsCode = g.goodscode " + 
+			"WHERE memberid = #{ memberId }")
+	
+	@Results(id = "cartResultMap", value = {
+			@Result(column = "memberId", property = "memberId", id = true),
+			@Result(column = "goodsCode", property = "goodsCode", id = true),
+			@Result(column = "amount", property = "amount"),
+			@Result(column = "price", property = "price"),
+			@Result(column = "goodsName", property = "goods.goodsName"),		
+		})
+	List<CartDto> selectCartById(String memberId);
+	
+	@Select("SELECT * from orderList WHERE memberId = #{memberId} ORDER BY orderNo DESC LIMIT 1")
+	OrderListDto selectRecentOrder(String memberId);
 }

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -27,7 +28,7 @@ public interface CartMapper {
 	@Select("SELECT c.*, g.goodsName FROM cart c " + 
 			"INNER JOIN goods g " + 
 			"ON c.goodsCode = g.goodscode " + 
-			"WHERE memberid = #{ memberId } ")
+			"WHERE memberid = #{ memberId }")
 	
 	@Results(id = "cartResultMap", value = {
 			@Result(column = "memberId", property = "memberId", id = true),
@@ -39,29 +40,23 @@ public interface CartMapper {
 	List<CartDto> listCart(String memberId);
 	
 	//장바구니 수량 수정
-	@Update("UPDATE cart SET amount = #{ amount } WHERE memberid = #{memberId} ")
-	void updateCart(CartDto cart);
+	@Update("UPDATE cart SET amount = #{ amount } WHERE cartNo = #{cartNo} ")
+	void updateCart(@Param("cartNo") int cartNo, @Param("amount") int amount);
 	
 	//장바구니 삭제
-	@Delete("DELETE FROM cart WHERE memberid = #{ memberId } AND goodscode = #{ goodsCode } ")
-	void deleteCart(CartDto cart);
+	@Delete("DELETE FROM cart WHERE cartNo = #{cartNo} ")
+	void deleteCart(int cartNo);
 
 	//장바구니 전체삭제
 	@Delete("DELETE FROM cart WHERE memberid = #{ memberId } ")
 	void deleteAllCart(String memberId);
 	
-	//장바구니 총금액 nvl(값1,값).. 값1이 null일 경우 값2를 반환
-	@Select("select nvl(sum(amount*price),0) from cart where memberid = #{memberId} ")
-	int sumMoney(String memberId);
-	
-	
-	  //장바구니 중복확인
+	//장바구니 중복확인
 	  
-		/*
-		 * @Select("SELECT COUNT(*) FROM cart WHERE memberid=#{ memberId } AND goodsCode = #{goodsCode} "
-		 * ) void selectCart(int goodsCode);
-		 * 
-		 */
+	@Select("SELECT COUNT(*) FROM cart WHERE memberid = #{ memberId } AND goodsCode = #{goodsCode} ")
+	int selectCart(@Param("memberId") String memberId, @Param("goodsCode") int goodsCode);
+		 
+		 
 
 	
 

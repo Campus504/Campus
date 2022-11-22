@@ -149,7 +149,7 @@
           </div>
 		
 		<div class="col-lg-4">
-		<form name="addForm" action="addByCart.action" method="post"  style="text-align:center;">
+		<form id="cartForm" name="addForm" method="post"  style="text-align:center;">
 		<!-- <form name="addForm" action="showOrderPage.action" method="post"  style="text-align:center;"> -->
 		<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
 		<input type="hidden" name="memberId" value="${loginuser.memberId}">
@@ -187,7 +187,7 @@
                 </c:if>
                 <span>
                 <!-- <form method="post" action="addByCart.action"> -->
-            	<button type="submit" id="addToCart" class="btn btn-warning">장바구니</button>
+            	<button type="button" id="addToCart" class="btn btn-warning">장바구니</button>
             	<!-- </form> -->
                 
                 </span>
@@ -266,25 +266,46 @@ $(function(){
 		location.href="showOrderPage.action?goodsCode="+${goods.goodsCode}+"&amount="+amount+"&price="+${goodsIn.rentPrice}+"&memberId=${loginuser.memberId}";
 		}
 	});
-	
-$('#addToCart').on('click',function(event){
-		if(${loginuser.memberId==null}){
-			alert('로그인 후에 이용해주세요');
-			return false;
-		}
-		return true;
-	});
-	
 
-
-$('#addToCart').click(function(){ 
-	var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
-		if(check){
-			location.assign('cart-list.action?memberId=${ loginuser.memberId }');
-			}else{
-				location.href = 'goods-detail.action?goodsCode=${goods.goodsCode}';
-				return false;
-			}
+	
+	//강성훈 11월22일 수정.. 충돌 나면 확인하도록
+$('#addToCart').click(function(event){ 
+	
+	var valid = ${valid};
+	
+	if (valid >= 1) {
+		event.preventDefault();
+		alert("이미 장바구니에 포함된 상품입니다.")
+		return;
+	} else if (valid == -1) {
+		event.preventDefault();
+		alert("로그인 후 이용 하세요.")
+		return;
+	} else {
+		
+		var cartForm = $('#cartForm').serialize();
+		
+		$.ajax({
+			"url" : "addByCart.action",
+	 		"method" : "post",
+	 		"data" : cartForm,
+	 		"success" : function(data, status, xhr) {
+	 			var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
+	 			if(check){
+	 				location.assign('cart-list.action?memberId=${ loginuser.memberId }');
+	 				}else{
+	 					return;
+	 				}
+	 		},
+	 		"error" : function(xhr, status, err) {
+	 		}
+		});
+		
+		
+	}
+	
+	
+	
 		
 });
 

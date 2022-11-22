@@ -35,14 +35,14 @@ public class CartServiceImpl implements CartService {
 	
 	//장바구니 수량 수정
 	@Override
-	public void updateCart(CartDto cart) {
-		cartMapper.updateCart(cart);
+	public void updateCart(int cartNo, int amount) {
+		cartMapper.updateCart(cartNo, amount);
 	}
 	
 	// 장바구니 개별삭제
 	@Override
-	public void deleteCart(CartDto cart) {
-		cartMapper.deleteCart(cart);
+	public void deleteCart(int cartNo) {
+		cartMapper.deleteCart(cartNo);
 		
 	}
 	//장바구니 전체삭제
@@ -52,11 +52,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int sumMoney(String memberId) {
-		int a = cartMapper.sumMoney(memberId); 
-		return a;
+	public int selectCart(String memberId, int goodsCode) {
+		int valid = cartMapper.selectCart(memberId, goodsCode);
+		return valid;
+		
 	}
-
 
 	
 }

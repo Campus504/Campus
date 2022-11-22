@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.CartDto;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
@@ -72,6 +73,14 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsMapper.insertOrderDetail(orderDetail);
 		
 	}
+	
+	@Override
+	public void insertOrderDetail( OrderDetailDto orderDetail) {
+		
+		goodsMapper.insertOrderDetail(orderDetail);
+		
+	}
+	
 	@Override
 	public List<GoodsDto> findBestGoods() {
 		List<GoodsDto> goods = goodsMapper.selectBestGoods();
@@ -88,6 +97,18 @@ public class GoodsServiceImpl implements GoodsService {
 		 * goodsList.add(good); } System.out.println(goodsList);
 		 */
 		return null;
+	}
+	
+	//장바구니 -> 오더
+	@Override
+	public List<CartDto> findCartById(String memberId) {
+		List<CartDto> carts = goodsMapper.selectCartById(memberId);
+		return carts;
+	}
+	@Override
+	public OrderListDto findRecentOrder(String memberId) {
+		OrderListDto orderList = goodsMapper.selectRecentOrder(memberId);
+		return orderList;
 	}
 	
 }

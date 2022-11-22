@@ -2,6 +2,7 @@ package com.campus.service;
 
 import java.util.List;
 
+import com.campus.dto.CartDto;
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsRegisterDto;
 import com.campus.dto.MemberDto;
@@ -25,8 +26,15 @@ public interface GoodsService {
 
 	void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail);
 	
+	void insertOrderDetail(OrderDetailDto orderDetail);
+	
 	List<GoodsDto> findBestGoods();
 	
 	List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods);
+	
+	//장바구니 -> 오더
+	List<CartDto> findCartById(String memberId);
+	
+	OrderListDto findRecentOrder(String memberId);
 
 }

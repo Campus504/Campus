@@ -1,6 +1,7 @@
 package com.campus.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.dto.CartDto;
@@ -36,22 +38,31 @@ public class CartController {
 		cart.setMemberId(member.getMemberId());	
 		
 		List<CartDto> list = cartService.listCart(member.getMemberId());
-		model.addAttribute("list",list);
+		int size = list.size();
 		
-		  int sumMoney = cartService.sumMoney(member.getMemberId());
-		  model.addAttribute("sumMoney", sumMoney);
-		 
+		model.addAttribute("list",list);
+		model.addAttribute("size",size);
+		
 		return "cart/my-page-cart-list";
 	}
 	
 
 	//장바구니 추가
 	@PostMapping("addByCart.action")
-	public String addByCart(@ModelAttribute CartDto cart, HttpSession session) {
+	@ResponseBody
+	public String addByCart(@ModelAttribute CartDto cart, HttpSession session, Model model) {
 		MemberDto member = (MemberDto) session.getAttribute("loginuser");
 		cart.setMemberId(member.getMemberId());
-		cartService.insertCart(cart);
-		return "redirect:cart-list.action";
+		
+		int valid = cartService.selectCart(member.getMemberId(), cart.getGoodsCode());
+		
+		if (valid >= 1) {
+			return "success";
+		} else {
+			cartService.insertCart(cart);
+		}
+		
+		return "success";
 	}
 	
 	// 장바구니 목록
@@ -61,9 +72,7 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<CartDto> list = cartService.listCart(member.getMemberId());
 		System.out.println(list);
-		int sumMoney = cartService.sumMoney("memberId");
 		map.put("list", list);
-		map.put("sumMoney", sumMoney);
 		mav.setViewName("cart/cart-list.action");
 		mav.addObject("map", map);
 		return mav;
@@ -71,9 +80,9 @@ public class CartController {
 	
 	//장바구니 개별삭제
 	@RequestMapping("deleteCart.action")
-	public String deleteCart(CartDto cart) {
-		System.out.println(cart);
-		cartService.deleteCart(cart);
+	public String deleteCart(int cartNo) {
+		System.out.println(cartNo);
+		cartService.deleteCart(cartNo);
 		
 		return "redirect:cart-list.action";
 	}
@@ -83,5 +92,20 @@ public class CartController {
 	public String deleteAllCart(String memberId) {
 		cartService.deleteAllCart(memberId);
 		return "redirect:cart-list.action";
+	}
+	
+	//장바구니 수량 변경
+	@GetMapping("modifyAmount.action")
+	@ResponseBody
+	public String modifyAmount(int[] cartNo, int[] amount) {
+		
+		for (int i = 0; i < amount.length; i++) {
+			
+			cartService.updateCart(cartNo[i],amount[i]);
+			 
+		}
+		
+		
+		return "success";
 	}
 }
