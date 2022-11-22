@@ -157,6 +157,7 @@
 		<input type="hidden" name="goodsName" value="${goods.goodsName}">
 		<input type="hidden" name="brand" value="${goods.brand}">
 		<input type="hidden" name="category" value="${goods.category}">
+		<input type="hidden" name="bigCategory" value="${category}">
             <div class="portfolio-info">
               <h3>${goods.goodsName}</h3>
               <ul>

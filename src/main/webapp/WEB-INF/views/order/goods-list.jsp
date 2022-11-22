@@ -161,7 +161,7 @@
             </figure>
 
             <div class="portfolio-info">
-              <h4><a href="goods-detail.action?goodsCode=${goods.goodsCode}">${goods.goodsName}</a></h4>
+              <h4><a href="goods-detail.action?goodsCode=${goods.goodsCode}&category=${category}">${goods.goodsName}</a></h4>
               <p></p>
             </div>
           </div>

@@ -92,11 +92,11 @@
 										<li class="menu-item-has-children"><a
 											href="freeboard.action">커뮤니티</a></li>
 
-										<li class="menu-item-has-children"><a href="#">고객센터</a>
-											<ul class="sub-menu">
+										<li class="menu-item-has-children"><a href="faq-list.action">고객센터</a>
+											<!-- <ul class="sub-menu">
 												<li><a href="faq-list.action" title="자주묻는질문">자주묻는질문</a></li>
 												<li><a href="inquiry.action" title="1:1문의">1:1문의</a></li>
-											</ul></li>
+											</ul> --></li>
 									</ol>
 								</div>
 							</nav>

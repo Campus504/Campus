@@ -1,11 +1,8 @@
 package com.campus.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.campus.dto.CartDto;
@@ -23,7 +19,6 @@ import com.campus.dto.MemberDto;
 import com.campus.dto.OrderDetailDto;
 import com.campus.dto.OrderListDto;
 import com.campus.service.GoodsService;
-import com.mysql.cj.Session;
 
 @Controller
 public class GoodsController {
@@ -83,37 +78,34 @@ public class GoodsController {
 	}
 	
 	@GetMapping(path= {"showOrderPage.action"})
-	public String showOrderPage(CartDto cart, Model model) {
-		MemberDto member = goodsService.findMemberByMemberId(cart.getMemberId());
-		
-		cart.setGoods(goodsService.findGoodsByGoodsCode(cart.getGoodsCode()));
+	public String showOrderPage(CartDto item, Model model) {
+		MemberDto member = goodsService.findMemberByMemberId(item.getMemberId());
+		item.setGoods(goodsService.findGoodsByGoodsCode(item.getGoodsCode()));
+		List<CartDto> cart = new ArrayList<CartDto>();
+		cart.add(item);
 		model.addAttribute("cart", cart);
 		model.addAttribute("member", member);
 		return "order/order";
 	}
 	
 	
-	  @PostMapping(path= {"showOrderPage.action"}) 
-	  public String showOneItemOrderPage(List<CartDto> cart, Model model, HttpSession session) {
-	  
-	  MemberDto member =
-	  goodsService.findMemberByMemberId(cart.get(0).getMemberId()); 
-	  GoodsDto goods = 
-	  goodsService.findGoodsByGoodsCode(cart.get(0).getGoodsCode());
-	  
-	  model.addAttribute("member", member); 
-	  model.addAttribute("goods", goods);
-	  model.addAttribute("cart", cart); 
-	  return "order/order"; 
+	  @PostMapping(path= {"showOrderPage.action"})
+	  public String showCartOrderPage(@RequestParam String memberId, Model model) {
+		List<CartDto> cart = goodsService.findCartByMemberId(memberId);
+		MemberDto member = goodsService.findMemberByMemberId(memberId);
+		model.addAttribute("cart", cart);
+		model.addAttribute("member", member);
+	  return "order/order";
 	  }
 	 
-	
-	@PostMapping(path= {"orderGoods.action"})
-	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail ) {
-		goodsService.insertOrder(orderList, orderDetail);
-		
-		return "redirect:my-page-order-list.action";
-	}
+	  
+	  @PostMapping(path= {"orderGoods.action"})
+		public String insertOrder(int[] goodsCode, int[] amount,int[] price, OrderListDto order) {
+		  //오더 리스트로 상품 정보(멤버아이디, 수령일, 반납일, 결제방식 ) 저장> [오더넘버] 받아와서 오더디테일에 상품별로 금액, 수량, 굿즈코드, 아이디 저장
+		  goodsService.insertOrder(goodsCode, amount, price, order);
+		  
+			return "redirect:my-page-order-list.action";
+		}
 	
 	
 	
