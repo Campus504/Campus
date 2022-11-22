@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +87,8 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="admin-main">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">회원 상세 정보</li>
+									<li class="breadcrumb-item active" aria-current="page">회원
+										상세 정보</li>
 								</ol>
 							</nav>
 						</div>
@@ -106,14 +109,14 @@
 					</div>
 				</div>
 				<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
-				
+
 				<div class="mb-9">
 					<div
 						class="row align-items-center justify-content-between g-3 mb-4">
 						<div class="col-auto">
 							<h2 class="mb-0">회원 상세 정보</h2>
 						</div>
-						
+
 					</div>
 					<div class="row g-5">
 						<div class="col-12 col-xxl-4">
@@ -131,24 +134,32 @@
 													</div>
 												</div>
 												<div class="col-12 col-sm-auto flex-1">
-													<h3 >${member.memberId}</h3>
-													
-													&nbsp;<p class="text-800">이름 : ${member.memberName}</p>
-													&nbsp;<p class="text-800">주소 : ${member.address}</p>
-													&nbsp;<p class="text-800">이메일 : ${member.email}</p>
-													&nbsp;<p class="text-800">전화번호 : ${member.phone}</p>
-													&nbsp;<p class="text-800">가입 일자 : ${member.joinDate}</p>
-													&nbsp;<p class="text-800">권한 : ${member.admin}</p>
-													
+													<h3>${member.memberId}</h3>
+
+													&nbsp;
+													<p class="text-800">이름 : ${member.memberName}</p>
+													&nbsp;
+													<p class="text-800">주소 : ${member.address}</p>
+													&nbsp;
+													<p class="text-800">이메일 : ${member.email}</p>
+													&nbsp;
+													<p class="text-800">전화번호 : ${member.phone}</p>
+													&nbsp;
+													<p class="text-800">
+														가입 일자 :
+														<fmt:formatDate value="${member.joinDate}"
+															pattern="yyyy-MM-dd" />
+													</p>
+													&nbsp;
+													<p class="text-800">권한 : ${member.admin}</p>
+
 												</div>
 											</div>
-											
+
 										</div>
 									</div>
 								</div>
-								<div class="col-12 col-md-5 col-xxl-12 mb-xxl-3">
-									
-								</div>
+								<div class="col-12 col-md-5 col-xxl-12 mb-xxl-3"></div>
 								<div class="col-12">
 									<div class="card h-100"></div>
 								</div>
@@ -162,7 +173,7 @@
 	<div class="col-12 col-xxl-8">
 		<div class="mb-6">
 			<h3 class="mb-4">
-				Orders <span class="text-700 fw-normal">(97)</span>
+				<br> <br>게시글 <span class="text-700 fw-normal"></span>
 			</h3>
 			<div class="border-top border-bottom border-200"
 				id="customerOrdersTable"
@@ -172,213 +183,62 @@
 						<thead>
 							<tr>
 								<th class="sort white-space-nowrap align-middle ps-0 pe-3"
-									scope="col" data-sort="order" style="width: 10%;">ORDER</th>
+									scope="col" data-sort="order" style="width: 10%;">글 번호</th>
 								<th class="sort align-middle text-end pe-7" scope="col"
-									data-sort="total" style="width: 10%;">TOTAL</th>
+									data-sort="total" style="width: 10%;">카테고리</th>
 								<th class="sort align-middle white-space-nowrap pe-3"
-									scope="col" data-sort="payment_status" style="width: 15%;">PAYMENT
-									STATUS</th>
+									scope="col" data-sort="payment_status" style="width: 15%;">제목</th>
 								<th class="sort align-middle white-space-nowrap text-start pe-3"
-									scope="col" data-sort="fulfilment_status" style="width: 20%;">FULFILMENT
-									STATUS</th>
-								<th class="sort align-middle white-space-nowrap text-start"
+									scope="col" data-sort="fulfilment_status" style="width: 20%;">작성
+									일자</th>
+								<th class="sort align-middle white-space-nowrap text-start pe-3"
+									scope="col" data-sort="fulfilment_status" style="width: 20%;">삭제</th>
+								<!-- <th class="sort align-middle white-space-nowrap text-start"
 									scope="col" data-sort="delivery_type" style="width: 30%;">DELIVERY
 									TYPE</th>
 								<th class="sort align-middle text-end pe-0" scope="col"
-									data-sort="date">DATE</th>
+									data-sort="date">DATE</th>-->
 								<th class="sort text-end align-middle pe-0 ps-5" scope="col"></th>
 							</tr>
 						</thead>
 						<tbody class="list" id="table-latest-review-body">
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="order align-middle white-space-nowrap ps-0"><a
-									class="fw-semi-bold" href="#!">#2453</a></td>
-								<td class="total align-middle text-end fw-semi-bold pe-7">$87</td>
-								<td
-									class="payment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-success"><span
-										class="badge-label">Paid</span><span class="ms-1"
-										data-feather="check" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="fulfilment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-success"><span
-										class="badge-label">Order Fulfilled</span><span class="ms-1"
-										data-feather="check" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="delivery_type align-middle white-space-nowrap text-900 fs--1 text-start">Cash
-									on delivery</td>
-								<td
-									class="date align-middle white-space-nowrap text-700 fs--1 ps-4 text-end">Dec
-									12, 12:56 PM</td>
-								<td class="align-middle white-space-nowrap text-end pe-0 ps-5">
-									<div class="font-sans-serif btn-reveal-trigger">
-										<button
-											class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
-											type="button" data-bs-toggle="dropdown"
-											data-boundary="window" aria-haspopup="true"
-											aria-expanded="false" data-bs-reference="parent">
-											<span class="fas fa-ellipsis-h fs--2"></span>
-										</button>
-										<div class="dropdown-menu dropdown-menu-end py-2">
-											<a class="dropdown-item" href="#!">View</a><a
-												class="dropdown-item" href="#!">Export</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item text-danger" href="#!">Remove</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="order align-middle white-space-nowrap ps-0"><a
-									class="fw-semi-bold" href="#!">#2452</a></td>
-								<td class="total align-middle text-end fw-semi-bold pe-7">$7264</td>
-								<td
-									class="payment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-secondary"><span
-										class="badge-label">Cancelled</span><span class="ms-1"
-										data-feather="x" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="fulfilment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-info"><span
-										class="badge-label">Ready to pickup</span><span class="ms-1"
-										data-feather="info" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="delivery_type align-middle white-space-nowrap text-900 fs--1 text-start">Free
-									shipping</td>
-								<td
-									class="date align-middle white-space-nowrap text-700 fs--1 ps-4 text-end">Dec
-									9, 2:28PM</td>
-								<td class="align-middle white-space-nowrap text-end pe-0 ps-5">
-									<div class="font-sans-serif btn-reveal-trigger">
-										<button
-											class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
-											type="button" data-bs-toggle="dropdown"
-											data-boundary="window" aria-haspopup="true"
-											aria-expanded="false" data-bs-reference="parent">
-											<span class="fas fa-ellipsis-h fs--2"></span>
-										</button>
-										<div class="dropdown-menu dropdown-menu-end py-2">
-											<a class="dropdown-item" href="#!">View</a><a
-												class="dropdown-item" href="#!">Export</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item text-danger" href="#!">Remove</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="order align-middle white-space-nowrap ps-0"><a
-									class="fw-semi-bold" href="#!">#2451</a></td>
-								<td class="total align-middle text-end fw-semi-bold pe-7">$375</td>
-								<td
-									class="payment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-warning"><span
-										class="badge-label">Pending</span><span class="ms-1"
-										data-feather="alert-octagon"
-										style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="fulfilment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-warning"><span
-										class="badge-label">Partial FulfiLled</span><span class="ms-1"
-										data-feather="alert-octagon"
-										style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="delivery_type align-middle white-space-nowrap text-900 fs--1 text-start">Local
-									pickup</td>
-								<td
-									class="date align-middle white-space-nowrap text-700 fs--1 ps-4 text-end">Dec
-									4, 12:56 PM</td>
-								<td class="align-middle white-space-nowrap text-end pe-0 ps-5">
-									<div class="font-sans-serif btn-reveal-trigger">
-										<button
-											class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
-											type="button" data-bs-toggle="dropdown"
-											data-boundary="window" aria-haspopup="true"
-											aria-expanded="false" data-bs-reference="parent">
-											<span class="fas fa-ellipsis-h fs--2"></span>
-										</button>
-										<div class="dropdown-menu dropdown-menu-end py-2">
-											<a class="dropdown-item" href="#!">View</a><a
-												class="dropdown-item" href="#!">Export</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item text-danger" href="#!">Remove</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="order align-middle white-space-nowrap ps-0"><a
-									class="fw-semi-bold" href="#!">#2450</a></td>
-								<td class="total align-middle text-end fw-semi-bold pe-7">$657</td>
-								<td
-									class="payment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-secondary"><span
-										class="badge-label">Cancelled</span><span class="ms-1"
-										data-feather="x" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="fulfilment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
-									class="badge badge-phoenix fs--2 badge-phoenix-secondary"><span
-										class="badge-label">Order CancelLed</span><span class="ms-1"
-										data-feather="x" style="height: 12.8px; width: 12.8px;"></span></span></td>
-								<td
-									class="delivery_type align-middle white-space-nowrap text-900 fs--1 text-start">Standard
-									shipping</td>
-								<td
-									class="date align-middle white-space-nowrap text-700 fs--1 ps-4 text-end">Dec
-									1, 4:07 AM</td>
-								<td class="align-middle white-space-nowrap text-end pe-0 ps-5">
-									<div class="font-sans-serif btn-reveal-trigger">
-										<button
-											class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
-											type="button" data-bs-toggle="dropdown"
-											data-boundary="window" aria-haspopup="true"
-											aria-expanded="false" data-bs-reference="parent">
-											<span class="fas fa-ellipsis-h fs--2"></span>
-										</button>
-										<div class="dropdown-menu dropdown-menu-end py-2">
-											<a class="dropdown-item" href="#!">View</a><a
-												class="dropdown-item" href="#!">Export</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item text-danger" href="#!">Remove</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							
+							<c:forEach var="board" items="${ boards }" varStatus="status">
+								<c:if test="${ board.active eq 'TRUE' }">
+									<tr
+										class="hover-actions-trigger btn-reveal-trigger position-static">
+
+
+
+										<td class="order align-middle white-space-nowrap ps-0"><a
+											class="fw-semi-bold" href="#!">${ board.boardNo }</a></td>
+										<td class="total align-middle text-end fw-semi-bold pe-7">${board.category}</td>
+										<td
+											class="payment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
+											class="badge badge-phoenix fs--2 badge-phoenix-success"><span
+												class="badge-label"> ${board.title}</span><span class="ms-1"
+												data-feather="check" style="height: 12.8px; width: 12.8px;"></span></span></td>
+										<td
+											class="fulfilment_status align-middle white-space-nowrap text-start fw-bold text-700"><span
+											class="badge badge-phoenix fs--2 badge-phoenix-success"><span
+												class="badge-label"><fmt:formatDate
+														value="${board.writeDate}" pattern="yyyy-MM-dd" /></span><span
+												class="ms-1" data-feather="check"
+												style="height: 12.8px; width: 12.8px;"></span></span></td>
+										<td><input type="button" class="boardDeleted"
+											data-memberId="${board.memberId}"
+											data-boardNo="${board.boardNo}" value="삭제"></td>
+									</tr>
+								</c:if>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
-				<div
-					class="row align-items-center justify-content-between py-2 pe-0 fs--1">
-					<div class="col-auto d-flex">
-						<p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900"
-							data-list-info="data-list-info"></p>
-						<a class="fw-semi-bold" href="#!" data-list-view="*">View all<span
-							class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a
-							class="fw-semi-bold d-none" href="#!" data-list-view="less">View
-							Less<span class="fas fa-angle-right ms-1"
-							data-fa-transform="down-1"></span>
-						</a>
-					</div>
-					<div class="col-auto d-flex">
-						<button class="page-link" data-list-pagination="prev">
-							<span class="fas fa-chevron-left"></span>
-						</button>
-						<ul class="mb-0 pagination"></ul>
-						<button class="page-link pe-0" data-list-pagination="next">
-							<span class="fas fa-chevron-right"></span>
-						</button>
-					</div>
-				</div>
+
 			</div>
 		</div>
 		<div class="mb-6">
 			<h3 class="mb-4">
-				Wishlist <span class="text-700 fw-normal">(43)</span>
+				<br> <br>주문목록 <span class="text-700 fw-normal"></span>
 			</h3>
 			<div class="border-200 border-top border-bottom"
 				id="customerWishlistTable"
@@ -390,106 +250,78 @@
 								<th class="sort white-space-nowrap align-middle fs--2"
 									scope="col" style="width: 7%;"></th>
 								<th class="sort white-space-nowrap align-middle" scope="col"
-									style="width: 35%; min-width: 250px;" data-sort="products">PRODUCTS</th>
+									style="width: 35%; min-width: 250px;" data-sort="products">주문번호</th>
 								<th class="sort align-middle" scope="col" data-sort="color"
-									style="width: 15%;">COLOR</th>
+									style="width: 15%;">주문일자</th>
 								<th class="sort align-middle" scope="col" data-sort="size"
-									style="width: 10%;">SIZE</th>
+									style="width: 10%;">대여일자</th>
 								<th class="sort align-middle text-end" scope="col"
-									data-sort="price" style="width: 15%;">PRICE</th>
+									data-sort="price" style="width: 15%;">반납일자</th>
 								<th class="sort align-middle text-end" scope="col"
-									data-sort="total" style="width: 15%;">TOTAL</th>
+									data-sort="total" style="width: 15%;">결제방식</th>
 							</tr>
 						</thead>
 						<tbody class="list" id="customer-wishlist-table-body">
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="align-middle white-space-nowrap py-0"><img
-									src="../../../assets/img//products/1.png" alt="" width="53" /></td>
-								<td class="products align-middle"><a
-									class="fw-semi-bold mb-0" href="#!">Fitbit Sense Advanced
-										Smartwatch wi...</a></td>
-								<td class="color align-middle white-space-nowrap fs--1 text-900">Pure
-									matt black</td>
-								<td
-									class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">42</td>
-								<td
-									class="price align-middle text-900 fs--1 fw-semi-bold text-end">$57</td>
-								<td class="total align-middle fw-bold text-1000 text-end">$57</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="align-middle white-space-nowrap py-0"><img
-									src="../../../assets/img//products/7.png" alt="" width="53" /></td>
-								<td class="products align-middle"><a
-									class="fw-semi-bold mb-0" href="#!">2021 Apple 12.9-inch
-										iPad Pro (Wi‑Fi, ...</a></td>
-								<td class="color align-middle white-space-nowrap fs--1 text-900">Black</td>
-								<td
-									class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">Pro</td>
-								<td
-									class="price align-middle text-900 fs--1 fw-semi-bold text-end">$1,499</td>
-								<td class="total align-middle fw-bold text-1000 text-end">$1499</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="align-middle white-space-nowrap py-0"><img
-									src="../../../assets/img//products/6.png" alt="" width="53" /></td>
-								<td class="products align-middle"><a
-									class="fw-semi-bold mb-0" href="#!">PlayStation 5 DualSense
-										Wireless Cont...</a></td>
-								<td class="color align-middle white-space-nowrap fs--1 text-900">White</td>
-								<td
-									class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">Regular</td>
-								<td
-									class="price align-middle text-900 fs--1 fw-semi-bold text-end">$299</td>
-								<td class="total align-middle fw-bold text-1000 text-end">$359</td>
-							</tr>
-							<tr
-								class="hover-actions-trigger btn-reveal-trigger position-static">
-								<td class="align-middle white-space-nowrap py-0"><img
-									src="../../../assets/img//products/3.png" alt="" width="53" /></td>
-								<td class="products align-middle"><a
-									class="fw-semi-bold mb-0" href="#!">Apple MacBook Pro 13
-										inch-M1-8/256G...</a></td>
-								<td class="color align-middle white-space-nowrap fs--1 text-900">Space
-									Gray</td>
-								<td
-									class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">Pro</td>
-								<td
-									class="price align-middle text-900 fs--1 fw-semi-bold text-end">$1,699</td>
-								<td class="total align-middle fw-bold text-1000 text-end">$1,799</td>
-							</tr>
-							
+							<c:forEach var="orderList" items="${orderLists}"
+								varStatus="status">
+								<tr
+									class="hover-actions-trigger btn-reveal-trigger position-static">
+									<td class="align-middle white-space-nowrap py-0"><img
+										src="../../../assets/img//products/1.png" alt="" width="53" />${orderList.orderNo}</td>
+									<td class="products align-middle"><a
+										class="fw-semi-bold mb-0" href="#!"></a></td>
+									<td
+										class="color align-middle white-space-nowrap fs--1 text-900">
+										<fmt:parseDate var="orderDate1" value="${orderList.orderDate}"
+											pattern="yyyy-MM-dd" /> <fmt:formatDate var="orderDate"
+											value="${orderDate1}" pattern="yyyy-MM-dd" /> ${orderDate}
+									</td>
+									<td
+										class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">
+										<fmt:parseDate var="orderDate2" value="${orderList.rentDate}"
+											pattern="yyyy-MM-dd" /> <fmt:formatDate var="orderDate3"
+											value="${orderDate2}" pattern="yyyy-MM-dd" /> ${orderDate3}
+									</td>
+									<td
+										class="price align-middle text-900 fs--1 fw-semi-bold text-end">
+										<fmt:parseDate var="orderDate4"
+											value="${orderList.returnDate}" pattern="yyyy-MM-dd" /> <fmt:formatDate
+											var="orderDate5" value="${orderDate4}" pattern="yyyy-MM-dd" />
+										${orderDate5}
+									</td>
+									<td class="total align-middle fw-bold text-1000 text-end">${orderList.pay}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
-				<div
-					class="row align-items-center justify-content-between py-2 pe-0 fs--1">
-					<div class="col-auto d-flex">
-						<p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900"
-							data-list-info="data-list-info"></p>
-						<a class="fw-semi-bold" href="#!" data-list-view="*">View all<span
-							class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a
-							class="fw-semi-bold d-none" href="#!" data-list-view="less">View
-							Less<span class="fas fa-angle-right ms-1"
-							data-fa-transform="down-1"></span>
-						</a>
-					</div>
-					<div class="col-auto d-flex">
-						<button class="page-link" data-list-pagination="prev">
-							<span class="fas fa-chevron-left"></span>
-						</button>
-						<ul class="mb-0 pagination"></ul>
-						<button class="page-link pe-0" data-list-pagination="next">
-							<span class="fas fa-chevron-right"></span>
-						</button>
-					</div>
-				</div>
+
 			</div>
 		</div>
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+		<script type="text/javascript">
+			$(function() {
+
+				$(".boardDeleted").on(
+						'click',
+						function(event) {
+							var memberId = $(this).attr('data-memberId')
+							var boardNo = $(this).attr('data-boardNo')
+
+							if (confirm('정말 삭제하시겠습니까?')) {
+								location.href = boardNo
+								+ "/board-deleted?memberId=" + memberId;
+							}
+								return true;
+							
+
+
+						})
+
+			});
+		</script>
+
 		<!-- end of js -->
 </body>
 </html>

@@ -198,7 +198,7 @@
 
               <div class="entry-content">
                 <div class="read-more">
-                	<c:if test="${ not empty loginuser and loginuser.memberId eq board.memberId }">
+                	<c:if test="${not empty loginuser and loginuser.admin eq 'Admin'}">
                   <a href="notice-edit.action?boardNo=${board.boardNo}&pageNo=${pageNo}">수정</a>
                   <a class="delete_button">삭제</a>
                   </c:if>

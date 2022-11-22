@@ -21,25 +21,31 @@ public interface AdminGoodsRegisterMapper {
 	@Insert("INSERT INTO goods (category, brand, goodsName) " +
 			"VALUES (#{ category }, #{ brand }, #{ goodsName })")
 	@Options(useGeneratedKeys = true, keyColumn = "goodscode", keyProperty = "goodsCode")
-	void insertGoods(GoodsDto goods);
-	
-	// 상품 옵션 정보 등록 - goods Table
+	void insertGoods(GoodsDto goods);          
+	  
+	// 상품 옵션 정보 등록
 	@Insert("INSERT INTO goodsOption (optionName, optionDataType, optionValue, optionDesc, goodscode) " +
 			"VALUES (#{ optionName }, #{ optionDataType }, #{ optionValue }, #{ optionDesc }, #{ goodsCode })")
 	void insertOption(GoodsOptionDto option);
-
-	// 상품 리스트 불러오기
-	@Select("SELECT * FROM goods, goodsOption")
-	public GoodsDto goodsGetDetail(int goodsCode);
 	
-	@Select("SELECT * FROM goods, goodsOption")
-	List<GoodsDto> findGoodsAll(List<GoodsDto> goods, List<GoodsDto> options);
+	@Select("SELECT * FROM goods")
+	List<GoodsDto> selectAllGoods();
+	
+	@Select("SELECT * FROM goodsOption where goodscode = ${ goodsCode }")
+	List<GoodsOptionDto> selectGoodsOptionsByGoodsCode(int goodsCode);
 	
 	@Select("select * from goods a left join goodsOption b on a.goodsCode = b.goodsCode order by a.goodsName ")
 	List<GoodsOptionJoinDto> selectJoinedList();
 
-	@Delete("DELETE FROM goods WHERE goodsCode = ${goodsCode} ")
-	void deleteGoods(int goodsCode);
+	
+	// 상품 상태 수정 : active -> deleted
+	@Update("UPDATE goods SET status = 'deleted' WHERE goodsCode = ${ goodsCode } ")
+	void deleteGoods(String status);
+	
+	
+	// 상품 옵션 삭제
+	@Delete("DELETE FROM goodsOption WHERE optionNo = #{optionNo}")
+	void delectGoodsOption(int optionNo);
 
 	@Select("SELECT * FROM goods a left join goodsOption b on a.goodsCode = b.goodsCode having ( a.goodsName like '%${search}%' OR a.brand like '%${search}%' OR a.category like '%${search}%' ) order by a.goodsName ")
 	List<GoodsOptionJoinDto> adminGoodsListSearch(String search);
@@ -75,9 +81,6 @@ public interface AdminGoodsRegisterMapper {
 
 	@Select("SELECT * FROM goodsRegister")
 	List<GoodsRegisterDto> adminGoodsRegisterInList();
-
-	
-
 
 	
 	

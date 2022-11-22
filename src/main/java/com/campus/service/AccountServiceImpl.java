@@ -157,4 +157,11 @@ public class AccountServiceImpl implements AccountService {
 		
 	}
 
+	@Override
+	public void boardDeleted(int boardNo) {
+		
+		memberMapper.boardDeleted(boardNo);
+		
+	}
+
 }

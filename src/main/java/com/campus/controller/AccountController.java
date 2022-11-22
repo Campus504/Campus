@@ -29,8 +29,10 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderListDto;
 import com.campus.mapper.MemberMapper;
 import com.campus.service.AccountService;
+import com.campus.service.GoodsService;
 
 @Controller
 /* @RequestMapping(path = { "/account" }) */
@@ -41,6 +43,9 @@ public class AccountController {
 	@Autowired
 	@Qualifier("accountService")
 	private AccountService accountService;
+	@Autowired
+	@Qualifier("goodsService")
+	private GoodsService goodsService;
 
 	@GetMapping(path = { "register.action" })
 	public String showRegisterForm(@ModelAttribute("member") MemberDto member) {
@@ -112,7 +117,7 @@ public class AccountController {
 		List<MemberDto> members = accountService.searchMember(search);
 		int memberCount = accountService.findMemberCount();
 		int pageCount = (memberCount / PAGE_SIZE) + ((memberCount % PAGE_SIZE) > 0 ? 1 : 0);
-		
+
 		model.addAttribute("members", members);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("pageCount", pageCount);
@@ -144,92 +149,104 @@ public class AccountController {
 		accountService.updateMember(member);
 		return "redirect:main";
 	}
-	
-	
-	  // 비밀번호 수정
-	
-		@GetMapping(path = { "/my-page-password.action" })
-		public String myPagePassword(String memberId, Model model) throws Exception {
-			MemberDto member = accountService.selectMemberPasswd(memberId);
-			model.addAttribute("member", member);
-			return "my-page-password";
-		}
-		
-		@PostMapping("my-page-password.action")
-		public String passwdUpdate(@ModelAttribute MemberDto member) throws Exception {
-			accountService.updatePasswd(member);
-			
-			return "redirect:main";
-		}
-	  
+
+	// 비밀번호 수정
+
+	@GetMapping(path = { "/my-page-password.action" })
+	public String myPagePassword(String memberId, Model model) throws Exception {
+		MemberDto member = accountService.selectMemberPasswd(memberId);
+		model.addAttribute("member", member);
+		return "my-page-password";
+	}
+
+	@PostMapping("my-page-password.action")
+	public String passwdUpdate(@ModelAttribute MemberDto member) throws Exception {
+		accountService.updatePasswd(member);
+
+		return "redirect:main";
+	}
+
 	// 회원탈퇴
 
+	@RequestMapping(value = "/account/member-delete", method = RequestMethod.GET)
+	public String memberDeleteView() throws Exception {
+		return "/account/member-delete";
+	}
+
+	@PostMapping("drop-out.action")
+	public String deleteMember(MemberDto member, HttpSession session) {
+
+		accountService.deleteByMember(member);
+		session.setAttribute("loginuser", null);
+		return "main";
+	}
+
+	@GetMapping(path = { "my-page-board.action" })
+	public String myPageBoardList(String memberId, Model model) {
+		List<BoardDto> boards = accountService.findAllBoardByMemberId(memberId);
+//		for (BoardDto boardDto : boards) {
+//			System.out.println(boardDto);
+//		}
+
+		model.addAttribute("boards", boards);
+
+		return "/account/my-page-board"; // 참고
+	}
+
+	@GetMapping(path = { "my-page-order-list.action" })
+	public String myPageOrderList(String memberId, Model model) {
+		
+		// DB에서 주문 내역 가져와야함
+
+		return "/account/my-page-order-list";
+	}
+
+	@GetMapping(path = { "my-page-order-detail.action" })
+	public String myPageOrderDetail(String memberId, Model model) {
+
+		// DB에서 주문 내역 가져와야함
+
+		return "/account/my-page-order-detail";
+	}
+
+	@GetMapping(path = { "admin-member-detail-info.action" })
+	public String memberView(String memberId, Model model) {
+
+		MemberDto member = accountService.viewMember(memberId);
+
+		List<BoardDto> boards = accountService.findAllBoardByMemberId(memberId);
+		List<OrderListDto> orderList = goodsService.orderListByMemberId(memberId);
+		
+		model.addAttribute("orderLists", orderList);
+		model.addAttribute("boards", boards);
+		model.addAttribute("member", member);
+
+		return "admin-member-detail-info";
+
+	}
+
+	// 관리자 권한 부여
+	@GetMapping(path = { "/{memberId}/admin-change" })
+	public String adminChange(@PathVariable("memberId") String memberId) {
+
+		accountService.adminchange(memberId);
+
+		return "redirect:/admin-member-info.action";
+	}
+
+	@GetMapping(path = { "/{memberId}/member-change" })
+	public String memberChange(@PathVariable("memberId") String memberId) {
+
+		accountService.memberChange(memberId);
+
+		return "redirect:/admin-member-info.action";
+	}
 	
-	  @RequestMapping(value="/account/member-delete", method = RequestMethod.GET)
-	  public String memberDeleteView() throws Exception{ 
-		  return "/account/member-delete";
-	 }
-	  
-	  @PostMapping("drop-out.action")
-	  public String deleteMember(MemberDto member, HttpSession session) {
-		 
-	  accountService.deleteByMember(member);
-	  session.setAttribute("loginuser", null);
-	  	return "main";
-	  }
-	  
-	  @GetMapping(path= {"my-page-board.action"})
-	  public String myPageBoardList(String memberId, Model model) {
-		  
-		  List<BoardDto> boards = accountService.findAllBoardByMemberId(memberId);
-		  
-		  model.addAttribute("boards", boards);
-		  
-		  return "/account/my-page-board"; // 참고
-	  }
-	  
-	  @GetMapping(path= {"my-page-order-list.action"})
-	  public String myPageOrderList(String memberId, Model model) {
-		  
-		  //DB에서 주문 내역 가져와야함
-		  
-		  return "/account/my-page-order-list";
-	  }
-	  
-	  @GetMapping(path= {"my-page-order-detail.action"})
-	  public String myPageOrderDetail(String memberId, Model model) {
-		  
-		  //DB에서 주문 내역 가져와야함
-		  
-		  return "/account/my-page-order-detail";
-	  }
-	 
-	  @GetMapping(path= {"admin-member-detail-info.action"})
-	  public String memberView(String memberId, Model model) {
-		  
-		  MemberDto member = accountService.viewMember(memberId);
-		  
-		  model.addAttribute("member", member);
-		  
-		  return "admin-member-detail-info";
-		  
-	  }
-	  
-	  // 관리자 권한 부여
-	  @GetMapping(path = {"/{memberId}/admin-change"})
-	  public String adminChange(@PathVariable ("memberId") String memberId) {
-		  
-		  accountService.adminchange(memberId);
-		  
-		  return "redirect:/admin-member-info.action";
-	  }
-	  
-	  @GetMapping(path = {"/{memberId}/member-change"})
-	  public String memberChange(@PathVariable ("memberId") String memberId) {
-		  
-		  accountService.memberChange(memberId);
-		  
-		  return "redirect:/admin-member-info.action";
-	  }
-	  
+	@GetMapping(path = { "/{boardNo}/board-deleted" })
+	public String boardNoDeleted(@PathVariable("boardNo")int boardNo, String memberId) {
+	
+		accountService.boardDeleted(boardNo);
+		
+		return "redirect:/admin-member-detail-info.action?memberId=" + memberId;
+	}
 }

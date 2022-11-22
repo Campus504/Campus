@@ -66,6 +66,32 @@ public class GoodsServiceImpl implements GoodsService {
 		return member;
 	}
 
+	
+	/*
+	 * @Override public void insertOrder(int[] goodsCode, int[] amount,int[] price,
+	 * OrderListDto order) {
+	 * 
+	 * //오더 리스트로 상품 정보(멤버아이디, 수령일, 반납일, 결제방식 ) 저장> [오더넘버] 받아와서 오더디테일에 상품별로 금액, 수량,
+	 * 굿즈코드, 아이디 저장 System.out.println(goodsCode.length);
+	 * goodsMapper.insertOrder(order); order.setOrderNo(order.getOrderNo()); int
+	 * orderNumber = order.getOrderNo(); int code; int goodsAmount; int goodsPrice;
+	 * 
+	 * for(int i=0;i<goodsCode.length;i++) { code = goodsCode[i]; goodsAmount =
+	 * amount[i]; goodsPrice = price[i];
+	 * 
+	 * goodsMapper.insertOrderDetail(orderNumber, code, goodsAmount, goodsPrice); }
+	 * goodsMapper.deleteCart(order.getMemberId());
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
+	 * @Override public void insertOrderDetail( OrderDetailDto orderDetail) {
+	 * 
+	 * goodsMapper.insertOrderDetail(orderDetail);
+	 * 
+	 * }
+	 */
 	@Override
 	public void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail) {
 		goodsMapper.insertOrder(orderList);
@@ -87,17 +113,17 @@ public class GoodsServiceImpl implements GoodsService {
 		return goods;
 	}
 	
-	@Override
-	public List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods) {
-		/*
-		 * List<GoodsDto> goodsList = null; for(int i=0;i<goods.size();i++) {
-		 * 
-		 * GoodsDto good =
-		 * goodsMapper.selectGoodsByGoodsCode(goods.get(i).getGoodsCode());
-		 * goodsList.add(good); } System.out.println(goodsList);
-		 */
-		return null;
-	}
+
+	  @Override public List<OrderListDto> orderListByMemberId(String memberId) {
+	  List<OrderListDto> orderList =
+	  goodsMapper.selectOrderListByMemberId(memberId); return orderList; }
+	  
+	/*
+	 * @Override public List<CartDto> findCartByMemberId(String memberId) {
+	 * List<CartDto> cart = goodsMapper.selectCartByMemberId(memberId); return cart;
+	 * }
+	 * 
+	 */
 	
 	//장바구니 -> 오더
 	@Override
@@ -110,5 +136,6 @@ public class GoodsServiceImpl implements GoodsService {
 		OrderListDto orderList = goodsMapper.selectRecentOrder(memberId);
 		return orderList;
 	}
+
 	
 }

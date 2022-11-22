@@ -74,5 +74,8 @@ public interface MemberMapper {
 	
 	@Update("UPDATE member SET admin = 'Member' WHERE memberid = #{memberId} ")
 	void updateMember2(String memberId);
-				
+
+	@Update("UPDATE board SET active = FALSE WHERE boardNo =#{boardNo} ")
+	void boardDeleted(int boardNo);
+	
 }

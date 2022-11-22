@@ -15,10 +15,10 @@
               </c:when>
               <c:when test="${pageCount==2}&${pageNo==1}">
               <li class="active"><a href="#">${ pageNo }</a></li>
-              <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+              <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
               </c:when>
                  <c:when test="${pageCount==2}&${pageNo==2}">
-                  <li><a href="freeboard.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+                  <li><a href="notice-list.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
               <li class="active"><a href="#">${ pageNo }</a></li>
              
               </c:when>
@@ -27,18 +27,18 @@
                  <c:choose>
              <c:when test="${pageNo==1}" >
                 <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
-                 <li><a href="freeboard.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
+                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                 <li><a href="notice-list.action?pageNo=${ pageNo+2 }">${ pageNo+2 }</a></li>
              </c:when >
              <c:when test="${pageNo==pageCount}">
-             <li><a href="freeboard.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
-             	 <li><a href="freeboard.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
+             <li><a href="notice-list.action?pageNo=${ pageNo-2 }">${ pageNo-2 }</a></li>
+             	 <li><a href="notice-list.action?pageNo=${ pageNo-1 }">${ pageNo-1 }</a></li>
                 <li class="active"><a href="#">${ pageNo }</a></li>
              </c:when>
              <c:otherwise>
-              <li><a href="freeboard.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
+              <li><a href="notice-list.action?pageNo=${pageNo-1 }">${ pageNo-1 }</a></li>
                 <li class="active"><a href="#">${ pageNo }</a></li>
-                <li><a href="freeboard.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
+                <li><a href="notice-list.action?pageNo=${ pageNo+1 }">${ pageNo+1 }</a></li>
              </c:otherwise>
              </c:choose>
                             

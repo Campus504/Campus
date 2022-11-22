@@ -157,6 +157,7 @@
 		<input type="hidden" name="goodsName" value="${goods.goodsName}">
 		<input type="hidden" name="brand" value="${goods.brand}">
 		<input type="hidden" name="category" value="${goods.category}">
+		<input type="hidden" name="bigCategory" value="${category}">
             <div class="portfolio-info">
               <h3>${goods.goodsName}</h3>
               <ul>
@@ -257,6 +258,8 @@
 <script type="text/javascript">
 $(function(){
 	
+	
+	
 	$('#order-btn').on('click',function(event){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
@@ -272,6 +275,7 @@ $(function(){
 $('#addToCart').click(function(event){ 
 	
 	var valid = ${valid};
+	alert(valid);
 	
 	if (valid >= 1) {
 		event.preventDefault();

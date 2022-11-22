@@ -9,5 +9,7 @@ public class OrderDetailDto {
 	private int goodsCode;
 	private int amount;
 	private int price;
+	
+	private MemberDto member;
 
 }

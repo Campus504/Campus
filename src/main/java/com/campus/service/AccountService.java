@@ -43,4 +43,7 @@ public interface AccountService {
 
 	void memberChange(String memberId);
 
+	void boardDeleted(int boardNo);
+
+
 }

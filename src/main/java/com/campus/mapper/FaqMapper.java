@@ -24,10 +24,10 @@ public interface FaqMapper {
 	@Options(useGeneratedKeys = true, keyColumn = "boardNo", keyProperty = "boardNo")
 	void insertAdminBoard(BoardDto board);
 
-	@Select("SELECT boardno, title, memberId, writeDate, readcount, category FROM board WHERE category = 'notice' ORDER BY boardno DESC LIMIT #{from}, #{count}")
+	@Select("SELECT boardno, title, memberId, writeDate, readcount, category FROM board WHERE category = 'notice' AND active= TRUE  ORDER BY boardno DESC LIMIT #{from}, #{count}")
 	List<BoardDto> selectNoticeByPage(@Param("from") int from, @Param("count") int count);
 
-	@Select("SELECT COUNT(*) FROM board WHERE category='notice' ")
+	@Select("SELECT COUNT(*) FROM board WHERE category='notice' AND active= TRUE ")
 	int selectNoticeCount();
 
 	@Select("SELECT * FROM board WHERE boardno= #{boardNo}")
@@ -43,7 +43,7 @@ public interface FaqMapper {
 			})
 	BoardDto selectBoardByBoardNo(int boardNo);
 
-	@Delete("DELETE FROM board WHERE boardno= #{boardNo}")
+	@Update("UPDATE board SET active = FALSE WHERE boardno= #{boardNo}")
 	void deleteNoticeBoard(int boardNo);
 
 	@Update("UPDATE board SET readCount = readCount +1 WHERE boardNo= ${boardNo}")
@@ -55,16 +55,16 @@ public interface FaqMapper {
 	@Update("UPDATE board SET title = #{title}, content=#{content} WHERE boardno = #{boardNo} ")
 	void updateNoticeBaord(BoardDto board);
 
-	@Select("select * from board where category = 'notice' and ${searchOption} like '%${search}%' order By boardNo DESC LIMIT #{from}, #{count}")
+	@Select("select * from board where active = TRUE AND category = 'notice' AND ${searchOption} like '%${search}%' order By boardNo DESC LIMIT #{from}, #{count}")
 	List<BoardDto> selectSearchNoticeByPage(@Param("searchOption") String searchOption, @Param("search") String search,@Param("from") int from, @Param("count") int count);
 
-	@Select("SELECT COUNT(*) FROM board WHERE category = 'notice' and ${searchOption} like '%${search}%'")
+	@Select("SELECT COUNT(*) FROM board WHERE active = TRUE AND category = 'notice' and ${searchOption} like '%${search}%'")
 	int selectSearchNoticeCount(@Param("searchOption") String searchOption, @Param("search") String search);
 
-	@Select("SELECT * FROM board WHERE category = 'faq'")
+	@Select("SELECT * FROM board WHERE active = TRUE AND category = 'faq' ")
 	List<BoardDto> selectAllFaq();
 
-	@Delete("DELETE FROM board WHERE boardNo = ${boardNo}")
+	@Update("UPDATE board SET active = FALSE WHERE boardno= #{boardNo}")
 	void deleteFaq(int boardNo);
 
 	@Select("SELECT * FROM board WHERE boardNo = ${boardNo} ")

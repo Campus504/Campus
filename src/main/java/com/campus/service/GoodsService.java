@@ -23,18 +23,20 @@ public interface GoodsService {
 	GoodsRegisterDto findGoodsInByGoodsCode(int goodsCode);
 
 	MemberDto findMemberByMemberId(String memberId);
-
-	void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail);
-	
-	void insertOrderDetail(OrderDetailDto orderDetail);
 	
 	List<GoodsDto> findBestGoods();
-	
-	List<GoodsDto> findGoodsByGoodsCode(List<GoodsDto> goods);
 	
 	//장바구니 -> 오더
 	List<CartDto> findCartById(String memberId);
 	
 	OrderListDto findRecentOrder(String memberId);
+	
+	List<OrderListDto> orderListByMemberId(String memberId);
+	
+	void insertOrder(OrderListDto orderList, OrderDetailDto orderDetail);
+	
+	void insertOrderDetail(OrderDetailDto orderDetail);
+
+
 
 }
