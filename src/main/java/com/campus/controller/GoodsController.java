@@ -156,15 +156,14 @@ public class GoodsController {
 		}
 		 
 		 cartService.deleteAllCart(memberId);
-			return "redirect:my-page-order-list.action";
+			return "redirect:my-page-order-list.action?memberId="+orderList.getMemberId();
 		}  
 	  
 	
 	@PostMapping(path= {"orderGoods.action"})
 	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail) {
 		goodsService.insertOrder(orderList, orderDetail);
-		
-		return "redirect:cart-list.action?memberId="+orderList.getMemberId();
+		return "redirect:my-page-order-list.action?memberId="+orderList.getMemberId();
 	}
 	
 	
