@@ -60,18 +60,19 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 		adminGoodsRegisterMapper.deleteGoods(goodsCode);
 		
 	}
-
+	
+	@Override
+	public void updateGoodsOption(GoodsOptionDto option) {
+		adminGoodsRegisterMapper.updateGoodsOption(option);
+		
+	}
+	
 	@Override
 	public void activeGoods(int goodsCode) {
 		adminGoodsRegisterMapper.activeGoods(goodsCode);
 		
 	}
 	
-	@Override
-	public void updategoodslist(GoodsOptionJoinDto goodsoptionjoins) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 }

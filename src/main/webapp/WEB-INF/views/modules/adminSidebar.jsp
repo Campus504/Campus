@@ -106,7 +106,7 @@
 						<ul class="submenu">
 							<li><a href="admin-goods-register.action">상품 등록</a></li>
 							<li><a href="admin-goods-list.action">상품 목록</a></li>
-							<li><a href="admin-goods-register-in.action">입고 등록</a></li>
+							<!-- <li><a href="admin-goods-register-in.action">입고 등록</a></li> -->
 							<li><a href="admin-goods-register-in-list.action">입고 목록</a></li>
 							<li><a href="admin-order.action">주문 목록</a></li>
 						</ul>

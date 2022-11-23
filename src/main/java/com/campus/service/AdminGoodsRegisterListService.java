@@ -14,9 +14,9 @@ public interface AdminGoodsRegisterListService {
 
 	List<GoodsOptionJoinDto> findAdminGoodsByGoodsCode(int goodsCode);
 
-	void updategoodslist(GoodsOptionJoinDto goodsoptionjoins);	// 상품정보 수정
-
 	void deleteGoodsOption(int optionNo);		// 옵션 정보 삭제
+	
+	void updateGoodsOption(GoodsOptionDto option);		// 옵션 정보 수정
 	
 	void deleteGoods(int goodsCode);		// 상품 상태 수정 1
 

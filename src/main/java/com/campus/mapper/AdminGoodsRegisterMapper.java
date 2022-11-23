@@ -28,6 +28,11 @@ public interface AdminGoodsRegisterMapper {
 			"VALUES (#{ optionName }, #{ optionDataType }, #{ optionValue }, #{ optionDesc }, #{ goodsCode })")
 	void insertOption(GoodsOptionDto option);
 	
+	// 상품 옵션 추가
+//	@Insert("INSERT INTO (optionName, optionDataType, optionValue, optionDesc, goodscode)" +
+//			"VALUES (#{ optionName }, #{ optionDataType }, #{ optionValue }, #{ optionDesc }, #{ goodsCode })")
+//	void insertGoodsOption(GoodsOptionDto option);
+	
 	@Select("SELECT * FROM goods")
 	List<GoodsDto> selectAllGoods();
 	
@@ -49,7 +54,13 @@ public interface AdminGoodsRegisterMapper {
 	// 상품 옵션 삭제
 	@Delete("DELETE FROM goodsOption WHERE optionNo = #{optionNo}")
 	void delectGoodsOption(int optionNo);
+	
+	
+	// 상품 옵션 수정 : goodsOption 컬럼 수정
+	@Update("UPDATE goodsOption SET optionName = #{optionName}, optionDataType = #{optionDataType}, optionValue = #{optionValue}, optionDesc = #{optionDesc} WHERE optionNo = #{optionNo}")
+	void updateGoodsOption(GoodsOptionDto option);
 
+	
 	@Select("SELECT * FROM goods a left join goodsOption b on a.goodsCode = b.goodsCode having ( a.goodsName like '%${search}%' OR a.brand like '%${search}%' OR a.category like '%${search}%' ) order by a.goodsName ")
 	List<GoodsOptionJoinDto> adminGoodsListSearch(String search);
 
