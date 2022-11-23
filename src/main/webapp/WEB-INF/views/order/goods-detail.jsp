@@ -258,7 +258,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	
+	var valid = ${valid};
 	
 	$('#order-btn').on('click',function(event){
 		if(${loginuser.memberId==null}){
@@ -273,9 +273,6 @@ $(function(){
 	
 	//강성훈 11월22일 수정.. 충돌 나면 확인하도록
 $('#addToCart').click(function(event){ 
-	
-	var valid = ${valid};
-	alert(valid);
 	
 	if (valid >= 1) {
 		event.preventDefault();
@@ -294,6 +291,7 @@ $('#addToCart').click(function(event){
 	 		"method" : "post",
 	 		"data" : cartForm,
 	 		"success" : function(data, status, xhr) {
+	 			valid = 1;
 	 			var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
 	 			if(check){
 	 				location.assign('cart-list.action?memberId=${ loginuser.memberId }');
