@@ -40,13 +40,7 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
 	
-	
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
+
 	
 
   <!-- =======================================================
@@ -129,16 +123,7 @@
 	} 
 
 	</style>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-119386393-1');
-	</script>
+ 
 </head>
 <body>
 
@@ -150,13 +135,6 @@
  	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
   <!-- End mypage-side-menu -->
   
-
-  <main id="main">
-
-
-
-    <div class="mobile-menu-overlay"></div>
-
 	<div class="main-container">
 
 		<div class="pd-ltr-20 xs-pd-20-10">
@@ -175,32 +153,13 @@
 							<li class="breadcrumb-item active" aria-current="page"> 주문목록</li>
 						</ol>
 					</nav>
-				</div>
-				
-				<div class="col-md-6 col-sm-12 text-right">
-					<div class="dropdown">
-						<a class="btn btn-primary dropdown-toggle" href="#"
-							role="button" data-toggle="dropdown"> Oct 2022 </a>
-						
-						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="#">기능1)Export List </a> 
-							<a class="dropdown-item" href="#">기능2)Policies </a> 
-							<a class="dropdown-item" href="#">기능3)View Assets </a>
-							<a class="dropdown-item" href="#">기능4)View Assets </a>
-						</div>
-					</div>
-				</div>
+				</div>	
 			</div>
 		</div>
 	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 	
 	<!-- 주문 리스트 시작! -->
 	<div class="pd-20 card-box mb-30">
-
-		<div class="clearfix">
-			<h4 class="text-blue h4">사용자 페이지에서 등록 된 주문 리스트를 표시하는 페이지 입니다.</h4>
-			<p class="mb-30">주문 목록을 확인하세요</p>
-		</div>
 
 		<div class="card-box mb-30">
 			<div class="pd-20">
@@ -211,104 +170,66 @@
 				<div id="DataTables_Table_3_wrapper"
 					class="dataTables_wrapper dt-bootstrap4 no-footer">
 					<div class="row">
-						<div class="col-sm-12 col-md-6">
-							<div class="dataTables_length" id="DataTables_Table_3_length">
-								<label>Show <select name="DataTables_Table_3_length"
-									aria-controls="DataTables_Table_3"
-									class="custom-select custom-select-sm form-control form-control-sm">
-										<option value="10">10</option>
-										<option value="25">25</option>
-										<option value="50">50</option>
-										<option value="-1">All</option>
-								</select> entries
-								</label>
-							</div>
+									
 						</div>
-						<div class="col-sm-12 col-md-6">
-							<div id="DataTables_Table_3_filter" class="dataTables_filter">
-								<label>Search: <input type="search"
-									class="form-control form-control-sm" placeholder="Search"
-									aria-controls="DataTables_Table_3">
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							
-							<form action="" method="">
-							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="DataTables_Table_3" role="grid" aria-describedby="DataTables_Table_3_info">
+						<div class="row">
+							<div class="col">
+					<!-- 등록된 상품의 리스트 테이블 만들기 -->
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+								
 								<thead>
-									<tr role="row">
-										<th class="dt-body-center sorting_disabled" rowspan="1" colspan="1" aria-label="">
-											<div class="dt-checkbox">
-												<input type="checkbox" name="select_all" value="1" id="example-select-all"> <span class="dt-checkbox-label"></span>
-											</div>
-										</th>
-										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">주문코드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품코드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품분류</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">브랜드</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">상품명</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">대여가격</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">주문일자</th>
+									<tr role="row" >
+										<th>주문번호</th>
+										<th>회원아이디</th>
+										<th>주문일</th>
+										<th>상품 수령일</th>
+										<th>상품 반납일</th>
+										<th>결제방법</th>
+										
 									</tr>
 								</thead>
+								
+								<c:forEach  var="orderList" items='${orderList}' >
 								<tbody>
-
-									<tr role="row" class="odd">
-										<td class=" dt-body-center" tabindex="0">
-											<div class="dt-checkbox">
-												<input type="checkbox" name="id[]" value="">
-												<span class="dt-checkbox-label"></span>
-											</div>
-										</td>
+								
+									<tr role="row" class="orderNo-${ orderList.orderNo }" >
 										
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
-										<td>${ admin-goods-in.testData }</td>
+										<td>${ orderList.orderNo }</td>
+										<td>
+										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
+										${ orderList.memberId }</a></td>
+										<td>${ orderList.orderDate }</td>
+										<td>${ orderList.rentDate }</td>
+										<td>${ orderList.returnDate }</td>
+										
+										<c:choose>
+										<c:when test="${orderList.pay=='cash'}">
+										<td>현금</td>
+										</c:when>
+										<c:when test="${orderList.pay=='credit'}">
+										<td>신용카드</td>
+										</c:when>
+										<c:when test="${orderList.pay=='account'}">
+										<td>계좌이체</td>
+										</c:when>
+										<c:when test="${orderList.pay=='kakaoPay'}">
+										<td>카카오페이</td>
+										</c:when>
+										<c:otherwise>
+										<td>네이버페이</td>
+										</c:otherwise>
+										</c:choose>																		
+										
 									</tr>
-									
+								
 								</tbody>
+								</c:forEach>
+								
 							</table>
-							</form>										
+	
 						</div>
 					</div>
 					
-					<div class="row">
-						<div class="col-sm-12 col-md-5">
-							<div class="dataTables_info" id="DataTables_Table_3_info"
-								role="status" aria-live="polite">1-10 of 14 entries</div>
-						</div>
-						
-						<div class="col-sm-12 col-md-7">
-							<div class="dataTables_paginate paging_simple_numbers"
-								id="DataTables_Table_3_paginate">
-								<ul class="pagination">
-									<li class="paginate_button page-item previous disabled"
-										id="DataTables_Table_3_previous"><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="0"
-										tabindex="0" class="page-link"><i
-											class="ion-chevron-left"></i></a></li>
-									<li class="paginate_button page-item active"><a
-										href="#" aria-controls="DataTables_Table_3" data-dt-idx="1"
-										tabindex="0" class="page-link">1</a></li>
-									<li class="paginate_button page-item "><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="2"
-										tabindex="0" class="page-link">2</a></li>
-									<li class="paginate_button page-item next"
-										id="DataTables_Table_3_next"><a href="#"
-										aria-controls="DataTables_Table_3" data-dt-idx="3"
-										tabindex="0" class="page-link"><i
-											class="ion-chevron-right"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -316,8 +237,7 @@
 		</div>
 		</div>
 		</div>
-		<!-- 주문 리스트 끝! -->	
-    
+		
 
   </main>
   <!-- End #main -->
@@ -344,6 +264,12 @@
   <script src="/campus/resources/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="vendors/scripts/core.js"></script>
+
+		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
+		<script src="/campus/resources/vendors/scripts/process.js"></script>
+		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
+		
   <!-- <script src="/campus/resources/assets/js/main.js"></script> -->
   
     <!-- sidebar -->
@@ -359,7 +285,7 @@
     <script src="/campus/resources/sidebar/js/vendor/tabs.js"></script>
     <script src="/campus/resources/sidebar/js/ef-slider.js"></script>    
     <script src="/campus/resources/sidebar/js/vendor/owl.carousel.min.js"></script>
-    <!-- <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script> -->
+    <script src="/campus/resources/sidebar/js/vendor/jquery.magnific-popup.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/jquery.social-buttons.min.js"></script>
     <script src="/campus/resources/sidebar/js/vendor/wow.min.js"></script>
     <script src="/campus/resources/sidebar/js/main.js"></script>

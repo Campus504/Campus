@@ -120,10 +120,6 @@
 </div>
 </c:if>
 
-<c:if test="${ empty loginuser }">
-	<h1>장바구니가 비어있습니다.</h1>
-	<a href="goods-list.action">쇼핑하러가기</a>
-</c:if>
 
 <form id="cartForm" method="post" action="showOrderPage.action" onsubmit="return false;">
 	<c:if test="${ not empty loginuser }">
@@ -221,7 +217,7 @@
 
 <script type="text/javascript">
 $(function() {
-	
+
 	var size = ${ size } + 1
 	var price;
 	var amount;
