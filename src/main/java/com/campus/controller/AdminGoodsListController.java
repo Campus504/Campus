@@ -63,17 +63,29 @@ public class AdminGoodsListController {
 		
 	}
 	
-	// 상품삭제 클릭 시 상태 수정
-	@PostMapping(path = {"admin-goods-delete.action"})
-	public String adminGoodsDelete(@RequestParam(defaultValue = "0") String status, Model model) {
+	// 상품삭제 클릭 시 deleted 상태 수정
+	@GetMapping(path = {"/admin-goods-delete.action"})
+	public String adminGoodsDelete(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
 		
-		System.out.println("상품 상태 수정 시작합니다.");
+		System.out.println("상품 Delete 상태 수정 시작합니다.");
 		
-		adminGoodsRegisterListService.deleteGoods(status);
+		adminGoodsRegisterListService.deleteGoods(goodsCode);
 
-		model.addAttribute("status", status);
+		System.out.println("상품 Delete 상태 수정 완료합니다.");
 		
-		System.out.println("상품 상태 수정 종료합니다.");
+		return "redirect:admin-goods-list.action";
+		
+	}
+	
+	// 상품삭제 클릭 시 Active 상태 수정
+	@GetMapping(path = {"/admin-goods-active.action"})
+	public String adminGoodActive(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
+		
+		System.out.println("상품 Active 상태 수정 시작합니다.");
+		
+		adminGoodsRegisterListService.activeGoods(goodsCode);
+
+		System.out.println("상품 Active 상태 수정 완료합니다.");
 		
 		return "redirect:admin-goods-list.action";
 		
@@ -124,7 +136,6 @@ public class AdminGoodsListController {
 		System.out.println("상품 정보 수정을 완료합니다.");
 		
 		return "redirect:admingoods/admin-goods-list";
-		
 	}
 	
 	

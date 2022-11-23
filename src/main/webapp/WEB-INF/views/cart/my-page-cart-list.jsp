@@ -167,14 +167,13 @@
 
 <div class="container">
 	<button id="order-btn" class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="button">주문하기</button> 
-		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
+		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action?category=${bigCategory}">계속	쇼핑하기</a> 
 		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
 
 </c:if>
-	
-</form>
 
+</form>
 
 
   </main><!-- End #main -->

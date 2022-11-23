@@ -18,12 +18,13 @@ public interface AdminGoodsRegisterListService {
 
 	void deleteGoodsOption(int optionNo);		// 옵션 정보 삭제
 	
-	void deleteGoods(String status);		// 상품 상태 수정 : status
+	void deleteGoods(int goodsCode);		// 상품 상태 수정 1
 
+	void activeGoods(int goodsCode);		// 상품 상태 수정 2
+	
 	List<GoodsDto> findAllGoods();
 
 	List<GoodsOptionDto> findGoodsOptionsByGoodsCode(int goodsCode);
-	
-	
+
 	
 }

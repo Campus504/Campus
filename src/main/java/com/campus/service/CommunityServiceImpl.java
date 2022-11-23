@@ -222,7 +222,7 @@ public class CommunityServiceImpl implements CommunityService {
 						comment.setDepth(reCommentWithMaxDepth.getDepth());
 						communityMapper.updateStepNo(reCommentWithMaxDepth.getCommentGroup(), reCommentWithMaxDepth.getStep());
 					}else {
-						BoardCommentDto reCommentStep2 = communityMapper.selectReCommentInfo2(comment.getCommentNo());
+						BoardCommentDto reCommentStep2 = communityMapper.selectReCommentInfo2(comment.getCommentGroup());
 						comment.setBoardNo(reCommentStep2.getBoardNo());
 						comment.setCommentGroup(reCommentStep2.getCommentGroup());
 						comment.setStep(reCommentStep2.getStep());
@@ -238,6 +238,7 @@ public class CommunityServiceImpl implements CommunityService {
 					communityMapper.updateStepNo(reCommentStep.getCommentGroup(), reCommentStep.getStep());
 					
 				}
+				System.out.println(comment);
 				
 				// 3. 대댓글 저장
 		communityMapper.insertReComment(comment);

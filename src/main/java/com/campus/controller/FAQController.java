@@ -92,7 +92,6 @@ public class FAQController {
 	}
 	
 	
-	
 	// 겟 : 페이지별로 공지사항 글 목록 불러오기
 	@GetMapping(path= {"notice-list.action"})
 	public String showNoticeList(@RequestParam(defaultValue = "1") int pageNo , Model model) {

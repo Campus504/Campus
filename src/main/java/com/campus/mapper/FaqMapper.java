@@ -2,17 +2,15 @@ package com.campus.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Many;
-
 
 import com.campus.dto.AttachDto;
 import com.campus.dto.BoardDto;
@@ -24,7 +22,7 @@ public interface FaqMapper {
 	@Options(useGeneratedKeys = true, keyColumn = "boardNo", keyProperty = "boardNo")
 	void insertAdminBoard(BoardDto board);
 
-	@Select("SELECT boardno, title, memberId, writeDate, readcount, category FROM board WHERE category = 'notice' AND active= TRUE  ORDER BY boardno DESC LIMIT #{from}, #{count}")
+	@Select("SELECT boardno, title, memberId, writeDate, readcount, category FROM board WHERE category = 'notice' AND active = TRUE  ORDER BY boardno DESC LIMIT #{from}, #{count}")
 	List<BoardDto> selectNoticeByPage(@Param("from") int from, @Param("count") int count);
 
 	@Select("SELECT COUNT(*) FROM board WHERE category='notice' AND active= TRUE ")

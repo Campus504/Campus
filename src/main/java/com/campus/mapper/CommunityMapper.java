@@ -104,7 +104,7 @@ public interface CommunityMapper {
 	void updateStepNo(@Param("commentGroup") int commentGroup,@Param("step") int step);
 
 	@Select("SELECT MAX(step)+1 step, boardNo, commentGroup, 1 depth  FROM boardComment WHERE commentGroup = #{commentGroup} ")
-	BoardCommentDto selectReCommentInfo2(int commentNo);
+	BoardCommentDto selectReCommentInfo2(int commentGroup);
 
 	@Select("SELECT COUNT(*) FROM boardComment WHERE commentGroup= (select commentGroup from boardComment WHERE commentNo = ${commentNo}) AND depth = (SELECT MAX(depth) FROM boardComment WHERE commentGroup = (select commentGroup from boardComment WHERE commentNo = ${commentNo}))")
 	int selectMaxDepthBycommentGroup(int commentNo);
@@ -112,6 +112,9 @@ public interface CommunityMapper {
 	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) AND depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
 	BoardCommentDto selectRecommentWithMaxDepth(int commentNo);
 
+	
+	//////////////////////////댓글끝////////////////////////////////////////////////////////////
+	
 	@Insert("INSERT INTO community (boardNo, tag) VALUES (#{boardNo}, #{tag})")
 	void insertBoardTag(CommunityDto tag);
 
