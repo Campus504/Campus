@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,7 +33,7 @@ public class CartController {
 	private CartService cartService;
 	
 	@GetMapping(path = {"/cart-list.action"})
-	public String cartList(@ModelAttribute CartDto cart, HttpSession session,Model model) {
+	public String cartList(@ModelAttribute CartDto cart,@RequestParam(defaultValue = "텐트/타프") String bigCategory,  HttpSession session,Model model) {
 		//로그인 여부 확인
 		MemberDto member = (MemberDto) session.getAttribute("loginuser");
 		cart.setMemberId(member.getMemberId());	
@@ -42,6 +43,8 @@ public class CartController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("size",size);
+		model.addAttribute("bigCategory",bigCategory);
+		
 		
 		return "cart/my-page-cart-list";
 	}

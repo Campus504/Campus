@@ -3,6 +3,8 @@ package com.campus.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import com.campus.dto.GoodsDto;
@@ -12,10 +14,16 @@ import com.campus.dto.OrderListDto;
 @Mapper
 public interface AdminOrderMapper {
 
-	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList Order By orderDate DESC")
+	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList Order By orderNo DESC")
 	List<OrderListDto> selectAllOrderList();
 
-	@Select("SELECT * FROM orderDetail WHERE orderNo = #{orderNo} ")
+	@Select("SELECT d.amount, d.price, g.goodsName, g.category  FROM orderDetail d inner join goods g on d.goodsCode = g.goodsCode WHERE d.orderNo = #{orderNo} ")
+	@Results(id = "adminOrderResultMap", value = {
+			@Result(column = "amount", property = "amount"),
+			@Result(column = "price", property = "price"),
+			@Result(column = "category", property = "goods.category"),
+			@Result(column = "goodsName", property = "goods.goodsName")
+		})
 	List<OrderDetailDto> selectOrderDetailsByOrderNo(int orderNo);
 
 	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId like '%${search}%' Order By orderDate DESC ")

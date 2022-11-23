@@ -330,7 +330,6 @@ public class CommunityController {
 		
 		@GetMapping(path= {"comment-list.action"})
 		public String showCommentList(int boardNo,  Model model) {
-			
 			List<BoardCommentDto> comments =  communityService.findBoardCommentByBoardNo(boardNo);
 			
 			model.addAttribute("comments", comments);
