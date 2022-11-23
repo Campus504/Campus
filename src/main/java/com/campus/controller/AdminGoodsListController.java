@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campus.dto.GoodsDto;
 import com.campus.dto.GoodsOptionDto;
@@ -49,19 +50,33 @@ public class AdminGoodsListController {
 		return "admingoods/goods-option-list";
 	}
 	
-	// 옵션 팝업 옵션 삭제
-	@GetMapping(path= {"delete-goods-option.action"}) 
+	// 속성팝업) 옵션 삭제
+	@GetMapping(path = { "delete-goods-option.action" }) 
 	public String deleteGoodsOption(@RequestParam(defaultValue = "0") int optionNo) {
 		
-		System.out.println("옵션 삭제 시작합니다.");
+		System.out.println("속성 삭제 시작합니다.");
 		
 		adminGoodsRegisterListService.deleteGoodsOption(optionNo);
 		
-		System.out.println("옵션 삭제 종료합니다.");
+		System.out.println("속성 삭제 종료합니다.");
 		
 		return "redirect:admin-goods-list.action";
 		
 	}
+	
+	// 속성팝업)옵션팝업) 옵션 수정 :	update-goods-option
+	@PostMapping(path = { "update-goods-option.action" })
+	@ResponseBody
+	public String updateGoodsoption(GoodsOptionDto option) {
+		
+		System.out.println("옵션 수정 시작합니다.");
+
+		adminGoodsRegisterListService.updateGoodsOption(option);
+		
+		System.out.println("옵션 수정 종료합니다.");
+		
+		return "success";
+	}	
 	
 	// 상품삭제 클릭 시 deleted 상태 수정
 	@GetMapping(path = {"/admin-goods-delete.action"})
@@ -90,7 +105,7 @@ public class AdminGoodsListController {
 		return "redirect:admin-goods-list.action";
 		
 	}
-	
+
 	// 상품리스트에서 검색
 	@PostMapping(path= {"admin-goods-list-search.action"})
 	public String adminGoodsSearch(@RequestParam(defaultValue = "") String search, Model model) {
@@ -122,21 +137,5 @@ public class AdminGoodsListController {
 		
 		return "admingoods/admin-goods-list-edit";
 	}
-	
-	// 상품 정보 수정 기능
-	@PostMapping(path = { "admin-goods-edit.action" })
-	public String goodsEdit(GoodsOptionJoinDto goods, @RequestParam(defaultValue = "1") int goodsCode, Model model) {
-		
-		System.out.println("상품 정보 수정 시작합니다.");
-		
-		adminGoodsRegisterListService.updategoodslist(goods);
-		
-		model.addAttribute("goods", goods);
-		
-		System.out.println("상품 정보 수정을 완료합니다.");
-		
-		return "redirect:admingoods/admin-goods-list";
-	}
-	
 	
 }

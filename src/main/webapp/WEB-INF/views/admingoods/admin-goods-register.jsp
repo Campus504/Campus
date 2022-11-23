@@ -101,7 +101,8 @@
 							<div class="content clearfix">								
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
-							 		<form action="admin-goods-register.action" id="admin-goods-register-form" method="post">
+							 		
+							 		<form action="update-goods-option.action" id="update-goods-option-form" method="post">
 									
 									<div class="row">
 										<div class="col-md-6">
@@ -178,11 +179,11 @@
 												<span class="dt-checkbox-label"></span>
 											</div>
 										</th>
-										<th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">속성이름</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성자료형</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성값</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">옵션값</th>
-										<th class="sorting" tabindex="0" rowspan="1" colspan="1">속성설명</th>
+										<th>속성이름</th>
+										<th>속성자료형</th>
+										<th>속성값</th>
+										<th>옵션값</th>
+										<th>속성설명</th>
 										
 									</tr>
 								</thead>
@@ -294,11 +295,11 @@
 			$(function() {
 				$('#add-goods-property').on('click', function(event) {
 					$('#add-goods-property-modal').modal("show");									// 상품 속성 팝업 열기
-				});
+				});					// 속성 팝업 show
 				
 				$('#add-goods-property-modal-cancel').on('click', function(event) {
 					$('#add-goods-property-modal').modal("hide");									// 상품 속성 팝업 숨기기
-				});
+				});					// 속성 팝업 hide 
 				
 				/* $('#').on('click', funtion(event){
 					$('#').();
