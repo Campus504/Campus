@@ -172,7 +172,7 @@
 							<article class="entry">
 
 								<h2 class="entry-title">
-									<a
+									<a id="inquiry-detail"
 										href="inquiry-detail.action?boardNo=${board.boardNo}&pageNo=${pageNo}">${board.title}</a>
 								</h2>
 
@@ -349,6 +349,23 @@
 	<script src="/campus/resources/sidebar/js/ajax.js"></script>
 	<!-- /.sidebar -->
 	<script type="text/javascript">
+	
+	$(function(){
+		
+		var valid = ${valid};
+
+		$('#inquiry-detail').click(function(e){
+			if(${loginuser.memberId} != member.memberId){
+				event.preventDefault(e);
+				alert('내 게시글이 아닙니다.');
+				location.href="inquiry.action";
+				return false;
+			} else {
+				return true;
+			}
+		});
+		
+		
 		$(function() {
 
 			$('#search-btn').on(

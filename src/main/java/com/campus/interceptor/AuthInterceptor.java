@@ -21,20 +21,33 @@ public class AuthInterceptor implements HandlerInterceptor {
 
 		if (member == null) { // 로그인 하지 않은 사용자 게시판 이용 ㄴㄴ
 			if (uri.contains("freeboard-write") || uri.contains("freeboard-delete") || uri.contains("freeboard-edit")
+					|| uri.contains("freeboard-detail")
 					|| uri.contains("tip-write") || uri.contains("tip-delete") || uri.contains("tip-edit")
-					|| uri.contains("my-page") || uri.contains("admin-main")) {// 로그인한 사용자만 볼 수 있는 요청
+					|| uri.contains("my-page") || uri.contains("admin-main") || uri.contains("inquiry-detail")
+					|| uri.contains("inquiry-write") || uri.contains("inquiry-search")
+					|| uri.contains("inquiry-edit")) {// 로그인한 사용자만 볼 수 있는 요청
 				resp.sendRedirect("login.action");
 				return false;
 			}
 		}
-		if (member != null && member.getAdmin() == "member") {
+		if (member != null && member.getAdmin() == "Member") {
 
-			if(uri.contains("admin-main")){
+			if (uri.contains("admin-main")) {
 				resp.sendRedirect("main");
 				return false;
 			}
 		}
+
+//		if (session.getAttribute("loginuser") != member.getMemberId() ) {
+//
+//			if (uri.contains("inquiry-detail.action")) {
+//				resp.sendRedirect("login.action");
+//				return false;
+//			}
+//		}
+		
 		return true;
+
 	}
 
 	@Override

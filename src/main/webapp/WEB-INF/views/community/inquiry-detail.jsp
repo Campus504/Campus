@@ -356,6 +356,19 @@
 	<!-- /.sidebar -->
 
 	<script type="text/javascript">
+	
+	/* $('#order-btn').on('click',function(event){
+		if(${loginuser.memberId==null}){
+			alert('로그인 후에 이용해주세요');
+			location.href="login.action";
+			return false;
+		}else{
+		var amount=$('#amount').val();
+		location.href="showOrderPage.action?goodsCode="+${goods.goodsCode}+"&amount="+amount+"&price="+${goodsIn.rentPrice}+"&memberId=${loginuser.memberId}";
+		}
+	}); */
+	
+	/////////////////////////////////// 삭제 & 검색버튼 ////////////////////////////////////////////////////// 
 		$(function() {
 
 			$('.delete_button').on('click', function(event) {
