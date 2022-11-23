@@ -257,10 +257,8 @@
 <script type="text/javascript">
 $(function(){
 	
-<<<<<<< HEAD
 	var valid = ${valid};
-=======
->>>>>>> d1774751584a96bcf164d90ebd4e5e76934b2475
+
 	
 	$('#order-btn').on('click',function(event){
 		if(${loginuser.memberId==null}){
@@ -276,12 +274,7 @@ $(function(){
 	
 	//강성훈 11월22일 수정.. 충돌 나면 확인하도록
 $('#addToCart').click(function(event){ 
-	
-<<<<<<< HEAD
-=======
-	var valid = ${valid};
-	
->>>>>>> d1774751584a96bcf164d90ebd4e5e76934b2475
+
 	if (valid >= 1) {
 		event.preventDefault();
 		alert("이미 장바구니에 포함된 상품입니다.")
@@ -312,8 +305,6 @@ $('#addToCart').click(function(event){
 	 		}
 		});
 	}
-	
-	
 	
 		
 });
