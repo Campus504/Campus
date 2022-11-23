@@ -145,7 +145,7 @@
 					
 					<td><input id="amount${sum}" type="number" min="1" name="amount" value="${cart.amount}" class="form-control"></td>
 					<!-- <td><button type="submit" class="btn btn-info">수량번경</button></td> -->
-					<td><a class="btn btn-danger" href="deleteCart.action?memberId=${ cart.memberId }&goodsCode=${ cart.goodsCode }">상품삭제</a></td>
+					<td><a class="btn btn-danger" href="deleteCart.action?cartNo=${ cart.cartNo }&goodsCode=${ cart.goodsCode }">상품삭제</a></td>
 				</tr>
 				
 			</c:forEach>

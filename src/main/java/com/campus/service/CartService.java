@@ -15,7 +15,7 @@ public interface CartService {
 
 	void updateCart(int cartNo, int amount);
 
-	void deleteCart(int cartNo);
+	void deleteCart(int cartNo, int goodsCode);
 
 	void deleteAllCart(String memberId);
 

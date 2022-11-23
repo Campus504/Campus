@@ -25,7 +25,7 @@ public interface CartMapper {
 	void insertCart(CartDto cart);
 	
 	//장바구니 목록
-	@Select("SELECT c.*, g.goodsName FROM cart c " + 
+	@Select("SELECT c.*, g.goodsName,g.brand FROM cart c " + 
 			"INNER JOIN goods g " + 
 			"ON c.goodsCode = g.goodscode " + 
 			"WHERE memberid = #{ memberId }")
@@ -35,6 +35,7 @@ public interface CartMapper {
 			@Result(column = "goodsCode", property = "goodsCode", id = true),
 			@Result(column = "amount", property = "amount"),
 			@Result(column = "price", property = "price"),
+			@Result(column = "brand", property = "goods.brand"),
 			@Result(column = "goodsName", property = "goods.goodsName"),		
 		})
 	List<CartDto> listCart(String memberId);
@@ -43,9 +44,9 @@ public interface CartMapper {
 	@Update("UPDATE cart SET amount = #{ amount } WHERE cartNo = #{cartNo} ")
 	void updateCart(@Param("cartNo") int cartNo, @Param("amount") int amount);
 	
-	//장바구니 삭제
-	@Delete("DELETE FROM cart WHERE cartNo = #{cartNo} ")
-	void deleteCart(int cartNo);
+	//장바구니 개별삭제
+	@Delete("DELETE FROM cart WHERE cartNo = #{ cartNo } AND goodsCode = #{goodsCode} ")
+	void deleteCart(@Param("cartNo") int cartNo, @Param("goodsCode") int goodsCode);
 
 	//장바구니 전체삭제
 	@Delete("DELETE FROM cart WHERE memberid = #{ memberId } ")

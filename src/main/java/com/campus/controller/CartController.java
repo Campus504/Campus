@@ -40,7 +40,7 @@ public class CartController {
 		
 		List<CartDto> list = cartService.listCart(member.getMemberId());
 		int size = list.size();
-		
+		System.out.println(list);
 		model.addAttribute("list",list);
 		model.addAttribute("size",size);
 		model.addAttribute("bigCategory",bigCategory);
@@ -82,11 +82,10 @@ public class CartController {
 	}
 	
 	//장바구니 개별삭제
-	@RequestMapping("deleteCart.action")
-	public String deleteCart(int cartNo) {
+	@GetMapping("deleteCart.action")
+	public String deleteCart(int cartNo,int goodsCode) {
 		System.out.println(cartNo);
-		cartService.deleteCart(cartNo);
-		
+		cartService.deleteCart(cartNo, goodsCode);
 		return "redirect:cart-list.action";
 	}
 	

@@ -526,7 +526,7 @@ font-size: 30px;
 					}
 			});
 			
-			
+			var totalPrice = null;
 			
 			$('#totalOrderInfo').on('click',function(event){
 				if($("#rentDate").val()==''||$("#returnDate").val()==''){
@@ -551,10 +551,7 @@ font-size: 30px;
 				}
 			});
 			
-
-			
-			
-			
+						
 			
 			$('#submit-order').on('click',function(event){
 				if($("#rentDate").val()==''||$("#returnDate").val()==''){
