@@ -102,7 +102,8 @@
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
 							 		
-							 		<form action="update-goods-option.action" id="update-goods-option-form" method="post">
+							 		<!-- form error : action, id 수정되어 에러 -->
+							 		<form action="admin-goods-register.action" id="admin-goods-register-form" method="post">
 									
 									<div class="row">
 										<div class="col-md-6">
@@ -295,11 +296,11 @@
 			$(function() {
 				$('#add-goods-property').on('click', function(event) {
 					$('#add-goods-property-modal').modal("show");									// 상품 속성 팝업 열기
-				});					// 속성 팝업 show
+				});
 				
 				$('#add-goods-property-modal-cancel').on('click', function(event) {
 					$('#add-goods-property-modal').modal("hide");									// 상품 속성 팝업 숨기기
-				});					// 속성 팝업 hide 
+				});
 				
 				/* $('#').on('click', funtion(event){
 					$('#').();
