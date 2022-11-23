@@ -161,10 +161,10 @@ public class GoodsController {
 	  
 	
 	@PostMapping(path= {"orderGoods.action"})
-	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail ) {
+	public String insertOrder(OrderListDto orderList, OrderDetailDto orderDetail) {
 		goodsService.insertOrder(orderList, orderDetail);
 		
-		return "redirect:my-page-order-list.action";
+		return "redirect:cart-list.action?memberId="+orderList.getMemberId();
 	}
 	
 	

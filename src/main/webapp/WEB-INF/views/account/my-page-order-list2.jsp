@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <html lang="ko">
-
-<!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
-<!-- 상세페이지 만들때 사용 ㄱㄱ -->
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>장바구니</title>
+  <title>CAMPUS - 마이페이지</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -34,8 +29,19 @@
   <link href="/campus/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="/campus/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/icon-font.min.css">
+	
+
+	
 
   <!-- =======================================================
   * Template Name: BizPage - v5.10.1
@@ -43,8 +49,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-      <!-- sidebar css,js -->
+    <!-- sidebar css,js -->
    <!-- Google Web Font -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -69,12 +74,11 @@
     <link rel="stylesheet" href="/campus/resources/sidebar/css/ionicons.css">
 
     <!-- Magnific PopUp -->
-    <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css">
+    <!-- <link rel="stylesheet" href="/campus/resources/sidebar/css/magnific-popup.css"> -->
 
     <!-- Tabs -->
     <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabs.css" />
     <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabstyles.css" />
-    <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
     <!-- Loader Style -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/loader-1.css">
@@ -82,6 +86,8 @@
     <!-- Costum Styles -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
+    <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
+    <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/ico" href="favicon.ico">
@@ -90,144 +96,160 @@
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
     
-    <!--  사이드바 관리자 아이콘 -->
+        <!--  사이드바 관리자 아이콘 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     <script src="/campus/resources/assets/js/login.js"></script>
     
     
-      <style type="text/css">
+    
+  <style type="text/css">
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
-	#main{position:relative; margin:0 auto; width:1200px; height:769px;}
-	</style>
-</head>
 
+    section{
+    overflow:scroll !important;
+    }
+	.container [class='row'] {
+    width: 1200px;
+}
+
+	.area {
+	    width: 3.5% !important;
+	}
+	.container .title{
+	padding-top:80px;
+	height: 20px;
+	} 
+
+	</style>
+ 
+</head>
 <body>
 
   <!-- ======= Header ======= -->
  	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
-
-<!-- ======= mypage-side-menu ======= -->
+  
+  <!-- ======= mypage-side-menu ======= -->
  	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
   <!-- End mypage-side-menu -->
+  
+	<div class="main-container">
 
-  <main id="main">
-<c:if test="${ not empty loginuser }">
- <div class="jumbotron" style="margin-top:100px;">
-	<h2>${ loginuser.memberId }님 주문내역</h2>
-</div>
-</c:if>
+		<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
 
-
+		<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="title">
+						<h4> 주문목록</h4>
+					</div>
+					<nav aria-label="breadcrumb" role="navigation">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page"> 주문목록</li>
+						</ol>
+					</nav>
+				</div>	
+			</div>
+		</div>
+	<!-- 페이지 해더 종료 입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
 	
-	<table class="table text-center table-hover container">
-		<thead>
-			<tr>
-				<th>주문번호</th>
-				<th>주문일</th>
-				<th>상품 수령일</th>
-				<th>상품 반납일</th>
-				<th>결제 방법</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="order" items="${orders}">
-			
-			<c:set var="sum" value="${sum+1}"></c:set>
-				<tr role="row" class="orderNo-${ order.orderNo }">
-					<td>
-					<%-- <a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" > --%>
-					${order.orderNo}
-					<!-- </a> -->
-					</td>
-					
-					<td>${order.orderDate}</td>
-					
-					<td>${order.rentDate}</td>
-					<td>${order.returnDate}</td>
-					
-					<c:choose>
-						<c:when test="${order.pay=='cash'}">
-						<td>현금</td>
-						</c:when>
-						<c:when test="${order.pay=='credit'}">
-						<td>신용카드</td>
-						</c:when>
-						<c:when test="${order.pay=='account'}">
-						<td>계좌이체</td>
-						</c:when>
-						<c:when test="${order.pay=='kakaoPay'}">
-						<td>카카오페이</td>
-						</c:when>
-						<c:otherwise>
-						<td>네이버페이</td>
-					</c:otherwise>
-					</c:choose>
-					
-					
-				</tr>
-				
-			</c:forEach>
+	<!-- 주문 리스트 시작! -->
+	<div class="pd-20 card-box mb-30">
 
-		</tbody>
+		<div class="card-box mb-30">
+			<div class="pd-20">
+				<h4 class="text-blue h4"></h4>
+			</div>
 
-
-
-	</table>
+			<div class="pb-20">
+				<div id="DataTables_Table_3_wrapper"
+					class="dataTables_wrapper dt-bootstrap4 no-footer">
+					<div class="row">
+									
+						</div>
+						<div class="row">
+							<div class="col">
+					<!-- 등록된 상품의 리스트 테이블 만들기 -->
+							<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
+								
+								<thead>
+									<tr role="row" >
+										<th>주문번호</th>
+										<th>회원아이디</th>
+										<th>주문일</th>
+										<th>상품 수령일</th>
+										<th>상품 반납일</th>
+										<th>결제방법</th>
+										
+									</tr>
+								</thead>
+								
+								<c:forEach  var="orderList" items='${orderList}' >
+								<tbody>
+								
+									<tr role="row" class="orderNo-${ orderList.orderNo }" >
+										
+										<td>${ orderList.orderNo }</td>
+										<td>
+										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
+										${ orderList.memberId }</a></td>
+										<td>${ orderList.orderDate }</td>
+										<td>${ orderList.rentDate }</td>
+										<td>${ orderList.returnDate }</td>
+										
+										<c:choose>
+										<c:when test="${orderList.pay=='cash'}">
+										<td>현금</td>
+										</c:when>
+										<c:when test="${orderList.pay=='credit'}">
+										<td>신용카드</td>
+										</c:when>
+										<c:when test="${orderList.pay=='account'}">
+										<td>계좌이체</td>
+										</c:when>
+										<c:when test="${orderList.pay=='kakaoPay'}">
+										<td>카카오페이</td>
+										</c:when>
+										<c:otherwise>
+										<td>네이버페이</td>
+										</c:otherwise>
+										</c:choose>																		
+										
+									</tr>
+								
+								</tbody>
+								</c:forEach>
+								
+							</table>
 	
-	
-	<!-- 옵션 모달 시작-->	
-<!-- 							<div class="col-md-4 col-sm-12 mb-30">
-						<div  >
-							
-							<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-lg modal-dialog-centered">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="myLargeModalLabel">주문 상세 보기</h4>
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-										</div>
-										<div class="modal-body">
-										
-										상품 상세 정보 불러오기
-										
-										
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">창 닫기</button>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
-							 -->
-							
-							<!-- 옵션 모달 끝-->	
-	
-	
-	
-	
-	
+					
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
 
-<p class="container ">
-</p>
+  </main>
+  <!-- End #main -->
 
+  	<!-- ======= Footer ======= -->
+	<jsp:include page="/WEB-INF/views/include/footer.jsp" /> 
+	<!-- End Footer --> 
 
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
 
-
-
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/include/footer.jsp" />  
-<!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
@@ -242,7 +264,13 @@
   <script src="/campus/resources/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="/campus/resources/assets/js/main.js"></script>
+  <script src="vendors/scripts/core.js"></script>
+
+		<script src="/campus/resources/vendors/scripts/script.min.js"></script>
+		<script src="/campus/resources/vendors/scripts/process.js"></script>
+		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
+		
+  <!-- <script src="/campus/resources/assets/js/main.js"></script> -->
   
     <!-- sidebar -->
      <script src="/campus/resources/sidebar/js/vendor/jquery-1.11.2.min.js"></script>
@@ -264,39 +292,13 @@
     <script src="/campus/resources/sidebar/js/ajax.js"></script>
   <!-- /.sidebar -->
 
-<script type="text/javascript">
-$(function() {
-	
-/* 	$(".btn-block").on('click',function(event){
-		 const orderNo = $(this).data('orderno');
-	 	$.ajax({
-					"url" : "find-order-detail.action",
-					"method" : "get",
-					"data" : { "orderNo":orderNo },
-					dataType:'JSON',
-					cache: false,
-					async:false,
-					"success" : function(data) {
-						$('.modal-body').html("<p></p>");
-						for(var i =0; i<data.length;i++){
-							$('.modal-body').append("<p>주문 번호 : "+data[i].goods.goodsName+"</p>");
-							$('.modal-body').append("<p>상품 코드 : "+data[i].goods.category+"</p>");
-							$('.modal-body').append("<p>상품 가격 : "+data[i].price+"</p>");
-							$('.modal-body').append("<p>주문 수량 : "+data[i].amount+"</p><br><br>");
-						}
-						
-						},
-					"error" : function() {
-						alert("???");
-					}
-				}); 
-	}); */
+<!-- js -->
+		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
+		<!-- end of js -->
 
-	
-});
-
-</script>
 
 </body>
+
+
 
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderListDto;
 
 public interface AccountService {
 
@@ -44,6 +45,8 @@ public interface AccountService {
 	void memberChange(String memberId);
 
 	void boardDeleted(int boardNo);
+
+	List<OrderListDto> selectMemberOrderList(String memberId);
 
 
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.campus.common.Util;
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderListDto;
 import com.campus.mapper.MemberMapper;
 
 import lombok.Setter;
@@ -162,6 +163,12 @@ public class AccountServiceImpl implements AccountService {
 		
 		memberMapper.boardDeleted(boardNo);
 		
+	}
+
+	@Override
+	public List<OrderListDto> selectMemberOrderList(String memberId) {
+		List<OrderListDto> orders = memberMapper.selectOrderListByMemeber(memberId);
+		return orders;
 	}
 
 }

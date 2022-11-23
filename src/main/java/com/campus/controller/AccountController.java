@@ -193,10 +193,13 @@ public class AccountController {
 		return "/account/my-page-board"; // 참고
 	}
 
-	@GetMapping(path = { "my-page-order-list.action" })
+	@RequestMapping(path = { "my-page-order-list.action" })
 	public String myPageOrderList(String memberId, Model model) {
 		
 		// DB에서 주문 내역 가져와야함
+		List<OrderListDto> orders = accountService.selectMemberOrderList(memberId);
+		
+		model.addAttribute("orders", orders);
 
 		return "/account/my-page-order-list";
 	}

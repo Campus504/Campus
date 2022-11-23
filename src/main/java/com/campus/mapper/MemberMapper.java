@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.campus.dto.BoardDto;
 import com.campus.dto.MemberDto;
+import com.campus.dto.OrderListDto;
 
 @Mapper
 public interface MemberMapper {
@@ -77,5 +78,8 @@ public interface MemberMapper {
 
 	@Update("UPDATE board SET active = FALSE WHERE boardNo =#{boardNo} ")
 	void boardDeleted(int boardNo);
+
+	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId =#{memberId} Order By orderNo DESC")
+	List<OrderListDto> selectOrderListByMemeber(String memberId);
 	
 }

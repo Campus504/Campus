@@ -112,8 +112,8 @@ public interface CommunityMapper {
 	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) AND depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
 	BoardCommentDto selectRecommentWithMaxDepth(int commentNo);
 
-	
 	//////////////////////////댓글끝////////////////////////////////////////////////////////////
+	
 	
 	@Insert("INSERT INTO community (boardNo, tag) VALUES (#{boardNo}, #{tag})")
 	void insertBoardTag(CommunityDto tag);
