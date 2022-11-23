@@ -256,7 +256,7 @@ $(function(){
 		
 		
 	});
-	
+	console.log(${pageCount});
 	
 });
 

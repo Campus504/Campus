@@ -11,5 +11,6 @@ public class OrderDetailDto {
 	private int price;
 	
 	private MemberDto member;
+	private GoodsDto goods;
 
 }

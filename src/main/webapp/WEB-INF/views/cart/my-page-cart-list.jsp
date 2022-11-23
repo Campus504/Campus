@@ -120,10 +120,6 @@
 </div>
 </c:if>
 
-<c:if test="${ empty loginuser }">
-	<h1>장바구니가 비어있습니다.</h1>
-	<a href="goods-list.action">쇼핑하러가기</a>
-</c:if>
 
 <form id="cartForm" method="post" action="showOrderPage.action" onsubmit="return false;">
 	<c:if test="${ not empty loginuser }">
@@ -167,14 +163,13 @@
 
 <div class="container">
 	<button id="order-btn" class="btn btn-outline-primary my-2 my-sm-0 ml-2 mr-20" type="button">주문하기</button> 
-		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action">계속	쇼핑하기</a> 
+		<a class="btn btn-info  my-2 my-sm-0 ml-2" href="goods-list.action?category=${bigCategory}">계속	쇼핑하기</a> 
 		<a class="btn btn-danger" href="deleteAllCart.action?memberId=${ loginuser.memberId }">장바구니 전체 삭제</a>
 			</div>
 
 </c:if>
-	
-</form>
 
+</form>
 
 
   </main><!-- End #main -->
@@ -222,7 +217,7 @@
 
 <script type="text/javascript">
 $(function() {
-	
+
 	var size = ${ size } + 1
 	var price;
 	var amount;

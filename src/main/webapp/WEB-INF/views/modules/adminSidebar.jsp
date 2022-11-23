@@ -121,7 +121,7 @@
 							<li><a href="admin-write.action">관리자 글쓰기</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
+					<!-- <li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
 							<span class="micon dw dw-analytics-21"></span><span class="mtext">차트</span>
 						</a>
@@ -129,7 +129,7 @@
 							<li><a href="admin-chart.action">대여 통계</a></li>
 							<li><a href="admin-chart2.action">대여 통계2</a></li>
 						</ul>
-					</li>
+					</li> -->
 					<li>
 						<div class="dropdown-divider"></div>
 					</li>

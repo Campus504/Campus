@@ -77,7 +77,7 @@ public class GoodsController {
 		}
 	
 	@GetMapping(path= {"goods-detail.action"})
-	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, HttpSession session, Model model) {
+	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, String category, HttpSession session, Model model) {
 		
 		if(goodsCode==0) {
 			return "redirect:main";
@@ -100,6 +100,7 @@ public class GoodsController {
 		GoodsRegisterDto goodsIn = goodsService.findGoodsInByGoodsCode(goodsCode);
 		model.addAttribute("goods", goods);
 		model.addAttribute("goodsIn", goodsIn);
+		model.addAttribute("category", category);
 		
 		return "order/goods-detail";
 	}

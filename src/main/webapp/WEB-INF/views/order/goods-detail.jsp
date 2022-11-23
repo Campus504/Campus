@@ -157,7 +157,6 @@
 		<input type="hidden" name="goodsName" value="${goods.goodsName}">
 		<input type="hidden" name="brand" value="${goods.brand}">
 		<input type="hidden" name="category" value="${goods.category}">
-		<input type="hidden" name="bigCategory" value="${category}">
             <div class="portfolio-info">
               <h3>${goods.goodsName}</h3>
               <ul>
@@ -193,7 +192,7 @@
                 
                 </span>
                 
-            	<a href="goods-list.action?category=${goods.category}" class="btn btn-secondary">상품목록</a>
+            	<a href="goods-list.action?category=${category}" class="btn btn-secondary">상품목록</a>
                 </li>
                 
               </ul>
@@ -258,11 +257,13 @@
 <script type="text/javascript">
 $(function(){
 	
-	
+	var valid = ${valid};
+
 	
 	$('#order-btn').on('click',function(event){
 		if(${loginuser.memberId==null}){
 			alert('로그인 후에 이용해주세요');
+			location.href="login.action";
 			return false;
 		}else{
 		var amount=$('#amount').val();
@@ -273,10 +274,7 @@ $(function(){
 	
 	//강성훈 11월22일 수정.. 충돌 나면 확인하도록
 $('#addToCart').click(function(event){ 
-	
-	var valid = ${valid};
-	alert(valid);
-	
+
 	if (valid >= 1) {
 		event.preventDefault();
 		alert("이미 장바구니에 포함된 상품입니다.")
@@ -284,6 +282,7 @@ $('#addToCart').click(function(event){
 	} else if (valid == -1) {
 		event.preventDefault();
 		alert("로그인 후 이용 하세요.")
+		location.href="login.action";
 		return;
 	} else {
 		
@@ -294,9 +293,10 @@ $('#addToCart').click(function(event){
 	 		"method" : "post",
 	 		"data" : cartForm,
 	 		"success" : function(data, status, xhr) {
+	 			valid = 1;
 	 			var check = confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?");
 	 			if(check){
-	 				location.assign('cart-list.action?memberId=${ loginuser.memberId }');
+	 				location.assign('cart-list.action?memberId=${ loginuser.memberId }&bigCategory=${category}');
 	 				}else{
 	 					return;
 	 				}
@@ -304,11 +304,7 @@ $('#addToCart').click(function(event){
 	 		"error" : function(xhr, status, err) {
 	 		}
 		});
-		
-		
 	}
-	
-	
 	
 		
 });
