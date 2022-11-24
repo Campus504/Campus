@@ -93,24 +93,20 @@ public interface CommunityMapper {
 	@Update("UPDATE boardComment SET content = #{content} WHERE commentNo = #{commentNo}")
 	void updateComment(BoardCommentDto comment);
 
+	@Select("SELECT * FROM boardComment WHERE commentNo=${commentNo} ")
+	BoardCommentDto selectReCommentInfo(@Param("commentNo") int commentNo);
+	
+	@Select("SELECT nvl(min(step),0) from boardComment where commentGroup = ${commentGroup} and depth <= (select depth from boardComment where commentNo = ${commentNo} ) AND step > ${step}")
+	int selectRecommentStepNo(@Param("commentNo") int commentNo, @Param("commentGroup") int commentGroup,@Param("step") int step);
+	
+	@Select("SELECT MAX(step) from boardComment WHERE commentGroup = ${commentGroup} ")
+	int selectMaxStep(@Param("commentGroup")  int commentGroup);
+	
+	@Update("UPDATE boardComment SET step = step + 1 WHERE commentGroup = ${commentGroup} and step >= ${step}")
+	void updateStepNo(@Param("commentGroup") int recommentGroup, @Param("step") int newStep);
+	
 	@Insert("INSERT INTO boardComment (boardno, memberId, content, commentGroup, step, depth) VALUES (#{boardNo}, #{memberId}, #{content}, #{commentGroup}, #{step}, #{depth}) ")
 	void insertReComment(BoardCommentDto comment);
-
-	@Select("SELECT boardNo, commentGroup, MAX(step)+1 step , depth FROM boardComment WHERE commentGroup=(SELECT commentGroup FROM boardComment WHERE commentNo= ${commentNo}) and depth= (SELECT (depth+1) depth FROM boardComment WHERE commentNo=${commentNo}) "
-			+ "AND step < (SELECT MiN(step) FROM boardComment WHERE depth = (SELECT depth FROM boardComment WHERE commentNo= ${commentNo}) AND step > (SELECT step FROM boardComment WHERE commentNo=${commentNo} ))")
-	BoardCommentDto selectReCommentInfo(int commentNo);
-
-	@Update("UPDATE boardComment SET step = step + 1 WHERE commentGroup = ${commentGroup} and step >= ${step}")
-	void updateStepNo(@Param("commentGroup") int commentGroup,@Param("step") int step);
-
-	@Select("SELECT MAX(step)+1 step, boardNo, commentGroup, 1 depth  FROM boardComment WHERE commentGroup = #{commentGroup} ")
-	BoardCommentDto selectReCommentInfo2(int commentGroup);
-
-	@Select("SELECT COUNT(*) FROM boardComment WHERE commentGroup= (select commentGroup from boardComment WHERE commentNo = ${commentNo}) AND depth = (SELECT MAX(depth) FROM boardComment WHERE commentGroup = (select commentGroup from boardComment WHERE commentNo = ${commentNo}))")
-	int selectMaxDepthBycommentGroup(int commentNo);
-
-	@Select("select depth+1 depth, step+1 step, commentGroup, boardNo from boardComment where commentNo = (select commentNo From boardComment WHERE commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) AND depth = (select max(depth) from boardComment where commentGroup = (select commentGroup from boardComment where commentNo = ${commentNo}) ))")
-	BoardCommentDto selectRecommentWithMaxDepth(int commentNo);
 
 	//////////////////////////댓글끝////////////////////////////////////////////////////////////
 	
@@ -120,6 +116,7 @@ public interface CommunityMapper {
 
 	@Select("select * from board WHERE active = TRUE AND boardNo in (select boardNo from board WHERE category = 'freeboard'  ) order By readCount desc limit 6 ")
 	List<BoardDto> selectBestBoard();
+
 
 
 }

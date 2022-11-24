@@ -127,17 +127,13 @@
 		    <div class="col-lg-8 entries">
 			
 
-            	<!-- paging -->
+
+           	<!-- paging -->
 		 <div class="blog-pagination">
               <ul class="justify-content-center">
-              <c:if test="${pageNo < pageCount}">
-              <div class="blog-pagination">
-              <ul class="justify-content-center">
-              <li class="active"><a id="moreTips" >게시글 더보기</a></li>
+              <li class="active"><a id="moreTips" >게시글 더보기</a>
+              <a style="display:none" id="lastPage" >마지막 페이지입니다</a></li>
               </ul>
-              </div>
-              </c:if>
-             </ul>
        </div>
 				<!-- end of paging -->
 				
@@ -259,10 +255,11 @@
 					
 					if((currentPageNo+1)==${pageCount}){
 						$("#moreTips").hide();
-					}  
-					
-				  	$('#tips-container-inner').load("tip-content-list.action?pageNo="+(currentPageNo+1));
-				  	currentPageNo++;
+						$('#lastPage').show();
+					}
+					currentPageNo++;
+				  	$('#tips-container-inner').load("tip-content-list.action?pageNo="+currentPageNo);
+				  	
 					
 					
 				},

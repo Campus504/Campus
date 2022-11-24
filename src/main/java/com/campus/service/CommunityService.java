@@ -42,7 +42,7 @@ public interface CommunityService {
 	
 	void writeTip(BoardDto board);
 
-	List<BoardDto> searchTip(String searchOption, String search,  int pAGE_SIZE);
+	List<BoardDto> searchTip(String searchOption, String search,  int PAGE_SIZE, int pageNo);
 
 	int findSearchTipCount(String searchOption, String search);
 
@@ -59,6 +59,7 @@ public interface CommunityService {
 	void writeReComment(BoardCommentDto comment);
 
 	List<BoardDto> findBestBoard();
+
 
 
 }
