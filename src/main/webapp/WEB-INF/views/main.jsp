@@ -191,9 +191,9 @@
               <h2 class="title"><a href="freeboard-detail.action?boardNo=${board.boardNo}">${board.title}</a></h2>
               
                 <ul>
-                  <li style="font-color:#18d26e" class="d-flex align-items-center">${board.memberId}</li>
-                  <li class="d-flex align-items-center">${board.writeDate}</li>
-                  <li class="d-flex align-items-center">${board.readCount}</li>
+                  <li style="font-color:#18d26e" class="d-flex align-items-center">작성자 : ${board.memberId}</li>
+                 <%--  <li class="d-flex align-items-center">${board.writeDate}</li>
+                  <li class="d-flex align-items-center">${board.readCount}</li> --%>
                 </ul>
               
               <p>
