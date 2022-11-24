@@ -28,16 +28,6 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-119386393-1');
 	</script>
 	
 </head>
@@ -53,7 +43,7 @@
 	<jsp:include page="/WEB-INF/views/modules/adminSidebar.jsp" />
 	
 	
-	<!-- 페이지 시작합니다 -->
+	<!-- 페이지 시작 합니다 -->
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
@@ -61,10 +51,10 @@
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 
-				<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
+				<!-- page header : all most -->
 				<div class="page-header">
 					<div class="row">
-						<div class="col-md-6 col-sm-12">
+						<div class="col-sm-12">
 							<div class="title">
 								<h4>상품등록</h4>
 							</div>
@@ -93,8 +83,8 @@
 				<!-- 상품 등록 페이지 시작 -->
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
-						<h4 class="text-blue h4">상품 정보를 입력하세요</h4>
-						<p class="mb-30">등록 될 상품의 정보를 입력해주세요</p>				
+						<h4 class="text-blue h4">Campus 에서 대여 될 상품을 등록 하세요.</h4>
+						<p class="mb-30">상품 등록을 통해 대여 상품을 등록 합니다.</p>
 					</div>
 	
 					<div class="wizard-content">
@@ -102,43 +92,43 @@
 								
 								<section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
 							 		
-							 		<!-- form error : action, id 수정되어 에러 -->
+							 		<!-- form error : action, id 수정 시 에러 -->
 							 		<form action="admin-goods-register.action" id="admin-goods-register-form" method="post">
 									
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label>1. 상품분류(대카테고리) :</label>													
+												<label>1. 상품 분류 :</label>
 												<select name=category class="custom-select form-control">
-													<option value="">--텐트/타프(선택불가)--</option>
+													<option value="">----텐트/타프(선택불가)----</option>
 													<option value="텐트">텐트</option>
 													<option value="타프">타프</option>
 													<option value="텐트/타프(소품)">텐트/타프(소품)</option>
 													
-													<option value="">--테이블/체어(선택불가)--</option>
+													<option value="">----테이블/체어(선택불가)----</option>
 													<option value="테이블">테이블</option>
 													<option value="체어">체어</option>
 													
-													<option value="">--침낭/매트(선택불가)--</option>
+													<option value="">----침낭/매트(선택불가)----</option>
 													<option value="침낭">침낭</option>
 													<option value="매트">매트</option>
 													<option value="야전침대">야전침대</option>
 													<option value="베개/해먹">베개/해먹</option>
 													<option value="소품">소품</option>
 													
-													<option value="">--식기(선택불가)--</option>
+													<option value="">----식기(선택불가)----</option>
 													<option value="코펠">코펠</option>
 													<option value="프라이팬">프라이팬</option>
 													<option value="컵/머그컵">컵/머그컵</option>
 													<option value="취사도구/양념통">취사도구/양념통</option>
 													
-													<option value="">--화로/버너(선택불가)--</option>
+													<option value="">----화로/버너(선택불가)----</option>
 													<option value="버너/스토브">버너/스토브</option>
 													<option value="화로대">화로대</option>
 													<option value="난로">난로</option>
 													<option value="화로/버너(소품)">화로/버너(소품)</option>
 													
-													<option value="">--캠핑소품(선택불가)--</option>
+													<option value="">----캠핑소품(선택불가)----</option>
 													<option value="가전기기">가전기기</option>
 													<option value="랜턴/손전등">랜턴/손전등</option>
 													<option value="아이스박스/쿨러">아이스박스/쿨러</option>
@@ -153,7 +143,7 @@
 												<label>2. 브랜드 :</label>
 												<!-- <input type="text" class="form-control" id="brand" name="brand" placeholder="브랜드"> -->
 												<select name="brand" class="custom-select form-control" >
-													<option value="">--브랜드선택(선택불가)--</option>
+													<option value="">----브랜드선택(선택불가)----</option>
 													<option value="snowline">snowline</option>
 													<option value="Covea">Covea</option>
 													<option value="Snowpeak">Snowpeak</option>
@@ -170,8 +160,9 @@
 										</div>
 									</div>		
 									
-							<!-- 속성값을 받을 테이블 추가 -->
+							<!-- optionValue Table -->
 								<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline" id="options-table" role="grid" aria-describedby="DataTables_Table_3_info">
+
 								<thead>
 									<tr role="row">
 										<th class="dt-body-center sorting_disabled" rowspan="1" colspan="1" aria-label="">
@@ -188,27 +179,27 @@
 										
 									</tr>
 								</thead>
-								
+
+
 								<tbody>
-									<!-- 추가된 속성이 표시 되기위해 만들어 진 tbody 입니다 -->
+								<!-- 속성의 리스트가 표시 되는 tbody -->
 								</tbody>
 								
 								</table>
-							<!-- 속성값을 받을 테이블 추가 끗 -->
+							    <!-- 속성값을 받을 테이블 추가 끗 -->
 						
-						<!-- 속성추가 버튼 추가 시작 -->				
+						<!-- 속성 추가 버튼 -->
 						<div class="footer-wrap pd-20 mb-20 card-box">
 							<div class="form-group">
 							<!-- Button trigger modal -->
 								<button type="button" class="btn btn-success btn-lg btn-block" id="add-goods-property">속성을 추가하세요</button>
 							</div>
 						</div>
-						<!-- 속성추가 버튼 추가 끗 -->
 								
 						<!-- 상품등록, 취소 버튼 -->	
 						<div class="btn-list">
 							<button type="reset" id="goodsRegisterReset" name="goodsRegister" value="초기화" class="btn btn-secondary btn-lg">초기화</button>
-							<button type="submit" id="goodsRegisterConfirm" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary" >상품등록</button>
+							<button type="submit" id="goodsRegisterConfirm" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary">상품등록</button>
 							<button type="button" class="btn btn-secondary btn-lg">취소</button>
 						</div>	
 						
@@ -218,7 +209,6 @@
 						</div>
 					</div> 
 				</div>
-				<!-- 상품 등록 페이지 끝 -->	
 
 				<!-- 상품 속성 등록 팝업 / goods option registration modal -->	
 						<div class="modal fade" id="add-goods-property-modal" tabindex="-1" aria-hidden="true">
@@ -276,7 +266,7 @@
 						      
 					      <div class="modal-footer">
 					        <!-- <button type="reset" id="goodsRegisterReset" name="goodsRegisterReset" class="btn btn-secondary" value="초기화">초기화</button> -->
-					        <button type="button" id="add-goods-property-modal-confirm" class="btn btn-primary">속성저장</button>
+					        <button type="button" id="add-goods-property-modal-confirm" class="btn btn-primary">저장</button>
 					        <button type="button" id="add-goods-property-modal-cancel" class="btn btn-secondary">취소</button>
 					      </div>
 					    </div>
@@ -291,7 +281,6 @@
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
 
-
 		<script type="text/javascript">
 			$(function() {
 				$('#add-goods-property').on('click', function(event) {
@@ -301,10 +290,6 @@
 				$('#add-goods-property-modal-cancel').on('click', function(event) {
 					$('#add-goods-property-modal').modal("hide");									// 상품 속성 팝업 숨기기
 				});
-				
-				/* $('#').on('click', funtion(event){
-					$('#').();
-				}); */
 				
 				$('#add-goods-property-modal-confirm').on('click', function(event) {
 					// 입력된 속성을 저장하는 코드 작성
@@ -316,7 +301,6 @@
 					// alert(option_name + " / " + option_value_type + " / " + option_single_value + " / " + option_description);
 
 					// 테이블에 들어갈 데이터 표시
-					
 					const tr = `<tr role="row" class="odd">
 						<td class=" dt-body-center" tabindex="0">
 							<div class="dt-checkbox">							
@@ -325,11 +309,11 @@
 							</div>
 						</td>
 					
-						<td>` + option_name + `</td> 			// option_name / 속성이름 출력
-						<td>` + option_value_type + `</td> 		// option_value_type / 속성자료형 출력 
-						<td>` + option_single_value + `</td> 	// option_single_value / 속성값 출력
+						<td>` + option_name + `</td> 			// option_name : 속성이름 출력
+						<td>` + option_value_type + `</td> 		// option_value_type : 속성자료형 출력
+						<td>` + option_single_value + `</td> 	// option_single_value : 속성값 출력
 						<td>` + "&nbsp;" + `</td>				// 테이블 빈공간
-						<td>` + option_description + `</td> 	// option_description / 속성설명 출력
+						<td>` + option_description + `</td> 	// option_description : 속성설명 출력
 						<td>` + `<button type="button" class="btn btn-primary btn-sm remove-option-btn">삭제</button>` + `</td>	// td 내에 삭제 버튼 추가
 			
 					</tr>`
@@ -340,12 +324,12 @@
 				});
 				
 				$('#options-table').on('click', '.remove-option-btn', function(event) {		// th 삭제 버튼 클릭 시 row 리스트 삭제
-					const ok = confirm('속성을 삭제할까요?');	// ok는 '속성을 삭제할까요?' 라는 confirm alert을 실행한다
+					const ok = confirm('속성을 삭제 할까요?');	// ok는 '속성을 삭제 할까요?' 라는 confirm alert 실행
 					if (!ok) {  							// ok가 아닐때
-						return;								// 실행한다
+						return;								// 실행
 					}
 					
-					$(this).parent().parent().remove();  // 위에 호출되는 함수(this) parent 내에 parent까지 삭제
+					$(this).parent().parent().remove();  // 위에 호출 되는 함수(this) parent 내에 parent 까지 삭제
 				});
 				
 				$('#goodsRegisterConfirm').on('click', function(event) {				// goodsRegisterConfirm 의 버튼을 클릭 하면 이하 이벤트 실행!
@@ -362,9 +346,9 @@
 						
 					});
 					
-					$('#admin-goods-register-form')[0].submit();   // admin-goods-register-form 데이터를 서버로 전송
+					$('#admin-goods-register-form')[0].submit();   // admin-goods-register-form의 데이터를 서버에 전송
 					
-					/*
+					/* 사용하려고 했으나 위 방법으로 구현
 					const formData = {};
 					formData['category'] = $('select[name=category]').val();
 					formData['brand'] = $('select[name=brand]').val();
@@ -397,7 +381,7 @@
 						}
 						
 					});
-					*/
+				    */
 					
 				});
 			});

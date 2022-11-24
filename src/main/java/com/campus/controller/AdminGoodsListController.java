@@ -123,17 +123,16 @@ public class AdminGoodsListController {
 	}
 	
 	// 상품 정보 수정 페이지로 이동
-	@GetMapping(path= {"admin-goods-edit.action"})
-	public String adminGoodsEdit(@RequestParam(defaultValue = "0") int goodsCode, Model model) {
+	@GetMapping(path= {"admin-goods-list-edit.action"})
+	public String updateGoodsList(GoodsDto goods, Model model) {
 
-		if(goodsCode == 0) {
-			return "redirect:admin-goods-list.action";
-		}
+		System.out.println("상품수정 페이지로 이동 시작합니다.");
 		
-		List<GoodsOptionJoinDto> goods = adminGoodsRegisterListService.findAdminGoodsByGoodsCode(goodsCode);
+		adminGoodsRegisterListService.findGoodsList(goods);
+
 		model.addAttribute("goods", goods);
 		
-		System.out.println("상품 정보 수정페이지로 이동합니다.");
+		System.out.println("상품수정 페이지로 종료 합니다.");
 		
 		return "admingoods/admin-goods-list-edit";
 	}

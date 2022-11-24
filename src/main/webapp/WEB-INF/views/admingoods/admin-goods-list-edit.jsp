@@ -114,12 +114,6 @@
 							<th>브랜드</th>
 							<th>상품분류</th>
 		
-							<th>옵션이름</th>
-							<th>옵션설명</th>
-							<th>단일값/목록값</th>
-							
-							<th>옵션 값</th>
-						
 						</tr>
 					</thead>
 						
@@ -131,16 +125,6 @@
 						<td><input name="goodsName" value="${ goods.goodsName }" /></td>
 						<td><input name="brand" value="${ goods.brand }" /></td>
 						<td><input name="category" value="${ goods.category }" /></td>
-						
-						<td><input name="optionName" value="${ goods.optionName }" /></td>
-						<td><input name="optionDesc" value="${ goods.optionDesc }" /></td>
-						<td><select name="optionDataType">
-							<option>단일값</option>
-							<option>목록값</option>
-						</select>
-						</td>
-						
-						<%-- <input name="optionDataType" value="${ goods.optionDataType }" /> --%>
 							
 						<td><input name="optionValue" value="${ goods.optionValue }" /></td>
 					</tr>
@@ -177,8 +161,8 @@
 		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
 		
 		<script type="text/javascript">
-			
-			/* var formObj = $("form[role='form']");
+		
+/* 			var formObj = $("form[role='form']");
 			  
 			  $("#goodsEditConfirm").click(function(){
 			   formObj.attr("action", "/admin-goods-list");
@@ -186,23 +170,8 @@
 			   formObj.submit();
 			  });
 			  
-			  alert() */
-			
-/* 			$(function() {
-				$('#goodsEditConfirm').on('click', function(event) {
-					event.preventDefault();
-					
-					
-					$('#goods-register-list-table tbody tr').each(idx, tr) {
-					
-						
-					}
-					
-				});
-
-				$('#admin-goods-register-form')[0].submit();   // admin-goods-register-form 데이터를 서버로 전송
-
-			}); */
+			  alert()
+ */			
 		
 		
 		</script>

@@ -27,4 +27,11 @@ public interface AdminGoodsRegisterListService {
 	List<GoodsOptionDto> findGoodsOptionsByGoodsCode(int goodsCode);
 
 	
+
+	GoodsDto findGoodsList(GoodsDto goods);
+
+	List<GoodsDto> findGoodsList(List<GoodsDto> goods);
+
+	
+	
 }

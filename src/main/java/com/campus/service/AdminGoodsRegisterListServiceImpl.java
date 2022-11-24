@@ -72,6 +72,19 @@ public class AdminGoodsRegisterListServiceImpl implements AdminGoodsRegisterList
 		adminGoodsRegisterMapper.activeGoods(goodsCode);
 		
 	}
+
+	@Override
+	public List<GoodsDto> findGoodsList(List<GoodsDto> goods) {
+		adminGoodsRegisterMapper.updateGoodsList(goods);
+		return goods;
+	}
+
+	@Override
+	public GoodsDto findGoodsList(GoodsDto goods) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	
