@@ -56,7 +56,7 @@ public interface GoodsMapper {
 	@Insert("INSERT INTO orderDetail (orderNo, goodsCode, amount, price) VALUES ( #{orderNo}, #{goodsCode}, #{amount}, #{price} ) ")
 	void insertOrderDetail(OrderDetailDto orderDetail);
 	
-	@Select("select * from goods where status='active' AND goodsCode in ( SELECT goodsCode from orderDetail group by goodsCode order by sum(amount) DESC ) limit 10")
+	@Select("select * from goods where status='active' AND goodsCode in ( SELECT goodsCode from orderDetail group by goodsCode order by sum(amount) DESC ) limit 9")
 	List<GoodsDto> selectBestGoods();
 	
 
