@@ -77,7 +77,7 @@ public class GoodsController {
 		}
 	
 	@GetMapping(path= {"goods-detail.action"})
-	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode, String category, HttpSession session, Model model) {
+	public String goodsDetail(@RequestParam(defaultValue = "0") int goodsCode,@RequestParam(defaultValue = "텐트/타프") String category, HttpSession session, Model model) {
 		
 		if(goodsCode==0) {
 			return "redirect:main";

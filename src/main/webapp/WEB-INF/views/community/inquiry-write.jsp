@@ -270,7 +270,7 @@
 		$(function() {
 
 			$(".cancel").on('click', function(event) {
-				location.href = "/campus/freeboard.action";
+				location.href = "/campus/inquiry.action";
 			});
 
 		});

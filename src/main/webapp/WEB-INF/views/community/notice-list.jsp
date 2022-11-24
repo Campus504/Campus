@@ -184,7 +184,7 @@
               
             </div><!-- End sidebar -->
 
-           <c:if test="${not empty loginuser and loginuser.admin eq 'Admin'}">
+<%--            <c:if test="${not empty loginuser and loginuser.admin eq 'Admin'}">
            <article class="entry">
               <div class="entry-content">
                 <div class="read-more">
@@ -192,7 +192,7 @@
                 </div>
               </div>
             </article><!-- End write entry -->
-            </c:if>
+            </c:if> --%>
             
           </div><!-- End blog sidebar -->
 

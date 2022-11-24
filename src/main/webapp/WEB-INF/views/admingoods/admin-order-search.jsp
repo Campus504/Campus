@@ -121,7 +121,7 @@
 								
 								<thead>
 									<tr role="row" >
-										
+										<th>주문번호</th>
 										<th>회원아이디</th>
 										<th>주문일</th>
 										<th>상품 수령일</th>
@@ -138,6 +138,7 @@
 								<c:forEach  var="orderList" items='${orderList}' >
 								<tbody>
 									<tr role="row" class="orderNo-${ orderList.orderNo }" >
+										<td>${ orderList.orderNo }</td>
 										<td>
 										<a href="#" class="btn-block" data-toggle="modal" data-orderNo="${ orderList.orderNo }" data-target="#bd-example-modal-lg" type="button" >
 										${ orderList.memberId }</a></td>
@@ -244,8 +245,8 @@
 							"success" : function(data) {
 								$('.modal-body').html("<p></p>");
 								for(var i =0; i<data.length;i++){
-									$('.modal-body').append("<p>주문 번호 : "+data[i].orderNo+"</p>");
-									$('.modal-body').append("<p>상품 코드 : "+data[i].goodsCode+"</p>");
+									$('.modal-body').append("<p>주문 번호 : "+data[i].goods.goodsName+"</p>");
+									$('.modal-body').append("<p>상품 코드 : "+data[i].goods.category+"</p>");
 									$('.modal-body').append("<p>상품 가격 : "+data[i].price+"</p>");
 									$('.modal-body').append("<p>주문 수량 : "+data[i].amount+"</p><br><br>");
 								}

@@ -152,12 +152,13 @@
 
 						<article class="entry entry-single">
 
-							<form action="notice-edit.action" method="post">
+							<form action="notice-edit.action" enctype="multipart/form-data"  method="post">
 								<input type="hidden" name = "writer" value="${ board.memberId }">
 								<input type="hidden" name = "boardNo" value="${ board.boardNo }">
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center">
-									<i class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title" value=${board.title} >
+									<i class="bi bi-caret-down-fill"></i>제목</span> 
+									<input type="text" id="board-title" name="title" value="${board.title}" >
 								</h2>
 
 								<div class="entry-meta">
@@ -170,10 +171,10 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" >${ board.content }</textarea>
+									<textarea name="content" id="board-content" >${ board.content }</textarea>
 								</div>
 								
-								<input type="submit" value="수정하기" style="height: 25px" /> 
+								<input type="submit" id="board-submit" value="수정하기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
@@ -255,7 +256,19 @@
 		
 		$(".cancel").on('click',function(event){
 			location.href="notice-list.action";
-		})
+		});
+		
+		$('#board-submit').on('click', function(event){  
+			
+			if ($('#board-title').val()==''){
+			  alert("제목을 입력하세요");  
+			  return false;  
+			}else if($('#board-content').val()==''){
+			  alert("내용을 입력하세요");
+			  return false;
+			  }  
+			return true;
+			});  
 		
 	});
 	</script>	

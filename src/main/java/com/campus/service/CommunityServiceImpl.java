@@ -146,9 +146,9 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
-	public List<BoardDto> searchTip(String searchOption, String search, int PAGE_SIZE) {
+	public List<BoardDto> searchTip(String searchOption, String search, int PAGE_SIZE, int pageNo) {
 		int from = 0;
-		int count = PAGE_SIZE;
+		int count = PAGE_SIZE*pageNo;
 		List<BoardDto> boards = communityMapper.selectTipBySearch(searchOption, search, from, count);
 		return boards;
 	}
@@ -190,56 +190,24 @@ public class CommunityServiceImpl implements CommunityService {
 		communityMapper.updateComment(comment);
 	}
 
-//	@Override
-//	public void writeReComment(BoardCommentDto comment) {
-//		
-//		// 1. 부모글 조회 -> 그룹번호(groupno), 그룹내 순서 번호(step), 들여쓰기(depth) 적용
-//				BoardCommentDto parent = communityMapper.selectCommentByCommentNo(comment.getCommentNo());
-//				comment.setBoardNo(parent.getBoardNo());
-//				comment.setCommentGroup(parent.getCommentGroup());
-//				comment.setStep(parent.getStep()+1);
-//				comment.setDepth(parent.getDepth()+1);
-//				// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
-//				communityMapper.updateStepNo(parent.getCommentGroup(), parent.getStep());
-//				
-//				// 3. 대댓글 저장
-//		communityMapper.insertReComment(comment);
-//	
-
 	@Override
 	public void writeReComment(BoardCommentDto comment) {
 		
-		// 1. 부모글 조회 -> 그룹번호(groupno), 그룹내 순서 번호(step), 들여쓰기(depth) 적용
-				BoardCommentDto reCommentStep = communityMapper.selectReCommentInfo(comment.getCommentNo());
-				if(reCommentStep==null) { //그냥 대댓글 달때
-					
-					int maxDepth = communityMapper.selectMaxDepthBycommentGroup(comment.getCommentNo());
-					if(maxDepth==1) {
-						BoardCommentDto reCommentWithMaxDepth = communityMapper.selectRecommentWithMaxDepth(comment.getCommentNo());
-						comment.setBoardNo(reCommentWithMaxDepth.getBoardNo());
-						comment.setCommentGroup(reCommentWithMaxDepth.getCommentGroup());
-						comment.setStep(reCommentWithMaxDepth.getStep());
-						comment.setDepth(reCommentWithMaxDepth.getDepth());
-						communityMapper.updateStepNo(reCommentWithMaxDepth.getCommentGroup(), reCommentWithMaxDepth.getStep());
-					}else {
-						BoardCommentDto reCommentStep2 = communityMapper.selectReCommentInfo2(comment.getCommentGroup());
-						comment.setBoardNo(reCommentStep2.getBoardNo());
-						comment.setCommentGroup(reCommentStep2.getCommentGroup());
-						comment.setStep(reCommentStep2.getStep());
-						comment.setDepth(reCommentStep2.getDepth());
-					}
-					
-				}else { // 대대대ㅐ댓글 달때
-					comment.setBoardNo(reCommentStep.getBoardNo());
-					comment.setCommentGroup(reCommentStep.getCommentGroup());
-					comment.setStep(reCommentStep.getStep());
-					comment.setDepth(reCommentStep.getDepth());
-					// 2. 이미 있던 글 중에서 삽입될 댓글 뒤에 있는 step 1씩 증가
-					communityMapper.updateStepNo(reCommentStep.getCommentGroup(), reCommentStep.getStep());
-					
+				// 1. 부모댓글 조회
+				BoardCommentDto reCommentInfo = communityMapper.selectReCommentInfo(comment.getCommentNo());
+				// 2. 부모댓글 정보를 바탕으로 comment의 commentGroup, depth+1 덮어씀
+				comment.setCommentGroup(reCommentInfo.getCommentGroup());
+				comment.setDepth(reCommentInfo.getDepth()+1);
+				// 3. 해당 commentGroup에서 depth는 부모댓글보다 작거나같고 step은 부모댓글보다 큰 댓글중 가장 작은 step 가져와서 덮어쓰기
+				int newStep = communityMapper.selectRecommentStepNo(comment.getCommentNo(), comment.getCommentGroup(),reCommentInfo.getStep());
+				if(newStep==reCommentInfo.getStep()||newStep==0) {
+					newStep = (communityMapper.selectMaxStep(comment.getCommentGroup())+1);
 				}
-				System.out.println(comment);
 				
+				comment.setStep(newStep);
+				//4. 가져와서 덮어 쓴 step과 같거나 큰 댓글들 step+1씩 해주기
+				int recommentGroup = comment.getCommentGroup();
+				communityMapper.updateStepNo(recommentGroup, newStep);
 				// 3. 대댓글 저장
 		communityMapper.insertReComment(comment);
 	}
@@ -249,6 +217,7 @@ public class CommunityServiceImpl implements CommunityService {
 		List<BoardDto> board = communityMapper.selectBestBoard();
 		return board;
 	}
+
 
 
 	

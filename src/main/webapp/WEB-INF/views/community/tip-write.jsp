@@ -167,7 +167,7 @@
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"> <i
 										class="bi bi-caret-down-fill"></i>제목
-									</span> <input type="text" name="title">
+									</span> <input type="text" name="title" id="board-title">
 								</h2>
 
 								<div class="entry-meta">
@@ -185,7 +185,7 @@
 
 								</div>
 
-								<input type="submit" value="글쓰기" style="height: 25px" /> <input
+								<input type="submit" id="board-submit" value="글쓰기" style="height: 25px" /> <input
 									type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
@@ -289,6 +289,18 @@
 					sendFile(files[0], editor, welEditable);
 				}
 			});
+			
+			$('#board-submit').on('click', function(event){  
+				
+				if ($('#board-title').val()==''){
+				  alert("제목을 입력하세요");  
+				  return false;  
+				}else if($('#summernote').val()==''){
+				  alert("내용을 입력하세요");
+				  return false;
+				  }  
+				return true;
+				});  
 
 			function sendFile(file, editor, welEditable) {
 				data = new FormData();

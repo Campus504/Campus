@@ -22,11 +22,16 @@ public interface AdminGoodsRegisterMapper {
 			"VALUES (#{ category }, #{ brand }, #{ goodsName })")
 	@Options(useGeneratedKeys = true, keyColumn = "goodscode", keyProperty = "goodsCode")
 	void insertGoods(GoodsDto goods);          
-	  
+	
+	// 상품 기본 정보 수정 - goods Table
+	@Update("UPDATE goods SET goodsName = #{ goodsName }, category = #{ category }, brand = #{ brand } WHERE goodsCode = #{ goodsCode }")
+	void updateGoodsList(List<GoodsDto> goods);
+	
 	// 상품 옵션 정보 등록
 	@Insert("INSERT INTO goodsOption (optionName, optionDataType, optionValue, optionDesc, goodscode) " +
 			"VALUES (#{ optionName }, #{ optionDataType }, #{ optionValue }, #{ optionDesc }, #{ goodsCode })")
 	void insertOption(GoodsOptionDto option);
+	
 	
 	// 상품 옵션 추가
 //	@Insert("INSERT INTO (optionName, optionDataType, optionValue, optionDesc, goodscode)" +

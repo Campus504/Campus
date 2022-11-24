@@ -209,7 +209,7 @@
 " />
 											<td id="toggle-content${i}" style="display:none">${ fn:replace(board.content, enter, "<br>") }
 											<c:if test="${not empty loginuser and loginuser.admin eq 'Admin'}">
-												<a id="faq-delete" class="bi bi-trash" style="float:right"></a>
+												<a id="faq-delete${i}" class="bi bi-trash" style="float:right"></a>
 												<a href="faq-edit.action?boardNo=${board.boardNo}" class="bi bi-pencil-square"  style="float:right"></a>
 											</c:if>
 											</td>
@@ -344,8 +344,8 @@
 					}
 			});
 			
-			$('#faq-delete').on('click', function(event) {
-				
+			$('[id*=faq-delete]').on('click', function(event) {
+				last_char = this.id.substr(10);
 				const ok = confirm("글을 삭제할까요?");
 				if (!ok)
 					return;

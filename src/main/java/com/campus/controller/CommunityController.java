@@ -234,7 +234,7 @@ public class CommunityController {
 		
 		model.addAttribute("board", board);
 		
-		return "redirect:tip-detail.action?boardNo="+board.getBoardNo();
+		return "redirect:tip-list.action";
 	}
 	
 	//겟 : 캠핑팁 상세페이지 보기 (+조회수 증가)
@@ -299,7 +299,7 @@ public class CommunityController {
 		if(search.equals("")) {
 			return "redirect:tip-list.action";
 		}
-		List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE); 
+		List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE, pageNo); 
 		int boardCount = communityService.findSearchTipCount(searchOption, search);
 		int pageCount = 
 				(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);
@@ -314,7 +314,7 @@ public class CommunityController {
 	// 겟 : 캠핑팁 리스트 안에 글 불러오기만 따로 떼어 놓음
 		@GetMapping(path= {"tip-search-content-list.action"})
 		public String showTipSearchContentlist(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
-			List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE); 
+			List<BoardDto> boards = communityService.searchTip(searchOption, search, PAGE_SIZE, pageNo); 
 			int boardCount = communityService.findSearchTipCount(searchOption, search);
 			int pageCount = 
 					(boardCount / PAGE_SIZE) + ((boardCount % PAGE_SIZE) > 0 ? 1 : 0);

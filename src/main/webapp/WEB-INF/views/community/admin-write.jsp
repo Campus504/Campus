@@ -159,7 +159,8 @@
 								
 								<h2 class="entry-title">
 									<span class="d-flex align-items-center"><i
-										class="bi bi-caret-down-fill"></i>제목</span> <input type="text" name="title">
+										class="bi bi-caret-down-fill"></i>제목</span>
+										<input type="text" id="admin-title" name="title">
 								</h2>
 								
 								<div class="entry-meta">
@@ -174,10 +175,10 @@
 								<div class="entry-content">
 									<span class="d-flex align-items-center">
 									<i class="bi bi-caret-down-fill"></i>내용</span>
-									<textarea name="content" ></textarea>
+									<textarea id="admin-content" name="content" ></textarea>
 								</div>
 								
-								<input type="submit" value="글쓰기" style="height: 25px" /> 
+								<input type="submit" id="admin-submit" value="글쓰기" style="height: 25px" /> 
 								<input type="button" value="취소" class="cancel" style="height: 25px" />
 							</form>
 
@@ -259,7 +260,17 @@
 			location.href="admin-main";
 		});
 		
-		
+		$('#admin-submit').on('click', function(event){  
+			
+			if ($('#admin-title').val()==''){
+			  alert("제목을 입력하세요");  
+			  return false;  
+			}else if($('#admin-content').val()==''){
+			  alert("내용을 입력하세요");
+			  return false;
+			  }  
+			return true;
+			});  
 		
 		
 		

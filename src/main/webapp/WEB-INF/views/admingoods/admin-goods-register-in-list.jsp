@@ -31,16 +31,6 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-119386393-1');
-	</script>
 	
 </head>
 <body>
@@ -99,22 +89,8 @@
 			<div class="pb-20">
 				<div id="DataTables_Table_3_wrapper"
 					class="dataTables_wrapper dt-bootstrap4 no-footer">
-					<div class="row" style="margin-right: 100%;">
-						
-						<div class="col-sm-12 col-md-6">
-							<div class="dataTables_filter">
-								<form action="admin-goods-list-search.action" method="post">
-									<label>검색하기: <input type="search" name="search"
-										class="form-control form-control-sm" placeholder="상품 이름, 브랜드, 분류"
-										aria-controls="DataTables_Table_3" >
-									</label>
-									<button type="submit" style="display:none;">
-										<i class="bi bi-search"></i>
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
+					
+					<div class="row" style="margin-right: 100%;"></div>
 					
 					<!-- 등록된 상품의 리스트 테이블 만들기 -->
 					<div class="row">
@@ -134,15 +110,15 @@
 										<th>입고메모</th>
 										<th>입고일자</th>
 										
-										<th>입고 정보 수정</th>
-										<th>상품 삭제</th>
+										<!-- <th>입고 정보 수정</th> -->
+										<!-- <th>상품 삭제</th> -->
 										
 									</tr>
 								</thead>
 								
 								<c:forEach  var="goodsregister" items='${goodsregisters}' varStatus="status">
-								<c:set var="i" value="${ i+1 }" />
-								<input id="findRowNo${i}" style="display:none" value="${ goodsregister.goodsCode }" />
+								<%-- <c:set var="i" value="${ i+1 }" /> --%>
+								<%-- <input id="findRowNo${i}" style="display:none" value="${ goodsregister.goodsCode }" /> --%>
 								<tbody>
 								
 									<tr role="row" class="goodsCode-${ goodsregister.goodsCode }" data-goodscode="${ goodsregister.goodsCode }"  >
@@ -156,8 +132,8 @@
 										<td>${ goodsregister.goodsInDate }</td>
 										
 										<%-- <td><a href="admin-goods-edit.action?goodsCode=${goodsregister.goodsCode}"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td> --%>
-										<td><a href="#"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td>
-										<td><a class="delete-goods" data-goodscode="${ goodsregister.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td>
+										<!-- <td><a href="admin-goods-list-edit.action"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i></a></td> -->
+										<%-- <td><a class="delete-goods" data-goodscode="${ goodsregister.goodsCode }"><i class="icon-copy fa fa-trash" aria-hidden="true" style="cursor:pointer"></i></a></td> --%>
 									</tr>
 									
 								</tbody>
@@ -189,7 +165,7 @@
 		<script src="/campus/resources/vendors/scripts/layout-settings.js"></script>
 		<script type="text/javascript">
 
-		$(function(){
+		/* $(function(){
 			
 			let rowNo = null;               // rowNo 는 null
 			let rowNoBefore = null;         // rowNoBefore 는 null
@@ -221,7 +197,7 @@
 				
 			});
 
-		});
+		}); */
 
 		</script>
 		

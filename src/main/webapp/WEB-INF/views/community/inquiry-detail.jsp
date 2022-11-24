@@ -183,7 +183,7 @@
 
 							<span class="tag">태그 : ${community.tag}</span>
 						</article>
-						<div class="blog-comments" id="comment-list"></div>
+						<div class="blog-comments" id="inquiry-comment-list"></div>
 
 						<div class="blog-comments">
 
@@ -387,7 +387,7 @@
 			
 			////////////////////////////////////////// 댓글 ///////////////////////////////////////////
 			
-			$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}&pageNo=${pageNo}");
+			$('#inquiry-comment-list').load("inquiry-comment-list.action?boardNo=${board.boardNo}&pageNo=${pageNo}");
 
 			$('#writecomment').on('click',function(event) { // 댓글 작성
 				
@@ -406,7 +406,7 @@
 											"data" : formData,
 											"success" : function(data, status, xhr) {
 												if (data == "success") {
-													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#inquiry-comment-list').load("inquiry-comment-list.action?boardNo=${board.boardNo}");
 													$('#commentform textarea').val('');
 												}
 											},
@@ -417,7 +417,7 @@
 
 			var correntEditCommentNo = null;
 
-			$('#comment-list').on('click', '.edit-comment', function(event) { //댓글 편집
+			$('#inquiry-comment-list').on('click', '.edit-comment', function(event) { //댓글 편집
 				event.preventDefault();
 				if (correntEditCommentNo != null) {
 					$('#comment-view-area-' + correntEditCommentNo).show();
@@ -434,7 +434,7 @@
 				correntEditCommentNo = commentNo;
 			});
 
-			$('#comment-list').on(
+			$('#inquiry-comment-list').on(
 					'click',
 					'.cancel-edit-comment',
 					function(event) { //댓글 수정 취소
@@ -450,7 +450,7 @@
 						correntEditCommentNo = null;
 					});
 
-			$('#comment-list').on('click','.update-comment',function(event) { // 댓글 수정
+			$('#inquiry-comment-list').on('click','.update-comment',function(event) { // 댓글 수정
 								event.preventDefault();
 
 								const commentNo = $(this).data('comment-no');
@@ -461,7 +461,7 @@
 											"data" : editForm.serialize(),
 											"success" : function(data, status, xhr) {
 												if (data == "success") {
-													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#inquiry-comment-list').load("inquiry-comment-list.action?boardNo=${board.boardNo}");
 												}
 											},
 											"error" : function(xhr, status, err) {
@@ -470,7 +470,7 @@
 										});
 							});
 
-			$('#comment-list').on('click','.delete-comment',function(event) { // 댓글 삭제
+			$('#inquiry-comment-list').on('click','.delete-comment',function(event) { // 댓글 삭제
 								event.preventDefault();
 
 								var commentNo = $(this).data('comment-no');
@@ -487,7 +487,7 @@
 													xhr) {
 												if (data == "success") {
 													// 댓글 목록 전체 갱신 (jQuery load 함수 : 지정된 html요소의 내용을 응답받은 부분 html로 (비동기)갱신함))
-													$('#comment-list').load("comment-list.action?boardNo=${board.boardNo}");
+													$('#inquiry-comment-list').load("inquiry-comment-list.action?boardNo=${board.boardNo}");
 												} else {
 													alert("ㅠㅠㅠㅠㅠ");
 												}

@@ -5,8 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="enter" value="
-" />
+<c:set var="enter" value=" " />
         
 
 <!DOCTYPE html>
@@ -32,17 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="/campus/resources/vendors/styles/style.css">
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- 구글 태그 / 활용해보고 삭제 예정입니다 -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-119386393-1');
-	</script>
-	
+		
 </head>
 <body>
 
@@ -60,7 +49,6 @@
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
-
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 
@@ -198,16 +186,14 @@
 
 							</c:forEach>
 							</tbody> --%>							
-
-
-						</table>
-					</div>
-				</div>
-				<!-- end of table -->
-				
+							
+									</table>
+								</div>
+							</div>
+							</div>
 						</div>
-					</div>
-				</div>			
+					</div>			
+				<!-- end of table -->
 
 			<!-- 상품 속성 등록 팝업 / goods option registration modal -->	
 			<div class="modal fade" id="goods-option-list-modal" tabindex="-1" aria-hidden="true">
@@ -219,12 +205,11 @@
 			      	
 			      	<!-- 데이터 테이블 만들기 -->			
 					<div class="modal-body" style="width:100%; height:200px; overflow:auto">
-						<form>
 						
+						<form>
 						<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline-block overflow-auto" id="goods-register-list-table" role="grid" aria-describedby="DataTables_Table_3_info">
 							<thead>
 									<tr role="row" >
-										
 										<th>옵션이름</th>
 										<th>옵션설명</th>
 										<th>단일값/목록값</th>
@@ -233,7 +218,6 @@
 										
 										<th>속성수정</th>
 										<th>옵션삭제</th>
-										
 									</tr>
 								</thead>				
 												
@@ -255,7 +239,6 @@
 			</div>
 			<!--  상품 속성 등록 팝업 끗 / end of goods option registration modal -->
 			
-			
 			<!-- 상품 속성 수정 팝업 / goods option registration modal -->	
 			<div class="modal fade" id="goods-option-edit-modal" tabindex="-1" aria-hidden="true">
 			  <div class="modal-dialog modal-xl">
@@ -272,25 +255,19 @@
 						
 						<table class="checkbox-datatable table nowrap dataTable no-footer dtr-inline-block overflow-auto" id="goods-register-edit-table" role="grid" aria-describedby="DataTables_Table_3_info">
 							<thead>
-									<tr role="row" >
-										
-										<th>속성이름</th>
-										<th>속성설명</th>
-										<th>단일값/목록값</th>
-										<th>옵션값</th> 
-										
-									</tr>
-								</thead>				
-												
-									<tr role="row" data-optionno="${ option.optionNo }" >
-										
-										<td><input type="text" class="form-control" id="optionName" name="optionName" placeholder="옵션 이름" value="${ option.optionName }"></td>
-										<td><input type="text" class="form-control" id="optionDesc" name="optionDesc" placeholder="옵션 설명" value="${ option.optionDesc }"></td>
-										<td><input type="text" class="form-control" id="optionDataType" name="optionDataType" placeholder="옵션 데이터 타입" value="${ option.optionDataType }" readonly></td>
-										<td><input type="text" class="form-control" id="optionValue" name="optionValue" placeholder="옵션값" value="${ option.optionValue }"></td>
-
-									</tr>
-								
+								<tr role="row" >
+									<th>속성이름</th>
+									<th>속성설명</th>
+									<th>단일값/목록값</th>
+									<th>옵션값</th> 
+								</tr>
+							</thead>								
+								<tr role="row" data-optionno="${ option.optionNo }" >
+									<td><input type="text" class="form-control" id="optionName" name="optionName" placeholder="옵션 이름" value="${ option.optionName }"></td>
+									<td><input type="text" class="form-control" id="optionDesc" name="optionDesc" placeholder="옵션 설명" value="${ option.optionDesc }"></td>
+									<td><input type="text" class="form-control" id="optionDataType" name="optionDataType" placeholder="옵션 데이터 타입" value="${ option.optionDataType }" readonly></td>
+									<td><input type="text" class="form-control" id="optionValue" name="optionValue" placeholder="옵션값" value="${ option.optionValue }"></td>
+								</tr>
 							</table>
 						</form>
 					</div>
@@ -304,11 +281,7 @@
 			    </div>
 			  </div>
 			</div>
-			
 			<!--  상품 속성 등록 팝업 끗 / end of goods option registration modal -->
-			
-			
-			
 			
 		<!-- js -->
 		<jsp:include page="/WEB-INF/views/modules/adminJS.jsp" />
@@ -332,12 +305,10 @@
 		<script src="/campus/resources/src/plugins/datatables/js/pdfmake.min.js"></script>
 		<script src="/campus/resources/src/plugins/datatables/js/vfs_fonts.js"></script>
 		<!-- Datatable Setting js -->
-		<script src="/vendors/scripts/datatable-setting.js"></script>
+		<!-- <script src="/vendors/scripts/datatable-setting.js"></script> -->
 		
 		<script type="text/javascript">
 		$(function(){
-			
-			// 상품 속성 보기 모달에 대해서
 			
 			// 상품 속성 보기 팝업 열기
 			/* $('#show-goods-option-list').on('click', function(event) { */
@@ -347,7 +318,6 @@
 				$('#goods-option-list-tbody').load("load-goods-option-list.action?goodsCode=" + goodsCode, function() {
 					$('#goods-option-list-modal').modal('show');
 				});
-				
 			});
 			
 			// 상품 속성 보기 팝업 숨기기
@@ -379,7 +349,6 @@
 				
 				// 모달 보여주기 
 				$('#goods-option-edit-modal').modal('show');
-				
 			});
 			
 			// 속성 수정 모달 닫기 버튼 처리 
@@ -400,7 +369,6 @@
 					"method": "post",
 					"data": formData,
 					"success": function(data, status, xhr) {
-						
 						
 						// 속성 수정 모달의 입력 요소에서 사용자가 수정한 값 읽기 
 						const optionNo = $('#goods-option-edit-modal input[name=optionNo]').val();
@@ -426,7 +394,7 @@
 				});
 			});
 			
-			// 상품 속성 삭제하기  ???????????????? 얼럿이 보이지 않아요~~!
+			// 상품 속성 삭제
 			$('#options-table').on('click', '.remove-option-btn', function(event) {		// th 삭제 버튼 클릭 시 row 리스트 삭제
 
 				const ok = confirm('속성을 삭제할까요?');	// ok는 '속성을 삭제할까요?' 라는 confirm alert을 실행한다
@@ -436,7 +404,7 @@
 				$(this).parent().parent().remove();  // 위에 호출되는 함수(this) parent 내에 parent까지 삭제
 			});
 			
-			// 상품 상태 deleted로 수정하기
+			// 상품 상태 deleted로 수정
 			let goodsCode = null;
 								
 			$('.delete-goods').on('click', function(event) {
@@ -451,6 +419,7 @@
 				location.href = 'admin-goods-delete.action?goodsCode=' + goodsCode;
 			});
 			
+			// 상품 상태 active로 수정
 			$('.active-goods').on('click', function(event) {
 
 				var goodsCode = $(this).attr('data-goodscodeforactive');
