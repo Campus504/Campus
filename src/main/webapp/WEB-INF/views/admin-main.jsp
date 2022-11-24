@@ -82,18 +82,17 @@
 			<div class="row">
 				<div class="col-xl-8 mb-30">
 					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">매출액</h2>
+						<h2 class="h4 mb-20"></h2>
 						<div id="chart-bar"></div>
 					</div>
 				</div>
 				<div class="col-md-6 mb-30">
 				<div class="bg-white pd-20 card-box mb-30">
-				<h2 class="h4 mb-20">상품종류</h2>
+				<h2 class="h4 mb-20"></h2>
 					<div id="chart-pie"></div>
 				</div>
 					</div>
 			</div>
-			
 			
 			<div class="card-box mb-30">
 				<h2 class="h4 pd-20">인기 상품</h2>

@@ -152,7 +152,7 @@
 
 						<article class="entry entry-single">
 
-							<form action="notice-edit.action" method="post">
+							<form action="notice-edit.action" enctype="multipart/form-data"  method="post">
 								<input type="hidden" name = "writer" value="${ board.memberId }">
 								<input type="hidden" name = "boardNo" value="${ board.boardNo }">
 								<h2 class="entry-title">
