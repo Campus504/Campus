@@ -144,6 +144,15 @@ public class InquiryController {
 		return "community/inquiry-search";
 	}
 	
+	@GetMapping(path= {"inquiry-comment-list.action"})
+	public String showCommentList2(int boardNo,  Model model) {
+		List<BoardCommentDto> comments =  communityService.findBoardCommentByBoardNo(boardNo);
+		
+		model.addAttribute("comments", comments);
+		return "community/inquiry-comment-list";
+	}
+	
+	
 //	@GetMapping(path= {"inquiry-search.action"})
 //	public String showGetFreeboardSearchList(String searchOption, @RequestParam(defaultValue = "") String search, Model model, @RequestParam(defaultValue = "1") int pageNo) {
 //		if(search.equals("")) {
