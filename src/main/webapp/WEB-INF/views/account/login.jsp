@@ -122,7 +122,7 @@
     </div>
   <div class="container">
     
-    <div class="login-content">
+    <div class="login-content login-content1">
        <form action="login.action" method="post">
         <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
         <h2 class="title">Welcome</h2>

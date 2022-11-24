@@ -101,6 +101,7 @@
     <script src="/campus/resources/assets/js/login.js"></script>
     
       <style type="text/css">
+      #main{position:relative; margin:0 auto; width:1200px; height:869px;}
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
@@ -138,7 +139,7 @@ input[type='date']:focus::before, input[type='date']:valid::before {
   <main id="main">
   
   <div class="container">
-    <div class="login-content login-content3">
+    <div class="login-content login-content4">
        <form action="my-page-profile.action" method="post">
   
         <h2 class="title">회원정보수정</h2>

@@ -79,7 +79,7 @@
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row2" style="width:1350px; display: -webkit-box; margin-right: -15px; margin-left: -15px;">
 				<div class="col-xl-8 mb-30">
 					<div class="card-box height-100-p pd-20">
 						<h2 class="h4 mb-20">매출액</h2>

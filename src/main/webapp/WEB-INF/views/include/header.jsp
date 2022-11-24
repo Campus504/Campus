@@ -68,7 +68,7 @@
 							</div>
 							<nav class="menu">
 								<div class="menu-list">
-									<ol>
+									<ol style="list-style:none;">
 										<li class="menu-item-has-children"><a href="goods-list.action?category=텐트/타프"
 											title="텐트/타프">텐트/타프</a>
 											</li>

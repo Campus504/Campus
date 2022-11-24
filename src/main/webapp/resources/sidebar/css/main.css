@@ -2360,7 +2360,9 @@ span.press {
     font-size: 16px;
     font-weight: 300;
     color: #383838;
+    text-align:center;
 }
+.table>thead>tr>th{background-color:#ccc; border-bottom: 1px solid #999595; border-top: 1px solid #999595;}
 ul.social-buttons {
     padding: 0;
 }
@@ -2899,9 +2901,30 @@ input[type="text"] {
 
 /*-------------------Map---------------------------- */
 .map-text{
-	display: flex;
-    justify-content: space-between;
-    width: 600px;
+	font-family: 'Lekton', sans-serif;
+	height: 450px;
+	background-color:#878686;
+	display:block;
+	text-align:center;
+    position: absolute;
+    right: 0px;
+    top: 21%;
+    width: 500px;
+    padding: 10px 70px;
+    box-shadow: -6px 0px 8px;
+}
+
+.map-text p{ padding:0px 10px; color:#fff; line-height:unset;}
+.map-text h3{padding-bottom:0px;}
+.map-contents{
+	text-align:left;
+}
+
+.bus{
+	font-family: 'Lekton', sans-serif;
+	border-left: 5px solid;
+    font-size: 14pt;
+    color: #fff;
 }
 /*-------------------Map---------------------------- */
 

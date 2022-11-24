@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-
-
 <!-- 이 페이지는 헤더랑 푸터만 있는 페이지입니다. -->
 <!-- 상세페이지 만들때 사용 ㄱㄱ -->
 
@@ -21,9 +19,6 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> -->
-  <!-- <script src="https://kit.fontawesome.com/a81368914c.js"></script> -->
-  
 
   <!-- Favicons -->
   <link href="/campus/resources/assets/img/favicon.png" rel="icon">
@@ -43,13 +38,6 @@
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: BizPage - v5.10.1
-  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  
       <!-- sidebar css,js -->
    <!-- Google Web Font -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -80,7 +68,8 @@
     <!-- Tabs -->
     <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabs.css" />
     <link rel="stylesheet" type="text/css" href="/campus/resources/sidebar/css/tabstyles.css" />
-
+	<link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
+	
     <!-- Loader Style -->
     <link rel="stylesheet" href="/campus/resources/sidebar/css/loader-1.css">
 
@@ -105,6 +94,7 @@
 	.container-fluid{
 	  background: rgba(26, 26, 26, 0.9);
 	}
+	#main{position:relative; margin:0 auto; width:1200px; height:869px;}
 	</style>
 </head>
 
@@ -113,6 +103,11 @@
   <!-- ======= Header ======= -->
  	<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- End Header -->
+
+	<!-- ======= mypage-side-menu ======= -->
+ 	<jsp:include page="/WEB-INF/views/include/mypage-side-menu.jsp" />
+  <!-- End mypage-side-menu -->
+	
 
 
   <main id="main">
@@ -140,9 +135,13 @@
               </div>
             </form>
         </div>
-    </div>
+
   </main>
   <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <jsp:include page="/WEB-INF/views/include/footer.jsp" />
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->

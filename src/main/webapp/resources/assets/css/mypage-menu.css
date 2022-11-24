@@ -51,7 +51,7 @@ position:relative;
 display:table;
 border-collapse:collapse;
 border-spacing:0;
-color:#999;
+color:#fff;
  font-family: arial;
 font-size: 14px;
 text-decoration:none;
@@ -75,7 +75,8 @@ font-size:18px;
 position:relative;
 display:table-cell;
 vertical-align:middle;
-width:190px;
+width:160px;
+text-align:center;
   font-family: 'Titillium Web', sans-serif;
 }
 

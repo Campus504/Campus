@@ -34,14 +34,7 @@
   <!-- Template Main CSS File -->
   <link href="/campus/resources/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: BizPage - v5.10.1
-  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   
-  <!-- sidebar css,js -->
    <!-- Google Web Font -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -79,9 +72,6 @@
     <link rel="stylesheet" href="/campus/resources/sidebar/css/main.css">
     <link rel="stylesheet" href="/campus/resources/sidebar/css/responsive.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/ico" href="favicon.ico">
-
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     
@@ -106,11 +96,9 @@
   <div class="hero-container">
       <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
-        <!-- <ol id="hero-carousel-indicators" class="carousel-indicators"></ol> -->
-
         <div class="carousel-inner" role="listbox">
   
-  <div class="carousel-item active"><!-- style="background-image: url(/campus/resources/assets/img/hero-carousel/1.jpg)" -->
+  <div class="carousel-item active">
   <video muted autoplay loop>
         <source src="/campus/resources/assets/img/hero-carousel/main_vid.mp4" type="video/mp4">
       </video>
@@ -125,168 +113,15 @@
           </div>
   	</div>
   	</div>
-    <!-- <div class="hero-container">
-      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active" style="background-image: url(/campus/resources/assets/img/hero-carousel/1.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">We are professional</h2>
-                <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url(/campus/resources/assets/img/hero-carousel/2.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                <p class="animate__animated animate__fadeInUp">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url(/campus/resources/assets/img/hero-carousel/3.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url(/campus/resources/assets/img/hero-carousel/4.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Nam libero tempore</h2>
-                <p class="animate__animated animate__fadeInUp">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url(/campus/resources/assets/img/hero-carousel/5.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Magnam aliquam quaerat</h2>
-                <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-
-      </div>
-    </div>
- -->  </section><!-- End Hero Section -->
+   
+  </section><!-- End Hero Section -->
    
 
   <main id="main">
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about">
-      <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-          <h3>고객후기</h3>
-        </header>
-
-        <div class="row about-cols">
-		
-		<c:forEach var="board" items="${boards}">
-		<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="about-col">
-              <div class="img">
-                <div class="icon"></div>
-              </div>
-              <h2 class="title"><a href="freeboard-detail.action?boardNo=${board.boardNo}">${board.title}</a></h2>
-              
-                <ul>
-                  <li style="font-color:#18d26e" class="d-flex align-items-center">${board.memberId}</li>
-                  <li class="d-flex align-items-center">${board.writeDate}</li>
-                  <li class="d-flex align-items-center">${board.readCount}</li>
-                </ul>
-              
-              <p>
-              ${board.content}
-              </p>
-            </div>
-          </div>
-		</c:forEach>
-          
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End About Us Section -->
-
-    <!-- ======= Services Section ======= -->
-   <!--  <section id="services">
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header wow fadeInUp">
-          <h3>나중에 2</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Services Section -->
+   
     
-    <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -335,87 +170,97 @@
       </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section>
 
-    <!-- ======= Our Clients Section ======= -->
-   <!--  <section id="clients">
-      <div class="container" data-aos="zoom-in">
-
-        <header class="section-header">
-          <h3>고객 후기</h3>
-        </header>
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="/campus/resources/assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Our Clients Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="section-bg">
+    <!-- ======= About Us Section ======= -->
+    <section id="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h3>오시는 길</h3>
-          <br>
-          <br>
+        <header class="section-header">
+          <h3>고객후기</h3>
+        </header>
+
+        <div class="row about-cols">
+		
+		<c:forEach var="board" items="${boards}">
+		<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="about-col">
+              <div class="img">
+                <div class="icon"></div>
+              </div>
+              <h2 class="title"><a href="freeboard-detail.action?boardNo=${board.boardNo}">${board.title}</a></h2>
+              
+                <ul>
+                  <li style="font-color:#18d26e" class="d-flex align-items-center">${board.memberId}</li>
+                  <li class="d-flex align-items-center">${board.writeDate}</li>
+                  <li class="d-flex align-items-center">${board.readCount}</li>
+                </ul>
+              
+              <p>
+              ${board.content}
+              </p>
+            </div>
+          </div>
+		</c:forEach>
+          
+
+
+
         </div>
 
-        <div class="map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25324.2186513383!2d127.02271616499561!3d37.49547904208217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15857ce38dd%3A0xac87641577138f5d!2z6re466aw7Lu07ZOo7YSw7JWE7Lm0642w66-4IOqwleuCqOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1667204209769!5m2!1sko!2skr" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        
-        <div class="map-text">
-        <div>
-        <h3>주소</h3>
-        <p>서울특별시 강남구 강남대로 428</p>
-        </div>
-        
-        <div>
-        <h3>전화번호</h3>
-        <p>010-0000-0000</p>
-        </div>
-		</div>
-     <!--    <div class="form">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
- -->
       </div>
     </section>
-    <!-- End Contact Section -->
+
+    <!-- ======= Contact Section ======= -->
+		<section id="contact" class="section-bg">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-header">
+					<h3>오시는 길</h3>
+					<br> <br>
+				</div>
+
+				<div class="map" style="width: 50%;">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25324.2186513383!2d127.02271616499561!3d37.49547904208217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15857ce38dd%3A0xac87641577138f5d!2z6re466aw7Lu07ZOo7YSw7JWE7Lm0642w66-4IOqwleuCqOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1667204209769!5m2!1sko!2skr"
+						width="800" height="450" style="border: 0;" allowfullscreen=""
+						loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+
+				<div class="map-text">
+					
+					<p class="bus">대중교통 이용</p>
+					<div class="map-contents">
+						<h3	style="border: 1px solid #fff; width: 100px; padding: 5px 5px; background-color: #fff; border-radius: 5px; font-weight: bold; font-size: 11pt; text-align: center; color:#505050;">시내버스</h3>
+						<p>2번, 3번, 3-1번, 9번 버스 이용</p>
+					</div>
+					
+					<div class="map-contents">
+						<h3 style="border: 1px solid #fff; width: 100px; padding: 5px 5px; border-radius: 5px; font-weight: bold; font-size: 11pt; text-align: center; color:#fff;">지하철</h3>
+						<p>2호선, 신분당선 강남역 11번 출구</p>
+					</div>
+					
+					<div class="map-contents">
+						<h3 style="border: 1px solid #fff; width: 100px; padding: 5px 5px; background-color: #fff; border-radius: 5px; font-weight: bold; font-size: 11pt; text-align: center;color:#505050;">시내버스</h3>
+						<p>1, 2, 21-25, 31-35, 41, 41-1, 42, 55,70-74, 81,
+						81-1, 82-84, 90, 91</p>
+					</div>
+					
+					<div class="map-contents">
+						<h3 style="border: 1px solid #fff; width: 100px; padding: 5px 5px; border-radius: 5px; font-weight: bold; font-size: 11pt; text-align: center; color:#fff;">주소</h3>
+						<p>서울 강남구 테헤란로5길 24 장연빌딩 3~7층</p>
+					</div>
+					
+					<div class="map-contents">
+						<h3 style="border: 1px solid #fff; width: 100px; padding: 5px 5px; background-color: #fff; border-radius: 5px; font-weight: bold; font-size: 11pt; text-align: center;color:#505050;">전화번호</h3>
+						<p>010-0000-0000</p>
+					</div>
+					
+
+			</div>
+		</section>
+		<!-- End Contact Section -->
 
   </main><!-- End #main -->
 

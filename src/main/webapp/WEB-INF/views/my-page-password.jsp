@@ -88,9 +88,6 @@
     <link rel="stylesheet" href="/campus/resources/assets/css/login.css">
     <link href="/campus/resources/assets/css/mypage-menu.css" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/ico" href="favicon.ico">
-
     <!-- Modernizer & Respond js -->
     <script src="/campus/resources/sidebar/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- end of sidebar css,js -->
@@ -101,6 +98,7 @@
     <script src="/campus/resources/assets/js/login.js"></script>
     
       <style type="text/css">
+      #main{position:relative; margin:0 auto; width:1200px; height:869px;}
 .container-fluid {
 	background: rgba(26, 26, 26, 0.9);
 }
@@ -151,14 +149,7 @@ input[type='date']:focus::before, input[type='date']:valid::before {
                     <br>
                	</div>
               </div>
-                 
-	<!--            <div class="input-div pass">
-				 <div class="div">
-                    <input type="password" id="old_passwd" class="input" name="old_passwd" placeholder="현재 비밀번호">
-                    <br>
-                 </div>
-              </div>
-     -->          
+                        
               <div class="input-div pass">
 				 <div class="div">
                     <input type="password" id="passwd" class="input" name="passwd" placeholder="새 비밀번호">

@@ -132,8 +132,8 @@
                      <span id="memberIdMsg"	style="position: absolute; right: 100px; top: 5px;"></span>
                       <br>
                	</div>
-               	<input type="button" class="id-btn" onclick="memberIdOverlap()" value="중복확인" style="position: absolute; right: 5px; top: 8px;">
-               	<form:errors path="memberId" class="error" />
+							<input type="button" class="id-btn" onclick="memberIdOverlap()"	value="중복확인" style="position: absolute; right: 5px; top: 8px; color: #fff; background-color: #38D3A1; border: none; padding: 5px 10px; border-radius: 10px;">
+							<form:errors path="memberId" class="error" />
               </div>
                  
               <div class="input-div pass">

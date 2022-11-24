@@ -467,7 +467,6 @@ pre code {
   display: -webkit-box;
   display: flex;
   -ms-flex-wrap: wrap;
-  width:1350px;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px; }
