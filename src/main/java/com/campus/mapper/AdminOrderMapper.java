@@ -26,7 +26,7 @@ public interface AdminOrderMapper {
 		})
 	List<OrderDetailDto> selectOrderDetailsByOrderNo(int orderNo);
 
-	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId like '%${search}%' Order By orderDate DESC ")
+	@Select("SELECT orderNo, orderDate, to_char(returnDate,'yyyy-mm-dd') returnDate, to_char(rentDate,'yyyy-mm-dd') rentDate, pay, memberId FROM orderList WHERE memberId like '%${search}%' Order By orderNo DESC ")
 	List<OrderListDto> selectOrderByMemberId(String search);
 
 	@Select("select to_char(l.orderDate,'yyyy-mm-dd') orderDate, sum(d.amount*d.price) as orderNo  from orderList l Inner Join orderDetail d on l.orderNo = d.orderNo group by to_char(l.orderDate,'yyyy-mm-dd')  order By orderDate")
