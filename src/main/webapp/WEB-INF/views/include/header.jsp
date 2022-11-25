@@ -40,12 +40,10 @@
 
 				<nav id="navbar" class="navbar">
 					<ul>
-						<!--    <li><a class="nav-link scrollto" href="admin-main">Admin(hidden)</a></li> -->
+						
 						<li><a class="nav-link scrollto active" href="main">홈</a></li>
-						<li><a class="nav-link scrollto" href="/campus/#about">고객후기</a></li>
-						<!-- <li><a class="nav-link scrollto" href="/campus/#services">나중에2</a></li> -->
 						<li><a class="nav-link scrollto " href="/campus/#portfolio">베스트상품</a></li>
-						<!-- <li><a class="nav-link scrollto " href="/campus/#clients">고객후기</a></li> -->
+						<li><a class="nav-link scrollto" href="/campus/#about">고객후기</a></li>
 						<li><a class="nav-link scrollto " href="/campus/#contact">오시는길</a></li>
 					</ul>
 

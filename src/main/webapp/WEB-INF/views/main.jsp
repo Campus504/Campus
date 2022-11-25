@@ -107,7 +107,7 @@
                 <h2 class="animate__animated animate__fadeInDown">준비할 것도 알아볼 것도 많은 캠핑,<br>
                  <b>Campus</b>에서 시작하세요.</h2>
                 <!-- <p class="animate__animated animate__fadeInUp">준비할 것도 알아볼 것도 많은 캠핑, <b>Campus</b>에서 시작하세요.</p> -->
-                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <a href="/campus/#portfolio" class="btn-get-started scrollto animate__animated animate__fadeInUp">VIEW</a>
               </div>
             </div>
           </div>
@@ -162,10 +162,6 @@
         </div>
        </c:forEach>
        </c:if>
-
-        
-
-       
 
       </div>
 
