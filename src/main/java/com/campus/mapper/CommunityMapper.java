@@ -52,8 +52,8 @@ public interface CommunityMapper {
 	@Select("SELECT COUNT(*) FROM board WHERE active = TRUE AND category = 'freeboard' and ${searchOption} like '%${search}%'")
 	int selectSerchBoardCount(@Param("searchOption") String searchOption, @Param("search") String search);
 
-	// 에러 수정 : 쿼리 수정
-	@Select("SELECT COUNT(*) FROM community WHERE 'active' = TRUE AND tag LIKE '%${tag}%'")
+	// 에러 수정 : 쿼리 수정 //20221127다시수정(페이징오류)
+	@Select("select count(*) from community where boardNo in (select boardNo from board where active = true ) and  tag like '%${tag}%'")
 	int selectTagCount(@Param("tag") String tag);
 
 	@Delete("DELETE FROM community WHERE boardNo = ${boardNo}")
