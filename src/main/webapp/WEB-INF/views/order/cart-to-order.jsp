@@ -557,7 +557,7 @@ font-size: 30px;
 				if($("#rentDate").val()==''||$("#returnDate").val()==''){
 					alert('이용날짜를 선택하세요');
 					return false;
-				}else if(totalPrice==null){
+				}else if($('#hidden-total-price').val()==null){
 					alert('주문 합계를 확인하세요');
 					return false;
 				}else{
