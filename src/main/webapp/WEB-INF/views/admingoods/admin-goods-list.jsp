@@ -67,17 +67,6 @@
 							</nav>
 						</div>
 						
-						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
-								<a class="btn btn-primary dropdown-toggle" href="#"
-									role="button" data-toggle="dropdown"> Oct 2022 </a>
-								
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">기능1</a> 
-									<a class="dropdown-item" href="#">기능2</a> 
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- 페이지 해더입니다. 없으면 하단 컨텐츠가 모두 깨집니다!! -->
@@ -86,8 +75,8 @@
 				<!-- table -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
-						<h4 class="text-blue h4">상품등록을 통해 등록된 상품을 확인 할 수 있는 페이지 입니다.</h4>
-						<p class="mb-30">등록 된 상품 리스트를 확인하여 상품들의 현황을 확인하세요</p>
+						<h4 class="text-blue h4">Campus 에서 대여 할 수 있는 상품 목록입니다.</h4>
+						<p class="mb-30">Campus의 상품 리스트를 확인하여 상품들의 현황을 확인하세요.</p>
 					</div>
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap" id="goods-list-table">
@@ -107,13 +96,11 @@
 							</thead>
 							
 							<c:forEach  var="goods" items='${goods}' >
-							<c:set var="i" value="${ i+1 }" />
-							<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" />
+							<%-- <c:set var="i" value="${ i+1 }" />
+							<input id="findRowNo${i}" style="display:none" value="${ goods.goodsCode }" /> --%>
 												
 							<tbody>
-								
 								<tr role="row" class="goodsCode-${ goods.goodsCode }" data-goodscode="${ goods.goodsCode }" style="background-color:rgb(255,255,255)" >
-									
 									<c:if test="${ goods.status eq 'active' }">
 									<td>
 									<button type="button" name="goodsCode" data-goodscodefordeleted="${ goods.goodsCode }" class="btn btn-warning btn-lg delete-goods" id="deleted-${ goods.goodsCode }">대여가능
@@ -135,10 +122,8 @@
 									<td><a href="admin-goods-register-in.action?goodsCode=${goods.goodsCode}&goodsName=${goods.goodsName}"><button type="submit" id="add-goods-option-list-modal-confirm" name="goodsRegisterList" value="입고등록" class="btn btn-lg btn-primary" >입고등록</button></a></td>
 									<td><button type="button" class="btn btn-success btn-lg btn-block show-goods-option-list" id="show-goods-option-list" value="상품옵션보기">상품 옵션 보기</button></td>
 								</tr>
-
 							</c:forEach>
 							</tbody>
-							
 							<!-- 대여가능은 첫번째 tbody, 대여불가능은 두번째 tbody로 배치하고 싶음 -->		
 							<%-- <thead>
 								<tr class="table-active">

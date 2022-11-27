@@ -66,17 +66,6 @@
 							</nav>
 						</div>
 						
-						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
-								<a class="btn btn-primary dropdown-toggle" href="#"
-									role="button" data-toggle="dropdown"> Oct 2022 </a>
-								
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">기능1</a> 
-									<a class="dropdown-item" href="#">기능2</a> 
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 		
@@ -200,7 +189,7 @@
 						<div class="btn-list">
 							<button type="reset" id="goodsRegisterReset" name="goodsRegister" value="초기화" class="btn btn-secondary btn-lg">초기화</button>
 							<button type="submit" id="goodsRegisterConfirm" name="goodsRegister" value="상품등록" class="btn btn-lg btn-primary">상품등록</button>
-							<button type="button" class="btn btn-secondary btn-lg">취소</button>
+							<!-- <button type="button" class="btn btn-secondary btn-lg">취소</button> -->
 						</div>	
 						
 							</form>
@@ -229,7 +218,7 @@
 								
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">		
 							<div class="form-group">
-								<label>5. 속성자료형 (두가지선택) :</label>
+								<label>5. 속성자료형 :</label> <!-- 속성에 대한 자료형을 다양하게 적용 가능 -->
 								
 								<label class="btn btn-outline-secondary active">
 									<input type="radio" name="option_value_type" autocomplete="off" value="single" checked> 단일 값 
@@ -248,16 +237,16 @@
 							</div>
 							
 						<div class="form-group">
-							<label>7. 옵션값(속성값에 따른 옵션값 추가예정) :</label>
+							<label>7. 옵션값 :</label> <!-- ex) 색상속성에 따른 값. 색상=>노랑 -->
 							<!-- <input type="text" class="form-control" id="category" name="category" placeholder="상품분류"> -->
 								<select name=category class="custom-select form-control">
-									<option value="">--옵션을선택하세요--</option>
-									<option value="optionSeletionValue">Test</option>
+									<option value="">demoValue</option>
+									<option value="">demoTable</option>
 								</select>	
 							</div>
 						
 						<div class="form-group">
-							 <label>8. 속성설명(상품상세정보, 이미지 or 텍스트 추가):</label>
+							 <label>8. 속성설명 :</label> <!-- (상품상세정보, 이미지 or 텍스트 추가) 를 위한 공간 -->
 							 <input type="text" class="form-control" name="option_description" placeholder="속성 설명을 입력하세요">
 
 								</div>
