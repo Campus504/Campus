@@ -69,7 +69,7 @@ public interface GoodsMapper {
 
 
 	//장바구니에 담긴 물품들 가져오기
-	@Select("SELECT c.*, g.goodsName FROM cart c " + 
+	@Select("SELECT c.*, g.goodsName,g.brand FROM cart c " + 
 			"INNER JOIN goods g " + 
 			"ON c.goodsCode = g.goodscode " + 
 			"WHERE memberid = #{ memberId }")
@@ -79,7 +79,8 @@ public interface GoodsMapper {
 			@Result(column = "goodsCode", property = "goodsCode", id = true),
 			@Result(column = "amount", property = "amount"),
 			@Result(column = "price", property = "price"),
-			@Result(column = "goodsName", property = "goods.goodsName"),		
+			@Result(column = "brand", property = "goods.brand"),
+			@Result(column = "goodsName", property = "goods.goodsName"),
 		})
 	List<CartDto> selectCartById(String memberId);
 	

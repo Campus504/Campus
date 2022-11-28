@@ -126,7 +126,10 @@ public class GoodsController {
 	  
 	  List<CartDto> carts = goodsService.findCartById(memberId);
 	  
-	  model.addAttribute("carts", carts); 
+	  model.addAttribute("carts", carts);
+	  
+	  
+	  
 	  return "order/cart-to-order"; 
 	  }
 	

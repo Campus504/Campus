@@ -35,7 +35,6 @@ import com.campus.service.AccountService;
 import com.campus.service.GoodsService;
 
 @Controller
-/* @RequestMapping(path = { "/account" }) */
 public class AccountController {
 
 	private final int PAGE_SIZE = 10; // 한 페이지에 표시되는 데이터 개수
@@ -49,8 +48,8 @@ public class AccountController {
 
 	@GetMapping(path = { "register.action" })
 	public String showRegisterForm(@ModelAttribute("member") MemberDto member) {
-
 		return "account/register";
+		
 	}
 
 	@PostMapping(path = { "register.action" })
@@ -124,7 +123,6 @@ public class AccountController {
 		model.addAttribute("search", search);
 
 		return "admin-member-search";
-
 	}
 
 	// 아이디 중복확인 처리

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -251,7 +251,10 @@ font-size: 30px;
 										</tr>
 									</thead>
 									<tbody id="toggle-content" style="display:none">
-										<tr><td>상품명</td><td>대여금액(1일)</td><td>브랜드</td>
+										<tr>
+										<td>상품명</td>
+										<td>대여금액(1일)</td>
+										<td>브랜드</td>
 										</tr>
 										<c:forEach var="cart" items="${ carts }">
 										<tr>
@@ -457,6 +460,7 @@ font-size: 30px;
 	<script
 		src="/campus/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 	<script
+	
 		src="/campus/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
 	<script
 		src="/campus/resources/assets/vendor/php-email-form/validate.js"></script>
@@ -529,25 +533,31 @@ font-size: 30px;
 			var totalPrice = null;
 			
 			$('#totalOrderInfo').on('click',function(event){
+				//$('#hidden-total-price').val('');
 				if($("#rentDate").val()==''||$("#returnDate").val()==''){
 					alert('이용날짜를 선택하세요');
 					return false;
+					
 				}else{
+					
 					var rentDate = Date.parse($("#rentDate").val());
 					var returnDate = Date.parse($("#returnDate").val());
 					var period = Math.floor((Math.abs(rentDate-returnDate)/(60*24*60*1000))+1);
 					$('#usePeriod').html(period+"일");
 					
-					var totalPrice = 0;
+					totalPrice = 0;
 					
 					<c:forEach var="cart" items="${ carts }">
 					
 					totalPrice = totalPrice + (period*${cart.amount}*${cart.price}); 
 					
 					</c:forEach>
+					
+					
 					$('#totalPrice').html(totalPrice+"원");
 					$('#totalPeriod').html(period+"일");
 					$('#hidden-total-price').val(totalPrice);
+					
 				}
 			});
 			
@@ -566,8 +576,7 @@ font-size: 30px;
 					return false;
 				}}
 					return true;
-			});
-			
+			}); 
 			
 			
 		});
